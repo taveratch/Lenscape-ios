@@ -1,0 +1,6 @@
+framework module Pods_Lenscape {
+  umbrella header "Pods-Lenscape-umbrella.h"
+
+  export *
+  module * { export * }
+}

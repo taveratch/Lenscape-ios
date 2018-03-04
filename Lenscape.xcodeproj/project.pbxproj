@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		687686D0758CD9295E1F94F0 /* Pods_Lenscape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */; };
+		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* ViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.release.xcconfig"; sourceTree = "<group>"; };
+		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95134E34204C2F0700121514 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				95134E35204C2F1500121514 /* ApiManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		95656927204C2BB3005F9F6B = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 			children = (
 				95656933204C2BB3005F9F6B /* AppDelegate.swift */,
 				95656935204C2BB3005F9F6B /* ViewController.swift */,
+				95134E34204C2F0700121514 /* Utilities */,
 				95656937204C2BB3005F9F6B /* Main.storyboard */,
 				9565693A204C2BB3005F9F6B /* Assets.xcassets */,
 				9565693C204C2BB3005F9F6B /* LaunchScreen.storyboard */,
@@ -218,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95656936204C2BB3005F9F6B /* ViewController.swift in Sources */,
+				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

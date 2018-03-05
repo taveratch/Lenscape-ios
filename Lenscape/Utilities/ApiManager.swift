@@ -6,11 +6,13 @@
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Alamofire
+import PromiseKit
 
 class ApiManager {
-    func fetch(url:String, header: [String: String]?, body: [String: Any]?, method: String, completionHandler: @escaping (_ response: [String: Any]?) -> Void) {
+    
+    func fetch(url:String, header: [String: String]?, body: [String: Any]?, method: String) -> Promise<[String: Any]?>{
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -25,9 +27,16 @@ class ApiManager {
                 return HTTPMethod.get
             }
         }
-        Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON {
-            response in
-            completionHandler(response.result.value as? [String : Any])
+        return Promise { seal in
+            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON {
+                response in
+                switch response.result {
+                case .success:
+                    seal.fulfill(response.result.value as? [String: Any])
+                case .failure(let error):
+                    seal.reject(error)
+                }
+            }
         }
     }
 }

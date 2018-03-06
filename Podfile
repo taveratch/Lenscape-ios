@@ -3,4 +3,7 @@
 target 'Lenscape' do
   use_frameworks!
   pod 'Alamofire'
+  pod 'PromiseKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 end

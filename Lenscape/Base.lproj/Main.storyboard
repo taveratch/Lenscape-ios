@@ -75,9 +75,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-kf-iH4">
-                                <rect key="frame" x="118" y="96" width="138" height="28"/>
+                                <rect key="frame" x="117" y="96" width="140" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="DP9-RF-m9G"/>
+                                    <constraint firstAttribute="width" constant="140" id="UbL-dl-08V"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Um-LL-nlA" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
@@ -233,10 +234,9 @@
                         <constraints>
                             <constraint firstItem="7Um-LL-nlA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="7aR-Nu-ZE3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Um-LL-nlA" secondAttribute="trailing" constant="48" id="7df-rs-JaG"/>
-                            <constraint firstItem="c0e-kf-iH4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="118" id="OZU-3G-KMn"/>
                             <constraint firstItem="6ZF-Yh-hz4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QHH-pW-DGz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Um-LL-nlA" secondAttribute="bottom" constant="32" id="WRi-iF-kUh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0e-kf-iH4" secondAttribute="trailing" constant="119" id="dGe-BQ-ZFj"/>
+                            <constraint firstItem="c0e-kf-iH4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="csU-iW-Fcv"/>
                             <constraint firstItem="6ZF-Yh-hz4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fPM-js-qip"/>
                             <constraint firstItem="c0e-kf-iH4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="wBe-Yg-TJW"/>
                         </constraints>

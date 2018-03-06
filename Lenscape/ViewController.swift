@@ -11,9 +11,6 @@ import PromiseKit
 
 class ViewController: UIViewController {
     
-    
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
     let api = Api()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +20,7 @@ class ViewController: UIViewController {
     
     private func signin() {
         api.signin(email: "taweesoft@gmail.com", password: "hello").done { user in
-            self.genderLabel.text = user["gender"] as? String
-            self.emailLabel.text = user["email"] as? String
-        }
+            }.catch{ error in }
     }
     
     override func didReceiveMemoryWarning() {

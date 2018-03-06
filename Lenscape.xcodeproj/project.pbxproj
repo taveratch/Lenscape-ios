@@ -11,6 +11,8 @@
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
+		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
+		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* ViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		955C3AF4204D95C40023FAF0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		955C3AF1204D95890023FAF0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				955C3AF4204D95C40023FAF0 /* TextField.swift */,
+				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		95656927204C2BB3005F9F6B = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 		95656932204C2BB3005F9F6B /* Lenscape */ = {
 			isa = PBXGroup;
 			children = (
+				955C3AF1204D95890023FAF0 /* Components */,
 				95656933204C2BB3005F9F6B /* AppDelegate.swift */,
 				95656935204C2BB3005F9F6B /* ViewController.swift */,
 				95134E34204C2F0700121514 /* Utilities */,
@@ -239,8 +253,10 @@
 				95656936204C2BB3005F9F6B /* ViewController.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
+				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
+				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

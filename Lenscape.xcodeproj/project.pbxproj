@@ -11,6 +11,7 @@
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
+		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		955C3AF4204D95C40023FAF0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 				95134E35204C2F1500121514 /* ApiManager.swift */,
 				951FE8B7204C3C8C00FE6C10 /* Api.swift */,
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
+				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				956F1704204EA69000CADB75 /* DashboardViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
+				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,

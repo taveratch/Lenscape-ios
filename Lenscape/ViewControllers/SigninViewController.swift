@@ -14,7 +14,7 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    var dict : [String : AnyObject]!
+    let fb = FacebookLogin()
     
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
@@ -33,16 +33,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //Mark: Actions
     @IBAction func facebookLogin(_ sender: UIButton) {
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile], viewController: self) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                self.getFBUserData()
-            }
+        fb.login(vc: self).done {
+            success in //success opening and verifying facebook app.
+            // fetch Facebook user data from Facebook app
+            self.getFBUserData()
+            }.catch { error in
         }
     }
     
@@ -62,20 +57,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    
+    //Mark: Navigation
+    private func changeViewController(identifier: String) {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier){
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     //Mark: Functions
     func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start{ (connection, result, error) -> Void in
-                if (error == nil){
-                    self.dict = result as! [String: AnyObject]
-                    var user = UserController.convertFBtoNormal(facebookUserData: self.dict)
-                    user["token"] = FBSDKAccessToken.current().tokenString
-                    if UserController.saveUser(user: user) {
-                        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-                            self.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                }
+        fb.getFBUserData().done {
+            user in
+            if UserController.saveUser(user: user) {
+                self.changeViewController(identifier: "DashboardViewController")
             }
+            }.catch{ error in
+                fatalError("Cannot get Facebook user data")
         }
     }
 }

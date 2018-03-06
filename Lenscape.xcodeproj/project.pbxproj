@@ -14,10 +14,13 @@
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
-		95656936204C2BB3005F9F6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* ViewController.swift */; };
+		95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SigninViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
 		9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9565693A204C2BB3005F9F6B /* Assets.xcassets */; };
 		9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9565693C204C2BB3005F9F6B /* LaunchScreen.storyboard */; };
+		956F1704204EA69000CADB75 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1703204EA69000CADB75 /* DashboardViewController.swift */; };
+		956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignupViewController.swift */; };
+		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +32,14 @@
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95656935204C2BB3005F9F6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95656935204C2BB3005F9F6B /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		95656938204C2BB3005F9F6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9565693A204C2BB3005F9F6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9565693D204C2BB3005F9F6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9565693F204C2BB3005F9F6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		956F1703204EA69000CADB75 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		956F1705204EAB0000CADB75 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +59,7 @@
 		95134E34204C2F0700121514 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				95B7C1FA204E9DC800410A48 /* extensions */,
 				95134E35204C2F1500121514 /* ApiManager.swift */,
 				951FE8B7204C3C8C00FE6C10 /* Api.swift */,
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
@@ -90,9 +97,9 @@
 		95656932204C2BB3005F9F6B /* Lenscape */ = {
 			isa = PBXGroup;
 			children = (
+				956F1702204EA63600CADB75 /* ViewControllers */,
 				955C3AF1204D95890023FAF0 /* Components */,
 				95656933204C2BB3005F9F6B /* AppDelegate.swift */,
-				95656935204C2BB3005F9F6B /* ViewController.swift */,
 				95134E34204C2F0700121514 /* Utilities */,
 				95656937204C2BB3005F9F6B /* Main.storyboard */,
 				9565693A204C2BB3005F9F6B /* Assets.xcassets */,
@@ -100,6 +107,24 @@
 				9565693F204C2BB3005F9F6B /* Info.plist */,
 			);
 			path = Lenscape;
+			sourceTree = "<group>";
+		};
+		956F1702204EA63600CADB75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				95656935204C2BB3005F9F6B /* SigninViewController.swift */,
+				956F1703204EA69000CADB75 /* DashboardViewController.swift */,
+				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		95B7C1FA204E9DC800410A48 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				95B7C1FB204E9DD100410A48 /* Dictionary.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		C3071B4FD2F74943FFAEE3BE /* Pods */ = {
@@ -198,11 +223,21 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95656936204C2BB3005F9F6B /* ViewController.swift in Sources */,
+				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
+				956F1704204EA69000CADB75 /* DashboardViewController.swift in Sources */,
+				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
+				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,

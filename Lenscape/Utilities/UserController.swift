@@ -36,4 +36,14 @@ class UserController {
     static func signout() {
         userDefaults.removeObject(forKey: "user")
     }
+    
+    static func convertFBtoNormal(facebookUserData: [String: Any]) -> [String: Any] {
+        let image: String = facebookUserData.valueForKeyPath(keyPath: "picture.data.url")!
+        return [
+            "name": facebookUserData["name"] as! String,
+            "id": facebookUserData["id"] as! String,
+            "profilePicture": image
+        ]
+    }
+    
 }

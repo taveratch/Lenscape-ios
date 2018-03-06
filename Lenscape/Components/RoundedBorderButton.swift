@@ -11,6 +11,10 @@ import UIKit
 @IBDesignable
 class RoundedBorderButton: UIButton {
     
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 3
+    }
+    
     @IBInspectable var borderColor: UIColor? {
         set {
             guard let uiColor = newValue else { return }

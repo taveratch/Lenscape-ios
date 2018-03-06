@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DashboardViewController: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
@@ -20,6 +22,10 @@ class DashboardViewController: UIViewController {
     private func setupUI() {
         let user = UserController.getCurrentUser()!
         nameLabel.text = user["name"] as? String
+        if let profileImageUrl = user["profilePicture"] as? String {
+            let url = URL(string: profileImageUrl)
+            profileImage.kf.setImage(with: url)
+        }
     }
 
     override func didReceiveMemoryWarning() {

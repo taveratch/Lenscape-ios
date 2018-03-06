@@ -18,8 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iht-kf-W29">
-                                <rect key="frame" x="38" y="68" width="299" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="EnG-05-3y3">
+                                <rect key="frame" x="127.5" y="68" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="fyr-b3-0Ud"/>
+                                    <constraint firstAttribute="height" constant="120" id="x3a-bZ-iXt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iht-kf-W29">
+                                <rect key="frame" x="38" y="213" width="299" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,7 +34,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iht-kf-W29" firstAttribute="top" secondItem="G07-PT-cHj" secondAttribute="top" constant="48" id="dyE-hD-Uae"/>
+                            <constraint firstItem="EnG-05-3y3" firstAttribute="top" secondItem="G07-PT-cHj" secondAttribute="top" constant="48" id="4ur-7d-4Kp"/>
+                            <constraint firstItem="EnG-05-3y3" firstAttribute="centerX" secondItem="svu-6z-Vza" secondAttribute="centerX" id="819-Vp-guA"/>
+                            <constraint firstItem="iht-kf-W29" firstAttribute="top" secondItem="EnG-05-3y3" secondAttribute="bottom" constant="25" id="NXS-zi-Nvc"/>
                             <constraint firstItem="G07-PT-cHj" firstAttribute="trailing" secondItem="iht-kf-W29" secondAttribute="trailing" constant="38" id="mJK-iU-J1o"/>
                             <constraint firstItem="iht-kf-W29" firstAttribute="leading" secondItem="G07-PT-cHj" secondAttribute="leading" constant="38" id="z3O-0Z-oxO"/>
                         </constraints>
@@ -35,11 +44,12 @@
                     </view>
                     <connections>
                         <outlet property="nameLabel" destination="iht-kf-W29" id="RFo-s8-tXi"/>
+                        <outlet property="profileImage" destination="EnG-05-3y3" id="Tqe-xf-F3p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2A-dM-594" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="32"/>
+            <point key="canvasLocation" x="1056.8" y="31.934032983508249"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="yaM-sE-cRM">
@@ -54,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="144-zv-B3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1032" y="780"/>
+            <point key="canvasLocation" x="372" y="842"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -263,5 +273,6 @@
     </scenes>
     <resources>
         <image name="Logo" width="1959" height="390"/>
+        <image name="Profile Image Placeholder" width="201" height="201"/>
     </resources>
 </document>

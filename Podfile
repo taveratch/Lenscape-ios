@@ -6,4 +6,5 @@ target 'Lenscape' do
   pod 'PromiseKit'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'Kingfisher'
 end

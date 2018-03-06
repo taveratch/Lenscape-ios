@@ -9,12 +9,15 @@
 import UIKit
 import PromiseKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var passwordTextField: TextField!
+    @IBOutlet weak var emailTextField: TextField!
     let api = Api()
     override func viewDidLoad() {
         super.viewDidLoad()
-        signin()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -28,6 +31,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 

@@ -1,31 +1,19 @@
 //
-//  DashboardViewController.swift
+//  FavoriteViewController.swift
 //  Lenscape
 //
-//  Created by TAWEERAT CHAIMAN on 6/3/2561 BE.
+//  Created by TAWEERAT CHAIMAN on 8/3/2561 BE.
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
-class DashboardViewController: UIViewController {
+class FavoriteViewController: UIViewController {
 
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-    }
-    
-    private func setupUI() {
-        let user = UserController.getCurrentUser()!
-        nameLabel.text = user["name"] as? String
-        if let profileImageUrl = user["profilePicture"] as? String {
-            let url = URL(string: profileImageUrl)
-            profileImage.kf.setImage(with: url)
-        }
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

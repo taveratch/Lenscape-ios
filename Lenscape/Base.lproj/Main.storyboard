@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="2106" y="1173"/>
         </scene>
-        <!--Explore-->
+        <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
             <objects>
                 <viewController storyboardIdentifier="DashboardViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
@@ -136,14 +136,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sQ9-xW-Agc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="Explore_tab_icon" id="LB1-Iu-YBY">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="JeJ-FO-WIb"/>
                     <connections>
                         <outlet property="mapViewImage" destination="VKM-aD-3du" id="Q46-Ia-7Dq"/>
                         <outlet property="nameLabel" destination="07z-7w-zUD" id="QK3-tr-CDg"/>
@@ -152,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="509.59520239880067"/>
+            <point key="canvasLocation" x="2897" y="510"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -170,7 +163,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grid view" translatesAutoresizingMaskIntoConstraints="NO" id="Gic-MX-kaT">
-                                <rect key="frame" x="313" y="602" width="30" height="30"/>
+                                <rect key="frame" x="314" y="558" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -183,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3199" y="510"/>
+            <point key="canvasLocation" x="3551" y="510"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -199,7 +192,7 @@
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="9fG-qd-fNW" id="3Zq-Sw-3yb"/>
-                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
+                        <segue destination="C9r-nG-mFp" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
                         <segue destination="8oo-Xi-4eU" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>
                         <segue destination="Y2P-Iw-S2T" kind="relationship" relationship="viewControllers" id="EZw-h5-5ak"/>
                         <segue destination="PjG-zI-O8P" kind="relationship" relationship="viewControllers" id="0Lp-2d-23t"/>
@@ -428,6 +421,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsO-lU-a3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="711" y="-714"/>
+        </scene>
+        <!--Explore-->
+        <scene sceneID="Q6d-9O-mMy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="C9r-nG-mFp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Explore" image="Explore_tab_icon" id="LB1-Iu-YBY">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Ys-sf-aWT">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="rootViewController" id="ghU-MB-liL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-nz-Mg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105" y="510"/>
         </scene>
     </scenes>
     <resources>

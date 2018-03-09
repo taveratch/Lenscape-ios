@@ -36,7 +36,7 @@ class ExploreViewController: AuthViewController {
     
     @objc private func showMapView() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExploreMapViewController")
-        self.navigationController?.pushViewController(vc!, animated: false)
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

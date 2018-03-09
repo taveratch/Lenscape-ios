@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="Q9V-8d-tdB">
             <objects>
                 <viewController id="Q56-6C-TH4" customClass="ProfileViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,11 +30,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="atu-5K-h7u"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AgM-wI-ebp"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile_tab_icon" id="XcA-ws-fNn">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iq5-lL-Txx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410" y="2630"/>
+            <point key="canvasLocation" x="1412" y="1888"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="Ea0-wg-WMu">
@@ -52,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKN-RO-ZCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="1887.7061469265368"/>
+            <point key="canvasLocation" x="2105" y="1888"/>
         </scene>
         <!--Trend-->
         <scene sceneID="Mws-gX-NdR">
@@ -72,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="2106" y="1173"/>
         </scene>
-        <!--Explore View Controller-->
+        <!--Explore-->
         <scene sceneID="IOg-Hy-3BS">
             <objects>
                 <viewController storyboardIdentifier="DashboardViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,7 +107,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sQ9-xW-Agc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Kau-g3-x5o"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="Explore_tab_icon" id="LB1-Iu-YBY">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="nameLabel" destination="07z-7w-zUD" id="QK3-tr-CDg"/>
                         <outlet property="profileImage" destination="AtQ-Dy-xMW" id="EXh-LI-xUS"/>
@@ -113,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3263" y="509"/>
+            <point key="canvasLocation" x="2444" y="509.59520239880067"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -127,10 +136,10 @@
                         <color key="selectedImageTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UP2-lT-nHT" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
+                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
                         <segue destination="8oo-Xi-4eU" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>
                         <segue destination="PjG-zI-O8P" kind="relationship" relationship="viewControllers" id="0Lp-2d-23t"/>
-                        <segue destination="3CJ-dz-2no" kind="relationship" relationship="viewControllers" id="tqD-Iq-IcK"/>
+                        <segue destination="Q56-6C-TH4" kind="relationship" relationship="viewControllers" id="tqD-Iq-IcK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cH2-93-8Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,54 +364,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsO-lU-a3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="711" y="-714"/>
-        </scene>
-        <!--Explore-->
-        <scene sceneID="i5b-WW-C1m">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="UP2-lT-nHT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="Explore_tab_icon" id="LB1-Iu-YBY">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lhk-rR-LDh">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YEQ-lF-42r">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="rootViewController" id="Xve-N1-ld0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WbT-F1-5L2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2443.1999999999998" y="509.14542728635683"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="Cdc-iD-fOd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="3CJ-dz-2no" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="Profile_tab_icon" id="XcA-ws-fNn">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KYZ-mD-Gxb">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Q56-6C-TH4" kind="relationship" relationship="rootViewController" id="M7b-yQ-s52"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhH-0W-cI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1411.2" y="1887.2563718140932"/>
         </scene>
     </scenes>
     <resources>

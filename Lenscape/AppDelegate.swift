@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserController.isLoggedIn().done {
             isSuccess in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
             let dashBoard = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController")
-            self.window?.rootViewController = dashBoard
-            self.window?.makeKeyAndVisible()
+            navigationController?.pushViewController(dashBoard, animated: false)
         }.catch{ error in
             os_log("User is not signed in", log: .default, type: .debug)
         }

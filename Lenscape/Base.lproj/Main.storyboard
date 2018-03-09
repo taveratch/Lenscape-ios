@@ -113,6 +113,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Explore List View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTB-ZY-vKM">
+                                <rect key="frame" x="119" y="299" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Map view" translatesAutoresizingMaskIntoConstraints="NO" id="VKM-aD-3du">
+                                <rect key="frame" x="307" y="32" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -134,6 +145,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
+                        <outlet property="mapViewImage" destination="VKM-aD-3du" id="Q46-Ia-7Dq"/>
                         <outlet property="nameLabel" destination="07z-7w-zUD" id="QK3-tr-CDg"/>
                         <outlet property="profileImage" destination="AtQ-Dy-xMW" id="EXh-LI-xUS"/>
                     </connections>
@@ -141,6 +153,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2444" y="509.59520239880067"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="BUx-1C-UqC">
+            <objects>
+                <viewController storyboardIdentifier="ExploreMapViewController" id="H9Q-MQ-yOu" customClass="MapViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ZQ-sQ-uSh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Explore Map View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uZ-hA-Dg0">
+                                <rect key="frame" x="119" y="323" width="137" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grid view" translatesAutoresizingMaskIntoConstraints="NO" id="Gic-MX-kaT">
+                                <rect key="frame" x="313" y="602" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
+                    </view>
+                    <connections>
+                        <outlet property="gridViewImage" destination="Gic-MX-kaT" id="zo1-MK-GCd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3199" y="510"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -391,7 +434,9 @@
         <image name="Camera_tab_icon" width="57" height="57"/>
         <image name="Explore_tab_icon" width="19" height="19"/>
         <image name="Favorite_tab_icon" width="20" height="19"/>
+        <image name="Grid view" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>
+        <image name="Map view" width="37" height="37"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_tab_icon" width="17" height="17"/>
         <image name="Trend_tab_icon" width="20" height="17"/>

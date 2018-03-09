@@ -11,6 +11,7 @@ import Kingfisher
 
 class ExploreViewController: AuthViewController {
 
+    @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -26,6 +27,16 @@ class ExploreViewController: AuthViewController {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)
         }
+        
+        // Map view : UIImageView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+        mapViewImage.addGestureRecognizer(tap)
+        mapViewImage.isUserInteractionEnabled = true
+    }
+    
+    @objc private func showMapView() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExploreMapViewController")
+        self.navigationController?.pushViewController(vc!, animated: false)
     }
 
     override func didReceiveMemoryWarning() {

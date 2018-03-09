@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		687686D0758CD9295E1F94F0 /* Pods_Lenscape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
+		9518DBB82052DE0A00F0BE1B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB72052DE0A00F0BE1B /* MapViewController.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.release.xcconfig"; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		9518DBB72052DE0A00F0BE1B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
+				9518DBB72052DE0A00F0BE1B /* MapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
 				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
@@ -321,6 +324,7 @@
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
+				9518DBB82052DE0A00F0BE1B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="J1Q-1h-WK8">
+            <objects>
+                <viewController id="Y2P-Iw-S2T" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gsK-ik-wxk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wTk-aP-SrS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="Camera_tab_icon" id="ZG1-30-V4i">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EbY-Tg-VjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="1888"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="Q9V-8d-tdB">
             <objects>
                 <viewController id="Q56-6C-TH4" customClass="ProfileViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gvd-b2-aPl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFl-uz-IcF">
@@ -43,7 +61,7 @@
             <objects>
                 <viewController id="PjG-zI-O8P" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3fT-oq-Ro4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="REK-nh-aZ9"/>
@@ -61,7 +79,7 @@
             <objects>
                 <viewController id="8oo-Xi-4eU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1kR-Xd-AQC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TXz-nK-gic"/>
@@ -79,7 +97,7 @@
             <objects>
                 <viewController storyboardIdentifier="DashboardViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqo-cE-T1t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="AtQ-Dy-xMW">
@@ -124,20 +142,23 @@
             </objects>
             <point key="canvasLocation" x="2444" y="509.59520239880067"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="te0-fk-hLQ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="te0-fk-hLQ" customClass="MainTabBarController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xFq-wY-uXu"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9fG-qd-fNW">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9fG-qd-fNW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="9fG-qd-fNW" id="3Zq-Sw-3yb"/>
                         <segue destination="2yq-fR-Unf" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
                         <segue destination="8oo-Xi-4eU" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>
+                        <segue destination="Y2P-Iw-S2T" kind="relationship" relationship="viewControllers" id="EZw-h5-5ak"/>
                         <segue destination="PjG-zI-O8P" kind="relationship" relationship="viewControllers" id="0Lp-2d-23t"/>
                         <segue destination="Q56-6C-TH4" kind="relationship" relationship="viewControllers" id="tqD-Iq-IcK"/>
                     </connections>
@@ -170,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-kf-iH4">
-                                <rect key="frame" x="117" y="96" width="140" height="28"/>
+                                <rect key="frame" x="117.5" y="96" width="140" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="DP9-RF-m9G"/>
                                     <constraint firstAttribute="width" constant="140" id="UbL-dl-08V"/>
@@ -367,6 +388,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera_tab_icon" width="57" height="57"/>
         <image name="Explore_tab_icon" width="19" height="19"/>
         <image name="Favorite_tab_icon" width="20" height="19"/>
         <image name="Logo" width="1959" height="390"/>

@@ -10,6 +10,8 @@
 		687686D0758CD9295E1F94F0 /* Pods_Lenscape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
 		9518DBB82052DE0A00F0BE1B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB72052DE0A00F0BE1B /* MapViewController.swift */; };
+		9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB92052E1E000F0BE1B /* ShadowView.swift */; };
+		9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
@@ -34,6 +36,8 @@
 		5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.release.xcconfig"; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		9518DBB72052DE0A00F0BE1B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9518DBB92052E1E000F0BE1B /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedUIImageView.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				955C3AF4204D95C40023FAF0 /* TextField.swift */,
+				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
+				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
 			);
 			path = Components;
@@ -308,6 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
+				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,

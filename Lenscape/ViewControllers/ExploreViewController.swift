@@ -13,7 +13,6 @@ class ExploreViewController: AuthViewController {
 
     @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,6 @@ class ExploreViewController: AuthViewController {
     
     private func setupUI() {
         let user = UserController.getCurrentUser()!
-        nameLabel.text = user["name"] as? String
         if let profileImageUrl = user["profilePicture"] as? String {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)

@@ -11,23 +11,21 @@ import PromiseKit
 
 class Api {
     
-    let HOST = "https://demo9833354.mockable.io"
+    let HOST = "https://api.lenscape.me"
     let apiManager = ApiManager()
     
     func signin(email: String, password: String) -> Promise<[String: Any]> {
         let body = [
-            "email": email,
+            "username": email,
             "password": password
         ]
         return Promise { seal in
             firstly {
-                apiManager.fetch(url: "\(HOST)/users/signin", header: nil, body: body, method: "POST")
+                apiManager.fetch(url: "\(HOST)/login/local", header: nil, body: body, method: "POST")
                 }.done { response in
-                    if response != nil, response!["success"] as! Bool  {
-                        let user = response!["data"] as! [String: Any]
-                        if UserController.saveUser(user: user) {
-                            seal.fulfill(user)
-                        }
+                    let user = response!["data"] as! [String: Any]
+                    if UserController.saveUser(user: user) {
+                        seal.fulfill(user)
                     }
                 }.catch { error in
                     seal.reject(error)

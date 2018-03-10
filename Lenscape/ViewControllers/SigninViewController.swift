@@ -8,8 +8,6 @@
 
 import UIKit
 import PromiseKit
-import FacebookLogin
-import FBSDKLoginKit
 
 
 class SigninViewController: UIViewController, UITextFieldDelegate {

@@ -65,4 +65,26 @@ class Api {
             }
         }
     }
+    
+    func signUp(firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
+        let body = [
+            "firstname": firstName,
+            "lastname": lastName,
+            "email": email,
+            "password": password
+        ]
+        return Promise { seal in
+            firstly {
+                apiManager.fetch(url: "https://api.lenscape.me/register", header: nil, body: body, method: "POST")
+                }.done { response in
+                    //TODO Handle response
+                    if let data = response?.json() {
+                        print(data)
+                    }
+                   
+                }.catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
 }

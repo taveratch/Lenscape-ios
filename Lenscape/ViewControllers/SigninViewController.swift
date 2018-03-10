@@ -30,7 +30,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //Mark: Actions
+    //MARK: - Actions
     @IBAction func facebookLogin(_ sender: UIButton) {
         fb.login(vc: self).done {
             token in //success opening and verifying facebook app.
@@ -64,7 +64,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //Mark: Delegation actions
+    //MARK: - Delegation actions
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -80,13 +80,13 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //Mark: Navigation
+    //MARK: - Navigation
     private func changeViewController(identifier: String) {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier){
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+
     @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
         
     }

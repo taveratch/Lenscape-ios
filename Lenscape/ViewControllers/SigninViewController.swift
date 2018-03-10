@@ -76,5 +76,9 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
                 fatalError("Cannot get Facebook user data")
         }
     }
+    
+    @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
+        
+    }
 }
 

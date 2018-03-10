@@ -17,13 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //added these 3 methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UserController.isLoggedIn().done {
-            isSuccess in
+        let changeViewController = { (identifier: String) -> Void in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
             let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
-            let dashBoard = storyBoard.instantiateViewController(withIdentifier: "MainTabBarController")
-            navigationController?.pushViewController(dashBoard, animated: false)
-        }.catch{ error in
+            let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
+            navigationController?.pushViewController(vc, animated: false)
+        }
+        if UserController.getCurrentUser() != nil {
+            changeViewController("MainTabBarController")
+        }
+        UserController.isLoggedIn().catch{ error in
+            changeViewController("SigninViewController")
             os_log("User is not signed in", log: .default, type: .debug)
         }
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

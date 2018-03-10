@@ -25,7 +25,6 @@ class Api {
                 }.done { response in
                     if response != nil, response!["success"] as! Bool  {
                         let user = response!["data"] as! [String: Any]
-                        print(user)
                         if UserController.saveUser(user: user) {
                             seal.fulfill(user)
                         }

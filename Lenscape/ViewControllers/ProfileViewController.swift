@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     // Actions
     @IBAction func signOut(_ sender: UIButton) {
         UserController.signOut()
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: "SigninViewController")
+        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
         self.navigationController?.pushViewController(signinVC!, animated: true)
     }
     

@@ -28,14 +28,17 @@ class ApiManager {
             }
         }
         return Promise { seal in
-            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON {
-                response in
-                switch response.result {
-                case .success:
-                    seal.fulfill(response.result.value as? [String: Any])
-                case .failure(let error):
-                    seal.reject(error)
-                }
+            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: header)
+                .validate(statusCode: 200...500)
+                .responseJSON {
+                    response in
+                    let value = response.result.value as? [String: Any]
+                    let statusCode = response.response?.statusCode
+                    if statusCode == 200 {
+                        seal.fulfill(value)
+                    }else {
+                        seal.reject(NSError(domain: value!["message"] as? String ?? "", code: statusCode!, userInfo: nil))
+                    }
             }
         }
     }

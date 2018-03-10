@@ -33,7 +33,7 @@ class ExploreViewController: AuthViewController {
     }
     
     @objc private func showMapView() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExploreMapViewController")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
 

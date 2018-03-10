@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationController?.pushViewController(vc, animated: false)
         }
         if UserController.getCurrentUser() != nil {
-            changeViewController("MainTabBarController")
+            changeViewController(Identifier.MainTabBarController.rawValue)
         }
         UserController.isLoggedIn().catch{ error in
-            changeViewController("SigninViewController")
+            changeViewController(Identifier.SigninViewController.rawValue)
             os_log("User is not signed in", log: .default, type: .debug)
         }
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

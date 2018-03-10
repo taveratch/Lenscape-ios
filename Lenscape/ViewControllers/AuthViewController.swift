@@ -31,7 +31,7 @@ class AuthViewController: UIViewController {
     
     private func checkAuth() {
         UserController.isLoggedIn().catch { error in
-            self.changeViewController(identifier: "SigninViewController")
+            self.changeViewController(identifier: Identifier.SigninViewController.rawValue)
         }
     }
 

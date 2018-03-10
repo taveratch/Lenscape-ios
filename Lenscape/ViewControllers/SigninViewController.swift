@@ -41,6 +41,18 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func singin(_ sender: UIButton) {
+        api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
+            user in
+            self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
+            }.catch {
+                error in
+                let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     
     //Mark: Delegation actions
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -70,7 +82,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         fb.getFBUserData().done {
             user in
             if UserController.saveUser(user: user) {
-                self.changeViewController(identifier: "MainTabBarController")
+                self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
             }
             }.catch{ error in
                 fatalError("Cannot get Facebook user data")

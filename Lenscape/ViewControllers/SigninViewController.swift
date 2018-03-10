@@ -12,7 +12,7 @@ import FacebookLogin
 import FBSDKLoginKit
 
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class SigninViewController: UIViewController, UITextFieldDelegate {
     
     let fb = FacebookLogin()
     
@@ -70,11 +70,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         fb.getFBUserData().done {
             user in
             if UserController.saveUser(user: user) {
-                self.changeViewController(identifier: "DashboardViewController")
+                self.changeViewController(identifier: "MainTabBarController")
             }
             }.catch{ error in
                 fatalError("Cannot get Facebook user data")
         }
+    }
+    
+    @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
+        
     }
 }
 

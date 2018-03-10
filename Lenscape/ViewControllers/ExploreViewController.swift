@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  ExploreViewController.swift
 //  Lenscape
 //
 //  Created by TAWEERAT CHAIMAN on 6/3/2561 BE.
@@ -9,10 +9,10 @@
 import UIKit
 import Kingfisher
 
-class DashboardViewController: UIViewController {
+class ExploreViewController: AuthViewController {
 
+    @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,20 @@ class DashboardViewController: UIViewController {
     
     private func setupUI() {
         let user = UserController.getCurrentUser()!
-        nameLabel.text = user["name"] as? String
         if let profileImageUrl = user["profilePicture"] as? String {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)
         }
+        
+        // Map view : UIImageView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+        mapViewImage.addGestureRecognizer(tap)
+        mapViewImage.isUserInteractionEnabled = true
+    }
+    
+    @objc private func showMapView() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExploreMapViewController")
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

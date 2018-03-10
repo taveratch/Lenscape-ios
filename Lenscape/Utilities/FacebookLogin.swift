@@ -12,7 +12,7 @@ import PromiseKit
 import FBSDKLoginKit
 
 class FacebookLogin {
-    func login(vc: ViewController) -> Promise<Bool>{
+    func login(vc: UIViewController) -> Promise<Bool>{
         return Promise { seal in
             let loginManager = LoginManager()
             loginManager.logIn(readPermissions: [.publicProfile], viewController: vc) { loginResult in
@@ -20,8 +20,7 @@ class FacebookLogin {
                 case .failed(let error):
                     seal.reject(error)
                 case .cancelled:
-                    seal.fulfill(false)
-                    print("User cancelled login.")
+                    seal.reject(NSError(domain: "User cancelled login.", code: 0, userInfo: nil))
                 case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                     seal.fulfill(true)
                 }
@@ -47,6 +46,10 @@ class FacebookLogin {
                 }
             }
         }
-        
+    }
+    
+    func logOut(){
+        let loginManager = LoginManager()
+        loginManager.logOut()
     }
 }

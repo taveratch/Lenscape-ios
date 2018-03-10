@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import PromiseKit
 import os.log
 
 class UserController {
+    
+    static let fb = FacebookLogin()
     static let userDefaults = UserDefaults.standard
     
     static func saveUser(user: [String: Any]) -> Bool {
@@ -33,8 +36,9 @@ class UserController {
         return token as! String
     }
     
-    static func signout() {
+    static func signOut() {
         userDefaults.removeObject(forKey: "user")
+        fb.logOut()
     }
     
     static func convertFBtoNormal(facebookUserData: [String: Any]) -> [String: Any] {
@@ -44,6 +48,18 @@ class UserController {
             "id": facebookUserData["id"] as! String,
             "profilePicture": image
         ]
+    }
+    
+    //Todo: Checking token with server
+    static func isLoggedIn() -> Promise<Bool>{
+        return Promise {
+            seal in
+            if let _ = getCurrentUser() {
+                seal.fulfill(true)
+            }else {
+                seal.reject(NSError(domain: "User is not signed in", code: 0, userInfo: nil))
+            }
+        }
     }
     
 }

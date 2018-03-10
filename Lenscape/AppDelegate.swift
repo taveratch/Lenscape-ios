@@ -8,15 +8,28 @@
 
 import UIKit
 import FBSDKLoginKit
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
     
     //added these 3 methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let changeViewController = { (identifier: String) -> Void in
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
+            let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
+            navigationController?.pushViewController(vc, animated: false)
+        }
+        if UserController.getCurrentUser() != nil {
+            changeViewController("MainTabBarController")
+        }
+        UserController.isLoggedIn().catch{ error in
+            changeViewController("SigninViewController")
+            os_log("User is not signed in", log: .default, type: .debug)
+        }
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

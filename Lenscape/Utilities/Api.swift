@@ -11,19 +11,21 @@ import PromiseKit
 
 class Api {
     
-    let HOST = "https://api.lenscape.me"
+    let HOST = "http://api.lenscape.me"
     let apiManager = ApiManager()
     
     func signin(email: String, password: String) -> Promise<[String: Any]> {
         let body = [
-            "username": email,
+            "email": email,
             "password": password
         ]
         return Promise { seal in
             firstly {
                 apiManager.fetch(url: "\(HOST)/login/local", header: nil, body: body, method: "POST")
                 }.done { response in
-                    let user = response!["data"] as! [String: Any]
+                    var user: [String: Any] = response!.valueForKeyPath(keyPath: "user")!
+                    let token: String = response!.valueForKeyPath(keyPath: "token")!
+                    user["token"] = token
                     if UserController.saveUser(user: user) {
                         seal.fulfill(user)
                     }

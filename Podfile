@@ -7,4 +7,5 @@ target 'Lenscape' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'Kingfisher'
+  pod 'SwiftCarousel'
 end

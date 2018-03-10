@@ -30,8 +30,7 @@ class MapViewController: UIViewController {
     }
     
     @objc private func showGridView() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.DashboardViewController.rawValue)
-        self.navigationController?.pushViewController(vc!, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

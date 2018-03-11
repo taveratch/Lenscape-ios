@@ -31,7 +31,7 @@ class Api {
         ]
         return Promise { seal in
             firstly {
-                ApiManager.fetch(url: "\(HOST)/login/local", header: nil, body: body, method: "POST")
+                ApiManager.fetch(url: "\(HOST)/login/local", body: body, method: "POST")
                 }.done { response in
                     let user = getUserFromAuthResponse(response: response!)
                     seal.fulfill(user)
@@ -47,7 +47,7 @@ class Api {
         ]
         return Promise {
             seal in
-            ApiManager.fetch(url: "\(HOST)/login/facebook", header: nil, body: body, method: "POST")
+            ApiManager.fetch(url: "\(HOST)/login/facebook", body: body, method: "POST")
                 .done {
                     response in
                     let user = getUserFromAuthResponse(response: response!)
@@ -58,7 +58,7 @@ class Api {
         }
     }
     
-    func signUp(firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
+    static func signUp(firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
         let body = [
             "firstname": firstName,
             "lastname": lastName,
@@ -67,13 +67,10 @@ class Api {
         ]
         return Promise { seal in
             firstly {
-                ApiManager.fetch(url: "https://api.lenscape.me/register", header: nil, body: body, method: "POST")
+                ApiManager.fetch(url: "\(HOST)/register", body: body, method: "POST")
                 }.done { response in
-                    //TODO Handle response
-                    if let data = response?.json() {
-                        print(data)
-                    }
-                   
+                    let user = getUserFromAuthResponse(response: response!)
+                    seal.fulfill(user)
                 }.catch { error in
                     seal.reject(error)
             }

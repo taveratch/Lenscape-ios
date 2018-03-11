@@ -16,7 +16,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
-    let api = Api()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -40,7 +40,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func singin(_ sender: UIButton) {
-        api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
+        Api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
             user in
             self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
             }.catch {

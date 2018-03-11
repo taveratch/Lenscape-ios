@@ -12,7 +12,7 @@ import PromiseKit
 
 class ApiManager {
     
-    func fetch(url:String, header: [String: String]?, body: [String: Any]?, method: String) -> Promise<[String: Any]?>{
+    static func fetch(url:String, header: [String: String]?, body: [String: Any]?, method: String) -> Promise<[String: Any]?>{
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":

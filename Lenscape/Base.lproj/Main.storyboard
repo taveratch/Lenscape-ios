@@ -170,11 +170,11 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaG-JR-YIX">
-                                <rect key="frame" x="0.0" y="559.5" width="375" height="58.5"/>
+                                <rect key="frame" x="0.0" y="561" width="375" height="57"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oht-8t-flS" customClass="SwiftCarousel" customModule="SwiftCarousel">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oht-8t-flS" customClass="SwiftCarousel" customModule="SwiftCarousel">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.83529411760000005" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seasoning Indicator" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gxz-9Q-42R">
@@ -193,85 +193,26 @@
                                     <constraint firstAttribute="bottom" secondItem="oht-8t-flS" secondAttribute="bottom" id="SNt-17-9wH"/>
                                     <constraint firstItem="oht-8t-flS" firstAttribute="centerX" secondItem="DaG-JR-YIX" secondAttribute="centerX" id="WG4-Bc-MCu"/>
                                     <constraint firstItem="Gxz-9Q-42R" firstAttribute="top" secondItem="DaG-JR-YIX" secondAttribute="top" id="btU-Gm-Eek"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="oht-8t-flS" secondAttribute="trailing" constant="-8" id="sUD-bG-y84"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="oht-8t-flS" secondAttribute="trailing" id="sUD-bG-y84"/>
                                     <constraint firstItem="oht-8t-flS" firstAttribute="centerY" secondItem="DaG-JR-YIX" secondAttribute="centerY" id="sde-3b-CjR"/>
                                     <constraint firstItem="Gxz-9Q-42R" firstAttribute="centerX" secondItem="DaG-JR-YIX" secondAttribute="centerX" id="vWR-k6-02a"/>
                                     <constraint firstAttribute="trailing" secondItem="oht-8t-flS" secondAttribute="trailing" id="zI3-7j-ctO"/>
                                     <constraint firstItem="oht-8t-flS" firstAttribute="leadingMargin" secondItem="DaG-JR-YIX" secondAttribute="leading" id="zOm-qB-AeY"/>
                                     <constraint firstItem="oht-8t-flS" firstAttribute="top" secondItem="DaG-JR-YIX" secondAttribute="top" id="zzb-El-Z0j"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zav-Vb-J8E" customClass="GradientView" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="67" y="163" width="60" height="75"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="0.2784313725" green="0.75686274509999996" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iv3-RZ-rqn" customClass="GradientView" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="127" y="163" width="60" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="0.2784313725" green="0.75686274509999996" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowX">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowY">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zav-Vb-J8E" firstAttribute="top" secondItem="MvT-yD-fgr" secondAttribute="bottom" constant="50" id="3IF-b2-Aja"/>
                             <constraint firstItem="sQ9-xW-Agc" firstAttribute="trailing" secondItem="DaG-JR-YIX" secondAttribute="trailing" id="7dw-4b-XO3"/>
-                            <constraint firstItem="DaG-JR-YIX" firstAttribute="top" secondItem="aTB-ZY-vKM" secondAttribute="bottom" constant="240" id="G1I-WL-rHZ"/>
+                            <constraint firstItem="DaG-JR-YIX" firstAttribute="top" secondItem="aTB-ZY-vKM" secondAttribute="bottom" constant="241.5" id="G1I-WL-rHZ"/>
                             <constraint firstItem="VKM-aD-3du" firstAttribute="top" secondItem="MvT-yD-fgr" secondAttribute="bottom" constant="12" id="Mxq-t9-VE6"/>
                             <constraint firstItem="MvT-yD-fgr" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="O6m-Ig-Ha7"/>
                             <constraint firstItem="DaG-JR-YIX" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="PRu-nI-IqC"/>
-                            <constraint firstItem="zav-Vb-J8E" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" constant="67" id="QKk-Db-Gl0"/>
                             <constraint firstItem="aTB-ZY-vKM" firstAttribute="centerX" secondItem="iqo-cE-T1t" secondAttribute="centerX" id="Qzi-ep-QP3"/>
-                            <constraint firstItem="zav-Vb-J8E" firstAttribute="centerX" secondItem="aTB-ZY-vKM" secondAttribute="centerX" id="THv-5L-HRf"/>
                             <constraint firstItem="sQ9-xW-Agc" firstAttribute="trailing" secondItem="MvT-yD-fgr" secondAttribute="trailing" id="UoR-6G-OFn"/>
                             <constraint firstItem="MvT-yD-fgr" firstAttribute="top" secondItem="sQ9-xW-Agc" secondAttribute="top" id="WKa-ae-NAd"/>
-                            <constraint firstItem="aTB-ZY-vKM" firstAttribute="top" secondItem="zav-Vb-J8E" secondAttribute="bottom" constant="61" id="aVh-iR-Kzn"/>
                             <constraint firstItem="aTB-ZY-vKM" firstAttribute="centerY" secondItem="iqo-cE-T1t" secondAttribute="centerY" id="dP1-Px-mPN"/>
                             <constraint firstItem="sQ9-xW-Agc" firstAttribute="trailing" secondItem="VKM-aD-3du" secondAttribute="trailing" constant="31" id="hXx-40-7ih"/>
                             <constraint firstAttribute="bottom" secondItem="DaG-JR-YIX" secondAttribute="bottom" id="nZ9-1u-YUE"/>
@@ -283,7 +224,6 @@
                         <outlet property="carousel" destination="oht-8t-flS" id="NYo-Rd-LNw"/>
                         <outlet property="mapViewImage" destination="VKM-aD-3du" id="Q46-Ia-7Dq"/>
                         <outlet property="profileImage" destination="AtQ-Dy-xMW" id="EXh-LI-xUS"/>
-                        <outlet property="someView" destination="zav-Vb-J8E" id="3yN-4i-xVR"/>
                         <outlet property="textLabel" destination="aTB-ZY-vKM" id="Sge-2p-51F"/>
                     </connections>
                 </viewController>
@@ -320,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3540" y="527"/>
+            <point key="canvasLocation" x="3540" y="526.6866566716642"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">

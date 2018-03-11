@@ -14,9 +14,10 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     let fb = FacebookLogin()
     
+    @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -29,22 +30,35 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //Mark: Actions
+    //MARK: - Actions
     @IBAction func facebookLogin(_ sender: UIButton) {
         fb.login(vc: self).done {
-            success in //success opening and verifying facebook app.
-            // fetch Facebook user data from Facebook app
-            self.getFBUserData()
-            }.catch { error in
-        }
+            token in //success opening and verifying facebook app.
+            Api.signinFacebook(token: token)
+                .done { user in
+                    UserController.saveUser(user: user)
+                    self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
+                }.catch { error in
+                    fatalError("Failed to authenticate facebook token with lenscape server")
+            }
+            }.catch { error in }
     }
     
     @IBAction func singin(_ sender: UIButton) {
+        // show loading indicator
+        signinButton.setTitle("", for: .normal)
+        signinButton.loadingIndicator(show: true)
+        
         Api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
             user in
+            UserController.saveUser(user: user)
             self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
             }.catch {
                 error in
+                
+                self.signinButton.setTitle("Sign in", for: .normal)
+                self.signinButton.loadingIndicator(show: false)
+                
                 let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -52,7 +66,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //Mark: Delegation actions
+    //MARK: - Delegation actions
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -68,25 +82,13 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //Mark: Navigation
+    //MARK: - Navigation
     private func changeViewController(identifier: String) {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier){
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
-    //Mark: Functions
-    func getFBUserData(){
-        fb.getFBUserData().done {
-            user in
-            if UserController.saveUser(user: user) {
-                self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
-            }
-            }.catch{ error in
-                fatalError("Cannot get Facebook user data")
-        }
-    }
-    
+
     @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
         
     }

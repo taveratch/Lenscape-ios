@@ -470,6 +470,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="w4n-FG-245" id="vqb-HZ-pd8"/>
                         <outlet property="passwordTextField" destination="l1o-7a-yZi" id="Cs8-tx-dO8"/>
+                        <outlet property="signinButton" destination="YiT-4T-dvt" id="n0S-r1-2tp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

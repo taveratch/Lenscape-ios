@@ -12,7 +12,7 @@ import PromiseKit
 import FBSDKLoginKit
 
 class FacebookLogin {
-    func login(vc: UIViewController) -> Promise<Bool>{
+    func login(vc: UIViewController) -> Promise<String>{
         return Promise { seal in
             let loginManager = LoginManager()
             loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: vc) { loginResult in
@@ -21,8 +21,9 @@ class FacebookLogin {
                     seal.reject(error)
                 case .cancelled:
                     seal.reject(NSError(domain: "User cancelled login.", code: 0, userInfo: nil))
-                case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    seal.fulfill(true)
+                case .success(let accessToken):
+                    let token = accessToken.token.authenticationToken
+                    seal.fulfill(token)
                 }
             }
         }
@@ -33,7 +34,8 @@ class FacebookLogin {
             "fields":"id, name, picture.type(large), email"
         ]
         return Promise { seal in
-            if((FBSDKAccessToken.current()) != nil){
+            let currentToken = FBSDKAccessToken.current()
+            if(currentToken != nil){
                 FBSDKGraphRequest(graphPath: "me", parameters: params).start{
                     (connection, result, error) -> Void in
                     if (error == nil){

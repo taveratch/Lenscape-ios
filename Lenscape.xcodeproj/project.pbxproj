@@ -33,6 +33,7 @@
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
+		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				955C3AF4204D95C40023FAF0 /* TextField.swift */,
+				95F8814420555309003F61D4 /* GradientView.swift */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
+				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,

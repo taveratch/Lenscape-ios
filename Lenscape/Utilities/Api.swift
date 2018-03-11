@@ -75,7 +75,7 @@ class Api {
         ]
         return Promise { seal in
             firstly {
-                apiManager.fetch(url: "https://api.lenscape.me/register", header: nil, body: body, method: "POST")
+                ApiManager.fetch(url: "https://api.lenscape.me/register", header: nil, body: body, method: "POST")
                 }.done { response in
                     //TODO Handle response
                     if let data = response?.json() {

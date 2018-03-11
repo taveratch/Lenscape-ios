@@ -17,6 +17,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var confirmPasswordTextField: TextField!
+    @IBOutlet private var textFields: [TextField]!
     
     var api = Api()
     
@@ -26,14 +27,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     private var isFormCompleted: Bool {
-        if let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text,
-            let email = emailTextField.text,
-            let password = passwordTextField.text,
-            let confirmPassword = confirmPasswordTextField.text {
-            return !(firstName.isEmpty || lastName.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty)
-        }
-        return false
+        return textFields.filter { !$0.hasText }.isEmpty
     }
     
     //MARK: - Actions
@@ -42,11 +36,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         guard isFormCompleted else {
             //TODO: Handle incomplete forms.
             print("Form incomplete")
-            firstNameTextField.hasError = true
-            let emptyFields = getEmptyFields()
-            for textField in emptyFields {
-                textField.hasError = true
-            }
+            textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
             return
         }
         
@@ -55,6 +45,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         guard isPasswordMatched else {
             //TODO: Handle unmatched password.
             print("Password doesn't match")
+            confirmPasswordTextField.hasError = true
             return
         }
         let firstName = firstNameTextField.text!
@@ -110,44 +101,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
+        textFields.forEach { $0.delegate = self }
     }
     
     // MARK: - Private Methods
     
-    private func getEmptyFields() -> [TextField] {
-        
-        if isFormCompleted { return [] }
-        
-        var emptyFields = [TextField]()
-        
-        if firstNameTextField.text == nil {
-            emptyFields.append(firstNameTextField)
-        }
-        if lastNameTextField.text == nil {
-            emptyFields.append(lastNameTextField)
-        }
-        if passwordTextField.text == nil {
-            emptyFields.append(passwordTextField)
-        }
-        if confirmPasswordTextField.text == nil {
-            emptyFields.append(confirmPasswordTextField)
-        }
-        
-        return emptyFields
-        
-    }
-    
     private func resetForm() {
-        firstNameTextField.hasError = false
-        lastNameTextField.hasError = false
-        emailTextField.hasError = false
-        passwordTextField.hasError = false
-        confirmPasswordTextField.hasError = false
+        textFields.forEach { $0.hasError = false }
     }
 
     /*

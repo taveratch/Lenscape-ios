@@ -46,6 +46,7 @@ class UserController {
         return [
             "name": facebookUserData["name"] as! String,
             "id": facebookUserData["id"] as! String,
+            "email": facebookUserData["email"] as? String ?? "",
             "profilePicture": image
         ]
     }

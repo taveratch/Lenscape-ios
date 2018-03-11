@@ -58,10 +58,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         //TODO: Send info to server with API.
         api.signUp(firstName: firstName, lastName: lastName, email: email, password: password).done {
             user in
-            if UserController.saveUser(user: user) {
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController"){
-                    self.navigationController?.pushViewController(viewController, animated: true)
-                }
+            UserController.saveUser(user: user)
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController"){
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
             }.catch { error in
                 print(error)

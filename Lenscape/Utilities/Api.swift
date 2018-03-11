@@ -34,11 +34,7 @@ class Api {
                 ApiManager.fetch(url: "\(HOST)/login/local", header: nil, body: body, method: "POST")
                 }.done { response in
                     let user = getUserFromAuthResponse(response: response!)
-                    if UserController.saveUser(user: user) {
-                        seal.fulfill(user)
-                    }else {
-                        seal.reject(NSError(domain: "Cannot save user to UserDefault", code: 0, userInfo: nil))
-                    }
+                    seal.fulfill(user)
                 }.catch { error in
                     seal.reject(error)
             }
@@ -55,11 +51,7 @@ class Api {
                 .done {
                     response in
                     let user = getUserFromAuthResponse(response: response!)
-                    if UserController.saveUser(user: user) {
-                        seal.fulfill(user)
-                    }else {
-                        seal.reject(NSError(domain: "Cannot save user to UserDefault", code: 0, userInfo: nil))
-                    }
+                    seal.fulfill(user)
                 }.catch{ error in
                     seal.reject(error)
             }

@@ -15,9 +15,8 @@ class UserController {
     static let fb = FacebookLogin()
     static let userDefaults = UserDefaults.standard
     
-    static func saveUser(user: [String: Any]) -> Bool {
+    static func saveUser(user: [String: Any]){
         userDefaults.set(user, forKey: "user")
-        return true
     }
     
     static func getCurrentUser() -> [String: Any]? {

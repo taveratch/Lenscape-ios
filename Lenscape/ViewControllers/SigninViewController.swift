@@ -36,6 +36,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             token in //success opening and verifying facebook app.
             Api.signinFacebook(token: token)
                 .done { user in
+                    UserController.saveUser(user: user)
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch { error in
                     fatalError("Failed to authenticate facebook token with lenscape server")
@@ -50,6 +51,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         
         Api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
             user in
+            UserController.saveUser(user: user)
             self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
             }.catch {
                 error in

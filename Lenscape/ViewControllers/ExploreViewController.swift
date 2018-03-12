@@ -10,10 +10,9 @@ import UIKit
 import Kingfisher
 import SwiftCarousel
 
-class ExploreViewController: AuthViewController {
+@IBDesignable class ExploreViewController: AuthViewController {
     
-    //    @IBOutlet weak var selectedItemLabel: UILabel!
-    @IBOutlet weak var carousel: SwiftCarousel!
+    @IBOutlet weak var carousel: CircularInfiniteScroll!
     @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
@@ -26,17 +25,18 @@ class ExploreViewController: AuthViewController {
         super.viewDidLoad()
         setupUI()
         items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-//        itemsViews = items!.enumerated().map { labelForString(index: $0) }
-//        carousel.items = itemsViews!
         do {
-            try carousel.itemsFactory(itemsCount: 12, factory: labelForString)
+            try carousel.carousel.itemsFactory(itemsCount: 12, factory: labelForString)
         } catch  {
         
         }
-        carousel.resizeType = .visibleItemsPerPage(9)
-        carousel.defaultSelectedIndex = 6
-        carousel.delegate = self
-        carousel.scrollType = .default
+//        carousel.resizeType = .visibleItemsPerPage(9)
+//        carousel.defaultSelectedIndex = 6
+//        carousel.delegate = self
+//        carousel.scrollType = .default
+        
+        carousel.carousel.resizeType = .visibleItemsPerPage(9)
+        carousel.carousel.defaultSelectedIndex = 6
     }
     
     private func setupUI() {
@@ -56,10 +56,6 @@ class ExploreViewController: AuthViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-
-    @IBAction func selectTiger(_ sender: UIButton) {
-        carousel.selectItem(1, animated: true)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,6 +71,7 @@ class ExploreViewController: AuthViewController {
         viewContainer.contentView.endColor = colors[index+1]
         viewContainer.contentView.sizeToFit()
         return viewContainer
+        
     }
     
     @IBAction func unwindToGridView(sender: UIStoryboardSegue) {
@@ -94,43 +91,44 @@ class ExploreViewController: AuthViewController {
 
 }
 
-extension ExploreViewController: SwiftCarouselDelegate {
-    
-    func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
-//        print(item)
-//        let layer = item as! GradientView
-//        print(layer.startColor)
-//        print(layer.endColor)
-//        print(item === itemsViews![index])
-//        print(item === carousel.items[index])
-//        if let animal = item as? UILabel {
-//            animal.textColor = UIColor.red
-////            selectedItemLabel.text = "Show photos in \(animal.text!)"
-//            return animal
-//        }
-        
-        return item
-    }
-    
-    func didDeselectItem(item: UIView, index: Int) -> UIView? {
-//        if let animal = item as? UILabel {
-//            animal.textColor = .black
+//extension ExploreViewController: SwiftCarouselDelegate {
 //
-//            return animal
-//        }
-        
-        return item
-    }
-    
-    func didScroll(toOffset offset: CGPoint) {
-//        selectedItemLabel.text = "Spinning up!"
-    }
-    
-    func willBeginDragging(withOffset offset: CGPoint) {
-//        selectedItemLabel.text = "So you're gonna drag me now?"
-    }
-    
-    func didEndDragging(withOffset offset: CGPoint) {
-//        selectedItemLabel.text = "Oh, here we go!"
-    }
-}
+//    func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
+////        print(item)
+////        let layer = item as! GradientView
+////        print(layer.startColor)
+////        print(layer.endColor)
+////        print(item === itemsViews![index])
+////        print(item === carousel.items[index])
+////        if let animal = item as? UILabel {
+////            animal.textColor = UIColor.red
+//////            selectedItemLabel.text = "Show photos in \(animal.text!)"
+////            return animal
+////        }
+//
+//        return item
+//    }
+//
+//    func didDeselectItem(item: UIView, index: Int) -> UIView? {
+////        if let animal = item as? UILabel {
+////            animal.textColor = .black
+////
+////            return animal
+////        }
+//
+//        return item
+//    }
+//
+//    func didScroll(toOffset offset: CGPoint) {
+////        selectedItemLabel.text = "Spinning up!"
+//    }
+//
+//    func willBeginDragging(withOffset offset: CGPoint) {
+////        selectedItemLabel.text = "So you're gonna drag me now?"
+//    }
+//
+//    func didEndDragging(withOffset offset: CGPoint) {
+////        selectedItemLabel.text = "Oh, here we go!"
+//    }
+//}
+

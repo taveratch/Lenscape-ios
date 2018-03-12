@@ -1,17 +1,17 @@
 //
-//  CircularScrollViewItem.swift
+//  CircularInfiniteScroll.swift
 //  Lenscape
 //
-//  Created by TAWEERAT CHAIMAN on 11/3/2561 BE.
+//  Created by TAWEERAT CHAIMAN on 12/3/2561 BE.
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
 
 import UIKit
+import SwiftCarousel
 
-class CircularScrollViewItem: UIView {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var contentView: GradientView!
-    
+class CircularInfiniteScroll: UIView {
+
+    @IBOutlet weak var carousel: SwiftCarousel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -23,24 +23,17 @@ class CircularScrollViewItem: UIView {
     }
     
     func loadViewFromNib() -> UIView {
-        
         let bundle = Bundle.init(for: type(of: self))
-        let nib = UINib(nibName: "CircularScrollViewItem", bundle: bundle)
+        let nib = UINib(nibName: "CircularInfiniteScroll", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        
         return view
     }
     
     private func commonInit() {
         let view = loadViewFromNib()
         view.frame = self.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-//        contentView.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        carousel.scrollType = .default
     }
-    
-    func setText(_ text: String) {
-        label.text = text
-    }
-
 }

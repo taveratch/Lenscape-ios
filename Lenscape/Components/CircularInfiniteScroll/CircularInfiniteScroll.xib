@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
+            <connections>
+                <outlet property="carousel" destination="XcQ-6I-yhb" id="1q5-A4-Gko"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="811" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-Ca-Be5">
+                    <rect key="frame" x="0.0" y="0.0" width="811" height="95"/>
+                    <subviews>
+                        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-6I-yhb" customClass="SwiftCarousel" customModule="SwiftCarousel">
+                            <rect key="frame" x="0.0" y="0.0" width="811" height="95"/>
+                            <color key="backgroundColor" red="0.18039215689999999" green="0.83529411760000005" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seasoning Indicator" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eDY-rW-5eV">
+                            <rect key="frame" x="401.5" y="0.0" width="8" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="8" id="KHL-fF-RpI"/>
+                                <constraint firstAttribute="height" constant="34" id="k0Y-Wk-9l2"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="XcQ-6I-yhb" secondAttribute="bottom" id="5H5-fQ-cnG"/>
+                        <constraint firstItem="XcQ-6I-yhb" firstAttribute="leading" secondItem="AeJ-Ca-Be5" secondAttribute="leading" id="AwK-NX-eRX"/>
+                        <constraint firstAttribute="trailing" secondItem="XcQ-6I-yhb" secondAttribute="trailing" id="Cwe-cx-u34"/>
+                        <constraint firstItem="eDY-rW-5eV" firstAttribute="centerX" secondItem="AeJ-Ca-Be5" secondAttribute="centerX" id="IYk-7X-MEd"/>
+                        <constraint firstItem="XcQ-6I-yhb" firstAttribute="top" secondItem="AeJ-Ca-Be5" secondAttribute="top" id="Z5f-s0-sB2"/>
+                        <constraint firstItem="eDY-rW-5eV" firstAttribute="top" secondItem="AeJ-Ca-Be5" secondAttribute="top" id="v4x-WT-CTR"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AeJ-Ca-Be5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yh2-an-KB0"/>
+                <constraint firstItem="AeJ-Ca-Be5" firstAttribute="top" secondItem="eIA-hR-B6C" secondAttribute="top" id="b63-Wq-n3a"/>
+                <constraint firstItem="AeJ-Ca-Be5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sB1-gj-Cwj"/>
+                <constraint firstItem="AeJ-Ca-Be5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wHY-ih-3wf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="eIA-hR-B6C"/>
+            <point key="canvasLocation" x="297.5" y="-226.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Seasoning Indicator" width="18" height="57"/>
+    </resources>
+</document>

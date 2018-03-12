@@ -28,6 +28,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.2.0):
     - PromiseKit/CorePromise
+  - SwiftCarousel (0.8.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - FacebookLogin
   - Kingfisher
   - PromiseKit
+  - SwiftCarousel
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -45,7 +47,8 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
   Kingfisher: 55b9c395bf8d3949676ad3861111923990ab68cf
   PromiseKit: ea9a155e1fd98a926ccfaf633c0fbd69851f0e7b
+  SwiftCarousel: a62f4e9b944d1bca4ccfe3f28abb6119e3e36b12
 
-PODFILE CHECKSUM: d8545b07bd24c71a169d7b9e1b871a903adfea75
+PODFILE CHECKSUM: 3c01e6d4007b46b4e8c1f541d5be73e5f37f3d07
 
 COCOAPODS: 1.4.0

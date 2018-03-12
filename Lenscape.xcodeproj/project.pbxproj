@@ -27,12 +27,19 @@
 		9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9565693C204C2BB3005F9F6B /* LaunchScreen.storyboard */; };
 		956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1703204EA69000CADB75 /* ExploreViewController.swift */; };
 		956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignupViewController.swift */; };
+		957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */; };
+		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
+		9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */; };
+		9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F0702055714800A740E1 /* CircularScrollViewItem.swift */; };
+		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
+		9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */; };
 		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
 		95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7B2051953C007480AA /* ProfileViewController.swift */; };
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
+		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +65,19 @@
 		9565693F204C2BB3005F9F6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956F1703204EA69000CADB75 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		956F1705204EAB0000CADB75 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasoningScrollView.xib; sourceTree = "<group>"; };
+		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
+		9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularScrollViewItem.xib; sourceTree = "<group>"; };
+		9595F0702055714800A740E1 /* CircularScrollViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularScrollViewItem.swift; sourceTree = "<group>"; };
+		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
+		9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularInfiniteScroll.swift; sourceTree = "<group>"; };
 		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		95B8AB7B2051953C007480AA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +110,11 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				957FA7D720563621005F2E91 /* SeasoningScrollView */,
+				9595F0722056101E00A740E1 /* CircularInfiniteScroll */,
+				9595F06D2055711200A740E1 /* CircularScrollView */,
 				955C3AF4204D95C40023FAF0 /* TextField.swift */,
+				95F8814420555309003F61D4 /* GradientView.swift */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
@@ -151,6 +169,34 @@
 				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		957FA7D720563621005F2E91 /* SeasoningScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */,
+				957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */,
+			);
+			name = SeasoningScrollView;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		9595F06D2055711200A740E1 /* CircularScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */,
+				9595F0702055714800A740E1 /* CircularScrollViewItem.swift */,
+			);
+			path = CircularScrollView;
+			sourceTree = "<group>";
+		};
+		9595F0722056101E00A740E1 /* CircularInfiniteScroll */ = {
+			isa = PBXGroup;
+			children = (
+				9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */,
+				9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */,
+			);
+			path = CircularInfiniteScroll;
 			sourceTree = "<group>";
 		};
 		95B7C1FA204E9DC800410A48 /* extensions */ = {
@@ -242,9 +288,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
+				957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +315,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftCarousel/SwiftCarousel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -277,6 +327,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCarousel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,15 +375,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
+				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
+				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
+				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,
+				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
@@ -485,6 +540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
 				INFOPLIST_FILE = Lenscape/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,6 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
 				INFOPLIST_FILE = Lenscape/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";

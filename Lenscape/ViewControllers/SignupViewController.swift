@@ -19,8 +19,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet private weak var confirmPasswordTextField: TextField!
     @IBOutlet private var textFields: [TextField]!
     
-    var api = Api()
-    
     //MARK: - Computed properties
     private var isPasswordMatched: Bool {
         return confirmPasswordTextField.text == passwordTextField.text
@@ -56,7 +54,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         //TODO: Verification for each fields.
         //TODO: Send info to server with API.
-        api.signUp(firstName: firstName, lastName: lastName, email: email, password: password).done {
+        Api.signUp(picture: profileImageView as! UIImage, firstName: firstName, lastName: lastName, email: email, password: password).done {
             user in
             UserController.saveUser(user: user)
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController"){

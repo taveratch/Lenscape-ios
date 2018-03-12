@@ -43,7 +43,7 @@ class SeasoningScrollView: UIView {
         } catch  {
             
         }
-        carousel.resizeType = .visibleItemsPerPage(9)
+        carousel.resizeType = .visibleItemsPerPage(1)
         carousel.defaultSelectedIndex = 6
     }
     

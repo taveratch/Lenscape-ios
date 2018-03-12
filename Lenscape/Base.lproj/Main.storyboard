@@ -170,9 +170,6 @@
                                     <constraint firstAttribute="width" constant="25" id="anb-K9-sCa"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ASh-ai-QbY">
-                                <rect key="frame" x="0.0" y="369" width="383" height="56"/>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-8y-AZz" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
                                 <rect key="frame" x="-9" y="562" width="394" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,7 +182,6 @@
                         <constraints>
                             <constraint firstItem="MvT-yD-fgr" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="80b-1C-y3o"/>
                             <constraint firstItem="MvT-yD-fgr" firstAttribute="trailing" secondItem="sQ9-xW-Agc" secondAttribute="trailing" id="BOY-fj-ZVw"/>
-                            <constraint firstItem="ASh-ai-QbY" firstAttribute="trailingMargin" secondItem="iqo-cE-T1t" secondAttribute="trailingMargin" constant="20" id="Ere-Cd-WyA"/>
                             <constraint firstItem="VKM-aD-3du" firstAttribute="top" secondItem="MvT-yD-fgr" secondAttribute="bottom" constant="12" id="Mxq-t9-VE6"/>
                             <constraint firstItem="aTB-ZY-vKM" firstAttribute="centerX" secondItem="iqo-cE-T1t" secondAttribute="centerX" id="Qzi-ep-QP3"/>
                             <constraint firstItem="MvT-yD-fgr" firstAttribute="top" secondItem="sQ9-xW-Agc" secondAttribute="top" id="WKa-ae-NAd"/>
@@ -194,16 +190,14 @@
                             <constraint firstItem="sQ9-xW-Agc" firstAttribute="trailing" secondItem="VKM-aD-3du" secondAttribute="trailing" constant="31" id="hXx-40-7ih"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QSX-8y-AZz" secondAttribute="trailingMargin" constant="-18" id="iS8-T7-MQM"/>
                             <constraint firstItem="QSX-8y-AZz" firstAttribute="bottom" secondItem="sQ9-xW-Agc" secondAttribute="bottom" id="q3N-U2-wIo"/>
-                            <constraint firstItem="ASh-ai-QbY" firstAttribute="leading" secondItem="iqo-cE-T1t" secondAttribute="leadingMargin" constant="-20" id="riy-No-TNz"/>
-                            <constraint firstItem="ASh-ai-QbY" firstAttribute="bottom" secondItem="sQ9-xW-Agc" secondAttribute="bottom" id="wTu-eg-0Zb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sQ9-xW-Agc"/>
                     </view>
                     <navigationItem key="navigationItem" id="JeJ-FO-WIb"/>
                     <connections>
-                        <outlet property="carousel" destination="QSX-8y-AZz" id="tKK-Cg-sRf"/>
                         <outlet property="mapViewImage" destination="VKM-aD-3du" id="Q46-Ia-7Dq"/>
                         <outlet property="profileImage" destination="AtQ-Dy-xMW" id="EXh-LI-xUS"/>
+                        <outlet property="seasoningScrollView" destination="QSX-8y-AZz" id="2I9-p6-d9q"/>
                         <outlet property="textLabel" destination="aTB-ZY-vKM" id="Sge-2p-51F"/>
                     </connections>
                 </viewController>

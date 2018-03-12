@@ -10,46 +10,44 @@ import UIKit
 import Kingfisher
 import SwiftCarousel
 
-@IBDesignable class ExploreViewController: AuthViewController {
+class ExploreViewController: AuthViewController {
     
-    @IBOutlet weak var carousel: CircularInfiniteScroll!
+    @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
     
-    var items: [String]?
+    var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
     let colors = [#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1),#colorLiteral(red: 0.6823529412, green: 0.6823529412, blue: 0.6588235294, alpha: 1),#colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.4352941176, alpha: 1),#colorLiteral(red: 0.8980392157, green: 0.5803921569, blue: 0.2156862745, alpha: 1),#colorLiteral(red: 1, green: 0.5333333333, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.6196078431, blue: 0.1882352941, alpha: 1),#colorLiteral(red: 1, green: 0.7215686275, blue: 0.4117647059, alpha: 1),#colorLiteral(red: 1, green: 0.8431372549, blue: 0.6823529412, alpha: 1),#colorLiteral(red: 0.8823529412, green: 0.8352941176, blue: 0.7450980392, alpha: 1),#colorLiteral(red: 0.7725490196, green: 0.8274509804, blue: 0.8078431373, alpha: 1),#colorLiteral(red: 0.6588235294, green: 0.8196078431, blue: 0.8705882353, alpha: 1),#colorLiteral(red: 0.5490196078, green: 0.8117647059, blue: 0.9333333333, alpha: 1),#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        do {
-            try carousel.carousel.itemsFactory(itemsCount: 12, factory: labelForString)
-        } catch  {
-        
-        }
-//        carousel.resizeType = .visibleItemsPerPage(9)
-//        carousel.defaultSelectedIndex = 6
-//        carousel.delegate = self
-//        carousel.scrollType = .default
-        
-        carousel.carousel.resizeType = .visibleItemsPerPage(9)
-        carousel.carousel.defaultSelectedIndex = 6
     }
     
     private func setupUI() {
+        //MARK: - User profile image
         let user = UserController.getCurrentUser()!
         if let profileImageUrl = user["profilePicture"] as? String {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)
         }
         
-        // Map view : UIImageView
+        // MARK: - UIImageView go to Map View
         let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
         mapViewImage.addGestureRecognizer(tap)
         mapViewImage.isUserInteractionEnabled = true
+        
+        // MARK: - Seasoning Scroll View
+        do {
+            try seasoningScrollView.carousel.itemsFactory(itemsCount: 12, factory: labelForMonthItem)
+        } catch  {
+            
+        }
+        seasoningScrollView.carousel.delegate = self
+        seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
+        seasoningScrollView.carousel.defaultSelectedIndex = 6
     }
     
     @objc private func showMapView() {
@@ -62,8 +60,8 @@ import SwiftCarousel
         // Dispose of any resources that can be recreated.
     }
     
-    func labelForString(index: Int) -> CircularScrollViewItem {
-        let string = items![index]
+    func labelForMonthItem(index: Int) -> CircularScrollViewItem {
+        let string = items[index]
         let viewContainer = CircularScrollViewItem()
         viewContainer.label.text = string
         viewContainer.label.font = .systemFont(ofSize: 14.0)
@@ -74,61 +72,21 @@ import SwiftCarousel
         
     }
     
+    // MARK: - unwind
     @IBAction func unwindToGridView(sender: UIStoryboardSegue) {
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-//extension ExploreViewController: SwiftCarouselDelegate {
-//
-//    func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
-////        print(item)
-////        let layer = item as! GradientView
-////        print(layer.startColor)
-////        print(layer.endColor)
-////        print(item === itemsViews![index])
-////        print(item === carousel.items[index])
-////        if let animal = item as? UILabel {
-////            animal.textColor = UIColor.red
-//////            selectedItemLabel.text = "Show photos in \(animal.text!)"
-////            return animal
-////        }
-//
-//        return item
-//    }
-//
-//    func didDeselectItem(item: UIView, index: Int) -> UIView? {
-////        if let animal = item as? UILabel {
-////            animal.textColor = .black
-////
-////            return animal
-////        }
-//
-//        return item
-//    }
-//
-//    func didScroll(toOffset offset: CGPoint) {
-////        selectedItemLabel.text = "Spinning up!"
-//    }
-//
-//    func willBeginDragging(withOffset offset: CGPoint) {
-////        selectedItemLabel.text = "So you're gonna drag me now?"
-//    }
-//
-//    func didEndDragging(withOffset offset: CGPoint) {
-////        selectedItemLabel.text = "Oh, here we go!"
-//    }
-//}
+extension ExploreViewController: SwiftCarouselDelegate {
+
+    func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
+        print(items[index])
+        return item
+    }
+
+    func didDeselectItem(item: UIView, index: Int) -> UIView? {
+        return item
+    }
+}
 

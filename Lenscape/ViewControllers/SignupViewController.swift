@@ -20,6 +20,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var confirmPasswordTextField: TextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var activeField: UITextField?
+    
+    private let imagePickerController = UIImagePickerController()
     
     
     // MARK: - Computed properties
@@ -64,7 +69,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             ).done {
                 user in
                 UserController.saveUser(user: user)
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") {
+                let identifier = Identifier.MainTabBarController.rawValue
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier) {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }.catch { error in
@@ -74,8 +80,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
         present(imagePickerController, animated: true)
     }
     
@@ -85,8 +89,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textField.resignFirstResponder()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        activeField = nil
         return true
     }
     
@@ -104,10 +113,45 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         dismiss(animated: true)
     }
     
-    
+    // MARK: - Controller lifecycle override
     override func viewDidLoad() {
         super.viewDidLoad()
         textFields.forEach { $0.delegate = self }
+        imagePickerController.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            var aRect: CGRect = self.view.frame
+            aRect.size.height -= keyboardSize.height
+            
+            if !aRect.contains(activeField!.frame.origin) {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+
     }
     
     // MARK: - Private Methods

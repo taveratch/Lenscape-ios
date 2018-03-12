@@ -10,10 +10,15 @@ import UIKit
 
 class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        openCamera()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        openCamera()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,6 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     //MARK: - Functions
     private func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera
             imagePicker.allowsEditing = false
@@ -32,6 +36,14 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
         }else {
             print("No camera source type")
         }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        let mainTabBarViewController = self.tabBarController as? MainTabBarController
+        print(mainTabBarViewController?.currentSelectedIndex)
+        mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
+        dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -49,6 +61,9 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
         self.navigationController?.pushViewController(vc, animated: false)
     }
     
+    @IBAction func unwindToCamera(sender: UIStoryboardSegue) {
+//        openCamera()
+    }
     
 
 }

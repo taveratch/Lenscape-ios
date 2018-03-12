@@ -27,4 +27,14 @@ class PhotoPostViewController: UIViewController {
         return true
     }
 
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            self.navigationController?.popViewController(animated: true)
+//            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

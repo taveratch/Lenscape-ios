@@ -14,4 +14,5 @@ enum Identifier: String {
     case ExploreMapViewController = "ExploreMapViewController"
     case DashboardViewController = "DashboardViewController"
     case PhotoPostViewController = "PhotoPostViewController"
+    case OpenCameraViewController = "OpenCameraViewController"
 }

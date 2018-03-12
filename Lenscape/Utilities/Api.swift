@@ -59,7 +59,7 @@ class Api {
     }
     
     static func signUp(picture: UIImage? = nil, firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
-        var body: [String: Any] = [
+        let body = [
             "firstname": firstName,
             "lastname": lastName,
             "email": email,

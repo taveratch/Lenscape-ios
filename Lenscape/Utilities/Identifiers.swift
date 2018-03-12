@@ -13,4 +13,5 @@ enum Identifier: String {
     case MainTabBarController = "MainTabBarController"
     case ExploreMapViewController = "ExploreMapViewController"
     case DashboardViewController = "DashboardViewController"
+    case PhotoPostViewController = "PhotoPostViewController"
 }

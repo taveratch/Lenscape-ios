@@ -9,19 +9,26 @@
 import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    //MARK: - Properties
+    
+    // MARK: - Properties
+    
+    @IBOutlet private var textFields: [TextField]!
+    
     @IBOutlet private weak var profileImageView: EnhancedUIImage!
     @IBOutlet private weak var firstNameTextField: TextField!
     @IBOutlet private weak var lastNameTextField: TextField!
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var confirmPasswordTextField: TextField!
-    @IBOutlet private var textFields: [TextField]!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    var api = Api()
+    var activeField: UITextField?
     
-    //MARK: - Computed properties
+    private let imagePickerController = UIImagePickerController()
+    
+    
+    // MARK: - Computed properties
+    
     private var isPasswordMatched: Bool {
         return confirmPasswordTextField.text == passwordTextField.text
     }
@@ -30,12 +37,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return textFields.filter { !$0.hasText }.isEmpty
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
+    
     @IBAction func signUp(_ sender: UIButton) {
         
         guard isFormCompleted else {
-            //TODO: Handle incomplete forms.
-            print("Form incomplete")
             textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
             return
         }
@@ -43,25 +49,30 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         resetForm()
         
         guard isPasswordMatched else {
-            //TODO: Handle unmatched password.
-            print("Password doesn't match")
             confirmPasswordTextField.hasError = true
             return
         }
+        
+        resetForm()
+        
         let firstName = firstNameTextField.text!
         let lastName = lastNameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        print(firstName, lastName, email, password)
         
-        //TODO: Verification for each fields.
-        //TODO: Send info to server with API.
-        api.signUp(firstName: firstName, lastName: lastName, email: email, password: password).done {
-            user in
-            UserController.saveUser(user: user)
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController"){
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+        Api.signUp(
+            picture: profileImageView.image,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+            ).done {
+                user in
+                UserController.saveUser(user: user)
+                let identifier = Identifier.MainTabBarController.rawValue
+                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier) {
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
             }.catch { error in
                 print(error)
         }
@@ -69,22 +80,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
         present(imagePickerController, animated: true)
     }
     
-    //MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        activeField = nil
         return true
     }
     
     // MARK: - UIImagePickerControllerDelegate
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }
@@ -97,10 +113,45 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         dismiss(animated: true)
     }
     
-    
+    // MARK: - Controller lifecycle override
     override func viewDidLoad() {
         super.viewDidLoad()
         textFields.forEach { $0.delegate = self }
+        imagePickerController.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 50, 0.0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            var aRect: CGRect = self.view.frame
+            aRect.size.height -= keyboardSize.height
+            
+            if !aRect.contains(activeField!.frame.origin) {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+
     }
     
     // MARK: - Private Methods
@@ -108,15 +159,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     private func resetForm() {
         textFields.forEach { $0.hasError = false }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

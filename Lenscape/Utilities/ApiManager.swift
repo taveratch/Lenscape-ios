@@ -12,7 +12,7 @@ import PromiseKit
 
 class ApiManager {
     
-    static func fetch(url:String, header: [String: String]?, body: [String: Any]?, method: String) -> Promise<[String: Any]?>{
+    static func fetch(url: String, header: [String: String]? = nil, body: [String: Any]?, method: String) -> Promise<[String: Any]?> {
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -36,7 +36,7 @@ class ApiManager {
                     let statusCode = response.response?.statusCode
                     if statusCode == 200 {
                         seal.fulfill(value)
-                    }else {
+                    } else {
                         seal.reject(NSError(domain: value!["message"] as? String ?? "", code: statusCode!, userInfo: nil))
                     }
             }

@@ -337,7 +337,7 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="82Y-Ug-vvN" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
+                                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="82Y-Ug-vvN" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
                                                         <rect key="frame" x="90" y="78" width="100" height="100"/>
                                                         <gestureRecognizers/>
                                                         <constraints>
@@ -371,6 +371,7 @@
                                                 <color key="backgroundColor" red="0.18039215689999999" green="0.83529411760000005" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="GgE-C5-22h"/>
+                                                    <constraint firstAttribute="width" constant="279" id="O1j-V8-h1G"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Sign up">
@@ -392,6 +393,7 @@
                                                 <rect key="frame" x="48" y="570" width="279" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="aR6-Za-QZ0"/>
+                                                    <constraint firstAttribute="width" constant="279" id="dhj-gY-yB9"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Sign in">
@@ -416,13 +418,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="PT9-Dc-zgK" firstAttribute="centerX" secondItem="k3Q-yS-1Pj" secondAttribute="centerX" id="FKy-zb-TC5"/>
-                                            <constraint firstAttribute="trailing" secondItem="N30-JD-CDB" secondAttribute="trailing" constant="48" id="QXi-lk-VLQ"/>
-                                            <constraint firstItem="N30-JD-CDB" firstAttribute="leading" secondItem="k3Q-yS-1Pj" secondAttribute="leading" constant="48" id="XCy-y5-yhu"/>
+                                            <constraint firstItem="ZRO-HC-UhT" firstAttribute="centerX" secondItem="k3Q-yS-1Pj" secondAttribute="centerX" id="XEI-Hc-zl9"/>
                                             <constraint firstAttribute="height" constant="650" id="awd-q6-mjL"/>
                                             <constraint firstItem="PT9-Dc-zgK" firstAttribute="top" secondItem="k3Q-yS-1Pj" secondAttribute="top" id="q22-kn-AVH"/>
                                             <constraint firstItem="ZRO-HC-UhT" firstAttribute="top" secondItem="N30-JD-CDB" secondAttribute="bottom" constant="54" id="qDg-jP-5rF"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZRO-HC-UhT" secondAttribute="trailing" constant="48" id="tGE-mP-zje"/>
-                                            <constraint firstItem="ZRO-HC-UhT" firstAttribute="leading" secondItem="k3Q-yS-1Pj" secondAttribute="leading" constant="48" id="ttv-XM-lZr"/>
+                                            <constraint firstItem="N30-JD-CDB" firstAttribute="centerX" secondItem="k3Q-yS-1Pj" secondAttribute="centerX" id="vYE-7Q-3FN"/>
                                             <constraint firstItem="N30-JD-CDB" firstAttribute="top" secondItem="eLY-Rd-Pfa" secondAttribute="bottom" constant="20" id="xNc-h0-g6u"/>
                                         </constraints>
                                     </view>
@@ -452,6 +452,7 @@
                         <outlet property="lastNameTextField" destination="vV2-xU-CFS" id="9iD-UV-hIc"/>
                         <outlet property="passwordTextField" destination="OsT-z8-VZ3" id="AbI-3t-Jsu"/>
                         <outlet property="profileImageView" destination="82Y-Ug-vvN" id="EIl-jC-Tcd"/>
+                        <outlet property="scrollView" destination="cK7-eL-to2" id="fBr-Yt-M4D"/>
                         <outletCollection property="textFields" destination="gBR-aN-fCl" collectionClass="NSMutableArray" id="v2y-kU-Wer"/>
                         <outletCollection property="textFields" destination="vV2-xU-CFS" collectionClass="NSMutableArray" id="oU3-4s-OlS"/>
                         <outletCollection property="textFields" destination="P8t-zV-CHv" collectionClass="NSMutableArray" id="0sZ-Dw-GRT"/>
@@ -488,6 +489,7 @@
                                 <rect key="frame" x="48" y="590" width="279" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="iNY-mK-dFI"/>
+                                    <constraint firstAttribute="width" constant="279" id="t0z-u7-bQt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign up">
@@ -638,12 +640,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7Um-LL-nlA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="7aR-Nu-ZE3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Um-LL-nlA" secondAttribute="trailing" constant="48" id="7df-rs-JaG"/>
                             <constraint firstItem="6ZF-Yh-hz4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QHH-pW-DGz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Um-LL-nlA" secondAttribute="bottom" constant="32" id="WRi-iF-kUh"/>
                             <constraint firstItem="c0e-kf-iH4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="csU-iW-Fcv"/>
                             <constraint firstItem="6ZF-Yh-hz4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fPM-js-qip"/>
+                            <constraint firstItem="7Um-LL-nlA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="geq-DH-pH7"/>
                             <constraint firstItem="c0e-kf-iH4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="wBe-Yg-TJW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

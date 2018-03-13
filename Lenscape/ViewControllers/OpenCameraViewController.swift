@@ -14,11 +14,12 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        openCamera()
+        print("ViewDidLoad")
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        openCamera()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +39,14 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    private func closeMe() {
         let mainTabBarViewController = self.tabBarController as? MainTabBarController
-        print(mainTabBarViewController?.currentSelectedIndex)
         mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        closeMe()
         dismiss(animated: true, completion: nil)
-//        self.navigationController?.popViewController(animated: false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -62,7 +65,12 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func unwindToCamera(sender: UIStoryboardSegue) {
-//        openCamera()
+        closeMe()
+        dismiss(animated: false, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
     }
     
 

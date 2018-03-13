@@ -31,7 +31,8 @@ class PhotoPostViewController: UIViewController {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "unwindToCamera", sender: self)
+//            self.navigationController?.popViewController(animated: true)
 //            self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

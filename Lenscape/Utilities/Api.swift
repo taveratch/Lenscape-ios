@@ -11,7 +11,8 @@ import PromiseKit
 
 class Api {
     
-    static let HOST = "https://api.lenscape.me"
+//    static let HOST = "https://api.lenscape.me"
+    static let HOST = "https://demo9833354.mockable.io"
     
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {
         guard var user: [String: Any] = response.valueForKeyPath(keyPath: "user")! else {

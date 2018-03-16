@@ -34,8 +34,6 @@ class PhotoPostViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             self.performSegue(withIdentifier: "unwindToCamera", sender: self)
-            //            self.navigationController?.popViewController(animated: true)
-            //            self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -50,17 +48,21 @@ class PhotoPostViewController: UIViewController {
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
         shareButton.isEnabled = false
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue)
-        self.navigationController?.pushViewController(vc!, animated: true)
-//        self.performSegue(withIdentifier: "unwindToExplore", sender: self)
-//        self.closeMe()
-//        if let data = UIImageJPEGRepresentation(image!,1) {
-//            Api.uploadImage(data: data).done {
-//                response in
-//                print(response)
-//                }.catch { error in
-//                    print(error)
-//            }
-//        }
+        if let data = UIImageJPEGRepresentation(image!,1) {
+            let progressHandler = { (completedUnit:Int64, totalUnit:Int64) -> Void in
+//                print(completedUnit, totalUnit)
+                UploadController.isUploading = true
+                UploadController.completedUnit = completedUnit
+                UploadController.totalUnit = totalUnit
+            }
+            Api.uploadImage(data: data, progressHandler: progressHandler).done {
+                response in
+                print(response)
+                }.catch { error in
+                    print(error)
+            }
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue)
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 }

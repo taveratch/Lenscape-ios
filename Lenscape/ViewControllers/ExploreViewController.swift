@@ -12,6 +12,7 @@ import SwiftCarousel
 
 class ExploreViewController: AuthViewController {
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     @IBOutlet weak var mapViewImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -24,6 +25,7 @@ class ExploreViewController: AuthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupProgressView()
     }
     
     private func setupUI() {
@@ -48,6 +50,21 @@ class ExploreViewController: AuthViewController {
         seasoningScrollView.carousel.delegate = self
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
+    }
+    
+    func setupProgressView() {
+        self.progressView.setProgress(0, animated: false)
+        let observer = { () -> Void in
+            UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
+                self.progressView.isHidden = false
+                self.progressView.setProgress(Float(UploadController.percentage/100.0), animated: true)
+                if !UploadController.isUploading {
+                    self.progressView.isHidden = true
+                    self.progressView.progress = 0
+                }
+            }, completion: nil)
+        }
+        UploadController.addObserver(closure: observer)
     }
     
     @objc private func showMapView() {
@@ -79,12 +96,12 @@ class ExploreViewController: AuthViewController {
 }
 
 extension ExploreViewController: SwiftCarouselDelegate {
-
+    
     func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
         print(items[index])
         return item
     }
-
+    
     func didDeselectItem(item: UIView, index: Int) -> UIView? {
         return item
     }

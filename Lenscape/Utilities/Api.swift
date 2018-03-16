@@ -79,7 +79,7 @@ class Api {
         }
     }
     
-    static func uploadImage(data: Data) -> Promise<[String: Any]> {
+    static func uploadImage(data: Data, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         let headers : [String: String] = [
             "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
             "Content-Type": "multipart/form-data"
@@ -88,7 +88,7 @@ class Api {
             ApiManager.upload(url: UPLOAD_HOST, headers: headers,
                               multipartFormData: { multipartFormData in
                                 multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
-            }
+            }, progressHandler: progressHandler
                 ).done {
                     response in
                     seal.fulfill(response)

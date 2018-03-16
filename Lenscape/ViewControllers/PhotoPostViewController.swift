@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class PhotoPostViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var image: UIImage?
     
@@ -26,16 +28,36 @@ class PhotoPostViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
     @IBAction func back(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             self.performSegue(withIdentifier: "unwindToCamera", sender: self)
-//            self.navigationController?.popViewController(animated: true)
-//            self.dismiss(animated: true, completion: nil)
+            //            self.navigationController?.popViewController(animated: true)
+            //            self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func closeMe() {
+        let mainTabBarViewController = self.tabBarController as? MainTabBarController
+        mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
+        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func upload(_ sender: UIBarButtonItem) {
+        shareButton.isEnabled = false
+//        self.closeMe()
+        if let data = UIImageJPEGRepresentation(image!,1) {
+            Api.uploadImage(data: data).done {
+                response in
+                print(response)
+                }.catch { error in
+                    print(error)
+            }
+        }
     }
 }

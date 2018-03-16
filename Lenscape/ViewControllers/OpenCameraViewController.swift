@@ -14,7 +14,6 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad")
         // Do any additional setup after loading the view.
     }
     
@@ -42,6 +41,7 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     private func closeMe() {
         let mainTabBarViewController = self.tabBarController as? MainTabBarController
         mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
+        self.navigationController?.popViewController(animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -66,7 +66,6 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func unwindToCamera(sender: UIStoryboardSegue) {
         closeMe()
-        dismiss(animated: false, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

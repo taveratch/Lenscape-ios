@@ -11,8 +11,9 @@ import PromiseKit
 
 class Api {
     
-    static let HOST = "https://api.lenscape.me"
-//    static let HOST = "https://demo9833354.mockable.io"
+    //    static let HOST = "https://api.lenscape.me"
+    static let HOST = "https://demo9833354.mockable.io"
+    static let UPLOAD_HOST = "https://api.imgur.com/3/image"
     
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {
         guard var user: [String: Any] = response.valueForKeyPath(keyPath: "user")! else {
@@ -72,6 +73,25 @@ class Api {
                 }.done { response in
                     let user = getUserFromAuthResponse(response: response!)
                     seal.fulfill(user)
+                }.catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func uploadImage(data: Data) -> Promise<[String: Any]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
+            "Content-Type": "multipart/form-data"
+        ]
+        return Promise { seal in
+            ApiManager.upload(url: UPLOAD_HOST, headers: headers,
+                              multipartFormData: { multipartFormData in
+                                multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
+            }
+                ).done {
+                    response in
+                    seal.fulfill(response)
                 }.catch { error in
                     seal.reject(error)
             }

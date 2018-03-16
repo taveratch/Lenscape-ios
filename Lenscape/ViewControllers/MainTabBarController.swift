@@ -31,8 +31,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             currentSelectedIndex = tabBarController.selectedIndex
         }
     }
-    
-    
 
     /*
     // MARK: - Navigation

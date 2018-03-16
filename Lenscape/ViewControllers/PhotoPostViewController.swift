@@ -50,14 +50,17 @@ class PhotoPostViewController: UIViewController {
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
         shareButton.isEnabled = false
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue)
+        self.navigationController?.pushViewController(vc!, animated: true)
+//        self.performSegue(withIdentifier: "unwindToExplore", sender: self)
 //        self.closeMe()
-        if let data = UIImageJPEGRepresentation(image!,1) {
-            Api.uploadImage(data: data).done {
-                response in
-                print(response)
-                }.catch { error in
-                    print(error)
-            }
-        }
+//        if let data = UIImageJPEGRepresentation(image!,1) {
+//            Api.uploadImage(data: data).done {
+//                response in
+//                print(response)
+//                }.catch { error in
+//                    print(error)
+//            }
+//        }
     }
 }

@@ -166,7 +166,7 @@
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqo-cE-T1t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

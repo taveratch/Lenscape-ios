@@ -15,6 +15,7 @@ class PhotoPostViewController: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var image: UIImage?
+    let photoUploader = PhotoUploader()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,19 +50,10 @@ class PhotoPostViewController: UIViewController {
     @IBAction func upload(_ sender: UIBarButtonItem) {
         shareButton.isEnabled = false
         if let data = UIImageJPEGRepresentation(image!,1) {
-            let progressHandler = { (completedUnit:Int64, totalUnit:Int64) -> Void in
-//                print(completedUnit, totalUnit)
-                UploadController.isUploading = true
-                UploadController.completedUnit = completedUnit
-                UploadController.totalUnit = totalUnit
-            }
-            Api.uploadImage(data: data, progressHandler: progressHandler).done {
-                response in
-                print(response)
-                }.catch { error in
-                    print(error)
-            }
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue)
+            // the data can be passed to ExploreViewController via UserDefaults
+            UserDefaults.standard.set(data, forKey: "uploadPhotoData")
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue) as? MainTabBarController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }

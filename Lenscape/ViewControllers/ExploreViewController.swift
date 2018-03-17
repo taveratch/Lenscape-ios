@@ -28,6 +28,10 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         super.viewDidLoad()
         photoUploader.delegate = self
         setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         startUploadPhoto()
     }
     

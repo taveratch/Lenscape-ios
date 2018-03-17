@@ -18,7 +18,7 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        openCamera()
+//        openCamera()
     }
 
     override func didReceiveMemoryWarning() {

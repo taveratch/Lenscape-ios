@@ -95,39 +95,41 @@
                         <subviews>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4M-w5-qHf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwn-fy-dEd">
-                                <rect key="frame" x="20" y="20" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="dismiss:" destination="n0A-Ff-Aqv" eventType="touchUpInside" id="i7X-Td-zT3"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross White" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-Jz-VcG">
+                                <rect key="frame" x="374" y="40" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="w0H-Jz-VcG" secondAttribute="height" multiplier="1:1" id="lB8-7u-hqR"/>
+                                    <constraint firstAttribute="width" constant="20" id="oIU-O5-vvg"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UM5-5h-SFj" customClass="CameraShotButton" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="172" y="636" width="70" height="70"/>
+                                <rect key="frame" x="174.66666666666666" y="641" width="65" height="65"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="BwF-dp-Wbx"/>
+                                    <constraint firstAttribute="width" constant="65" id="BwF-dp-Wbx"/>
                                     <constraint firstAttribute="width" secondItem="UM5-5h-SFj" secondAttribute="height" multiplier="1:1" id="Ddt-p6-cvT"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wQE-AD-0IH" firstAttribute="trailing" secondItem="w0H-Jz-VcG" secondAttribute="trailing" constant="20" id="7i6-dv-88P"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="leading" secondItem="U3u-AG-Nhs" secondAttribute="leading" id="RaG-ue-ma4"/>
                             <constraint firstItem="wQE-AD-0IH" firstAttribute="bottom" secondItem="UM5-5h-SFj" secondAttribute="bottom" constant="30" id="Suc-vM-55Q"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="top" secondItem="U3u-AG-Nhs" secondAttribute="top" id="Xq2-G5-p9Q"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="bottom" secondItem="U3u-AG-Nhs" secondAttribute="bottom" id="ZVp-hs-fFb"/>
                             <constraint firstItem="UM5-5h-SFj" firstAttribute="centerX" secondItem="U3u-AG-Nhs" secondAttribute="centerX" id="sEh-Vu-Xes"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="trailing" secondItem="U3u-AG-Nhs" secondAttribute="trailing" id="tia-O8-V4P"/>
+                            <constraint firstItem="w0H-Jz-VcG" firstAttribute="top" secondItem="wQE-AD-0IH" secondAttribute="top" constant="20" id="xaV-ce-tAB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wQE-AD-0IH"/>
                     </view>
                     <navigationItem key="navigationItem" id="4yl-Tz-0Ih"/>
                     <connections>
                         <outlet property="cameraButton" destination="UM5-5h-SFj" id="vfm-rQ-ggW"/>
+                        <outlet property="dismissButton" destination="w0H-Jz-VcG" id="wzJ-YT-eef"/>
                         <outlet property="previewView" destination="I4M-w5-qHf" id="qSv-ty-5qB"/>
                     </connections>
                 </viewController>
@@ -819,6 +821,7 @@
     </scenes>
     <resources>
         <image name="Camera_tab_icon" width="67" height="67"/>
+        <image name="Cross White" width="11" height="11"/>
         <image name="Explore_tab_icon" width="19" height="19"/>
         <image name="Favorite_tab_icon" width="20" height="19"/>
         <image name="Grid view" width="25" height="25"/>

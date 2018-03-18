@@ -11,6 +11,7 @@ import AVFoundation
 
 class OpenCameraViewControllerModal: UIViewController {
 
+    @IBOutlet weak var dismissButton: UIImageView!
     @IBOutlet weak var cameraButton: UIView!
     @IBOutlet weak var previewView: UIView!
     var session: AVCaptureSession?
@@ -20,6 +21,7 @@ class OpenCameraViewControllerModal: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addShotButtonGesture()
+        addDismissButtonGesture()
         initCamera()
     }
     
@@ -32,6 +34,13 @@ class OpenCameraViewControllerModal: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(snapPhoto))
         cameraButton.addGestureRecognizer(tap)
         cameraButton.isUserInteractionEnabled = true
+    }
+    
+    
+    private func addDismissButtonGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
+        dismissButton.addGestureRecognizer(tap)
+        dismissButton.isUserInteractionEnabled = true
     }
     
     private func initCamera() {
@@ -97,7 +106,7 @@ class OpenCameraViewControllerModal: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismiss(_ sender: UIButton) {
+    @objc private func close() {
         dismiss(animated: true, completion: nil)
     }
     

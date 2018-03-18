@@ -19,16 +19,22 @@ class OpenCameraViewControllerModal: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addShotButtonGesture()
+        initCamera()
+    }
+    
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    private func addShotButtonGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(snapPhoto))
         cameraButton.addGestureRecognizer(tap)
         cameraButton.isUserInteractionEnabled = true
-        
-        // Do any additional setup after loading the view.
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    private func initCamera() {
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
         let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
@@ -56,11 +62,9 @@ class OpenCameraViewControllerModal: UIViewController {
             // ...
             // The remainder of the session setup will go here...
         }
-        // Setup your camera here...
     }
     
     @objc private func snapPhoto() {
-        print("snap photo")
         if let videoConnection = stillImageOutput!.connection(with: AVMediaType.video) {
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
                 if sampleBuffer != nil {
@@ -97,14 +101,12 @@ class OpenCameraViewControllerModal: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        print("segue")
     }
-    */
+
+    @IBAction func unwindToCameraAndDisiss(sender: UIStoryboardSegue) {
+        dismiss(animated: false, completion: nil)
+    }
 
 }

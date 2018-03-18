@@ -77,7 +77,7 @@
                     <connections>
                         <outlet property="imageView" destination="6C7-Vd-GML" id="WTo-1y-Uwh"/>
                         <outlet property="shareButton" destination="W94-Qk-hhJ" id="Uqp-bB-1Kd"/>
-                        <segue destination="pqL-1E-5yq" kind="unwind" identifier="unwindToCamera" unwindAction="unwindToCameraWithSender:" id="ZSa-t4-ccx"/>
+                        <segue destination="pqL-1E-5yq" kind="unwind" identifier="unwindToCameraAndDisiss" unwindAction="unwindToCameraAndDisissWithSender:" id="9Ka-DU-MVW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvr-9r-NbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -815,24 +815,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-nz-Mg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1900" y="527"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ibV-AB-E4g">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dyg-Xu-geY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mnj-tr-0RW">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="n0A-Ff-Aqv" kind="relationship" relationship="rootViewController" id="c8c-rq-J5H"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1xq-jn-MEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3242" y="1418"/>
         </scene>
     </scenes>
     <resources>

@@ -85,7 +85,6 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         viewContainer.contentView.endColor = colors[index+1]
         viewContainer.contentView.sizeToFit()
         return viewContainer
-        
     }
     
     // MARK: - unwind
@@ -104,7 +103,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
             self.progressView.setProgress(Float(completedUnit/totalUnit), animated: true)
         }, completion: nil)
-        print("uploading \(completedUnit)/(\(totalUnit)")
+        print("uploading \(completedUnit)/\(totalUnit)")
     }
     
     func willUpload() {

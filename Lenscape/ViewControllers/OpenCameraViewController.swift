@@ -62,8 +62,4 @@ class OpenCameraViewController: UIViewController, UIImagePickerControllerDelegat
         vc.image = image
         self.navigationController?.pushViewController(vc, animated: false)
     }
-    
-    @IBAction func unwindToCamera(sender: UIStoryboardSegue) {
-        
-    }
 }

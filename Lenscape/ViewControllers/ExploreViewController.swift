@@ -28,6 +28,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         super.viewDidLoad()
         photoUploader.delegate = self
         setupUI()
+        Api.fetchExploreImages()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +44,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     private func setupUI() {
+        progressView.isHidden = true
         //MARK: - User profile image
         let user = UserController.getCurrentUser()!
         if let profileImageUrl = user["picture"] as? String {

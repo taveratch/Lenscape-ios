@@ -97,4 +97,24 @@ class Api {
             }
         }
     }
+    
+    static func fetchExploreImages() -> Promise<[String: Any]>{
+        let headers : [String: String] = [
+            "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        let url = "https://api.imgur.com/3/account/taweeratc/images"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+                response in
+                print(response)
+                }.catch {
+                    error in
+                    print(error)
+            }
+        }
+    }
 }

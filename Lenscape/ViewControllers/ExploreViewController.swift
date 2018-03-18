@@ -29,7 +29,7 @@ class ExploreViewController: AuthViewController {
     private func setupUI() {
         //MARK: - User profile image
         let user = UserController.getCurrentUser()!
-        if let profileImageUrl = user["profilePicture"] as? String {
+        if let profileImageUrl = user["picture"] as? String {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)
         }
@@ -81,7 +81,6 @@ class ExploreViewController: AuthViewController {
 extension ExploreViewController: SwiftCarouselDelegate {
 
     func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
-        print(items[index])
         return item
     }
 

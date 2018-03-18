@@ -18,6 +18,8 @@
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
 		954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672BA2050DF7800035B94 /* AuthViewController.swift */; };
+		955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */; };
+		955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A9205CEBEC007B3B17 /* CameraShotButton.swift */; };
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
@@ -29,6 +31,10 @@
 		956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignupViewController.swift */; };
 		957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */; };
 		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
+		957FA7DD205656AA005F2E91 /* OpenCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */; };
+		957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */; };
+		9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */; };
+		9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC31205CC86500779E38 /* PhotoUploader.swift */; };
 		9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */; };
 		9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F0702055714800A740E1 /* CircularScrollViewItem.swift */; };
 		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
@@ -54,6 +60,8 @@
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		954672BA2050DF7800035B94 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraViewControllerModal.swift; sourceTree = "<group>"; };
+		955606A9205CEBEC007B3B17 /* CameraShotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraShotButton.swift; sourceTree = "<group>"; };
 		955C3AF4204D95C40023FAF0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +75,10 @@
 		956F1705204EAB0000CADB75 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasoningScrollView.xib; sourceTree = "<group>"; };
 		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
+		957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraViewController.swift; sourceTree = "<group>"; };
+		957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
+		9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadingDelegate.swift; sourceTree = "<group>"; };
+		9582DC31205CC86500779E38 /* PhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploader.swift; sourceTree = "<group>"; };
 		9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularScrollViewItem.xib; sourceTree = "<group>"; };
 		9595F0702055714800A740E1 /* CircularScrollViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularScrollViewItem.swift; sourceTree = "<group>"; };
 		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
@@ -97,9 +109,11 @@
 		95134E34204C2F0700121514 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9582DC2E205CC75100779E38 /* protocols */,
 				95B7C1FA204E9DC800410A48 /* extensions */,
 				95134E35204C2F1500121514 /* ApiManager.swift */,
 				951FE8B7204C3C8C00FE6C10 /* Api.swift */,
+				9582DC31205CC86500779E38 /* PhotoUploader.swift */,
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
@@ -115,6 +129,7 @@
 				9595F06D2055711200A740E1 /* CircularScrollView */,
 				955C3AF4204D95C40023FAF0 /* TextField.swift */,
 				95F8814420555309003F61D4 /* GradientView.swift */,
+				955606A9205CEBEC007B3B17 /* CameraShotButton.swift */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
@@ -163,6 +178,9 @@
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
+				957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */,
+				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
+				957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */,
 				9518DBB72052DE0A00F0BE1B /* MapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
@@ -179,6 +197,14 @@
 			);
 			name = SeasoningScrollView;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		9582DC2E205CC75100779E38 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 		9595F06D2055711200A740E1 /* CircularScrollView */ = {
@@ -381,21 +407,27 @@
 				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
+				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
+				957FA7DD205656AA005F2E91 /* OpenCameraViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
+				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
+				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
+				957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
+				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
@@ -537,6 +569,7 @@
 			baseConfigurationReference = E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
 				INFOPLIST_FILE = Lenscape/Info.plist;
@@ -544,6 +577,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -554,6 +588,7 @@
 			baseConfigurationReference = 5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
 				INFOPLIST_FILE = Lenscape/Info.plist;
@@ -561,6 +596,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

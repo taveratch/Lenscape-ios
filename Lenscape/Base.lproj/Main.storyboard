@@ -97,11 +97,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera Roll" translatesAutoresizingMaskIntoConstraints="NO" id="YHN-Xa-ufG">
+                                <rect key="frame" x="50" y="666" width="25" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="KXz-TC-E1L"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross White" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-Jz-VcG">
-                                <rect key="frame" x="374" y="40" width="20" height="20"/>
+                                <rect key="frame" x="379" y="40" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="w0H-Jz-VcG" secondAttribute="height" multiplier="1:1" id="lB8-7u-hqR"/>
-                                    <constraint firstAttribute="width" constant="20" id="oIU-O5-vvg"/>
+                                    <constraint firstAttribute="width" constant="15" id="oIU-O5-vvg"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UM5-5h-SFj" customClass="CameraShotButton" customModule="Lenscape" customModuleProvider="target">
@@ -116,10 +122,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wQE-AD-0IH" firstAttribute="trailing" secondItem="w0H-Jz-VcG" secondAttribute="trailing" constant="20" id="7i6-dv-88P"/>
+                            <constraint firstItem="wQE-AD-0IH" firstAttribute="bottom" secondItem="YHN-Xa-ufG" secondAttribute="bottom" constant="50" id="Aq0-9r-44o"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="leading" secondItem="U3u-AG-Nhs" secondAttribute="leading" id="RaG-ue-ma4"/>
                             <constraint firstItem="wQE-AD-0IH" firstAttribute="bottom" secondItem="UM5-5h-SFj" secondAttribute="bottom" constant="30" id="Suc-vM-55Q"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="top" secondItem="U3u-AG-Nhs" secondAttribute="top" id="Xq2-G5-p9Q"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="bottom" secondItem="U3u-AG-Nhs" secondAttribute="bottom" id="ZVp-hs-fFb"/>
+                            <constraint firstItem="YHN-Xa-ufG" firstAttribute="leading" secondItem="wQE-AD-0IH" secondAttribute="leading" constant="50" id="bzg-4X-5eE"/>
                             <constraint firstItem="UM5-5h-SFj" firstAttribute="centerX" secondItem="U3u-AG-Nhs" secondAttribute="centerX" id="sEh-Vu-Xes"/>
                             <constraint firstItem="I4M-w5-qHf" firstAttribute="trailing" secondItem="U3u-AG-Nhs" secondAttribute="trailing" id="tia-O8-V4P"/>
                             <constraint firstItem="w0H-Jz-VcG" firstAttribute="top" secondItem="wQE-AD-0IH" secondAttribute="top" constant="20" id="xaV-ce-tAB"/>
@@ -129,6 +137,7 @@
                     <navigationItem key="navigationItem" id="4yl-Tz-0Ih"/>
                     <connections>
                         <outlet property="cameraButton" destination="UM5-5h-SFj" id="vfm-rQ-ggW"/>
+                        <outlet property="cameraRollButton" destination="YHN-Xa-ufG" id="ZPD-iI-6h7"/>
                         <outlet property="dismissButton" destination="w0H-Jz-VcG" id="wzJ-YT-eef"/>
                         <outlet property="previewView" destination="I4M-w5-qHf" id="qSv-ty-5qB"/>
                     </connections>
@@ -820,6 +829,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera Roll" width="25" height="20"/>
         <image name="Camera_tab_icon" width="67" height="67"/>
         <image name="Cross White" width="11" height="11"/>
         <image name="Explore_tab_icon" width="19" height="19"/>

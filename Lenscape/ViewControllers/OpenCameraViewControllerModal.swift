@@ -9,19 +9,23 @@
 import UIKit
 import AVFoundation
 
-class OpenCameraViewControllerModal: UIViewController {
+class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var cameraRollButton: UIImageView!
     @IBOutlet weak var dismissButton: UIImageView!
     @IBOutlet weak var cameraButton: UIView!
     @IBOutlet weak var previewView: UIView!
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private let imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePickerController.delegate = self
         addShotButtonGesture()
         addDismissButtonGesture()
+        addOpenCameraRollGesture()
         initCamera()
     }
     
@@ -30,18 +34,17 @@ class OpenCameraViewControllerModal: UIViewController {
         return true
     }
     
-    private func addShotButtonGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(snapPhoto))
-        cameraButton.addGestureRecognizer(tap)
-        cameraButton.isUserInteractionEnabled = true
+    
+    // MARK: - ImagePickerController functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        dismiss(animated: true)
+        showPhotoPostViewController(image: selectedImage)
     }
     
-    
-    private func addDismissButtonGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
-        dismissButton.addGestureRecognizer(tap)
-        dismissButton.isUserInteractionEnabled = true
-    }
+    // MARK: - UI initialize functions
     
     private func initCamera() {
         session = AVCaptureSession()
@@ -73,6 +76,31 @@ class OpenCameraViewControllerModal: UIViewController {
         }
     }
     
+    // MARK: - Gestures
+    
+    private func addShotButtonGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(snapPhoto))
+        cameraButton.addGestureRecognizer(tap)
+        cameraButton.isUserInteractionEnabled = true
+    }
+    
+    
+    private func addDismissButtonGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
+        dismissButton.addGestureRecognizer(tap)
+        dismissButton.isUserInteractionEnabled = true
+    }
+    
+    private func addOpenCameraRollGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openCameraRoll))
+        cameraRollButton.addGestureRecognizer(tap)
+        cameraRollButton.isUserInteractionEnabled = true
+    }
+    
+    @objc private func openCameraRoll() {
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc private func snapPhoto() {
         if let videoConnection = stillImageOutput!.connection(with: AVMediaType.video) {
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
@@ -87,13 +115,18 @@ class OpenCameraViewControllerModal: UIViewController {
         }
     }
     
+    @objc private func close() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - misc
+    
     private func showPhotoPostViewController(image: UIImage?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: Identifier.PhotoPostViewController.rawValue) as? PhotoPostViewController else {
             fatalError("identifier: \(Identifier.PhotoPostViewController.rawValue) is not type of PhotoPostViewController")
         }
         vc.image = image
-        print("BBBBBB")
         present(vc, animated: true, completion: nil)
     }
     
@@ -106,14 +139,7 @@ class OpenCameraViewControllerModal: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc private func close() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        print("segue")
-    }
-
+    //MARK: - unwind
     @IBAction func unwindToCameraAndDisiss(sender: UIStoryboardSegue) {
         dismiss(animated: false, completion: nil)
     }

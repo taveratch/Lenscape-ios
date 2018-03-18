@@ -34,8 +34,7 @@ class PhotoPostViewController: UIViewController {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            self.dismiss(animated: true, completion: nil)
-//            self.performSegue(withIdentifier: "unwindToCamera", sender: self)
+            self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -49,13 +48,10 @@ class PhotoPostViewController: UIViewController {
     }
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
-        shareButton.isEnabled = false
         if let data = UIImageJPEGRepresentation(image!,1) {
             // the data can be passed to ExploreViewController via UserDefaults
             UserDefaults.standard.set(data, forKey: "uploadPhotoData")
-            print(self.tabBarController)
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MainTabBarController.rawValue) as? MainTabBarController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
         }
     }
 }

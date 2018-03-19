@@ -98,7 +98,7 @@ class Api {
         }
     }
     
-    static func fetchExploreImages() -> Promise<[String: Any]>{
+    static func fetchExploreImages() -> Promise<[Image]>{
         let headers : [String: String] = [
             "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
             "Content-Type": "multipart/form-data"
@@ -110,9 +110,15 @@ class Api {
             seal in
             ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
                 response in
-                print(response)
+                let data = response!["data"] as! [Any]
+                var images: [Image] = []
+                for item in data {
+                    images.append(Image(item: item))
+                }
+                seal.fulfill(images)
                 }.catch {
                     error in
+                    seal.reject(error)
                     print(error)
             }
         }

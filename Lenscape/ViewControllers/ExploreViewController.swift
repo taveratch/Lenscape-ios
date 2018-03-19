@@ -63,6 +63,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         progressView.isHidden = true
         //MARK: - User profile image
         let user = UserController.getCurrentUser()!
+        print(user)
         if let profileImageUrl = user["picture"] as? String {
             let url = URL(string: profileImageUrl)
             profileImage.kf.setImage(with: url)
@@ -158,6 +159,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         print(image)
         let url = URL(string: image.thumbnailLink!)
         cell.imageView.kf.setImage(with: url)
+        print(cell.bounds.size)
         return cell
     }
     
@@ -168,18 +170,21 @@ extension ExploreViewController: UICollectionViewDataSource {
 
 extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("CCCCCCC")
-        let paddingSpace = 20*(itemsPerRow+1)
-        print("screen width: \(view.bounds.size.width)")
-        print("collectionView width: \(collectionView.frame.size.width)")
-        let availableWidth = view.bounds.size.width - paddingSpace
+        let availableWidth = collectionView.frame.size.width - (itemsPerRow+1)
         let widthPerItem = availableWidth / (itemsPerRow)
         print(widthPerItem)
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+        return 0.5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 

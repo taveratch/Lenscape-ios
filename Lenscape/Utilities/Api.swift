@@ -11,8 +11,8 @@ import PromiseKit
 
 class Api {
     
-    //    static let HOST = "https://api.lenscape.me"
-    static let HOST = "https://demo9833354.mockable.io"
+        static let HOST = "https://api.lenscape.me"
+//    static let HOST = "https://demo9833354.mockable.io"
     static let UPLOAD_HOST = "https://api.imgur.com/3/image"
     
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {

@@ -633,7 +633,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l1o-7a-yZi" customClass="TextField" customModule="Lenscape" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="61" width="279" height="45"/>
@@ -642,7 +642,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -665,7 +665,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="singin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTH-oM-Ddp"/>
+                                            <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTH-oM-Ddp"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swv-oj-Oae">
@@ -754,7 +754,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="w4n-FG-245" id="vqb-HZ-pd8"/>
                         <outlet property="passwordTextField" destination="l1o-7a-yZi" id="Cs8-tx-dO8"/>
-                        <outlet property="signinButton" destination="YiT-4T-dvt" id="n0S-r1-2tp"/>
+                        <outlet property="signInButton" destination="YiT-4T-dvt" id="n0S-r1-2tp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

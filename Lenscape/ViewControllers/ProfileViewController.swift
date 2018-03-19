@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
             let name = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
             fullName.text = name
             info.text = user["email"] as? String
-            if let url = user["profilePicture"] as? String {
+            if let url = user["picture"] as? String {
                 profilePicture.kf.setImage(with: URL(string: url))
             }
         }

@@ -16,18 +16,13 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
-//    @IBOutlet weak var mapViewImage: UIImageView!
-    @IBOutlet weak var tabHeader: TabHeader!
-    //    @IBOutlet weak var profileImage: UIImageView!
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
     let colors = [#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1),#colorLiteral(red: 0.6823529412, green: 0.6823529412, blue: 0.6588235294, alpha: 1),#colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.4352941176, alpha: 1),#colorLiteral(red: 0.8980392157, green: 0.5803921569, blue: 0.2156862745, alpha: 1),#colorLiteral(red: 1, green: 0.5333333333, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.6196078431, blue: 0.1882352941, alpha: 1),#colorLiteral(red: 1, green: 0.7215686275, blue: 0.4117647059, alpha: 1),#colorLiteral(red: 1, green: 0.8431372549, blue: 0.6823529412, alpha: 1),#colorLiteral(red: 0.8823529412, green: 0.8352941176, blue: 0.7450980392, alpha: 1),#colorLiteral(red: 0.7725490196, green: 0.8274509804, blue: 0.8078431373, alpha: 1),#colorLiteral(red: 0.6588235294, green: 0.8196078431, blue: 0.8705882353, alpha: 1),#colorLiteral(red: 0.5490196078, green: 0.8117647059, blue: 0.9333333333, alpha: 1),#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1)]
     let photoUploader = PhotoUploader()
     var images: [Image] = []
-    fileprivate let itemsPerRow: CGFloat = 3
-    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-//    var screenWidth: CGFloat = 0.0
+    fileprivate let itemsPerRow: CGFloat = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +47,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     private func initImagesFromAPI() {
         Api.fetchExploreImages().done {
             images in
-            self.images += images
+            self.images = images
             self.collectionView.reloadData()
             }.catch {
                 error in
@@ -61,25 +56,6 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     private func setupUI() {
-//        progressView.isHidden = true
-//
-//        //MARL: - TabHeader
-//        tabHeader.titleLabel.text = "Around you"
-//        tabHeader.descriptionLabel.text = "150+ Photos"
-        
-        //MARK: - User profile image
-//        let user = UserController.getCurrentUser()!
-//        print(user)
-//        if let profileImageUrl = user["picture"] as? String {
-//            let url = URL(string: profileImageUrl)
-//            tabHeader.profileImage.kf.setImage(with: url)
-//        }
-        
-        // MARK: - UIImageView go to Map View
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-//        mapViewImage.addGestureRecognizer(tap)
-//        mapViewImage.isUserInteractionEnabled = true
-        
         // MARK: - Seasoning Scroll View
         do {
             try seasoningScrollView.carousel.itemsFactory(itemsCount: 12, factory: labelForMonthItem)
@@ -121,6 +97,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     func didUpload() {
         self.progressView.isHidden = true
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
+        initImagesFromAPI()
         print("didUpload")
     }
     
@@ -171,7 +148,6 @@ extension ExploreViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("Header")
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView

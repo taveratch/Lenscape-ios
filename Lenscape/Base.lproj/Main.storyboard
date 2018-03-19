@@ -219,7 +219,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-8y-AZz" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="631" width="425" height="56"/>
+                                <rect key="frame" x="0.0" y="631" width="422" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="bfu-uL-EAb"/>
@@ -253,7 +253,6 @@
                                                         </imageView>
                                                     </subviews>
                                                 </view>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="eTj-Z6-Tv1" firstAttribute="leading" secondItem="VnM-Z1-GYC" secondAttribute="leading" id="AP5-ry-c4h"/>
                                                     <constraint firstItem="eTj-Z6-Tv1" firstAttribute="top" secondItem="VnM-Z1-GYC" secondAttribute="top" id="fre-4O-OeK"/>
@@ -284,9 +283,9 @@
                         <constraints>
                             <constraint firstItem="QSX-8y-AZz" firstAttribute="top" secondItem="ZlL-37-U8U" secondAttribute="bottom" id="Hta-Cv-wTC"/>
                             <constraint firstItem="ZlL-37-U8U" firstAttribute="top" secondItem="sQ9-xW-Agc" secondAttribute="top" id="SCR-nH-kPz"/>
-                            <constraint firstItem="QSX-8y-AZz" firstAttribute="leading" secondItem="iqo-cE-T1t" secondAttribute="leadingMargin" constant="-25" id="WYE-2p-xws"/>
+                            <constraint firstItem="QSX-8y-AZz" firstAttribute="leading" secondItem="iqo-cE-T1t" secondAttribute="leadingMargin" constant="-20" id="WYE-2p-xws"/>
                             <constraint firstItem="ZlL-37-U8U" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="ZNI-Lg-HdT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QSX-8y-AZz" secondAttribute="trailingMargin" constant="-18" id="iS8-T7-MQM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QSX-8y-AZz" secondAttribute="trailingMargin" constant="-20" id="iS8-T7-MQM"/>
                             <constraint firstItem="QSX-8y-AZz" firstAttribute="bottom" secondItem="sQ9-xW-Agc" secondAttribute="bottom" id="q3N-U2-wIo"/>
                             <constraint firstItem="sQ9-xW-Agc" firstAttribute="trailing" secondItem="ZlL-37-U8U" secondAttribute="trailing" id="rTq-zk-GjU"/>
                         </constraints>

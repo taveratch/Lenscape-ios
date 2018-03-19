@@ -14,13 +14,6 @@ class ExploreSupplementaryView: UICollectionReusableView {
     @IBOutlet weak var switchViewToMap: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var tabHeader: TabHeader!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -16,6 +16,11 @@
 		9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
+		95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EF92060059800F8CD43 /* TabHeader.swift */; };
+		95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431EFC206005AC00F8CD43 /* TabHeader.xib */; };
+		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
+		95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */; };
+		95431F0420600A0000F8CD43 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431F0320600A0000F8CD43 /* CustomView.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
 		954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672BA2050DF7800035B94 /* AuthViewController.swift */; };
 		955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */; };
@@ -60,6 +65,11 @@
 		9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedUIImageView.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		95431EF92060059800F8CD43 /* TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
+		95431EFC206005AC00F8CD43 /* TabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabHeader.xib; sourceTree = "<group>"; };
+		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
+		95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreSupplementaryView.xib; sourceTree = "<group>"; };
+		95431F0320600A0000F8CD43 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		954672BA2050DF7800035B94 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraViewControllerModal.swift; sourceTree = "<group>"; };
@@ -125,15 +135,36 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		95431EFB2060059C00F8CD43 /* TabHeader */ = {
+			isa = PBXGroup;
+			children = (
+				95431EF92060059800F8CD43 /* TabHeader.swift */,
+				95431EFC206005AC00F8CD43 /* TabHeader.xib */,
+			);
+			path = TabHeader;
+			sourceTree = "<group>";
+		};
+		95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */ = {
+			isa = PBXGroup;
+			children = (
+				95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */,
+				95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */,
+			);
+			path = ExploreViewControllerComponents;
+			sourceTree = "<group>";
+		};
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */,
+				95431EFB2060059C00F8CD43 /* TabHeader */,
 				9597DE65205F834500B7E751 /* ImageCollectionView */,
 				957FA7D720563621005F2E91 /* SeasoningScrollView */,
 				9595F0722056101E00A740E1 /* CircularInfiniteScroll */,
 				9595F06D2055711200A740E1 /* CircularScrollView */,
 				955C3AF4204D95C40023FAF0 /* TextField.swift */,
 				95F8814420555309003F61D4 /* GradientView.swift */,
+				95431F0320600A0000F8CD43 /* CustomView.swift */,
 				955606A9205CEBEC007B3B17 /* CameraShotButton.swift */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
@@ -338,10 +369,12 @@
 			files = (
 				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
+				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */,
+				95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +461,7 @@
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
 				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
+				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
@@ -448,9 +482,11 @@
 				957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
+				95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
+				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,

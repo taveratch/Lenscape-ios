@@ -218,62 +218,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvT-yD-fgr" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="414" height="93"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="X1a-1F-6P5">
-                                        <rect key="frame" x="30" y="27.333333333333336" width="88" height="40.000000000000007"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBE-oI-3a8">
-                                                <rect key="frame" x="0.0" y="0.0" width="88" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150+ Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odj-LF-SFW">
-                                                <rect key="frame" x="0.0" y="24.333333333333339" width="88" height="15.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="AtQ-Dy-xMW" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="22" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Hfj-4f-iUe"/>
-                                            <constraint firstAttribute="width" constant="50" id="sPl-7L-7gL"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="circular" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="AtQ-Dy-xMW" secondAttribute="trailing" constant="30" id="B31-nh-uY4"/>
-                                    <constraint firstItem="AtQ-Dy-xMW" firstAttribute="top" secondItem="MvT-yD-fgr" secondAttribute="top" constant="22" id="Hza-H6-hHN"/>
-                                    <constraint firstItem="AtQ-Dy-xMW" firstAttribute="centerY" secondItem="MvT-yD-fgr" secondAttribute="centerY" id="eVB-0F-J8R"/>
-                                    <constraint firstItem="X1a-1F-6P5" firstAttribute="leading" secondItem="MvT-yD-fgr" secondAttribute="leading" constant="30" id="kYC-Lr-mXQ"/>
-                                    <constraint firstItem="AtQ-Dy-xMW" firstAttribute="centerY" secondItem="X1a-1F-6P5" secondAttribute="centerY" id="x65-Q0-b86"/>
-                                    <constraint firstAttribute="height" constant="93" id="yRe-KG-2W6"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-8y-AZz" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="631" width="425" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -282,30 +226,20 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZlL-37-U8U">
-                                <rect key="frame" x="0.0" y="135" width="414" height="496"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="611"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map view" translatesAutoresizingMaskIntoConstraints="NO" id="VKM-aD-3du">
-                                        <rect key="frame" x="389" y="0.0" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="SYt-oH-4Ty"/>
-                                            <constraint firstAttribute="width" constant="25" id="anb-K9-sCa"/>
-                                        </constraints>
-                                    </imageView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hrG-4T-qNg">
-                                        <rect key="frame" x="0.0" y="41" width="414" height="0.0"/>
-                                    </progressView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-tF-gf4">
-                                        <rect key="frame" x="0.0" y="57" width="414" height="439"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="611"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xtj-SO-6da">
                                             <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="headerReferenceSize" width="50" height="138"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ImageColelctionViewCell" id="VnM-Z1-GYC" customClass="ImageCollectionViewCell" customModule="Lenscape" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="138" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -331,6 +265,10 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ExploreSupplementaryCollectionReusableView" id="oG8-2E-OSN" customClass="ExploreSupplementaryView" customModule="Lenscape" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
                                         <connections>
                                             <outlet property="dataSource" destination="2yq-fR-Unf" id="5vg-sJ-9ow"/>
                                         </connections>
@@ -338,19 +276,14 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="mDB-tF-gf4" firstAttribute="leading" secondItem="ZlL-37-U8U" secondAttribute="leading" id="3p9-MG-DSm"/>
-                                    <constraint firstAttribute="trailing" secondItem="hrG-4T-qNg" secondAttribute="trailing" id="6GM-EG-MFh"/>
-                                    <constraint firstItem="hrG-4T-qNg" firstAttribute="leading" secondItem="ZlL-37-U8U" secondAttribute="leading" id="9cd-9w-Lqn"/>
                                     <constraint firstAttribute="trailing" secondItem="mDB-tF-gf4" secondAttribute="trailing" id="ptF-aC-XAb"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZlL-37-U8U" firstAttribute="top" secondItem="MvT-yD-fgr" secondAttribute="bottom" constant="22" id="3Dq-Dr-bOK"/>
-                            <constraint firstItem="MvT-yD-fgr" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="80b-1C-y3o"/>
-                            <constraint firstItem="MvT-yD-fgr" firstAttribute="trailing" secondItem="sQ9-xW-Agc" secondAttribute="trailing" id="BOY-fj-ZVw"/>
                             <constraint firstItem="QSX-8y-AZz" firstAttribute="top" secondItem="ZlL-37-U8U" secondAttribute="bottom" id="Hta-Cv-wTC"/>
-                            <constraint firstItem="MvT-yD-fgr" firstAttribute="top" secondItem="sQ9-xW-Agc" secondAttribute="top" id="WKa-ae-NAd"/>
+                            <constraint firstItem="ZlL-37-U8U" firstAttribute="top" secondItem="sQ9-xW-Agc" secondAttribute="top" id="SCR-nH-kPz"/>
                             <constraint firstItem="QSX-8y-AZz" firstAttribute="leading" secondItem="iqo-cE-T1t" secondAttribute="leadingMargin" constant="-25" id="WYE-2p-xws"/>
                             <constraint firstItem="ZlL-37-U8U" firstAttribute="leading" secondItem="sQ9-xW-Agc" secondAttribute="leading" id="ZNI-Lg-HdT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QSX-8y-AZz" secondAttribute="trailingMargin" constant="-18" id="iS8-T7-MQM"/>
@@ -362,9 +295,6 @@
                     <navigationItem key="navigationItem" id="JeJ-FO-WIb"/>
                     <connections>
                         <outlet property="collectionView" destination="mDB-tF-gf4" id="Gdx-eu-QVR"/>
-                        <outlet property="mapViewImage" destination="VKM-aD-3du" id="Q46-Ia-7Dq"/>
-                        <outlet property="profileImage" destination="AtQ-Dy-xMW" id="EXh-LI-xUS"/>
-                        <outlet property="progressView" destination="hrG-4T-qNg" id="CNL-Yy-T9E"/>
                         <outlet property="seasoningScrollView" destination="QSX-8y-AZz" id="2I9-p6-d9q"/>
                     </connections>
                 </viewController>
@@ -878,7 +808,6 @@
         <image name="Favorite_tab_icon" width="20" height="19"/>
         <image name="Grid view" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>
-        <image name="Map view" width="25" height="25"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_tab_icon" width="17" height="17"/>
         <image name="Trend_tab_icon" width="20" height="16"/>

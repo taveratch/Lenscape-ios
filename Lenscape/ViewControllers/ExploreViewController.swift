@@ -16,8 +16,9 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
-    @IBOutlet weak var mapViewImage: UIImageView!
-    @IBOutlet weak var profileImage: UIImageView!
+//    @IBOutlet weak var mapViewImage: UIImageView!
+    @IBOutlet weak var tabHeader: TabHeader!
+    //    @IBOutlet weak var profileImage: UIImageView!
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
@@ -60,19 +61,24 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     private func setupUI() {
-        progressView.isHidden = true
+//        progressView.isHidden = true
+//
+//        //MARL: - TabHeader
+//        tabHeader.titleLabel.text = "Around you"
+//        tabHeader.descriptionLabel.text = "150+ Photos"
+        
         //MARK: - User profile image
-        let user = UserController.getCurrentUser()!
-        print(user)
-        if let profileImageUrl = user["picture"] as? String {
-            let url = URL(string: profileImageUrl)
-            profileImage.kf.setImage(with: url)
-        }
+//        let user = UserController.getCurrentUser()!
+//        print(user)
+//        if let profileImageUrl = user["picture"] as? String {
+//            let url = URL(string: profileImageUrl)
+//            tabHeader.profileImage.kf.setImage(with: url)
+//        }
         
         // MARK: - UIImageView go to Map View
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-        mapViewImage.addGestureRecognizer(tap)
-        mapViewImage.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+//        mapViewImage.addGestureRecognizer(tap)
+//        mapViewImage.isUserInteractionEnabled = true
         
         // MARK: - Seasoning Scroll View
         do {
@@ -119,6 +125,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     func uploading(completedUnit: Double, totalUnit: Double) {
+        self.progressView.isHidden = false
         UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
             self.progressView.setProgress(Float(completedUnit/totalUnit), animated: true)
         }, completion: nil)
@@ -147,24 +154,46 @@ extension ExploreViewController: SwiftCarouselDelegate {
 // MARK: - UICollectionViewDataSource
 extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("numberOfItemInSection : \(self.images.count)")
         return self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
         let index = indexPath.row
         let image = images[index]
-        print(image)
         let url = URL(string: image.thumbnailLink!)
         cell.imageView.kf.setImage(with: url)
-        print(cell.bounds.size)
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("Header")
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
+            headerView.tabHeader.titleLabel.text = "Around you"
+            headerView.tabHeader.descriptionLabel.text = "150+ Photos"
+            let user = UserController.getCurrentUser()!
+            if let profileImageUrl = user["picture"] as? String {
+                let url = URL(string: profileImageUrl)
+                headerView.tabHeader.profileImage.kf.setImage(with: url)
+            }
+            if self.progressView != nil {
+                headerView.progressView.progress = self.progressView.progress
+                headerView.progressView.isHidden = self.progressView.isHidden
+            }
+            self.progressView = headerView.progressView
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+            headerView.switchViewToMap.addGestureRecognizer(tap)
+            headerView.switchViewToMap.isUserInteractionEnabled = true
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
 }
 
@@ -172,7 +201,6 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableWidth = collectionView.frame.size.width - (itemsPerRow+1)
         let widthPerItem = availableWidth / (itemsPerRow)
-        print(widthPerItem)
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     

@@ -17,4 +17,5 @@ enum Identifier: String {
     case OpenCameraViewController = "OpenCameraViewController"
     case OpenCameraViewControllerModal = "OpenCameraViewControllerModal"
     case ImageColelctionViewCell = "ImageColelctionViewCell"
+    case ExploreSupplementaryCollectionReusableView = "ExploreSupplementaryCollectionReusableView"
 }

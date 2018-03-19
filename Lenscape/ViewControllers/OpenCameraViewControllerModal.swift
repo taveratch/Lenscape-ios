@@ -18,7 +18,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    private let imagePickerController = UIImagePickerController()
+    private lazy var imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

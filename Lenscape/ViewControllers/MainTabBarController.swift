@@ -24,7 +24,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let identifier = viewController.restorationIdentifier ?? ""
-        print(identifier)
         if identifier == Identifier.OpenCameraViewController.rawValue {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)

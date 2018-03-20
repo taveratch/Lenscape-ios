@@ -16,8 +16,8 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressViewWrapper: UIView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
-    
     private lazy var refreshControl = UIRefreshControl()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -26,11 +26,18 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     let photoUploader = PhotoUploader()
     var images: [Image] = []
     fileprivate let itemsPerRow: Int = 3
+    var numberOfPhotos = 0 {
+        didSet {
+            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
+        }
+    }
     var page = 0
     var shouldFetchMore = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ImageCache.default.clearDiskCache()
+        ImageCache.default.clearMemoryCache()
         photoUploader.delegate = self
         collectionView.delegate = self
         setupUI()
@@ -47,6 +54,12 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
             photoUploader.upload(data: uploadPhoto)
             UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
         }
+    }
+    
+    @objc private func initImagesFromAPIWithoutCache() {
+        ImageCache.default.clearDiskCache()
+        ImageCache.default.clearMemoryCache()
+        initImagesFromAPI()
     }
     
     @objc private func initImagesFromAPI() {
@@ -129,8 +142,9 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     func didUpload() {
         self.progressViewWrapper.isHidden = true
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
-        initImagesFromAPI()
         UIView.animate(withDuration: 0.5, animations: {
+            self.initImagesFromAPI()
+            self.numberOfPhotos += 1
             self.collectionView.collectionViewLayout.invalidateLayout()
         })
         print("didUpload")
@@ -179,15 +193,14 @@ extension ExploreViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
         let index = indexPath.row
         // If scroll before last 3 rows then fetch the next images
-        if index >= images.count - (itemsPerRow*3), shouldFetchMore {
+        if images.count > itemsPerRow*4, index >= images.count - (itemsPerRow*4), shouldFetchMore {
             page += 1
             fetchMoreImagesFromAPI(page: page)
         }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
         cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(1))])
-
+        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
         return cell
     }
     
@@ -201,7 +214,10 @@ extension ExploreViewController: UICollectionViewDataSource {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
             headerView.titleLabel.text = "Around you"
-            headerView.descriptionLabel.text = "150+ Photos"
+            self.descriptionLabel = headerView.descriptionLabel
+            if numberOfPhotos == 0 {
+                Api.getExploreImageCount().done { count in self.numberOfPhotos = count }
+            }
             if self.progressView != nil {
                 headerView.progressView.progress = self.progressView.progress
                 headerView.progressBarWrapper.isHidden = self.progressViewWrapper.isHidden

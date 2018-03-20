@@ -126,4 +126,24 @@ class Api {
             }
         }
     }
+    
+    static func getExploreImageCount() -> Promise<Int> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)"
+        ]
+        
+        let url = "https://api.imgur.com/3/account/\(USERNAME)/images/count"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+                response in
+                let count = response!["data"] as! Int
+                seal.fulfill(count)
+                }.catch {
+                    error in
+                    seal.reject(error)
+            }
+        }
+    }
 }

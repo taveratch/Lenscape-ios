@@ -171,7 +171,7 @@
             </objects>
             <point key="canvasLocation" x="3242.0289855072465" y="2120.380434782609"/>
         </scene>
-        <!--Profile-->
+        <!--Profile View Controller-->
         <scene sceneID="Q9V-8d-tdB">
             <objects>
                 <viewController id="Q56-6C-TH4" customClass="ProfileViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
@@ -191,7 +191,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="atu-5K-h7u"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="Profile_tab_icon" id="XcA-ws-fNn">
+                    <tabBarItem key="tabBarItem" title="" image="Profile_tab_icon" selectedImage="Profile_selected_tab_icon" id="XcA-ws-fNn">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                     </tabBarItem>
                 </viewController>
@@ -199,7 +200,7 @@
             </objects>
             <point key="canvasLocation" x="1900" y="2912"/>
         </scene>
-        <!--Favorite-->
+        <!--View Controller-->
         <scene sceneID="Ea0-wg-WMu">
             <objects>
                 <viewController id="PjG-zI-O8P" sceneMemberID="viewController">
@@ -209,7 +210,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="REK-nh-aZ9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="Favorite_tab_icon" id="8WQ-ZU-F3n">
+                    <tabBarItem key="tabBarItem" title="" image="Favorite_tab_icon" selectedImage="Favorite_selected_tab_icon" id="8WQ-ZU-F3n">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                     </tabBarItem>
                 </viewController>
@@ -217,7 +219,7 @@
             </objects>
             <point key="canvasLocation" x="1900" y="3718"/>
         </scene>
-        <!--Trend-->
+        <!--View Controller-->
         <scene sceneID="Mws-gX-NdR">
             <objects>
                 <viewController id="8oo-Xi-4eU" sceneMemberID="viewController">
@@ -227,8 +229,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TXz-nK-gic"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Trend" image="Trend_tab_icon" id="C1h-j4-D0w">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                    <tabBarItem key="tabBarItem" title="" image="Trend_tab_icon" selectedImage="Trend_selected_tab_icon" id="C1h-j4-D0w">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkA-Tb-GW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -362,12 +365,20 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBarController" id="te0-fk-hLQ" customClass="MainTabBarController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xFq-wY-uXu"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9fG-qd-fNW">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9fG-qd-fNW" customClass="CustomTabBar" customModule="Lenscape" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="height">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="moreHeight">
+                                <real key="value" value="-7"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="9fG-qd-fNW" id="3Zq-Sw-3yb"/>
@@ -798,12 +809,13 @@
             </objects>
             <point key="canvasLocation" x="711" y="-714"/>
         </scene>
-        <!--Explore-->
+        <!--Navigation Controller-->
         <scene sceneID="Q6d-9O-mMy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="C9r-nG-mFp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="Explore_tab_icon" id="LB1-Iu-YBY">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home_tab_icon" selectedImage="Home_selected_tab_icon" id="LB1-Iu-YBY">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -828,12 +840,16 @@
         <image name="Camera Roll" width="25" height="20"/>
         <image name="Camera_tab_icon" width="67" height="67"/>
         <image name="Cross White" width="11" height="11"/>
-        <image name="Explore_tab_icon" width="19" height="19"/>
-        <image name="Favorite_tab_icon" width="20" height="19"/>
+        <image name="Favorite_selected_tab_icon" width="25" height="25"/>
+        <image name="Favorite_tab_icon" width="25" height="25"/>
         <image name="Grid view" width="25" height="25"/>
+        <image name="Home_selected_tab_icon" width="21" height="25"/>
+        <image name="Home_tab_icon" width="21" height="25"/>
         <image name="Logo" width="1959" height="390"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
-        <image name="Profile_tab_icon" width="17" height="17"/>
-        <image name="Trend_tab_icon" width="20" height="16"/>
+        <image name="Profile_selected_tab_icon" width="23" height="25"/>
+        <image name="Profile_tab_icon" width="23" height="25"/>
+        <image name="Trend_selected_tab_icon" width="26" height="24"/>
+        <image name="Trend_tab_icon" width="26" height="24"/>
     </resources>
 </document>

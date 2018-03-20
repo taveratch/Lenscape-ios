@@ -48,10 +48,10 @@
                                     </subviews>
                                 </stackView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map view" translatesAutoresizingMaskIntoConstraints="NO" id="GOs-b1-u6d">
-                                    <rect key="frame" x="320" y="34" width="25" height="25"/>
+                                    <rect key="frame" x="316.5" y="34" width="28.5" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="7lH-lC-4tN"/>
-                                        <constraint firstAttribute="width" constant="25" id="K2b-KK-p84"/>
+                                        <constraint firstAttribute="width" constant="28.66" id="K2b-KK-p84"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
@@ -98,6 +98,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Map view" width="37" height="37"/>
+        <image name="Map view" width="42" height="37"/>
     </resources>
 </document>

@@ -51,6 +51,7 @@
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
+		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				95F8814420555309003F61D4 /* GradientView.swift */,
 				95431F0320600A0000F8CD43 /* CustomView.swift */,
 				955606A9205CEBEC007B3B17 /* CameraShotButton.swift */,
+				95DD8284206156F40073B097 /* CustomTabBar.swift */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
@@ -470,6 +473,7 @@
 				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
+				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,

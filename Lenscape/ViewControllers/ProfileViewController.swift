@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadUserData()
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,10 +28,8 @@ class ProfileViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func signOut(_ sender: UIButton) {
-        UserController.signOut()
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
-        self.navigationController?.pushViewController(signinVC!, animated: true)
+    @IBAction func showSettingsMenu(_ sender: UIButton) {
+        
     }
     
     /*

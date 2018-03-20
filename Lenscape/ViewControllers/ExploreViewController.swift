@@ -17,6 +17,8 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     
+    private lazy var refreshControl = UIRefreshControl()
+    
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
     let colors = [#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1),#colorLiteral(red: 0.6823529412, green: 0.6823529412, blue: 0.6588235294, alpha: 1),#colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.4352941176, alpha: 1),#colorLiteral(red: 0.8980392157, green: 0.5803921569, blue: 0.2156862745, alpha: 1),#colorLiteral(red: 1, green: 0.5333333333, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.6196078431, blue: 0.1882352941, alpha: 1),#colorLiteral(red: 1, green: 0.7215686275, blue: 0.4117647059, alpha: 1),#colorLiteral(red: 1, green: 0.8431372549, blue: 0.6823529412, alpha: 1),#colorLiteral(red: 0.8823529412, green: 0.8352941176, blue: 0.7450980392, alpha: 1),#colorLiteral(red: 0.7725490196, green: 0.8274509804, blue: 0.8078431373, alpha: 1),#colorLiteral(red: 0.6588235294, green: 0.8196078431, blue: 0.8705882353, alpha: 1),#colorLiteral(red: 0.5490196078, green: 0.8117647059, blue: 0.9333333333, alpha: 1),#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1)]
@@ -44,11 +46,12 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         }
     }
     
-    private func initImagesFromAPI() {
+    @objc private func initImagesFromAPI() {
         Api.fetchExploreImages().done {
             images in
             self.images = images
             self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
             }.catch {
                 error in
                 print("error: \(error)")
@@ -65,6 +68,14 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         seasoningScrollView.carousel.delegate = self
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
+        
+        //Initialize Refresh Control (Pull to refresh)
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
     
     @objc private func showMapView() {
@@ -130,10 +141,13 @@ extension ExploreViewController: SwiftCarouselDelegate {
 
 // MARK: - UICollectionViewDataSource
 extension ExploreViewController: UICollectionViewDataSource {
+    
+    //Number of items in section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
     
+    //Initialize cell's ui
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
         let index = indexPath.row
@@ -147,6 +161,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         return 1
     }
     
+    //CollectionView's supplementary (used as header)
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -173,6 +188,8 @@ extension ExploreViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - Eqaully arrange cells in UICollectionView
+
 extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableWidth = collectionView.frame.size.width - (itemsPerRow+1)
@@ -180,13 +197,17 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
+    //Space between column
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0.5
     }
     
+    // Space between row
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
+    
+    // Remove margin of UICollectionView not cell.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }

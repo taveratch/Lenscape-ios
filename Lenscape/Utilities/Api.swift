@@ -11,9 +11,12 @@ import PromiseKit
 
 class Api {
     
-        static let HOST = "https://api.lenscape.me"
-//    static let HOST = "https://demo9833354.mockable.io"
+    static let HOST = "https://api.lenscape.me"
     static let UPLOAD_HOST = "https://api.imgur.com/3/image"
+    
+    // Imgur
+    static private let ACCESS_TOKEN = "c792d71fe59ca43a8a4083ce0b0db1b1817ffdb7"
+    static private let USERNAME = "lenscapeme"
     
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {
         guard var user: [String: Any] = response.valueForKeyPath(keyPath: "user")! else {
@@ -81,7 +84,7 @@ class Api {
     
     static func uploadImage(data: Data, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         let headers : [String: String] = [
-            "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
             "Content-Type": "multipart/form-data"
         ]
         return Promise { seal in
@@ -98,17 +101,17 @@ class Api {
         }
     }
     
-    static func fetchExploreImages() -> Promise<[Image]>{
+    static func fetchExploreImages(page: Int = 0) -> Promise<[Image]>{
         let headers : [String: String] = [
-            "Authorization": "Bearer 5324dfca0c9089125f1497f5eb2473ceaaac2da8",
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
             "Content-Type": "multipart/form-data"
         ]
         
-        let url = "https://api.imgur.com/3/account/taweeratc/images"
+        let url = "https://api.imgur.com/3/account/\(USERNAME)/images"
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, body: nil, method: "GET").done {
                 response in
                 let data = response!["data"] as! [Any]
                 var images: [Image] = []

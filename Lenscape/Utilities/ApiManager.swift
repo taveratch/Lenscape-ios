@@ -13,6 +13,7 @@ import PromiseKit
 class ApiManager {
     
     static func fetch(url: String, headers: [String: String]? = nil, body: [String: Any]?, method: String) -> Promise<[String: Any]?> {
+        print("fetch")
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -44,6 +45,7 @@ class ApiManager {
     }
     
     static func upload(url: String, headers: [String: String]? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
+        print("upload")
         return Promise { seal in
             Alamofire.upload(multipartFormData: multipartFormData
                 , usingThreshold: UInt64.init(), to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in

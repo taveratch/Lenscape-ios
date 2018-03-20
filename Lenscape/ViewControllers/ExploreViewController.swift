@@ -24,7 +24,9 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     let colors = [#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1),#colorLiteral(red: 0.6823529412, green: 0.6823529412, blue: 0.6588235294, alpha: 1),#colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.4352941176, alpha: 1),#colorLiteral(red: 0.8980392157, green: 0.5803921569, blue: 0.2156862745, alpha: 1),#colorLiteral(red: 1, green: 0.5333333333, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.6196078431, blue: 0.1882352941, alpha: 1),#colorLiteral(red: 1, green: 0.7215686275, blue: 0.4117647059, alpha: 1),#colorLiteral(red: 1, green: 0.8431372549, blue: 0.6823529412, alpha: 1),#colorLiteral(red: 0.8823529412, green: 0.8352941176, blue: 0.7450980392, alpha: 1),#colorLiteral(red: 0.7725490196, green: 0.8274509804, blue: 0.8078431373, alpha: 1),#colorLiteral(red: 0.6588235294, green: 0.8196078431, blue: 0.8705882353, alpha: 1),#colorLiteral(red: 0.5490196078, green: 0.8117647059, blue: 0.9333333333, alpha: 1),#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1)]
     let photoUploader = PhotoUploader()
     var images: [Image] = []
-    fileprivate let itemsPerRow: CGFloat = 4
+    fileprivate let itemsPerRow: Int = 3
+    var page = 0
+    var shouldFetchMore = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +49,29 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     @objc private func initImagesFromAPI() {
+        shouldFetchMore = true
+        page = 0
         Api.fetchExploreImages().done {
             images in
             self.images = images
-            self.collectionView.reloadData()
-            self.refreshControl.endRefreshing()
+            }.catch {
+                error in
+                print("error: \(error)")
+            }.finally {
+                self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func fetchMoreImagesFromAPI(page: Int) {
+        shouldFetchMore = false
+        Api.fetchExploreImages(page: page).done {
+            images in
+            if images.count != 0 {
+                self.images += images
+                self.collectionView.reloadData()
+                self.shouldFetchMore = true
+            }
             }.catch {
                 error in
                 print("error: \(error)")
@@ -151,9 +171,16 @@ extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
         let index = indexPath.row
+        // If scroll before last 3 rows then fetch the next images
+        if index >= images.count - (itemsPerRow*3), shouldFetchMore {
+            page += 1
+            fetchMoreImagesFromAPI(page: page)
+        }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
-        cell.imageView.kf.setImage(with: url)
+        cell.imageView.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(1))])
+
         return cell
     }
     
@@ -192,8 +219,8 @@ extension ExploreViewController: UICollectionViewDataSource {
 
 extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let availableWidth = collectionView.frame.size.width - (itemsPerRow+1)
-        let widthPerItem = availableWidth / (itemsPerRow)
+        let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     

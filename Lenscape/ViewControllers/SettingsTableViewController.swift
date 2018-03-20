@@ -14,13 +14,13 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let tap = UITapGestureRecognizer(target: self, action: #selector(signOut))
+        self.navigationController?.isNavigationBarHidden = false
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapSignOut))
         signOutButton.addGestureRecognizer(tap)
     }
 
@@ -29,23 +29,40 @@ class SettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func signOut() {
+    
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tapSignOut() {
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to sign out?" , preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Sign Out", style: UIAlertActionStyle.destructive, handler: { action in self.signOut() }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func signOut() {
         UserController.signOut()
         let signinVC = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
         self.navigationController?.pushViewController(signinVC!, animated: true)
+
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        super.tableView(tableView, numberOfRowsInSection: section)
+//    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+////        if section < numberOfRowsInSection.count {
+////            return numberOfRowsInSection[section]
+////        }
+//        print(tableView.numberOfRows(inSection: section))
+//        return tableView.numberOfRows(inSection: section)
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

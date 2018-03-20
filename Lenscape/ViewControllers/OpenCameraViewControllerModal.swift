@@ -11,8 +11,8 @@ import AVFoundation
 
 class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var cameraRollButton: UIImageView!
-    @IBOutlet weak var dismissButton: UIImageView!
+    @IBOutlet weak var cameraRollButton: UIView!
+    @IBOutlet weak var dismissButton: UIView!
     @IBOutlet weak var cameraButton: UIView!
     @IBOutlet weak var previewView: UIView!
     var session: AVCaptureSession?

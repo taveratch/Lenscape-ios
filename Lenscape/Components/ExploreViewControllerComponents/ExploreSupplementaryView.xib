@@ -12,48 +12,89 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExploreSupplementaryView" customModule="Lenscape" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="HGR-S4-6cn" id="mq1-Ff-h14"/>
+                <outlet property="progressBarWrapper" destination="wao-6h-mG1" id="agT-J1-b8T"/>
                 <outlet property="progressView" destination="Mps-1K-Y29" id="1jt-r1-Zma"/>
                 <outlet property="switchViewToMap" destination="GOs-b1-u6d" id="6du-Rc-Q0w"/>
-                <outlet property="tabHeader" destination="2GJ-Ex-9Qg" id="D58-JG-cXO"/>
+                <outlet property="titleLabel" destination="phT-Nf-RLm" id="U0j-fc-JqE"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="138"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-Ex-9Qg" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="93" id="a0S-BM-7dX"/>
-                    </constraints>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map view" translatesAutoresizingMaskIntoConstraints="NO" id="GOs-b1-u6d">
-                    <rect key="frame" x="338" y="105" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="7lH-lC-4tN"/>
-                        <constraint firstAttribute="width" constant="25" id="K2b-KK-p84"/>
-                    </constraints>
-                </imageView>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Mps-1K-Y29">
-                    <rect key="frame" x="12" y="116" width="314" height="2"/>
-                </progressView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2a1-mg-p52">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-Ex-9Qg" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uf1-mD-fD0">
+                                    <rect key="frame" x="30" y="26.5" width="88" height="40.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phT-Nf-RLm">
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150+ Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGR-S4-6cn">
+                                            <rect key="frame" x="0.0" y="24.5" width="88" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map view" translatesAutoresizingMaskIntoConstraints="NO" id="GOs-b1-u6d">
+                                    <rect key="frame" x="320" y="34" width="25" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="7lH-lC-4tN"/>
+                                        <constraint firstAttribute="width" constant="25" id="K2b-KK-p84"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="GOs-b1-u6d" firstAttribute="top" secondItem="2GJ-Ex-9Qg" secondAttribute="bottom" constant="-59" id="Pt1-yr-naH"/>
+                                <constraint firstAttribute="height" constant="93" id="a0S-BM-7dX"/>
+                                <constraint firstItem="GOs-b1-u6d" firstAttribute="centerY" secondItem="2GJ-Ex-9Qg" secondAttribute="centerY" id="dHe-tP-fV7"/>
+                                <constraint firstItem="Uf1-mD-fD0" firstAttribute="centerY" secondItem="2GJ-Ex-9Qg" secondAttribute="centerY" id="kJ9-Ak-Vil"/>
+                                <constraint firstItem="Uf1-mD-fD0" firstAttribute="leading" secondItem="2GJ-Ex-9Qg" secondAttribute="leading" constant="30" id="kw5-AC-zN0"/>
+                                <constraint firstAttribute="trailing" secondItem="GOs-b1-u6d" secondAttribute="trailing" constant="30" id="wOu-wO-C1j"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wao-6h-mG1">
+                            <rect key="frame" x="0.0" y="95" width="375" height="40"/>
+                            <subviews>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Mps-1K-Y29">
+                                    <rect key="frame" x="12" y="19" width="351" height="2"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="2" id="b3t-oH-Msp"/>
+                                    </constraints>
+                                </progressView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Mps-1K-Y29" firstAttribute="centerX" secondItem="wao-6h-mG1" secondAttribute="centerX" id="3YC-cE-Sxq"/>
+                                <constraint firstItem="Mps-1K-Y29" firstAttribute="centerY" secondItem="wao-6h-mG1" secondAttribute="centerY" id="Wes-iz-I6E"/>
+                                <constraint firstAttribute="height" constant="40" id="ZFb-To-fa4"/>
+                                <constraint firstItem="Mps-1K-Y29" firstAttribute="leading" secondItem="wao-6h-mG1" secondAttribute="leading" constant="12" id="bR9-Rw-Itq"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="GOs-b1-u6d" firstAttribute="leading" secondItem="Mps-1K-Y29" secondAttribute="trailing" constant="12" id="1I0-Ml-NCq"/>
-                <constraint firstItem="2GJ-Ex-9Qg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="2bx-kf-Bl7"/>
-                <constraint firstItem="Mps-1K-Y29" firstAttribute="top" secondItem="2GJ-Ex-9Qg" secondAttribute="bottom" constant="23" id="4L1-mq-YCf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GOs-b1-u6d" secondAttribute="trailing" constant="12" id="Der-p7-SYA"/>
-                <constraint firstItem="Mps-1K-Y29" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="GeN-qP-Zcn"/>
-                <constraint firstItem="2GJ-Ex-9Qg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cn4-hd-ufg"/>
-                <constraint firstItem="2GJ-Ex-9Qg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="mxG-vE-UTt"/>
-                <constraint firstItem="GOs-b1-u6d" firstAttribute="top" secondItem="2GJ-Ex-9Qg" secondAttribute="bottom" constant="12" id="zN9-AQ-57F"/>
+                <constraint firstItem="2a1-mg-p52" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="EFA-Fy-i7j"/>
+                <constraint firstAttribute="trailing" secondItem="2a1-mg-p52" secondAttribute="trailing" id="UDs-ZJ-pXl"/>
+                <constraint firstItem="2a1-mg-p52" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pI8-l6-PDj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="144.5" y="-198"/>
+            <point key="canvasLocation" x="144.5" y="-206.5"/>
         </view>
     </objects>
     <resources>

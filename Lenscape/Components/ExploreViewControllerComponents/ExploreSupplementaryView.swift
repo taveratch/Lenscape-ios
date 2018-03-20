@@ -13,8 +13,10 @@ class ExploreSupplementaryView: UICollectionReusableView {
 
     @IBOutlet weak var switchViewToMap: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var tabHeader: TabHeader!
     
+    @IBOutlet weak var progressBarWrapper: UIView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -38,7 +40,7 @@ class ExploreSupplementaryView: UICollectionReusableView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
         self.progressView.progress = 0
-        self.progressView.isHidden = true
+        self.progressBarWrapper.isHidden = true
     }
 
 }

@@ -15,6 +15,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     //MARK: - UI Components
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressViewWrapper: UIView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     
     private lazy var refreshControl = UIRefreshControl()
@@ -126,14 +127,17 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     
     // MARK: - PhotoUploaderDelegate functions
     func didUpload() {
-        self.progressView.isHidden = true
+        self.progressViewWrapper.isHidden = true
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
         initImagesFromAPI()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        })
         print("didUpload")
     }
     
     func uploading(completedUnit: Double, totalUnit: Double) {
-        self.progressView.isHidden = false
+        self.progressViewWrapper.isHidden = false
         UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
             self.progressView.setProgress(Float(completedUnit/totalUnit), animated: true)
         }, completion: nil)
@@ -141,8 +145,11 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     func willUpload() {
-        self.progressView.isHidden = false
+        self.progressViewWrapper.isHidden = false
         self.progressView.progress = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        })
         print("willUpload")
     }
 }
@@ -193,18 +200,14 @@ extension ExploreViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
-            headerView.tabHeader.titleLabel.text = "Around you"
-            headerView.tabHeader.descriptionLabel.text = "150+ Photos"
-            let user = UserController.getCurrentUser()!
-            if let profileImageUrl = user["picture"] as? String {
-                let url = URL(string: profileImageUrl)
-                headerView.tabHeader.profileImage.kf.setImage(with: url)
-            }
+            headerView.titleLabel.text = "Around you"
+            headerView.descriptionLabel.text = "150+ Photos"
             if self.progressView != nil {
                 headerView.progressView.progress = self.progressView.progress
-                headerView.progressView.isHidden = self.progressView.isHidden
+                headerView.progressBarWrapper.isHidden = self.progressViewWrapper.isHidden
             }
             self.progressView = headerView.progressView
+            self.progressViewWrapper = headerView.progressBarWrapper
             let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
             headerView.switchViewToMap.addGestureRecognizer(tap)
             headerView.switchViewToMap.isUserInteractionEnabled = true
@@ -237,6 +240,14 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     // Remove margin of UICollectionView not cell.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if self.progressViewWrapper != nil, !self.progressViewWrapper.isHidden {
+            return CGSize(width: collectionView.bounds.size.width, height: 135)
+        }else {
+            return CGSize(width: collectionView.bounds.size.width, height: 135 - 40)
+        }
     }
 }
 

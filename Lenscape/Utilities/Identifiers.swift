@@ -12,5 +12,12 @@ enum Identifier: String {
     case SigninViewController = "SigninViewController"
     case MainTabBarController = "MainTabBarController"
     case ExploreMapViewController = "ExploreMapViewController"
-    case DashboardViewController = "DashboardViewController"
+    case ExploreViewController = "ExploreViewController"
+    case PhotoPostViewController = "PhotoPostViewController"
+    case OpenCameraViewController = "OpenCameraViewController"
+    case OpenCameraViewControllerModal = "OpenCameraViewControllerModal"
+    case ImageColelctionViewCell = "ImageColelctionViewCell"
+    case ExploreSupplementaryCollectionReusableView = "ExploreSupplementaryCollectionReusableView"
+    case PhotoInfoViewController = "PhotoInfoViewController"
+    case FullImageViewController = "FullImageViewController"
 }

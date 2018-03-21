@@ -12,7 +12,11 @@ import PromiseKit
 class Api {
     
     static let HOST = "https://api.lenscape.me"
-//    static let HOST = "https://demo9833354.mockable.io"
+    static let UPLOAD_HOST = "https://api.imgur.com/3/image"
+    
+    // Imgur
+    static private let ACCESS_TOKEN = "c792d71fe59ca43a8a4083ce0b0db1b1817ffdb7"
+    static private let USERNAME = "lenscapeme"
     
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {
         guard var user: [String: Any] = response.valueForKeyPath(keyPath: "user")! else {
@@ -73,6 +77,71 @@ class Api {
                     let user = getUserFromAuthResponse(response: response!)
                     seal.fulfill(user)
                 }.catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func uploadImage(data: Data, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Content-Type": "multipart/form-data"
+        ]
+        return Promise { seal in
+            ApiManager.upload(url: UPLOAD_HOST, headers: headers,
+                              multipartFormData: { multipartFormData in
+                                multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
+            }, progressHandler: progressHandler
+                ).done {
+                    response in
+                    seal.fulfill(response)
+                }.catch { error in
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func fetchExploreImages(page: Int = 0) -> Promise<[Image]>{
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        let url = "https://api.imgur.com/3/account/\(USERNAME)/images"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, body: nil, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                var images: [Image] = []
+                for item in data {
+                    images.append(Image(item: item))
+                }
+                seal.fulfill(images)
+                }.catch {
+                    error in
+                    seal.reject(error)
+                    print(error)
+            }
+        }
+    }
+    
+    static func getExploreImageCount() -> Promise<Int> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)"
+        ]
+        
+        let url = "https://api.imgur.com/3/account/\(USERNAME)/images/count"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+                response in
+                let count = response!["data"] as! Int
+                seal.fulfill(count)
+                }.catch {
+                    error in
                     seal.reject(error)
             }
         }

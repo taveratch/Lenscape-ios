@@ -8,4 +8,6 @@ target 'Lenscape' do
   pod 'FacebookLogin'
   pod 'Kingfisher'
   pod 'SwiftCarousel'
+  pod 'GoogleMaps'
+  pod 'Hero'
 end

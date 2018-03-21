@@ -8,11 +8,13 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
+    
+    var currentSelectedIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UITabBar.appearance().shadowImage = UIImage()
-//        UITabBar.appearance().backgroundImage = UIImage()
+        self.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,15 +22,23 @@ class MainTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let identifier = viewController.restorationIdentifier ?? ""
+        if identifier == Identifier.OpenCameraViewController.rawValue {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
+            present(vc, animated: true, completion: nil)
+            return false
+        }
+        return true
     }
-    */
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        //If open camera then SelectedIndex should not be changed
+        let identifier = viewController.restorationIdentifier ?? ""
+        if identifier != Identifier.OpenCameraViewController.rawValue {
+            currentSelectedIndex = tabBarController.selectedIndex
+        }
+    }
 
 }

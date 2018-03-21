@@ -12,7 +12,7 @@ import PromiseKit
 
 class ApiManager {
     
-    static func fetch(url: String, header: [String: String]? = nil, body: [String: Any]?, method: String) -> Promise<[String: Any]?> {
+    static func fetch(url: String, headers: [String: String]? = nil, body: [String: Any]?, method: String) -> Promise<[String: Any]?> {
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -28,7 +28,7 @@ class ApiManager {
             }
         }
         return Promise { seal in
-            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: header)
+            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: headers)
                 .validate(statusCode: 200...500)
                 .responseJSON {
                     response in
@@ -40,6 +40,32 @@ class ApiManager {
                         seal.reject(NSError(domain: value!["message"] as? String ?? "", code: statusCode!, userInfo: nil))
                     }
             }
+        }
+    }
+    
+    static func upload(url: String, headers: [String: String]? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
+        return Promise { seal in
+            Alamofire.upload(multipartFormData: multipartFormData
+                , usingThreshold: UInt64.init(), to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        print("uploading...")
+                        upload.uploadProgress {
+                            progress in
+                            if progressHandler != nil {
+                                progressHandler!(progress.completedUnitCount, progress.totalUnitCount)
+                            }
+                        }
+                        upload.responseJSON { response in
+                            print("uploaded")
+                            seal.fulfill(response.result.value as! [String: Any])
+                        }
+                    case .failure(let encodingError):
+                        print("error")
+                        seal.reject(encodingError)
+                        print(encodingError)
+                    }
+            })
         }
     }
 }

@@ -9,36 +9,89 @@
 import UIKit
 import Kingfisher
 import SwiftCarousel
+import Hero
 
-class ExploreViewController: AuthViewController {
-    
+class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
+
+    //MARK: - UI Components
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressViewWrapper: UIView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
-    @IBOutlet weak var mapViewImage: UIImageView!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
+    private lazy var refreshControl = UIRefreshControl()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
     let colors = [#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1),#colorLiteral(red: 0.6823529412, green: 0.6823529412, blue: 0.6588235294, alpha: 1),#colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.4352941176, alpha: 1),#colorLiteral(red: 0.8980392157, green: 0.5803921569, blue: 0.2156862745, alpha: 1),#colorLiteral(red: 1, green: 0.5333333333, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.6196078431, blue: 0.1882352941, alpha: 1),#colorLiteral(red: 1, green: 0.7215686275, blue: 0.4117647059, alpha: 1),#colorLiteral(red: 1, green: 0.8431372549, blue: 0.6823529412, alpha: 1),#colorLiteral(red: 0.8823529412, green: 0.8352941176, blue: 0.7450980392, alpha: 1),#colorLiteral(red: 0.7725490196, green: 0.8274509804, blue: 0.8078431373, alpha: 1),#colorLiteral(red: 0.6588235294, green: 0.8196078431, blue: 0.8705882353, alpha: 1),#colorLiteral(red: 0.5490196078, green: 0.8117647059, blue: 0.9333333333, alpha: 1),#colorLiteral(red: 0.4274509804, green: 0.8039215686, blue: 1, alpha: 1)]
+    let photoUploader = PhotoUploader()
+    var images: [Image] = []
+    fileprivate let itemsPerRow: Int = 3
+    var numberOfPhotos = 0 {
+        didSet {
+            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
+        }
+    }
+    var page = 0
+    var shouldFetchMore = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        photoUploader.delegate = self
+        collectionView.delegate = self
         setupUI()
+        initImagesFromAPIWithoutCache()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startUploadPhoto()
+    }
+    
+    private func startUploadPhoto() {
+        if let uploadPhoto = UserDefaults.standard.data(forKey: "uploadPhotoData") {
+            photoUploader.upload(data: uploadPhoto)
+            UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
+        }
+    }
+    
+    @objc private func initImagesFromAPIWithoutCache() {
+        ImageCache.default.clearDiskCache()
+        ImageCache.default.clearMemoryCache()
+        initImagesFromAPI()
+    }
+    
+    @objc private func initImagesFromAPI() {
+        shouldFetchMore = true
+        page = 0
+        Api.fetchExploreImages().done {
+            images in
+            self.images = images
+            }.catch {
+                error in
+                print("error: \(error)")
+            }.finally {
+                self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func fetchMoreImagesFromAPI(page: Int) {
+        shouldFetchMore = false
+        Api.fetchExploreImages(page: page).done {
+            images in
+            if images.count != 0 {
+                self.images += images
+                self.collectionView.reloadData()
+                self.shouldFetchMore = true
+            }
+            }.catch {
+                error in
+                print("error: \(error)")
+        }
     }
     
     private func setupUI() {
-        //MARK: - User profile image
-        let user = UserController.getCurrentUser()!
-        if let profileImageUrl = user["picture"] as? String {
-            let url = URL(string: profileImageUrl)
-            profileImage.kf.setImage(with: url)
-        }
-        
-        // MARK: - UIImageView go to Map View
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-        mapViewImage.addGestureRecognizer(tap)
-        mapViewImage.isUserInteractionEnabled = true
-        
         // MARK: - Seasoning Scroll View
         do {
             try seasoningScrollView.carousel.itemsFactory(itemsCount: 12, factory: labelForMonthItem)
@@ -48,11 +101,32 @@ class ExploreViewController: AuthViewController {
         seasoningScrollView.carousel.delegate = self
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
+        
+        //Initialize Refresh Control (Pull to refresh)
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
     
     @objc private func showMapView() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue)
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: tapLocation)
+        let cell = collectionView.cellForItem(at: indexPath!) as! ImageCollectionViewCell
+        let index = indexPath!.row
+        let image = images[index]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        vc.image = image
+        vc.uiImage = cell.imageView.image
+        vc.hero.modalAnimationType = .fade
+        present(vc, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,23 +143,150 @@ class ExploreViewController: AuthViewController {
         viewContainer.contentView.endColor = colors[index+1]
         viewContainer.contentView.sizeToFit()
         return viewContainer
-        
     }
     
     // MARK: - unwind
     @IBAction func unwindToGridView(sender: UIStoryboardSegue) {
         
     }
+    
+    // MARK: - PhotoUploaderDelegate functions
+    func didUpload() {
+        self.progressViewWrapper.isHidden = true
+        UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
+        UIView.animate(withDuration: 0.5, animations: {
+            self.initImagesFromAPI()
+            self.numberOfPhotos += 1
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        })
+        print("didUpload")
+    }
+    
+    func uploading(completedUnit: Double, totalUnit: Double) {
+        self.progressViewWrapper.isHidden = false
+        UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
+            self.progressView.setProgress(Float(completedUnit/totalUnit), animated: true)
+        }, completion: nil)
+        print("uploading \(completedUnit)/\(totalUnit)")
+    }
+    
+    func willUpload() {
+        self.progressViewWrapper.isHidden = false
+        self.progressView.progress = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        })
+        print("willUpload")
+    }
 }
 
+// MARK: - SwiftCarouselDelegate functions
 extension ExploreViewController: SwiftCarouselDelegate {
-
+    
     func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
         return item
     }
-
+    
     func didDeselectItem(item: UIView, index: Int) -> UIView? {
         return item
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ExploreViewController: UICollectionViewDataSource {
+    
+    //Number of items in section
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.images.count
+    }
+    
+    //Initialize cell's ui
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
+        let index = indexPath.row
+        // If scroll before last 3 rows then fetch the next images
+        if images.count > itemsPerRow*4, index >= images.count - (itemsPerRow*4), shouldFetchMore {
+            page += 1
+            fetchMoreImagesFromAPI(page: page)
+        }
+        let image = images[index]
+        let url = URL(string: image.thumbnailLink!)
+        cell.imageView.hero.id = image.thumbnailLink!
+        cell.imageView.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoInfoVC(sender:)))
+        cell.imageView.addGestureRecognizer(tap)
+        cell.imageView.isUserInteractionEnabled = true
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    //CollectionView's supplementary (used as header)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
+            
+            if let user = UserController.getCurrentUser() {
+                let profileImage = user["picture"] as! String
+                let url = URL(string: profileImage)
+                headerView.tabHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+            }
+            headerView.tabHeader.titleLabel.text = "Around you"
+            self.descriptionLabel = headerView.tabHeader.descriptionLabel
+            
+            if numberOfPhotos == 0 {
+                Api.getExploreImageCount().done { count in self.numberOfPhotos = count }
+            }
+            if self.progressView != nil {
+                headerView.progressView.progress = self.progressView.progress
+                headerView.progressBarWrapper.isHidden = self.progressViewWrapper.isHidden
+            }
+            self.progressView = headerView.progressView
+            self.progressViewWrapper = headerView.progressBarWrapper
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+//            headerView.switchViewToMap.addGestureRecognizer(tap)
+//            headerView.switchViewToMap.isUserInteractionEnabled = true
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+}
+
+//MARK: - Eqaully arrange cells in UICollectionView
+
+extension ExploreViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    //Space between column
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
+    }
+    
+    // Space between row
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    // Remove margin of UICollectionView not cell.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if self.progressViewWrapper != nil, !self.progressViewWrapper.isHidden {
+            return CGSize(width: collectionView.bounds.size.width, height: 135)
+        }else {
+            return CGSize(width: collectionView.bounds.size.width, height: 135 - 40)
+        }
     }
 }
 

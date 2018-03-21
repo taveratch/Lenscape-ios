@@ -213,8 +213,15 @@ extension ExploreViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
-            headerView.titleLabel.text = "Around you"
-            self.descriptionLabel = headerView.descriptionLabel
+            
+            if let user = UserController.getCurrentUser() {
+                let profileImage = user["picture"] as! String
+                let url = URL(string: profileImage)
+                headerView.tabHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+            }
+            headerView.tabHeader.titleLabel.text = "Around you"
+            self.descriptionLabel = headerView.tabHeader.descriptionLabel
+            
             if numberOfPhotos == 0 {
                 Api.getExploreImageCount().done { count in self.numberOfPhotos = count }
             }
@@ -224,9 +231,9 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
             self.progressView = headerView.progressView
             self.progressViewWrapper = headerView.progressBarWrapper
-            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-            headerView.switchViewToMap.addGestureRecognizer(tap)
-            headerView.switchViewToMap.isUserInteractionEnabled = true
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+//            headerView.switchViewToMap.addGestureRecognizer(tap)
+//            headerView.switchViewToMap.isUserInteractionEnabled = true
             return headerView
         default:
             assert(false, "Unexpected element kind")

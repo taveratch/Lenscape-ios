@@ -238,26 +238,54 @@
             </objects>
             <point key="canvasLocation" x="1900" y="1271"/>
         </scene>
+        <!--Explore Page View Controller-->
+        <scene sceneID="jyh-ec-GbU">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ag7-Ib-jKi" customClass="ExplorePageViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NCb-fQ-8Qg"/>
+                    <connections>
+                        <segue destination="2yq-fR-Unf" kind="custom" id="iGz-vs-jEo"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgu-LO-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2732" y="527"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6bW-fP-s7j">
+            <objects>
+                <viewController id="eyp-jF-lAA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G2t-kw-jzJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NM0-3Y-YXh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtg-3T-Imt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3596" y="-267"/>
+        </scene>
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
             <objects>
                 <viewController storyboardIdentifier="ExploreViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqo-cE-T1t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-8y-AZz" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="-4" y="631" width="422" height="56"/>
+                                <rect key="frame" x="-4" y="680" width="422" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="bfu-uL-EAb"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZlL-37-U8U">
-                                <rect key="frame" x="0.0" y="20" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="660"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-tF-gf4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="611"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xtj-SO-6da">
                                             <size key="itemSize" width="50" height="50"/>
@@ -327,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2704.347826086957" y="525"/>
+            <point key="canvasLocation" x="3559" y="527"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -358,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3540" y="526.6866566716642"/>
+            <point key="canvasLocation" x="4252" y="496"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -828,7 +856,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="rootViewController" id="ghU-MB-liL"/>
+                        <segue destination="ag7-Ib-jKi" kind="relationship" relationship="rootViewController" id="MoC-GM-mth"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-nz-Mg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -843,13 +871,13 @@
         <image name="Favorite_selected_tab_icon" width="25" height="25"/>
         <image name="Favorite_tab_icon" width="25" height="25"/>
         <image name="Grid view" width="25" height="25"/>
-        <image name="Home_selected_tab_icon" width="21" height="25"/>
-        <image name="Home_tab_icon" width="21" height="25"/>
+        <image name="Home_selected_tab_icon" width="25" height="25"/>
+        <image name="Home_tab_icon" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
-        <image name="Trend_selected_tab_icon" width="26" height="24"/>
-        <image name="Trend_tab_icon" width="26" height="24"/>
+        <image name="Trend_selected_tab_icon" width="27" height="25"/>
+        <image name="Trend_tab_icon" width="27" height="25"/>
     </resources>
 </document>

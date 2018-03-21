@@ -10,10 +10,20 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    // MARK: - Attributes
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var profilePicture: EnhancedUIImage!
+    @IBOutlet weak var info: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        loadUserData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,11 +31,9 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Actions
-    @IBAction func signOut(_ sender: UIButton) {
-        UserController.signOut()
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
-        self.navigationController?.pushViewController(signinVC!, animated: true)
+    // MARK: - Actions
+    @IBAction func showSettingsMenu(_ sender: UIButton) {
+        
     }
     
     /*
@@ -37,5 +45,17 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Private Methods
+    private func loadUserData() {
+        if let user = UserController.getCurrentUser() {
+            let name = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
+            fullName.text = name
+            info.text = user["email"] as? String
+            if let url = user["picture"] as? String {
+                profilePicture.kf.setImage(with: URL(string: url))
+            }
+        }
+    }
 
 }

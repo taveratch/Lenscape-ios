@@ -192,8 +192,8 @@
                         <viewLayoutGuide key="safeArea" id="atu-5K-h7u"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Profile_tab_icon" selectedImage="Profile_selected_tab_icon" id="XcA-ws-fNn">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iq5-lL-Txx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +211,7 @@
                         <viewLayoutGuide key="safeArea" id="REK-nh-aZ9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Favorite_tab_icon" selectedImage="Favorite_selected_tab_icon" id="8WQ-ZU-F3n">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                     </tabBarItem>
                 </viewController>
@@ -230,7 +230,7 @@
                         <viewLayoutGuide key="safeArea" id="TXz-nK-gic"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Trend_tab_icon" selectedImage="Trend_selected_tab_icon" id="C1h-j4-D0w">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                 </viewController>
@@ -814,7 +814,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="C9r-nG-mFp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Home_tab_icon" selectedImage="Home_selected_tab_icon" id="LB1-Iu-YBY">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-4"/>
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -847,8 +847,8 @@
         <image name="Home_tab_icon" width="21" height="25"/>
         <image name="Logo" width="1959" height="390"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
-        <image name="Profile_selected_tab_icon" width="23" height="25"/>
-        <image name="Profile_tab_icon" width="23" height="25"/>
+        <image name="Profile_selected_tab_icon" width="24" height="25"/>
+        <image name="Profile_tab_icon" width="24" height="25"/>
         <image name="Trend_selected_tab_icon" width="26" height="24"/>
         <image name="Trend_tab_icon" width="26" height="24"/>
     </resources>

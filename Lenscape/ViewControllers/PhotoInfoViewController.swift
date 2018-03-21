@@ -16,6 +16,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     var uiImage: UIImage?
     @IBOutlet weak var informationWrapper: UIView!
     
+    @IBOutlet weak var profileImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageView.hero.id = self.image?.thumbnailLink!
@@ -33,6 +34,12 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     private func setupUI() {
         let url = URL(string: image!.link!)
         imageView.kf.setImage(with: url, placeholder: uiImage)
+        
+        //TODO - Change this
+        if let user = UserController.getCurrentUser() {
+            let url = URL(string: user["picture"] as! String)
+            profileImage.kf.setImage(with: url)
+        }
     }
     
     private func dismissView() {
@@ -67,5 +74,13 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
     @IBAction func dismissByTap(_ sender: UITapGestureRecognizer) {
         dismissView()
+    }
+    
+    @IBAction func showFullImage(_ sender: UITapGestureRecognizer) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+        vc.image = image
+        vc.placeHolderImage = uiImage
+        vc.hero.modalAnimationType = .auto
+        present(vc, animated: true)
     }
 }

@@ -18,6 +18,7 @@
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
 		953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */; };
+		953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953048A120627C5B00EB5F3F /* FullImageViewController.swift */; };
 		95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EF92060059800F8CD43 /* TabHeader.swift */; };
 		95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431EFC206005AC00F8CD43 /* TabHeader.xib */; };
 		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
@@ -70,6 +71,7 @@
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
+		953048A120627C5B00EB5F3F /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		95431EF92060059800F8CD43 /* TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		95431EFC206005AC00F8CD43 /* TabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabHeader.xib; sourceTree = "<group>"; };
 		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
 				957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */,
+				953048A120627C5B00EB5F3F /* FullImageViewController.swift */,
 				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
@@ -500,6 +503,7 @@
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
+				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,

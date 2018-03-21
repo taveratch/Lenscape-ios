@@ -24,5 +24,4 @@ class ExploreMapViewController: UIViewController {
         let explorePageVC = self.parent as? ExplorePageViewController
         explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
     }
-
 }

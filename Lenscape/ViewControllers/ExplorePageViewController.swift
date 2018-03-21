@@ -18,7 +18,6 @@ class ExplorePageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        
         if let firstView = views.first {
             setViewControllers([firstView], direction: .forward, animated: true, completion: nil)
         }

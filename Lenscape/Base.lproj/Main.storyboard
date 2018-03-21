@@ -243,28 +243,10 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ag7-Ib-jKi" customClass="ExplorePageViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="NCb-fQ-8Qg"/>
-                    <connections>
-                        <segue destination="2yq-fR-Unf" kind="custom" id="iGz-vs-jEo"/>
-                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgu-LO-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2732" y="527"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="6bW-fP-s7j">
-            <objects>
-                <viewController id="eyp-jF-lAA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G2t-kw-jzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="NM0-3Y-YXh"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gtg-3T-Imt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3596" y="-267"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
@@ -357,32 +339,37 @@
             </objects>
             <point key="canvasLocation" x="3559" y="527"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
             <objects>
-                <viewController storyboardIdentifier="ExploreMapViewController" id="H9Q-MQ-yOu" customClass="MapViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreMapViewController" id="H9Q-MQ-yOu" customClass="ExploreMapViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ZQ-sQ-uSh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Explore Map View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uZ-hA-Dg0">
-                                <rect key="frame" x="139" y="323" width="137" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grid view" translatesAutoresizingMaskIntoConstraints="NO" id="Gic-MX-kaT">
-                                <rect key="frame" x="314" y="558" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1y-qD-5Ge" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-Sg-y6g">
+                                <rect key="frame" x="20" y="40" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back:" destination="H9Q-MQ-yOu" eventType="touchUpInside" id="pto-aS-pIZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w1y-qD-5Ge" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" id="6G0-HD-JSR"/>
+                            <constraint firstItem="B7Q-sO-UIf" firstAttribute="bottom" secondItem="w1y-qD-5Ge" secondAttribute="bottom" id="Ij7-KS-RoC"/>
+                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="20" id="L9R-4w-VVf"/>
+                            <constraint firstItem="w1y-qD-5Ge" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" id="SWP-1m-A89"/>
+                            <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="w1y-qD-5Ge" secondAttribute="trailing" id="iFp-dU-RG2"/>
+                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="20" id="rnp-qR-kRd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
-                    <connections>
-                        <outlet property="gridViewImage" destination="Gic-MX-kaT" id="zo1-MK-GCd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -870,7 +857,6 @@
         <image name="Cross White" width="11" height="11"/>
         <image name="Favorite_selected_tab_icon" width="25" height="25"/>
         <image name="Favorite_tab_icon" width="25" height="25"/>
-        <image name="Grid view" width="25" height="25"/>
         <image name="Home_selected_tab_icon" width="25" height="25"/>
         <image name="Home_tab_icon" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>

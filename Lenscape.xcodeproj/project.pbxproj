@@ -12,7 +12,7 @@
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
 		95108EF42054247A0072AC48 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF32054247A0072AC48 /* Error.swift */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
-		9518DBB82052DE0A00F0BE1B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB72052DE0A00F0BE1B /* MapViewController.swift */; };
+		9518DBB82052DE0A00F0BE1B /* ExploreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */; };
 		9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBB92052E1E000F0BE1B /* ShadowView.swift */; };
 		9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
@@ -63,7 +63,7 @@
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		95108EF32054247A0072AC48 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		9518DBB72052DE0A00F0BE1B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapViewController.swift; sourceTree = "<group>"; };
 		9518DBB92052E1E000F0BE1B /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedUIImageView.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
 				957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */,
-				9518DBB72052DE0A00F0BE1B /* MapViewController.swift */,
+				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
 				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
@@ -427,9 +427,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -499,7 +502,7 @@
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
 				95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */,
 				9597DE64205F7BB200B7E751 /* Image.swift in Sources */,
-				9518DBB82052DE0A00F0BE1B /* MapViewController.swift in Sources */,
+				9518DBB82052DE0A00F0BE1B /* ExploreMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

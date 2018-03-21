@@ -9,7 +9,7 @@
 import UIKit
 import Hero
 
-class PhotoInfoViewController: UIViewController {
+class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     var image: Image?
@@ -18,15 +18,13 @@ class PhotoInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height)]
+        self.imageView.hero.id = self.image?.thumbnailLink!
+        
+//        https://github.com/lkzhao/Hero/issues/187
+        self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
+        
         self.setupUI()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.imageView.hero.id = self.image?.thumbnailLink!
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,5 +44,4 @@ class PhotoInfoViewController: UIViewController {
             Hero.shared.finish()
         }
     }
-
 }

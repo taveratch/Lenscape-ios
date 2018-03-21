@@ -22,8 +22,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet private weak var confirmPasswordTextField: TextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    private var activeField: UITextField?
-    private lazy var imagePickerController = UIImagePickerController()
+    var activeField: UITextField?
+    
+    private let imagePickerController = UIImagePickerController()
+    
     
     // MARK: - Computed properties
     
@@ -153,7 +155,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     // MARK: - Private Methods
-
+    
     private func resetForm() {
         textFields.forEach { $0.hasError = false }
     }

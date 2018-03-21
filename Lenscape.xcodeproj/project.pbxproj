@@ -40,7 +40,6 @@
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
-		D080EED2206103A3000F8BD2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080EED1206103A3000F8BD2 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +79,6 @@
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D080EED1206103A3000F8BD2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +158,6 @@
 		956F1702204EA63600CADB75 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D080EED1206103A3000F8BD2 /* SettingsTableViewController.swift */,
 				95656935204C2BB3005F9F6B /* SigninViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
@@ -394,7 +391,6 @@
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
-				D080EED2206103A3000F8BD2 /* SettingsTableViewController.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,

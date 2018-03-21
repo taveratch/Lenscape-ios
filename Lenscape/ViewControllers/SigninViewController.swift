@@ -14,7 +14,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     let fb = FacebookLogin()
     
-    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
     
@@ -44,10 +44,10 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             }.catch { error in }
     }
     
-    @IBAction func signIn(_ sender: UIButton) {
+    @IBAction func singin(_ sender: UIButton) {
         // show loading indicator
-        signInButton.setTitle("", for: .normal)
-        signInButton.loadingIndicator(show: true)
+        signinButton.setTitle("", for: .normal)
+        signinButton.loadingIndicator(show: true)
         
         Api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
             user in
@@ -56,8 +56,8 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             }.catch {
                 error in
                 
-                self.signInButton.setTitle("Sign in", for: .normal)
-                self.signInButton.loadingIndicator(show: false)
+                self.signinButton.setTitle("Sign in", for: .normal)
+                self.signinButton.loadingIndicator(show: false)
                 
                 let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

@@ -37,12 +37,10 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ImageCache.default.clearDiskCache()
-        ImageCache.default.clearMemoryCache()
         photoUploader.delegate = self
         collectionView.delegate = self
         setupUI()
-        initImagesFromAPI()
+        initImagesFromAPIWithoutCache()
     }
     
     override func viewDidAppear(_ animated: Bool) {

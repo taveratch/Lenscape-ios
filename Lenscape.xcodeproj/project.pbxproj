@@ -17,6 +17,7 @@
 		9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
+		953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */; };
 		95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EF92060059800F8CD43 /* TabHeader.swift */; };
 		95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431EFC206005AC00F8CD43 /* TabHeader.xib */; };
 		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
@@ -68,6 +69,7 @@
 		9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedUIImageView.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		95431EF92060059800F8CD43 /* TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		95431EFC206005AC00F8CD43 /* TabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabHeader.xib; sourceTree = "<group>"; };
 		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
 				957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */,
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
+				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
 				957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */,
 				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
@@ -400,6 +403,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCarousel/SwiftCarousel.framework",
@@ -412,6 +416,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCarousel.framework",
@@ -485,6 +490,7 @@
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
+				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,

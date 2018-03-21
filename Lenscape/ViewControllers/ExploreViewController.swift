@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SwiftCarousel
+import Hero
 
 class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
 
@@ -117,6 +118,19 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: tapLocation)
+        let cell = collectionView.cellForItem(at: indexPath!) as! ImageCollectionViewCell
+        let index = indexPath!.row
+        let image = images[index]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        vc.image = image
+        vc.uiImage = cell.imageView.image
+        vc.hero.modalAnimationType = .fade
+        present(vc, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -199,8 +213,12 @@ extension ExploreViewController: UICollectionViewDataSource {
         }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
+        cell.imageView.hero.id = image.thumbnailLink!
         cell.imageView.kf.indicatorType = .activity
         cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoInfoVC(sender:)))
+        cell.imageView.addGestureRecognizer(tap)
+        cell.imageView.isUserInteractionEnabled = true
         return cell
     }
     

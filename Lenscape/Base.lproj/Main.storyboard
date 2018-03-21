@@ -243,6 +243,9 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ag7-Ib-jKi" customClass="ExplorePageViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="NCb-fQ-8Qg"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgu-LO-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,6 +333,9 @@
                         <viewLayoutGuide key="safeArea" id="sQ9-xW-Agc"/>
                     </view>
                     <navigationItem key="navigationItem" id="JeJ-FO-WIb"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="mDB-tF-gf4" id="Gdx-eu-QVR"/>
                         <outlet property="seasoningScrollView" destination="QSX-8y-AZz" id="2I9-p6-d9q"/>
@@ -338,6 +344,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3559" y="527"/>
+        </scene>
+        <!--Photo Info View Controller-->
+        <scene sceneID="OK1-Vx-lad">
+            <objects>
+                <viewController storyboardIdentifier="PhotoInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WW7-xx-5WG" customClass="PhotoInfoViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZDD-y2-fVk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrW-7T-Q1F">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="FBY-om-8lc"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="B6K-Xh-bgJ" appends="YES" id="t5W-fg-G3b"/>
+                                </connections>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="una-p1-bF9" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="220" width="414" height="546"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="-4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="una-p1-bF9" firstAttribute="top" secondItem="qrW-7T-Q1F" secondAttribute="bottom" constant="-30" id="0Vv-RN-8IT"/>
+                            <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="qrW-7T-Q1F" secondAttribute="trailing" id="WRa-01-cL6"/>
+                            <constraint firstItem="8NZ-bw-4On" firstAttribute="bottom" secondItem="una-p1-bF9" secondAttribute="bottom" constant="-30" id="cH8-2f-fpU"/>
+                            <constraint firstItem="una-p1-bF9" firstAttribute="leading" secondItem="8NZ-bw-4On" secondAttribute="leading" id="dHG-u0-QRv"/>
+                            <constraint firstItem="qrW-7T-Q1F" firstAttribute="leading" secondItem="8NZ-bw-4On" secondAttribute="leading" id="gz0-7k-Tww"/>
+                            <constraint firstItem="qrW-7T-Q1F" firstAttribute="top" secondItem="ZDD-y2-fVk" secondAttribute="top" id="mBq-wj-vHk"/>
+                            <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="una-p1-bF9" secondAttribute="trailing" id="n5h-1i-Sx8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8NZ-bw-4On"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="imageView" destination="qrW-7T-Q1F" id="X2U-O5-WkG"/>
+                        <outlet property="informationWrapper" destination="una-p1-bF9" id="sck-RE-dOQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gg-CY-g1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="B6K-Xh-bgJ">
+                    <connections>
+                        <action selector="dismiss:" destination="WW7-xx-5WG" id="N9V-yZ-s0a"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3558" y="1271"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -370,10 +442,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4252" y="496"/>
+            <point key="canvasLocation" x="4293" y="527"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -842,6 +917,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="ag7-Ib-jKi" kind="relationship" relationship="rootViewController" id="MoC-GM-mth"/>
                     </connections>

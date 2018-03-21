@@ -9,4 +9,5 @@ target 'Lenscape' do
   pod 'Kingfisher'
   pod 'SwiftCarousel'
   pod 'GoogleMaps'
+  pod 'Hero'
 end

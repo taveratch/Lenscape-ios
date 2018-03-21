@@ -23,6 +23,7 @@ PODS:
   - GoogleMaps/Base (2.6.0)
   - GoogleMaps/Maps (2.6.0):
     - GoogleMaps/Base
+  - Hero (1.1.0)
   - Kingfisher (4.6.2)
   - PromiseKit (6.2.0):
     - PromiseKit/CorePromise (= 6.2.0)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - GoogleMaps
+  - Hero
   - Kingfisher
   - PromiseKit
   - SwiftCarousel
@@ -52,10 +54,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7c4bba2877781a131ab5d54c0a78c405d4307b62
   FBSDKLoginKit: fe7a7e82373dc5daad92e1623219e86224ab1fb1
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
   Kingfisher: 55b9c395bf8d3949676ad3861111923990ab68cf
   PromiseKit: ea9a155e1fd98a926ccfaf633c0fbd69851f0e7b
   SwiftCarousel: a62f4e9b944d1bca4ccfe3f28abb6119e3e36b12
 
-PODFILE CHECKSUM: de9c3b68a571b3ed65f2b673c76f7e9e2f5cb5b2
+PODFILE CHECKSUM: ed6fbe036924ea12928c493aa1c4a82f1d12288a
 
 COCOAPODS: 1.4.0

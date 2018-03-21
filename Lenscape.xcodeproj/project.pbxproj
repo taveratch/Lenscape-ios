@@ -56,6 +56,7 @@
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
+		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,7 @@
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,9 +226,11 @@
 				95656935204C2BB3005F9F6B /* SigninViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
+				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
 				957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */,
+				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
 				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
@@ -236,7 +240,6 @@
 				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
-				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
+				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,

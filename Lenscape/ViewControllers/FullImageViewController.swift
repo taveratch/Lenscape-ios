@@ -9,38 +9,55 @@
 import UIKit
 import Hero
 
-class FullImageViewController: UIViewController {
+class FullImageViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var image: Image?
     var placeHolderImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imageView.hero.id = self.image?.thumbnailLink!
-        let url = URL(string: (image!.link!))
-        imageView.kf.setImage(with: url, placeholder: placeHolderImage)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        initZoomComponent()
+        initHeroComponents()
+        initImageComponent()
     }
     
+    @objc func canRotate() -> Void {}
+
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
         Hero.shared.defaultAnimation = .none
         self.hero.dismissViewController()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //Before disappear, set back to portrait mode. (See more in AppDelegate)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (self.isMovingFromParentViewController) {
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
     }
-    */
-
+    
+    // MARK: - Initialize Image Component
+    private func initImageComponent() {
+        let url = URL(string: (image!.link!))
+        imageView.kf.setImage(with: url, placeholder: placeHolderImage)
+    }
+    
+    // MARK: - Hero components
+    private func initHeroComponents() {
+        self.imageView.hero.id = self.image?.thumbnailLink!
+    }
+    
+    // MARK: - Initialize zooming feature
+    private func initZoomComponent() {
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+    }
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
 }

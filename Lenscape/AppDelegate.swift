@@ -47,6 +47,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
+    //----
+    //Unlock rotation for specific View Controller
+    //https://medium.com/@sunnyleeyun/swift-100-days-project-24-portrait-landscape-how-to-allow-rotate-in-one-vc-d717678301c1
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if let rootViewController = self.topViewControllerWithRootViewController(rootViewController: window?.rootViewController) {
+            if (rootViewController.responds(to: Selector(("canRotate")))) {
+                // Unlock landscape view orientations for this view controller
+                return .allButUpsideDown;
+            }
+        }
+        
+        // Only allow portrait (standard behaviour)
+        return .portrait;
+    }
+    
+    private func topViewControllerWithRootViewController(rootViewController: UIViewController!) -> UIViewController? {
+        if (rootViewController == nil) { return nil }
+        if (rootViewController.isKind(of: UITabBarController.self)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UITabBarController).selectedViewController)
+        } else if (rootViewController.isKind(of: UINavigationController.self)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UINavigationController).visibleViewController)
+        } else if (rootViewController.presentedViewController != nil) {
+            return topViewControllerWithRootViewController(rootViewController: rootViewController.presentedViewController)
+        }
+        return rootViewController
+    }
+    //-----
+    
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

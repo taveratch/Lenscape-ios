@@ -531,20 +531,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEx-Ot-5Ia">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="QWf-NR-xP3" appends="YES" id="qi6-Ek-W6R"/>
-                                </connections>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipm-c1-6bd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEx-Ot-5Ia">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="QWf-NR-xP3" appends="YES" id="qi6-Ek-W6R"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EEx-Ot-5Ia" secondAttribute="trailing" id="HHT-Ih-MWj"/>
+                                    <constraint firstItem="EEx-Ot-5Ia" firstAttribute="centerX" secondItem="ipm-c1-6bd" secondAttribute="centerX" id="M2V-eZ-zAI"/>
+                                    <constraint firstAttribute="bottom" secondItem="EEx-Ot-5Ia" secondAttribute="bottom" id="R4s-rV-ExS"/>
+                                    <constraint firstItem="EEx-Ot-5Ia" firstAttribute="leading" secondItem="ipm-c1-6bd" secondAttribute="leading" id="VyU-DK-4q3"/>
+                                    <constraint firstItem="EEx-Ot-5Ia" firstAttribute="centerY" secondItem="ipm-c1-6bd" secondAttribute="centerY" id="ikQ-gS-WSD"/>
+                                    <constraint firstItem="EEx-Ot-5Ia" firstAttribute="top" secondItem="ipm-c1-6bd" secondAttribute="top" id="qbx-RP-hTp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="EEx-Ot-5Ia" secondAttribute="trailing" id="9dG-vK-Vy3"/>
-                            <constraint firstItem="EEx-Ot-5Ia" firstAttribute="top" secondItem="uPZ-3u-PiH" secondAttribute="top" id="bm5-6p-bEn"/>
-                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="bottom" secondItem="EEx-Ot-5Ia" secondAttribute="bottom" id="bpP-Oh-o06"/>
-                            <constraint firstItem="EEx-Ot-5Ia" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="i20-m9-cVc"/>
+                            <constraint firstItem="ipm-c1-6bd" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="7FM-i9-2Zz"/>
+                            <constraint firstItem="ipm-c1-6bd" firstAttribute="top" secondItem="oy5-pX-e3v" secondAttribute="top" id="8Yg-zj-6p7"/>
+                            <constraint firstItem="ipm-c1-6bd" firstAttribute="trailing" secondItem="uPZ-3u-PiH" secondAttribute="trailing" id="V9g-25-fic"/>
+                            <constraint firstItem="ipm-c1-6bd" firstAttribute="bottom" secondItem="uPZ-3u-PiH" secondAttribute="bottom" id="gsu-6P-J5D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uPZ-3u-PiH"/>
                     </view>
@@ -553,6 +566,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="imageView" destination="EEx-Ot-5Ia" id="JlW-Oh-fPO"/>
+                        <outlet property="scrollView" destination="ipm-c1-6bd" id="yv2-cP-UHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXo-hF-bqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,7 +576,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4242" y="1270"/>
+            <point key="canvasLocation" x="4240.579710144928" y="1269.2934782608697"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">

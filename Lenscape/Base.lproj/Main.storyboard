@@ -358,13 +358,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="FBY-om-8lc"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="B6K-Xh-bgJ" appends="YES" id="t5W-fg-G3b"/>
-                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="una-p1-bF9" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="220" width="414" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="30"/>
@@ -379,18 +377,46 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="anr-Hf-IVc"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-fd-TT0">
+                                <rect key="frame" x="364" y="40" width="30" height="30"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross White" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-TM-dP9">
+                                        <rect key="frame" x="7" y="7" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8dc-TM-dP9" secondAttribute="height" multiplier="1:1" id="5Kg-XF-uIU"/>
+                                            <constraint firstAttribute="width" constant="15" id="GHA-fj-5IP"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="FWH-DX-RhG"/>
+                                    <constraint firstItem="8dc-TM-dP9" firstAttribute="centerY" secondItem="Gti-fd-TT0" secondAttribute="centerY" id="cLZ-mf-vVv"/>
+                                    <constraint firstItem="8dc-TM-dP9" firstAttribute="centerX" secondItem="Gti-fd-TT0" secondAttribute="centerX" id="kr3-Ek-hyN"/>
+                                    <constraint firstAttribute="height" constant="30" id="uD0-7T-oeI"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="t5b-Il-OhR" appends="YES" id="vaD-Ti-n52"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="una-p1-bF9" firstAttribute="top" secondItem="qrW-7T-Q1F" secondAttribute="bottom" constant="-30" id="0Vv-RN-8IT"/>
+                            <constraint firstItem="Gti-fd-TT0" firstAttribute="top" secondItem="8NZ-bw-4On" secondAttribute="top" constant="20" id="Hxj-p7-gCE"/>
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="qrW-7T-Q1F" secondAttribute="trailing" id="WRa-01-cL6"/>
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="bottom" secondItem="una-p1-bF9" secondAttribute="bottom" constant="-30" id="cH8-2f-fpU"/>
                             <constraint firstItem="una-p1-bF9" firstAttribute="leading" secondItem="8NZ-bw-4On" secondAttribute="leading" id="dHG-u0-QRv"/>
                             <constraint firstItem="qrW-7T-Q1F" firstAttribute="leading" secondItem="8NZ-bw-4On" secondAttribute="leading" id="gz0-7k-Tww"/>
                             <constraint firstItem="qrW-7T-Q1F" firstAttribute="top" secondItem="ZDD-y2-fVk" secondAttribute="top" id="mBq-wj-vHk"/>
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="una-p1-bF9" secondAttribute="trailing" id="n5h-1i-Sx8"/>
+                            <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="Gti-fd-TT0" secondAttribute="trailing" constant="20" id="ubC-MU-dOt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NZ-bw-4On"/>
                     </view>
@@ -403,9 +429,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Gg-CY-g1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="B6K-Xh-bgJ">
+                <tapGestureRecognizer id="t5b-Il-OhR">
                     <connections>
-                        <action selector="dismiss:" destination="WW7-xx-5WG" id="N9V-yZ-s0a"/>
+                        <action selector="dismissByTap:" destination="WW7-xx-5WG" id="cu8-Df-uti"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="p0H-l1-v5d">
+                    <connections>
+                        <action selector="dismissBySwipe:" destination="WW7-xx-5WG" id="Lr8-dY-mff"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

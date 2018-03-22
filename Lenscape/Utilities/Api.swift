@@ -197,4 +197,29 @@ class Api {
             }
         }
     }
+    
+    static func fetchUserImages(page: Int = 0) -> Promise<[Image]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        let url = "https://api.imgur.com/3/album/eG5vv/images"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                let images = data
+                    .map { Image(item: $0) }
+                    .sorted { $0.datetime! > $1.datetime! }
+                seal.fulfill(images)
+                }.catch {
+                    error in
+                    seal.reject(error)
+                    print(error)
+            }
+        }
+    }
 }

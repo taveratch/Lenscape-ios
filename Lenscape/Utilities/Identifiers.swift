@@ -20,4 +20,5 @@ enum Identifier: String {
     case ExploreSupplementaryCollectionReusableView = "ExploreSupplementaryCollectionReusableView"
     case PhotoInfoViewController = "PhotoInfoViewController"
     case FullImageViewController = "FullImageViewController"
+    case TrendCollectionReusableView = "TrendCollectionReusableView"
 }

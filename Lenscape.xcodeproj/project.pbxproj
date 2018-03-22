@@ -49,7 +49,6 @@
 		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
 		9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */; };
 		9597DE64205F7BB200B7E751 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597DE63205F7BB200B7E751 /* Image.swift */; };
-		9597DE67205F836100B7E751 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597DE66205F836100B7E751 /* ImageCollectionViewCell.swift */; };
 		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
 		95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7B2051953C007480AA /* ProfileViewController.swift */; };
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
@@ -57,6 +56,10 @@
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
+		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
+		95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */; };
+		95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */; };
+		95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
@@ -106,7 +109,6 @@
 		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
 		9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularInfiniteScroll.swift; sourceTree = "<group>"; };
 		9597DE63205F7BB200B7E751 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		9597DE66205F836100B7E751 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		95B8AB7B2051953C007480AA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,10 @@
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,9 +174,9 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95F85EF12063453A0059ACFB /* ImageCollectionViewCell */,
 				95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */,
 				95431EFB2060059C00F8CD43 /* TabHeader */,
-				9597DE65205F834500B7E751 /* ImageCollectionView */,
 				957FA7D720563621005F2E91 /* SeasoningScrollView */,
 				9595F0722056101E00A740E1 /* CircularInfiniteScroll */,
 				9595F06D2055711200A740E1 /* CircularScrollView */,
@@ -258,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
+				95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -288,22 +295,24 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
-		9597DE65205F834500B7E751 /* ImageCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				9597DE66205F836100B7E751 /* ImageCollectionViewCell.swift */,
-			);
-			path = ImageCollectionView;
-			sourceTree = "<group>";
-		};
 		95B7C1FA204E9DC800410A48 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
 				95B7C1FB204E9DD100410A48 /* Dictionary.swift */,
 				95108EF32054247A0072AC48 /* Error.swift */,
+				95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */,
 				95F881402055248D003F61D4 /* UIButton.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		95F85EF12063453A0059ACFB /* ImageCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */,
+				95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */,
+			);
+			path = ImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		C3071B4FD2F74943FFAEE3BE /* Pods */ = {
@@ -392,6 +401,7 @@
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */,
+				95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */,
 				95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +488,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9597DE67205F836100B7E751 /* ImageCollectionViewCell.swift in Sources */,
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
@@ -492,6 +501,7 @@
 				957FA7DD205656AA005F2E91 /* OpenCameraViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
+				95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
@@ -512,8 +522,10 @@
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
+				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
 				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
+				95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */,
 				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,

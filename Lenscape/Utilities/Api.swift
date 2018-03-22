@@ -87,13 +87,17 @@ class Api {
             "Authorization": "Bearer \(ACCESS_TOKEN)",
             "Content-Type": "multipart/form-data"
         ]
+        
+        //TODO: Change this, this is Around me album's id
         return Promise { seal in
             ApiManager.upload(url: UPLOAD_HOST, headers: headers,
                               multipartFormData: { multipartFormData in
                                 multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
+                                multipartFormData.append("3Qg3O".data(using: String.Encoding.ascii)!, withName: "album")
             }, progressHandler: progressHandler
                 ).done {
                     response in
+                    print(response)
                     seal.fulfill(response)
                 }.catch { error in
                     seal.reject(error)
@@ -107,7 +111,7 @@ class Api {
             "Content-Type": "multipart/form-data"
         ]
         
-        let url = "https://api.imgur.com/3/account/\(USERNAME)/images"
+        let url = "https://api.imgur.com/3/album/3Qg3O/images"
         
         return Promise {
             seal in
@@ -118,6 +122,7 @@ class Api {
                 for item in data {
                     images.append(Image(item: item))
                 }
+                images.sort(by: { return $0.datetime! > $1.datetime! })
                 seal.fulfill(images)
                 }.catch {
                     error in
@@ -132,13 +137,60 @@ class Api {
             "Authorization": "Bearer \(ACCESS_TOKEN)"
         ]
         
-        let url = "https://api.imgur.com/3/account/\(USERNAME)/images/count"
+        let url = "https://api.imgur.com/3/album/3Qg3O"
         
         return Promise {
             seal in
             ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
                 response in
-                let count = response!["data"] as! Int
+                let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
+                seal.fulfill(count)
+                }.catch {
+                    error in
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func fetchTrendImages(page: Int = 0) -> Promise<[Image]>{
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        let url = "https://api.imgur.com/3/album/eG5vv/images"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, body: nil, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                var images: [Image] = []
+                for item in data {
+                    images.append(Image(item: item))
+                }
+                images.sort(by: { return $0.datetime! > $1.datetime! })
+                seal.fulfill(images)
+                }.catch {
+                    error in
+                    seal.reject(error)
+                    print(error)
+            }
+        }
+    }
+    
+    static func getTrendImageCount() -> Promise<Int> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)"
+        ]
+        
+        let url = "https://api.imgur.com/3/album/eG5vv"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+                response in
+                let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
                 seal.fulfill(count)
                 }.catch {
                     error in

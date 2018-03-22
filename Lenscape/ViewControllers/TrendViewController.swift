@@ -142,7 +142,6 @@ extension TrendViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.TrendCollectionReusableView.rawValue, for: indexPath)
-            print(headerView.subviews)
             guard let tabHeader = headerView.subviews[0] as? TabHeader else {
                 fatalError("No header exists")
             }

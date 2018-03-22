@@ -743,6 +743,9 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="mapView" destination="w1y-qD-5Ge" id="E7C-zr-Otj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

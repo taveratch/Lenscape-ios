@@ -16,6 +16,7 @@ struct Image {
     var height: Int?
     var link: String?
     var thumbnailLink: String?
+    var datetime: Int64?
     init(item: Any) {
         guard let image = item as? [String: Any] else {
             fatalError("\(item) is not instance of dictionary [String: Any]")
@@ -26,6 +27,7 @@ struct Image {
         width = image["width"] as? Int
         height = image["height"] as? Int
         link = image["link"] as? String
+        datetime = image["datetime"] as? Int64
         let index = link!.index(link!.endIndex, offsetBy: -4)
         thumbnailLink = "\(link![..<index])b\(link![index...])"
     }

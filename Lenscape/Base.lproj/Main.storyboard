@@ -316,24 +316,74 @@
             </objects>
             <point key="canvasLocation" x="1900" y="3718"/>
         </scene>
-        <!--View Controller-->
+        <!--Trend View Controller-->
         <scene sceneID="Mws-gX-NdR">
             <objects>
-                <viewController id="8oo-Xi-4eU" sceneMemberID="viewController">
+                <viewController id="8oo-Xi-4eU" customClass="TrendViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1kR-Xd-AQC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-jI-bCA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nix-nO-g4J">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="93"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageColelctionViewCell" id="jEf-u7-fxH" customClass="ImageCollectionViewCell" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="93" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TrendCollectionReusableView" id="LgA-fM-ojC">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-XM-Bv3" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="8w1-XM-Bv3" secondAttribute="bottom" id="JDY-SW-Gnb"/>
+                                        <constraint firstItem="8w1-XM-Bv3" firstAttribute="leading" secondItem="LgA-fM-ojC" secondAttribute="leading" id="hzb-lj-ktu"/>
+                                        <constraint firstAttribute="trailing" secondItem="8w1-XM-Bv3" secondAttribute="trailing" id="q0W-Eq-v9i"/>
+                                        <constraint firstItem="8w1-XM-Bv3" firstAttribute="top" secondItem="LgA-fM-ojC" secondAttribute="top" id="zHX-Ug-Nn4"/>
+                                    </constraints>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="8oo-Xi-4eU" id="dlR-ND-u84"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wZc-jI-bCA" firstAttribute="top" secondItem="1kR-Xd-AQC" secondAttribute="top" id="P7N-OM-SlM"/>
+                            <constraint firstItem="TXz-nK-gic" firstAttribute="trailing" secondItem="wZc-jI-bCA" secondAttribute="trailing" id="azG-yL-BWe"/>
+                            <constraint firstItem="wZc-jI-bCA" firstAttribute="leading" secondItem="TXz-nK-gic" secondAttribute="leading" id="ixI-ad-gFF"/>
+                            <constraint firstItem="TXz-nK-gic" firstAttribute="bottom" secondItem="wZc-jI-bCA" secondAttribute="bottom" id="ja9-il-M6K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TXz-nK-gic"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Trend_tab_icon" selectedImage="Trend_selected_tab_icon" id="C1h-j4-D0w">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="38P-uI-ltd"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="collectionView" destination="wZc-jI-bCA" id="AbK-yq-NO4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkA-Tb-GW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="1271"/>
+            <point key="canvasLocation" x="2648" y="1270"/>
         </scene>
         <!--Explore Page View Controller-->
         <scene sceneID="jyh-ec-GbU">
@@ -346,7 +396,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgu-LO-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="527"/>
+            <point key="canvasLocation" x="2648" y="527"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
@@ -382,24 +432,7 @@
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eTj-Z6-Tv1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="eTj-Z6-Tv1" secondAttribute="height" multiplier="1:1" id="tyc-oX-q3j"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
                                                 </view>
-                                                <constraints>
-                                                    <constraint firstItem="eTj-Z6-Tv1" firstAttribute="leading" secondItem="VnM-Z1-GYC" secondAttribute="leading" id="AP5-ry-c4h"/>
-                                                    <constraint firstItem="eTj-Z6-Tv1" firstAttribute="top" secondItem="VnM-Z1-GYC" secondAttribute="top" id="fre-4O-OeK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="eTj-Z6-Tv1" secondAttribute="trailing" id="hOr-MW-J86"/>
-                                                    <constraint firstAttribute="bottom" secondItem="eTj-Z6-Tv1" secondAttribute="bottom" id="r5U-2H-mN3"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="imageView" destination="eTj-Z6-Tv1" id="ZED-eA-fdF"/>
-                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ExploreSupplementaryCollectionReusableView" id="oG8-2E-OSN" customClass="ExploreSupplementaryView" customModule="Lenscape" customModuleProvider="target">
@@ -440,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3559" y="527"/>
+            <point key="canvasLocation" x="3400" y="527"/>
         </scene>
         <!--Photo Info View Controller-->
         <scene sceneID="OK1-Vx-lad">
@@ -549,9 +582,6 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="anr-Hf-IVc"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-fd-TT0">
                                 <rect key="frame" x="364" y="40" width="30" height="30"/>
@@ -591,6 +621,9 @@
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="Gti-fd-TT0" secondAttribute="trailing" constant="20" id="ubC-MU-dOt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NZ-bw-4On"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="XZf-dA-NuW"/>
+                        </connections>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -618,7 +651,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3557.971014492754" y="1270.9239130434783"/>
+            <point key="canvasLocation" x="6044.9275362318849" y="896.73913043478262"/>
         </scene>
         <!--Full Image View Controller-->
         <scene sceneID="GT2-tB-NVo">
@@ -673,7 +706,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4293" y="1270"/>
+            <point key="canvasLocation" x="6742.0289855072469" y="896.73913043478262"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -713,7 +746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4293" y="527"/>
+            <point key="canvasLocation" x="4106" y="527"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -738,7 +771,7 @@
                     <connections>
                         <outlet property="tabBar" destination="9fG-qd-fNW" id="3Zq-Sw-3yb"/>
                         <segue destination="C9r-nG-mFp" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
-                        <segue destination="8oo-Xi-4eU" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>
+                        <segue destination="aTU-4c-zJx" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>
                         <segue destination="Y2P-Iw-S2T" kind="relationship" relationship="viewControllers" id="EZw-h5-5ak"/>
                         <segue destination="PjG-zI-O8P" kind="relationship" relationship="viewControllers" id="0Lp-2d-23t"/>
                         <segue destination="iJT-Sh-56M" kind="relationship" relationship="viewControllers" id="tqD-Iq-IcK"/>
@@ -1376,6 +1409,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPo-xs-x3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3400.0000000000005" y="2909.5108695652175"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o00-o8-dTb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aTU-4c-zJx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Trend_tab_icon" selectedImage="Trend_selected_tab_icon" id="C1h-j4-D0w">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QXD-dQ-iP6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8oo-Xi-4eU" kind="relationship" relationship="rootViewController" id="Thb-YS-utG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CP-Av-aKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900.0000000000002" y="1270.9239130434783"/>
         </scene>
     </scenes>
     <resources>

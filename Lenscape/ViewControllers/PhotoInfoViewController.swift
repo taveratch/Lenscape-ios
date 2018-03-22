@@ -52,10 +52,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         let progress = translation.y / 2 / view.bounds.height
         let isSwipeTopToBottom = sender.velocity(in: nil).y > 0
         
-        if !isSwipeTopToBottom {
-            return
-        }
-        
         switch sender.state {
         case .began:
             dismissView()
@@ -64,7 +60,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             let currentPos = CGPoint(x: informationWrapper.center.x, y: translation.y + informationWrapper.center.y)
             Hero.shared.apply(modifiers: [.position(currentPos)], to: informationWrapper)
         default:
-            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.2 {
+            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.1, isSwipeTopToBottom {
                 Hero.shared.finish()
             }else {
                 Hero.shared.cancel()

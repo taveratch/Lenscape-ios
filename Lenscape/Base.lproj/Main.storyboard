@@ -582,9 +582,6 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="anr-Hf-IVc"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-fd-TT0">
                                 <rect key="frame" x="364" y="40" width="30" height="30"/>
@@ -624,6 +621,9 @@
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="Gti-fd-TT0" secondAttribute="trailing" constant="20" id="ubC-MU-dOt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NZ-bw-4On"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="XZf-dA-NuW"/>
+                        </connections>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>

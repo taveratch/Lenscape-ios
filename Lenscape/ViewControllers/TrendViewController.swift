@@ -29,7 +29,18 @@ class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        setupRefreshControl()
         // Do any additional setup after loading the view.
+    }
+    
+    private func setupRefreshControl() {
+        //Initialize Refresh Control (Pull to refresh)
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,7 +155,7 @@ extension TrendViewController: UICollectionViewDataSource {
             
             tabHeader.titleLabel.text = "Trend"
             self.descriptionLabel = tabHeader.descriptionLabel
-//
+            
             if numberOfPhotos == 0 {
                 Api.getTrendImageCount().done { count in self.numberOfPhotos = count }
             }

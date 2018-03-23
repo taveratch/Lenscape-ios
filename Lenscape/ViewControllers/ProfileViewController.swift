@@ -88,6 +88,11 @@ class ProfileViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
     
+    @objc private func showSettingsVC() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SettingsViewController.rawValue)
+        present(vc!, animated: true)
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -142,6 +147,10 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.nameLabel.text = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
                 profileHeader.descriptionLabel.text = user["email"] as? String
             }
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(showSettingsVC))
+            profileHeader.settingsButton.addGestureRecognizer(tap)
+            profileHeader.settingsButton.isUserInteractionEnabled = true
 
             return headerView
             

@@ -16,6 +16,7 @@
                 <outlet property="descriptionLabel" destination="0Oj-Bj-NOW" id="COa-Sw-mue"/>
                 <outlet property="nameLabel" destination="s0L-eB-fFw" id="g9T-aq-1aZ"/>
                 <outlet property="profileImage" destination="CYQ-HU-rwW" id="9QU-Vj-VRH"/>
+                <outlet property="settingsButton" destination="mW0-Rg-Wfz" id="jFk-OE-J9H"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,24 +27,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-vP-ltN" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYu-RX-ent" userLabel="Settings Tab">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                            <subviews>
-                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_tab_icon" translatesAutoresizingMaskIntoConstraints="NO" id="seB-Qo-Kyl">
-                                    <rect key="frame" x="324" y="7.5" width="35" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="c9n-SN-Zgt"/>
-                                        <constraint firstAttribute="width" constant="35" id="efJ-iG-Ssh"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="HU6-Yb-FsL"/>
-                                <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerY" secondItem="CYu-RX-ent" secondAttribute="centerY" id="o00-Va-vdZ"/>
-                                <constraint firstAttribute="trailing" secondItem="seB-Qo-Kyl" secondAttribute="trailing" constant="16" id="rbr-KW-9Fh"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-H8-XT5" userLabel="Profile Info">
                             <rect key="frame" x="0.0" y="50" width="375" height="250"/>
                             <subviews>
@@ -83,15 +66,34 @@
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerY" secondItem="NqI-H8-XT5" secondAttribute="centerY" id="s4k-bs-dRz"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW0-Rg-Wfz">
+                            <rect key="frame" x="316" y="24" width="35" height="35"/>
+                            <subviews>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="seB-Qo-Kyl">
+                                    <rect key="frame" x="7" y="7" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="ejg-fr-HBD"/>
+                                        <constraint firstAttribute="width" constant="20" id="vLA-7O-ck2"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="KZE-mI-p28"/>
+                                <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerY" secondItem="mW0-Rg-Wfz" secondAttribute="centerY" id="kCR-2a-TEp"/>
+                                <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerX" secondItem="mW0-Rg-Wfz" secondAttribute="centerX" id="lzy-Za-kR8"/>
+                                <constraint firstAttribute="width" constant="35" id="oFm-eS-mkD"/>
+                            </constraints>
+                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="CYu-RX-ent" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="2aW-Ov-JEt"/>
+                        <constraint firstItem="mW0-Rg-Wfz" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="24" id="2fo-wt-7FS"/>
                         <constraint firstAttribute="trailing" secondItem="NqI-H8-XT5" secondAttribute="trailing" id="D5J-Rp-hte"/>
-                        <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="CYu-RX-ent" secondAttribute="bottom" id="DqN-lw-axO"/>
-                        <constraint firstAttribute="trailing" secondItem="CYu-RX-ent" secondAttribute="trailing" id="LHP-b5-N0U"/>
-                        <constraint firstItem="CYu-RX-ent" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" id="Ti9-22-QHQ"/>
+                        <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="50" id="Zsu-KR-ovO"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="bEh-Ru-Whg"/>
+                        <constraint firstAttribute="trailing" secondItem="mW0-Rg-Wfz" secondAttribute="trailing" constant="24" id="rhA-zo-88K"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
@@ -118,11 +120,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="31" y="-7"/>
+            <point key="canvasLocation" x="30.5" y="-7"/>
         </view>
     </objects>
     <resources>
         <image name="Profile Image Placeholder" width="201" height="201"/>
-        <image name="Profile_tab_icon" width="24" height="25"/>
+        <image name="Settings" width="37" height="37"/>
     </resources>
 </document>

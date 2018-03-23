@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Image {
     var title: String?
@@ -17,6 +18,12 @@ struct Image {
     var link: String?
     var thumbnailLink: String?
     var datetime: Int64?
+    
+    private func getImageUrlFromType(type: String = "t", link: String) -> String {
+        let index = link.index(link.endIndex, offsetBy: -4)
+        return "\(link[..<index])\(type)\(link[index...])"
+    }
+    
     init(item: Any) {
         guard let image = item as? [String: Any] else {
             fatalError("\(item) is not instance of dictionary [String: Any]")
@@ -28,7 +35,6 @@ struct Image {
         height = image["height"] as? Int
         link = image["link"] as? String
         datetime = image["datetime"] as? Int64
-        let index = link!.index(link!.endIndex, offsetBy: -4)
-        thumbnailLink = "\(link![..<index])b\(link![index...])"
+        thumbnailLink = getImageUrlFromType(type: "l", link: link!)
     }
 }

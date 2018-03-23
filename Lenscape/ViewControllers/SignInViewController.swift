@@ -10,14 +10,17 @@ import UIKit
 import PromiseKit
 
 
-class SigninViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController {
     
-    let fb = FacebookLogin()
+    // MARK: - Attributes
     
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
     
+    private let fb = FacebookLogin()
+    
+    // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -25,16 +28,11 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - Actions
+    // MARK: - Actions
     @IBAction func facebookLogin(_ sender: UIButton) {
         fb.login(vc: self).done {
             token in //success opening and verifying facebook app.
-            Api.signinFacebook(token: token)
+            Api.signInFacebook(token: token)
                 .done { user in
                     UserController.saveUser(user: user)
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
@@ -44,29 +42,44 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             }.catch { error in }
     }
     
-    @IBAction func singin(_ sender: UIButton) {
+    @IBAction func signIn(_ sender: UIButton) {
         // show loading indicator
         signinButton.setTitle("", for: .normal)
         signinButton.loadingIndicator(show: true)
         
-        Api.signin(email: emailTextField.text!, password: passwordTextField.text!).done {
-            user in
-            UserController.saveUser(user: user)
-            self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
-            }.catch {
-                error in
-                
-                self.signinButton.setTitle("Sign in", for: .normal)
-                self.signinButton.loadingIndicator(show: false)
-                
-                let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Api.signIn(email: email, password: password).done { user in
+                UserController.saveUser(user: user)
+                self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
+                }.catch {
+                    error in
+                    
+                    self.signinButton.setTitle("Sign in", for: .normal)
+                    self.signinButton.loadingIndicator(show: false)
+                    
+                    let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
+    // MARK: - Navigation
+    private func changeViewController(identifier: String) {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier){
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
     
-    //MARK: - Delegation actions
+    @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
+        
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SignInViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -81,16 +94,5 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    
-    //MARK: - Navigation
-    private func changeViewController(identifier: String) {
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier){
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
-
-    @IBAction func unwindToSignin(sender: UIStoryboardSegue) {
-        
-    }
 }
 

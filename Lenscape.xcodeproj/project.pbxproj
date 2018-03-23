@@ -53,6 +53,8 @@
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
+		95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */; };
+		95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
@@ -114,6 +116,8 @@
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoInformationCard.xib; sourceTree = "<group>"; };
+		95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInformationCard.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
 				D0ED74BF2064151D00F197C1 /* UserProfile */,
 				95F85EF12063453A0059ACFB /* ImageCollectionViewCell */,
 				95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */,
@@ -308,6 +313,15 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		95D43EA72064DA0A00CB3517 /* PhotoInformationCard */ = {
+			isa = PBXGroup;
+			children = (
+				95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */,
+				95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */,
+			);
+			path = PhotoInformationCard;
+			sourceTree = "<group>";
+		};
 		95F85EF12063453A0059ACFB /* ImageCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +424,7 @@
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */,
 				957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */,
@@ -522,6 +537,7 @@
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
+				95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */,

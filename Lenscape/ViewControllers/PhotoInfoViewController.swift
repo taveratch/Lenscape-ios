@@ -14,9 +14,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     var image: Image?
     var uiImage: UIImage?
-    @IBOutlet weak var informationWrapper: UIView!
-    @IBOutlet weak var showMoreDetailButton: UIButton!
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var informationWrapper: PhotoInformationCard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +34,18 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         let url = URL(string: image!.link!)
         imageView.kf.setImage(with: url, placeholder: uiImage)
         
+        setupPhotoInfoCard()
+    }
+    
+    private func setupPhotoInfoCard() {
         //TODO - Change this
         if let user = UserController.getCurrentUser() {
             let url = URL(string: user["picture"] as! String)
-            profileImage.kf.setImage(with: url)
+            informationWrapper.profileImageView.kf.setImage(with: url)
         }
+        
+        // add action to button programmatically
+        informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
     }
     
     private func dismissView() {
@@ -77,7 +82,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         if velocity > 0.8 {
             moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: view.bounds.height-200)
             informationWrapper.removeGestureRecognizer(sender)
-            showMoreDetailButton.isHidden = false
+            informationWrapper.moreDetailButton.isHidden = false
         }
     }
     
@@ -103,7 +108,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(hidePhotoDetail(_:)))
         informationWrapper.addGestureRecognizer(panGesture)
         informationWrapper.isUserInteractionEnabled = true
-        showMoreDetailButton.isHidden = true
+        informationWrapper.moreDetailButton.isHidden = true
         moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: 100)
     }
 }

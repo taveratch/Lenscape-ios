@@ -21,7 +21,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    private lazy var imagePickerController = UIImagePickerController()
+    private var imagePickerController = UIImagePickerController()
     
     
     // MARK: - ViewController Lifecycle

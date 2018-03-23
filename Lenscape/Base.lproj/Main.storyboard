@@ -431,106 +431,12 @@
                                     <outletCollection property="gestureRecognizers" destination="p0H-l1-v5d" appends="YES" id="kOp-lo-kDj"/>
                                 </connections>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="una-p1-bF9" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="una-p1-bF9" customClass="PhotoInformationCard" customModule="Lenscape" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="536" width="414" height="1000"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-Mn-tgm">
-                                        <rect key="frame" x="30" y="30.000000000000007" width="137.33333333333334" height="102.66666666666669"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPE Building" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-Qs-0bN">
-                                                <rect key="frame" x="0.0" y="0.0" width="98" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at Kasetsart University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ad-sb-NoB">
-                                                <rect key="frame" x="0.0" y="32.333333333333371" width="137.33333333333334" height="15.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wiC-tf-U8D">
-                                                <rect key="frame" x="0.0" y="60" width="91.333333333333329" height="15"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red heart" translatesAutoresizingMaskIntoConstraints="NO" id="PMc-44-h14">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="15"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="PMc-44-h14" secondAttribute="height" multiplier="5:4" id="Sz3-2T-h7V"/>
-                                                            <constraint firstAttribute="height" constant="15" id="Wqy-qb-K9n"/>
-                                                            <constraint firstAttribute="width" constant="18.48" id="qW7-Yn-Zk8"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="513 hearts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hy-xY-9W0">
-                                                        <rect key="frame" x="27" y="0.0" width="64.333333333333329" height="15"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5 kilometers away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZA-xu-l7I">
-                                                <rect key="frame" x="0.0" y="87" width="119.66666666666667" height="15.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YWl-De-0ER">
-                                        <rect key="frame" x="272.66666666666669" y="30" width="111.33333333333331" height="67.666666666666671"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BdD-Sy-Hs7" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
-                                                <rect key="frame" x="35.666666666666629" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="BdD-Sy-Hs7" secondAttribute="height" multiplier="1:1" id="hbF-ZP-rjD"/>
-                                                    <constraint firstAttribute="width" constant="40" id="txl-oX-Qxe"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="circular" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taweerat Chaiman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-1e-F1i">
-                                                <rect key="frame" x="0.0" y="52" width="111.33333333333333" height="15.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfO-lf-coS">
-                                        <rect key="frame" x="145" y="151.33333333333337" width="124" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="124" id="7CB-o6-G80"/>
-                                        </constraints>
-                                        <state key="normal" title="More details">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="showMorePhotoDetail:" destination="WW7-xx-5WG" eventType="touchUpInside" id="4kd-Ua-KQ6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="YWl-De-0ER" secondAttribute="trailing" constant="30" id="7hg-C5-RbP"/>
-                                    <constraint firstItem="YWl-De-0ER" firstAttribute="top" secondItem="una-p1-bF9" secondAttribute="top" constant="30" id="Aev-mY-QT6"/>
-                                    <constraint firstItem="gfO-Mn-tgm" firstAttribute="top" secondItem="una-p1-bF9" secondAttribute="top" constant="30" id="N4k-TM-CmF"/>
-                                    <constraint firstItem="CfO-lf-coS" firstAttribute="top" secondItem="gfO-Mn-tgm" secondAttribute="bottom" constant="18" id="Vym-4I-BYE"/>
-                                    <constraint firstItem="CfO-lf-coS" firstAttribute="centerX" secondItem="una-p1-bF9" secondAttribute="centerX" id="fbq-qb-koU"/>
                                     <constraint firstAttribute="height" constant="1000" id="o82-P2-8Hr"/>
-                                    <constraint firstItem="gfO-Mn-tgm" firstAttribute="leading" secondItem="una-p1-bF9" secondAttribute="leading" constant="29.999999999999986" id="pOz-5z-zEG"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -591,8 +497,6 @@
                     <connections>
                         <outlet property="imageView" destination="qrW-7T-Q1F" id="X2U-O5-WkG"/>
                         <outlet property="informationWrapper" destination="una-p1-bF9" id="sck-RE-dOQ"/>
-                        <outlet property="profileImage" destination="BdD-Sy-Hs7" id="75K-h0-0z3"/>
-                        <outlet property="showMoreDetailButton" destination="CfO-lf-coS" id="Lc0-rd-FY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Gg-CY-g1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,7 +516,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6044.9275362318849" y="896.73913043478262"/>
+            <point key="canvasLocation" x="3400" y="1270"/>
         </scene>
         <!--Full Image View Controller-->
         <scene sceneID="GT2-tB-NVo">
@@ -667,7 +571,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6742.0289855072469" y="896.73913043478262"/>
+            <point key="canvasLocation" x="4097" y="1270"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -1407,7 +1311,6 @@
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
-        <image name="Red heart" width="40" height="33"/>
         <image name="Trend_selected_tab_icon" width="27" height="25"/>
         <image name="Trend_tab_icon" width="27" height="25"/>
     </resources>

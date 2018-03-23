@@ -18,6 +18,7 @@ class Api {
     static private let ACCESS_TOKEN = "c792d71fe59ca43a8a4083ce0b0db1b1817ffdb7"
     static private let USERNAME = "lenscapeme"
     
+    // MARK: - Authentication
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {
         guard var user: [String: Any] = response.valueForKeyPath(keyPath: "user")! else {
             fatalError("No key `user` found in auth response")
@@ -82,6 +83,7 @@ class Api {
         }
     }
     
+    // MARK: - Images
     static func uploadImage(data: Data, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         let headers : [String: String] = [
             "Authorization": "Bearer \(ACCESS_TOKEN)",
@@ -114,14 +116,12 @@ class Api {
         
         return Promise {
             seal in
-            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, body: nil, method: "GET").done {
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
                 response in
                 let data = response!["data"] as! [Any]
-                var images: [Image] = []
-                for item in data {
-                    images.append(Image(item: item))
-                }
-                images.sort(by: { return $0.datetime! > $1.datetime! })
+                let images = data
+                    .map { Image(item: $0) }
+                    .sorted { $0.datetime! > $1.datetime! }
                 seal.fulfill(images)
                 }.catch {
                     error in
@@ -140,7 +140,7 @@ class Api {
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
                 response in
                 let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
                 seal.fulfill(count)
@@ -161,14 +161,12 @@ class Api {
         
         return Promise {
             seal in
-            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, body: nil, method: "GET").done {
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
                 response in
                 let data = response!["data"] as! [Any]
-                var images: [Image] = []
-                for item in data {
-                    images.append(Image(item: item))
-                }
-                images.sort(by: { return $0.datetime! > $1.datetime! })
+                let images = data
+                    .map { Image(item: $0) }
+                    .sorted { $0.datetime! > $1.datetime! }
                 seal.fulfill(images)
                 }.catch {
                     error in
@@ -187,13 +185,38 @@ class Api {
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, body: nil, method: "GET").done {
+            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
                 response in
                 let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
                 seal.fulfill(count)
                 }.catch {
                     error in
                     seal.reject(error)
+            }
+        }
+    }
+    
+    static func fetchUserImages(page: Int = 0) -> Promise<[Image]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        let url = "https://api.imgur.com/3/album/eG5vv/images"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                let images = data
+                    .map { Image(item: $0) }
+                    .sorted { $0.datetime! > $1.datetime! }
+                seal.fulfill(images)
+                }.catch {
+                    error in
+                    seal.reject(error)
+                    print(error)
             }
         }
     }

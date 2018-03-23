@@ -13,9 +13,13 @@ import GoogleMaps
 
 class ExploreMapViewController: UIViewController {
     
+    // MARK: - UI Components
     @IBOutlet weak var mapView: GMSMapView!
+    
+    // MARK: - Attributes
     private let locationManager = CLLocationManager()
 
+    // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -24,12 +28,6 @@ class ExploreMapViewController: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.zoomGestures = true
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func back(_ sender: UIButton) {
@@ -38,17 +36,18 @@ class ExploreMapViewController: UIViewController {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension ExploreMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        
         locationManager.startUpdatingLocation()
     }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
             return
         }
-        
         locationManager.startUpdatingLocation()
     }
     
@@ -60,4 +59,5 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
     }
+    
 }

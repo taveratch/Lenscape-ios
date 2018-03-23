@@ -11,8 +11,8 @@ import Kingfisher
 import SwiftCarousel
 import Hero
 
-class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
-
+class ExploreViewController: AuthViewController {
+    
     //MARK: - UI Components
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
@@ -35,6 +35,9 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     var page = 0
     var shouldFetchMore = true
     
+    
+    // MARK: - ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoUploader.delegate = self
@@ -47,6 +50,8 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         super.viewDidAppear(animated)
         startUploadPhoto()
     }
+    
+    // MARK: - Private Methods
     
     private func startUploadPhoto() {
         if let uploadPhoto = UserDefaults.standard.data(forKey: "uploadPhotoData") {
@@ -92,7 +97,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
     
     private func setupUI() {
-        // MARK: - Seasoning Scroll View
+        // MARK: Seasoning Scroll View
         do {
             try seasoningScrollView.carousel.itemsFactory(itemsCount: 12, factory: labelForMonthItem)
         } catch  {
@@ -102,7 +107,7 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
         
-        //Initialize Refresh Control (Pull to refresh)
+        // Initialize Refresh Control (Pull to refresh)
         if #available(iOS 10.0, *) {
             collectionView.refreshControl = refreshControl
         } else {
@@ -150,7 +155,12 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
         
     }
     
-    // MARK: - PhotoUploaderDelegate functions
+}
+
+// MARK: - PhotoUploadingDelegate
+
+extension ExploreViewController: PhotoUploadingDelegate {
+    
     func didUpload() {
         self.progressViewWrapper.isHidden = true
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
@@ -180,7 +190,8 @@ class ExploreViewController: AuthViewController, PhotoUploadingDelegate {
     }
 }
 
-// MARK: - SwiftCarouselDelegate functions
+// MARK: - SwiftCarouselDelegate
+
 extension ExploreViewController: SwiftCarouselDelegate {
     
     func didSelectItem(item: UIView, index: Int, tapped: Bool) -> UIView? {
@@ -193,6 +204,7 @@ extension ExploreViewController: SwiftCarouselDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension ExploreViewController: UICollectionViewDataSource {
     
     //Number of items in section
@@ -224,7 +236,7 @@ extension ExploreViewController: UICollectionViewDataSource {
         return 1
     }
     
-    //CollectionView's supplementary (used as header)
+    // CollectionView's supplementary (used as header)
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -247,17 +259,18 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
             self.progressView = headerView.progressView
             self.progressViewWrapper = headerView.progressBarWrapper
-//            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-//            headerView.switchViewToMap.addGestureRecognizer(tap)
-//            headerView.switchViewToMap.isUserInteractionEnabled = true
+            //            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
+            //            headerView.switchViewToMap.addGestureRecognizer(tap)
+            //            headerView.switchViewToMap.isUserInteractionEnabled = true
             return headerView
+            
         default:
             assert(false, "Unexpected element kind")
         }
     }
 }
 
-//MARK: - Eqaully arrange cells in UICollectionView
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -284,7 +297,7 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if self.progressViewWrapper != nil, !self.progressViewWrapper.isHidden {
             return CGSize(width: collectionView.bounds.size.width, height: 135)
-        }else {
+        } else {
             return CGSize(width: collectionView.bounds.size.width, height: 135 - 40)
         }
     }

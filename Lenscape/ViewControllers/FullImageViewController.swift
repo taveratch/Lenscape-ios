@@ -11,18 +11,30 @@ import Hero
 
 class FullImageViewController: UIViewController, UIScrollViewDelegate {
 
+    // MARK: - UI Components
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    // MARK: - Attributes
     var image: Image?
     var placeHolderImage: UIImage?
     
+    // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initZoomComponent()
         initHeroComponents()
         initImageComponent()
     }
+    
+    // Before disappear, set back to portrait mode. (See more in AppDelegate)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParentViewController {
+            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        }
+    }
+    
     
     @objc func canRotate() -> Void {}
 
@@ -31,15 +43,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         self.hero.dismissViewController()
     }
     
-    
-    //Before disappear, set back to portrait mode. (See more in AppDelegate)
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if (self.isMovingFromParentViewController) {
-            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-        }
-    }
-    
+
     // MARK: - Initialize Image Component
     private func initImageComponent() {
         let url = URL(string: (image!.link!))
@@ -57,6 +61,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 6.0
     }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }

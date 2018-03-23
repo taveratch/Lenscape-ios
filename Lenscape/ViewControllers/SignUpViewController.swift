@@ -8,23 +8,20 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - UI Components
     
     @IBOutlet private var textFields: [TextField]!
-    
     @IBOutlet private weak var profileImageView: EnhancedUIImage!
     @IBOutlet private weak var firstNameTextField: TextField!
     @IBOutlet private weak var lastNameTextField: TextField!
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var confirmPasswordTextField: TextField!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet private weak var scrollView: UIScrollView!
     var activeField: UITextField?
-    
-    private let imagePickerController = UIImagePickerController()
+    private lazy var imagePickerController = UIImagePickerController()
     
     
     // MARK: - Computed properties
@@ -83,37 +80,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         present(imagePickerController, animated: true)
     }
     
-    // MARK: - UITextFieldDelegate
+    // MARK: - ViewController Lifecycle
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeField = textField
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        activeField = nil
-        return true
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        profileImageView.image = selectedImage
-        dismiss(animated: true)
-    }
-    
-    // MARK: - Controller lifecycle override
     override func viewDidLoad() {
         super.viewDidLoad()
         textFields.forEach { $0.delegate = self }
@@ -160,14 +128,42 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textFields.forEach { $0.hasError = false }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SignUpViewController: UITextFieldDelegate {
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        activeField = nil
+        return true
+    }
+    
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        profileImageView.image = selectedImage
+        dismiss(animated: true)
+    }
     
 }

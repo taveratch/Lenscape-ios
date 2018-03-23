@@ -10,7 +10,7 @@ import UIKit
 
 class ExplorePageViewController: UIPageViewController {
     
-    internal lazy var views:[UIViewController] = {
+    internal lazy var views: [UIViewController] = {
         return [newViewController(storyboardID: Identifier.ExploreViewController.rawValue),
                 newViewController(storyboardID: Identifier.ExploreMapViewController.rawValue)]
     }()
@@ -22,12 +22,6 @@ class ExplorePageViewController: UIPageViewController {
         if let firstView = views.first {
             setViewControllers([firstView], direction: .forward, animated: true, completion: nil)
         }
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func newViewController(storyboardID: String) -> UIViewController {

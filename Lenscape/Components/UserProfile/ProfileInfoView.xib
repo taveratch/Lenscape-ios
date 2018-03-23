@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileInfoView" customModule="Lenscape" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="f0G-fB-8JF"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="DEE-8b-A4M"/>
                 <outlet property="descriptionLabel" destination="0Oj-Bj-NOW" id="COa-Sw-mue"/>
                 <outlet property="nameLabel" destination="s0L-eB-fFw" id="g9T-aq-1aZ"/>
                 <outlet property="profileImage" destination="CYQ-HU-rwW" id="9QU-Vj-VRH"/>
@@ -23,22 +23,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-vP-ltN" userLabel="Profile View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-vP-ltN" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYu-RX-ent" userLabel="Settings Tab">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zz-uz-5u6">
-                                    <rect key="frame" x="302" y="10" width="57" height="30"/>
-                                    <state key="normal" title="Settings"/>
-                                </button>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile_tab_icon" translatesAutoresizingMaskIntoConstraints="NO" id="seB-Qo-Kyl">
+                                    <rect key="frame" x="324" y="7.5" width="35" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="c9n-SN-Zgt"/>
+                                        <constraint firstAttribute="width" constant="35" id="efJ-iG-Ssh"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="5zz-uz-5u6" firstAttribute="centerY" secondItem="CYu-RX-ent" secondAttribute="centerY" id="6Mb-xH-sMU"/>
                                 <constraint firstAttribute="height" constant="50" id="HU6-Yb-FsL"/>
-                                <constraint firstAttribute="trailing" secondItem="5zz-uz-5u6" secondAttribute="trailing" constant="16" id="yQ4-3c-8vU"/>
+                                <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerY" secondItem="CYu-RX-ent" secondAttribute="centerY" id="o00-Va-vdZ"/>
+                                <constraint firstAttribute="trailing" secondItem="seB-Qo-Kyl" secondAttribute="trailing" constant="16" id="rbr-KW-9Fh"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-H8-XT5" userLabel="Profile Info">
@@ -80,29 +83,30 @@
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerY" secondItem="NqI-H8-XT5" secondAttribute="centerY" id="s4k-bs-dRz"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKC-38-hpt" userLabel="Seperator">
-                            <rect key="frame" x="0.0" y="300" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.83442100760000004" green="0.83442100760000004" blue="0.83442100760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="JNn-TZ-hPz"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="bKC-38-hpt" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="1Pl-3u-SHq"/>
                         <constraint firstItem="CYu-RX-ent" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="2aW-Ov-JEt"/>
                         <constraint firstAttribute="trailing" secondItem="NqI-H8-XT5" secondAttribute="trailing" id="D5J-Rp-hte"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="CYu-RX-ent" secondAttribute="bottom" id="DqN-lw-axO"/>
-                        <constraint firstAttribute="trailing" secondItem="bKC-38-hpt" secondAttribute="trailing" id="GHT-DU-L7r"/>
-                        <constraint firstItem="bKC-38-hpt" firstAttribute="top" secondItem="NqI-H8-XT5" secondAttribute="bottom" id="L9q-Yw-nw9"/>
                         <constraint firstAttribute="trailing" secondItem="CYu-RX-ent" secondAttribute="trailing" id="LHP-b5-N0U"/>
                         <constraint firstItem="CYu-RX-ent" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" id="Ti9-22-QHQ"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="bEh-Ru-Whg"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,5 +123,6 @@
     </objects>
     <resources>
         <image name="Profile Image Placeholder" width="201" height="201"/>
+        <image name="Profile_tab_icon" width="24" height="25"/>
     </resources>
 </document>

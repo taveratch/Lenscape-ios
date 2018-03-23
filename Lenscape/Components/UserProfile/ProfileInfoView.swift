@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class ProfileInfoView: UIView {
     
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: EnhancedUIImage!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -25,18 +26,11 @@ class ProfileInfoView: UIView {
         commonInit()
     }
     
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle.init(for: type(of: self))
-        let nib = UINib(nibName: "ProfileInfoView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view
-    }
-    
     private func commonInit() {
-        let view = loadViewFromNib()
-        view.frame = self.bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
+        Bundle.main.loadNibNamed("ProfileInfoView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 
 }

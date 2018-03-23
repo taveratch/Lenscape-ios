@@ -11,15 +11,20 @@ import AVFoundation
 
 class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // MARK: - UI Components
     @IBOutlet weak var cameraRollButton: UIView!
     @IBOutlet weak var dismissButton: UIView!
     @IBOutlet weak var cameraButton: UIView!
     @IBOutlet weak var previewView: UIView!
+    
+    // MARK: - Attributes
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private lazy var imagePickerController = UIImagePickerController()
     
+    
+    // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
@@ -29,9 +34,8 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         initCamera()
     }
     
-    // Hide status bar
-    override var prefersStatusBarHidden: Bool {
-        return true
+    override func viewDidAppear(_ animated: Bool) {
+        videoPreviewLayer!.frame = previewView.bounds
     }
     
     
@@ -44,7 +48,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         showPhotoPostViewController(image: selectedImage)
     }
     
-    // MARK: - UI initialize functions
+    // MARK: - UI Initialization
     
     private func initCamera() {
         session = AVCaptureSession()
@@ -74,6 +78,11 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
             // ...
             // The remainder of the session setup will go here...
         }
+    }
+    
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     // MARK: - Gestures
@@ -119,7 +128,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - misc
+    // MARK: - Misc
     
     private func showPhotoPostViewController(image: UIImage?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -127,21 +136,12 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
             fatalError("identifier: \(Identifier.PhotoPostViewController.rawValue) is not type of PhotoPostViewController")
         }
         vc.image = image
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        videoPreviewLayer!.frame = previewView.bounds
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - unwind
+
+    // MARK: - Unwind
     @IBAction func unwindToCameraAndDisiss(sender: UIStoryboardSegue) {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false)
     }
 
 }

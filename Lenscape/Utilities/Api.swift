@@ -30,7 +30,8 @@ class Api {
         return user
     }
     
-    static func signin(email: String, password: String) -> Promise<[String: Any]> {
+    // MARK: Sign In
+    static func signIn(email: String, password: String) -> Promise<[String: Any]> {
         let body = [
             "email": email,
             "password": password
@@ -47,7 +48,7 @@ class Api {
         }
     }
     
-    static func signinFacebook(token: String) -> Promise<[String: Any]> {
+    static func signInFacebook(token: String) -> Promise<[String: Any]> {
         let body = [
             "access_token": token
         ]
@@ -64,6 +65,7 @@ class Api {
         }
     }
     
+    // MARK: Sign Up
     static func signUp(picture: UIImage? = nil, firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
         let body = [
             "firstname": firstName,

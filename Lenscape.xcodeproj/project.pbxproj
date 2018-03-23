@@ -32,15 +32,14 @@
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
-		95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SigninViewController.swift */; };
+		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
 		9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9565693A204C2BB3005F9F6B /* Assets.xcassets */; };
 		9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9565693C204C2BB3005F9F6B /* LaunchScreen.storyboard */; };
 		956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1703204EA69000CADB75 /* ExploreViewController.swift */; };
-		956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignupViewController.swift */; };
+		956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignUpViewController.swift */; };
 		957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */; };
 		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
-		957FA7DD205656AA005F2E91 /* OpenCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */; };
 		957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */; };
 		9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */; };
 		9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC31205CC86500779E38 /* PhotoUploader.swift */; };
@@ -93,16 +92,15 @@
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95656935204C2BB3005F9F6B /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		95656938204C2BB3005F9F6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9565693A204C2BB3005F9F6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9565693D204C2BB3005F9F6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9565693F204C2BB3005F9F6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		956F1703204EA69000CADB75 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		956F1705204EAB0000CADB75 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		956F1705204EAB0000CADB75 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasoningScrollView.xib; sourceTree = "<group>"; };
 		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
-		957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraViewController.swift; sourceTree = "<group>"; };
 		957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
 		9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadingDelegate.swift; sourceTree = "<group>"; };
 		9582DC31205CC86500779E38 /* PhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploader.swift; sourceTree = "<group>"; };
@@ -234,13 +232,12 @@
 		956F1702204EA63600CADB75 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				95656935204C2BB3005F9F6B /* SigninViewController.swift */,
+				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
-				957FA7DC205656AA005F2E91 /* OpenCameraViewController.swift */,
 				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
 				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
@@ -249,7 +246,7 @@
 				953048A32062845600EB5F3F /* PortraitViewController.swift */,
 				953048A120627C5B00EB5F3F /* FullImageViewController.swift */,
 				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
-				956F1705204EAB0000CADB75 /* SignupViewController.swift */,
+				956F1705204EAB0000CADB75 /* SignUpViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
 			);
 			path = ViewControllers;
@@ -507,14 +504,13 @@
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
 				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
-				95656936204C2BB3005F9F6B /* SigninViewController.swift in Sources */,
+				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
-				957FA7DD205656AA005F2E91 /* OpenCameraViewController.swift in Sources */,
-				956F1706204EAB0000CADB75 /* SignupViewController.swift in Sources */,
+				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
 				95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,

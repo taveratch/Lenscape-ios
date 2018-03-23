@@ -10,6 +10,8 @@ import UIKit
 
 class TrendViewController: UIViewController {
 
+    // MARK: - Attributes
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -26,32 +28,20 @@ class TrendViewController: UIViewController {
         }
     }
     
+    // MARK: - ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         setupRefreshControl()
-        // Do any additional setup after loading the view.
-    }
-    
-    private func setupRefreshControl() {
-        //Initialize Refresh Control (Pull to refresh)
-        if #available(iOS 10.0, *) {
-            collectionView.refreshControl = refreshControl
-        } else {
-            collectionView.addSubview(refreshControl)
-        }
-        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initImagesFromAPI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    // MARK: - Private Methods
     
     @objc private func initImagesFromAPI() {
         shouldFetchMore = true
@@ -95,18 +85,20 @@ class TrendViewController: UIViewController {
         vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    private func setupRefreshControl() {
+        //Initialize Refresh Control (Pull to refresh)
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
     }
-    */
-
+    
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension TrendViewController: UICollectionViewDataSource {
 
@@ -137,7 +129,7 @@ extension TrendViewController: UICollectionViewDataSource {
         return cell
     }
     
-    //CollectionView's supplementary (used as header)
+    // CollectionView's supplementary (used as header)
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -158,14 +150,16 @@ extension TrendViewController: UICollectionViewDataSource {
             if numberOfPhotos == 0 {
                 Api.getTrendImageCount().done { count in self.numberOfPhotos = count }
             }
+            
             return headerView
+            
         default:
             assert(false, "Unexpected element kind")
         }
     }
 }
 
-//MARK: - Eqaully arrange cells in UICollectionView
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension TrendViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -174,7 +168,7 @@ extension TrendViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    //Space between column
+    // Space between column
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0.5
     }

@@ -15,6 +15,7 @@ class ProfileInfoView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: EnhancedUIImage!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var settingsButton: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

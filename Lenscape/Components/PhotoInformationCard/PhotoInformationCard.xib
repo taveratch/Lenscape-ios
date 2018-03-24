@@ -107,19 +107,19 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n68-EF-DAB">
-                    <rect key="frame" x="30" y="219.5" width="315" height="228"/>
+                    <rect key="frame" x="0.0" y="219.5" width="375" height="248"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxI-PY-cQl">
-                            <rect key="frame" x="0.0" y="0.0" width="33" height="16"/>
+                            <rect key="frame" x="30" y="0.0" width="33" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5r-nS-IJj" customClass="GMSMapView">
-                            <rect key="frame" x="0.0" y="28" width="315" height="200"/>
+                            <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="qbH-M1-H6d"/>
+                                <constraint firstAttribute="height" constant="220" id="qbH-M1-H6d"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -129,7 +129,7 @@
                         <constraint firstAttribute="bottom" secondItem="x5r-nS-IJj" secondAttribute="bottom" id="ALr-LT-oFV"/>
                         <constraint firstItem="pxI-PY-cQl" firstAttribute="top" secondItem="n68-EF-DAB" secondAttribute="top" id="BUH-Sw-zfa"/>
                         <constraint firstItem="x5r-nS-IJj" firstAttribute="top" secondItem="pxI-PY-cQl" secondAttribute="bottom" constant="12" id="iW5-Lg-DHZ"/>
-                        <constraint firstItem="pxI-PY-cQl" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" id="kyZ-wr-dEF"/>
+                        <constraint firstItem="pxI-PY-cQl" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" constant="30" id="kyZ-wr-dEF"/>
                         <constraint firstAttribute="trailing" secondItem="x5r-nS-IJj" secondAttribute="trailing" id="v7K-uv-4Hh"/>
                     </constraints>
                 </view>
@@ -142,9 +142,9 @@
                 <constraint firstItem="n68-EF-DAB" firstAttribute="top" secondItem="0vI-U6-4uZ" secondAttribute="bottom" constant="18" id="ZWj-Jm-SaD"/>
                 <constraint firstItem="0vI-U6-4uZ" firstAttribute="top" secondItem="UBh-2w-CRR" secondAttribute="bottom" constant="18" id="ek0-f7-w4V"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uro-i3-tCF" secondAttribute="trailing" constant="30" id="mgh-mq-JSp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n68-EF-DAB" secondAttribute="trailing" constant="30" id="paE-aa-ECe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n68-EF-DAB" secondAttribute="trailing" id="paE-aa-ECe"/>
                 <constraint firstItem="uro-i3-tCF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="xSr-RF-RUF"/>
-                <constraint firstItem="n68-EF-DAB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="ytg-uE-Yjm"/>
+                <constraint firstItem="n68-EF-DAB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ytg-uE-Yjm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <userDefinedRuntimeAttributes>

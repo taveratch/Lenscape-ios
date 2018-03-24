@@ -43,7 +43,7 @@ class ExploreViewController: AuthViewController {
         photoUploader.delegate = self
         collectionView.delegate = self
         setupUI()
-        initImagesFromAPIWithoutCache()
+        initImagesFromAPI()
     }
     
     override func viewDidAppear(_ animated: Bool) {

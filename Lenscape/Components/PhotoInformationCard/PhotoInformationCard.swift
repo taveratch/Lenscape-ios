@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @IBDesignable
 class PhotoInformationCard: UIView {
 
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var moreDetailButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     /*

@@ -23,15 +23,11 @@ class SettingsTableViewController: UITableViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapSignOut))
         signOutButton.addGestureRecognizer(tap)
     }
-
-    @IBAction func dismiss(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     @IBAction func back(_ sender: UIBarButtonItem) {
        self.dismiss(animated: true, completion: nil)

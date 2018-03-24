@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoInformationCard" customModule="Lenscape" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="x5r-nS-IJj" id="HhK-HN-T3g"/>
                 <outlet property="moreDetailButton" destination="0vI-U6-4uZ" id="nZC-iV-YbN"/>
                 <outlet property="profileImageView" destination="39v-cM-yeC" id="bpn-7S-JUF"/>
             </connections>
@@ -105,8 +106,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n68-EF-DAB">
-                    <rect key="frame" x="30" y="227" width="315" height="182"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n68-EF-DAB">
+                    <rect key="frame" x="30" y="219.5" width="315" height="228"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxI-PY-cQl">
                             <rect key="frame" x="0.0" y="0.0" width="33" height="16"/>
@@ -114,9 +115,12 @@
                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5r-nS-IJj">
-                            <rect key="frame" x="0.0" y="27" width="315" height="128"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5r-nS-IJj" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="28" width="315" height="200"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="qbH-M1-H6d"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,7 +128,7 @@
                         <constraint firstItem="x5r-nS-IJj" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" id="6Le-Is-OVe"/>
                         <constraint firstAttribute="bottom" secondItem="x5r-nS-IJj" secondAttribute="bottom" id="ALr-LT-oFV"/>
                         <constraint firstItem="pxI-PY-cQl" firstAttribute="top" secondItem="n68-EF-DAB" secondAttribute="top" id="BUH-Sw-zfa"/>
-                        <constraint firstItem="x5r-nS-IJj" firstAttribute="top" secondItem="pxI-PY-cQl" secondAttribute="bottom" id="iW5-Lg-DHZ"/>
+                        <constraint firstItem="x5r-nS-IJj" firstAttribute="top" secondItem="pxI-PY-cQl" secondAttribute="bottom" constant="12" id="iW5-Lg-DHZ"/>
                         <constraint firstItem="pxI-PY-cQl" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" id="kyZ-wr-dEF"/>
                         <constraint firstAttribute="trailing" secondItem="x5r-nS-IJj" secondAttribute="trailing" id="v7K-uv-4Hh"/>
                     </constraints>

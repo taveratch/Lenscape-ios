@@ -22,6 +22,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         //        https://github.com/lkzhao/Hero/issues/187
         self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
+        
+        setupPhotoInfoCard()
         self.setupUI()
     }
     
@@ -33,8 +35,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     private func setupUI() {
         let url = URL(string: image!.link!)
         imageView.kf.setImage(with: url, placeholder: uiImage)
-        
-        setupPhotoInfoCard()
     }
     
     private func setupPhotoInfoCard() {

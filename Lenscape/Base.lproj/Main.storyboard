@@ -1097,16 +1097,29 @@
         <!--Settings-->
         <scene sceneID="4b0-qo-UNe">
             <objects>
-                <tableViewController id="e5Q-65-89m" customClass="SettingsTableViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e5Q-65-89m" customClass="SettingsTableViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="qBL-uj-HgI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Qcq-ee-LGr">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Settings" id="niX-6I-aEt">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Tf8-7m-nzc">
+                                        <connections>
+                                            <action selector="back:" destination="e5Q-65-89m" id="rbU-ju-aMw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <sections>
                             <tableViewSection headerTitle="Basic settings" id="1C4-3A-fmT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="54f-yr-ysp" style="IBUITableViewCellStyleDefault" id="EXz-L9-70Y">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EXz-L9-70Y" id="Yqx-Zm-1v0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1123,7 +1136,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="JUK-1h-PMf" style="IBUITableViewCellStyleDefault" id="Nnp-kZ-byG">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="143.33333333333334" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nnp-kZ-byG" id="ZQU-Ee-luB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1144,7 +1157,7 @@
                             <tableViewSection headerTitle="" id="bif-Vf-bHx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="KgA-Bk-ssb" style="IBUITableViewCellStyleDefault" id="GlZ-U6-Hti">
-                                        <rect key="frame" x="0.0" y="179.33333333333334" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="223.33333333333334" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GlZ-U6-Hti" id="K0Z-Cf-7ce">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1161,7 +1174,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="BiT-kd-AxY" style="IBUITableViewCellStyleDefault" id="Wzt-Ot-Vc5">
-                                        <rect key="frame" x="0.0" y="223.33333333333334" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="267.33333333333337" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wzt-Ot-Vc5" id="Umj-AY-xaE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1178,7 +1191,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sUL-h4-sh3" style="IBUITableViewCellStyleDefault" id="vnF-aF-VvS">
-                                        <rect key="frame" x="0.0" y="267.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="311.33333333333337" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnF-aF-VvS" id="JiN-5n-qL3">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1199,7 +1212,7 @@
                             <tableViewSection id="mqy-gV-oKh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="AGx-NE-zJG" style="IBUITableViewCellStyleDefault" id="PQ9-Nq-awj">
-                                        <rect key="frame" x="0.0" y="347.33333333333337" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="391.33333333333337" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PQ9-Nq-awj" id="bE2-eY-t7z">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -1224,11 +1237,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="eWG-2I-VNS">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="md5-ke-0hu">
-                            <connections>
-                                <action selector="back:" destination="e5Q-65-89m" id="phd-oa-vit"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="md5-ke-0hu"/>
                     </navigationItem>
                     <connections>
                         <outlet property="signOutButton" destination="PQ9-Nq-awj" id="TcS-wd-AB5"/>
@@ -1262,10 +1271,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Ah0-Ml-t2p">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MnS-XG-wC7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MnS-XG-wC7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3I6-IN-CD7">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

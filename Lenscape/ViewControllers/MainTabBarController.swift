@@ -11,18 +11,20 @@ import UIKit
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var currentSelectedIndex: Int = 0
+    var sb: UIStoryboard?
+    var cameraModal: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        sb = UIStoryboard(name: "Main", bundle: nil)
+        cameraModal = sb?.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let identifier = viewController.restorationIdentifier ?? ""
         if identifier == Identifier.OpenCameraViewController.rawValue {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
-            present(vc, animated: true, completion: nil)
+            present(cameraModal!, animated: true, completion: nil)
             return false
         }
         return true

@@ -27,6 +27,17 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             present(cameraModal!, animated: true, completion: nil)
             return false
         }
+        
+        if selectedViewController == nil || selectedViewController == viewController {
+            return false
+        }
+        
+//        // Uncomment this to enable tab changing animation
+//        let fromView = selectedViewController!.view!
+//        let toView = viewController.view!
+//
+//        UIView.transition(from: fromView, to: toView, duration: 0.2, options: [.transitionCrossDissolve])
+        
         return true
     }
     

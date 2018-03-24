@@ -83,6 +83,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: view.bounds.height-200)
             informationWrapper.removeGestureRecognizer(sender)
             informationWrapper.moreDetailButton.isHidden = false
+            // Enable clicking on ImageView
+            imageView.isUserInteractionEnabled = true
         }
     }
     
@@ -110,5 +112,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.isUserInteractionEnabled = true
         informationWrapper.moreDetailButton.isHidden = true
         moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: 100)
+        // Prevent showing Full Image from clicking on ImageView
+        imageView.isUserInteractionEnabled = false
     }
 }

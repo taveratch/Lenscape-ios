@@ -24,6 +24,9 @@ class SettingsTableViewController: UITableViewController {
         signOutButton.addGestureRecognizer(tap)
     }
 
+    @IBAction func dismiss(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

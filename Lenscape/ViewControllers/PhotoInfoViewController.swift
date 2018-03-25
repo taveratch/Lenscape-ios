@@ -39,8 +39,17 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         informationWrapper.mapView.isMyLocationEnabled = true
         if image?.location != nil {
-            let coordinate = CLLocationCoordinate2D.init(latitude: (image?.location?.latitude)!, longitude: (image?.location?.longitude)!)
+            let coordinate = CLLocationCoordinate2D(latitude: (image?.location?.latitude)!, longitude: (image?.location?.longitude)!)
             informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
+            
+            // Add marker to map
+            let redMarker = UIImage(named: "Maps Marker")!.withRenderingMode(.alwaysOriginal)
+            let markerView = UIImageView(image: redMarker)
+            markerView.bounds.size.width = 40
+            markerView.bounds.size.height = 40
+            let marker = GMSMarker(position: coordinate)
+            marker.iconView = markerView
+            marker.map = informationWrapper.mapView
         }
     }
     

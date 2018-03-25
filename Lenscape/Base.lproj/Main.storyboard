@@ -1040,6 +1040,7 @@
                     <navigationItem key="navigationItem" id="R4G-l6-hCH"/>
                     <connections>
                         <outlet property="emailTextField" destination="w4n-FG-245" id="VBO-de-Doq"/>
+                        <outlet property="facebookButton" destination="UhS-UM-ckf" id="xyh-21-iPH"/>
                         <outlet property="passwordTextField" destination="l1o-7a-yZi" id="hrA-LB-KUS"/>
                         <outlet property="signinButton" destination="YiT-4T-dvt" id="E8h-Cx-xv3"/>
                     </connections>

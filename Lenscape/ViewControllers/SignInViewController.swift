@@ -14,6 +14,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - Attributes
     
+    @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var emailTextField: TextField!
@@ -24,23 +25,30 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("xxxxx: \(emailTextField)")
-//        emailTextField.delegate = self
-//        passwordTextField.delegate = self
+        //        emailTextField.delegate = self
+        //        passwordTextField.delegate = self
         self.navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - Actions
     @IBAction func facebookLogin(_ sender: UIButton) {
+        facebookButton.setTitle("", for: .normal)
+        facebookButton.loadingIndicator(show: true)
         fb.login(vc: self).done {
             token in //success opening and verifying facebook app.
             Api.signInFacebook(token: token)
                 .done { user in
+                    self.facebookButton.setTitle("Facebook", for: .normal)
+                    self.facebookButton.loadingIndicator(show: false)
                     UserController.saveUser(user: user)
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch { error in
                     fatalError("Failed to authenticate facebook token with lenscape server")
             }
-            }.catch { error in }
+            }.catch { error in
+                self.facebookButton.setTitle("Facebook", for: .normal)
+                self.facebookButton.loadingIndicator(show: false)
+        }
     }
     
     @IBAction func signIn(_ sender: UIButton) {

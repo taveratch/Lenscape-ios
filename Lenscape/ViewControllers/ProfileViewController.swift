@@ -89,7 +89,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func showSettingsVC() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SettingsViewController.rawValue)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SettingsNavigationController.rawValue)
         present(vc!, animated: true)
     }
     

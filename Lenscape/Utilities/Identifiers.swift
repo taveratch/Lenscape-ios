@@ -22,4 +22,5 @@ enum Identifier: String {
     case FullImageViewController = "FullImageViewController"
     case TrendCollectionReusableView = "TrendCollectionReusableView"
     case SettingsViewController = "SettingsViewController"
+    case SettingsNavigationController = "SettingsNavigationController"
 }

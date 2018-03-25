@@ -18,6 +18,7 @@ struct Image {
     var link: String?
     var thumbnailLink: String?
     var datetime: Int64?
+    var location: Location?
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
         let index = link.index(link.endIndex, offsetBy: -4)
@@ -36,5 +37,22 @@ struct Image {
         link = image["link"] as? String
         datetime = image["datetime"] as? Int64
         thumbnailLink = getImageUrlFromType(type: "l", link: link!)
+        
+        //TODO: Change this
+        let locationString = image["description"] as? String
+        if locationString != nil, let locationDic = convertToDictionary(text: locationString!){
+            location = Location(latitude: locationDic["latitude"] as! Double, longitude: locationDic["longitude"] as! Double)
+        }
+    }
+    
+    private func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
 }

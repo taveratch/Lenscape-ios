@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import GoogleMaps
 
 class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
@@ -35,6 +36,12 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     private func setupUI() {
         let url = URL(string: image!.link!)
         imageView.kf.setImage(with: url, placeholder: uiImage)
+        
+        informationWrapper.mapView.isMyLocationEnabled = true
+        if image?.location != nil {
+            let coordinate = CLLocationCoordinate2D.init(latitude: (image?.location?.latitude)!, longitude: (image?.location?.longitude)!)
+            informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
+        }
     }
     
     private func setupPhotoInfoCard() {

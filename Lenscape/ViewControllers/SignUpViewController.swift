@@ -71,7 +71,10 @@ class SignUpViewController: UIViewController {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }.catch { error in
-                print(error)
+                let alert = UIAlertController(title: "Message", message: error.domain
+                , preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
         }
         
     }

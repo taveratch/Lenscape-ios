@@ -24,9 +24,8 @@ class SignInViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("xxxxx: \(emailTextField)")
-        //        emailTextField.delegate = self
-        //        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -34,12 +33,14 @@ class SignInViewController: UIViewController {
     @IBAction func facebookLogin(_ sender: UIButton) {
         facebookButton.setTitle("", for: .normal)
         facebookButton.loadingIndicator(show: true)
+        
         fb.login(vc: self).done {
             token in //success opening and verifying facebook app.
             Api.signInFacebook(token: token)
                 .done { user in
                     self.facebookButton.setTitle("Facebook", for: .normal)
                     self.facebookButton.loadingIndicator(show: false)
+                    
                     UserController.saveUser(user: user)
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch { error in
@@ -67,8 +68,8 @@ class SignInViewController: UIViewController {
                     self.signinButton.loadingIndicator(show: false)
                     
                     let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
             }
         }
     }

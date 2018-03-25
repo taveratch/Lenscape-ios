@@ -12,6 +12,7 @@ import GoogleMaps
 @IBDesignable
 class PhotoInformationCard: UIView {
 
+    @IBOutlet var hiddenView: [UIView]!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var moreDetailButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -45,6 +46,12 @@ class PhotoInformationCard: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
+    }
+    
+    func isHideInfo(hide: Bool) {
+        for view in hiddenView {
+            view.isHidden = hide
+        }
     }
 
 }

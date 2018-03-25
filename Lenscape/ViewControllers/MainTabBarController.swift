@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
@@ -14,10 +15,17 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     var sb: UIStoryboard?
     var cameraModal: UIViewController?
     
+    private let clLocationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        clLocationManager.delegate = self
+        clLocationManager.requestWhenInUseAuthorization()
+        clLocationManager.startUpdatingLocation()
+        
         cameraModal = sb?.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
     }
     
@@ -49,4 +57,24 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
+}
+
+
+//Update current location since app is running
+extension MainTabBarController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        guard status == .authorizedWhenInUse else {
+            return
+        }
+        clLocationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            return
+        }
+        let locationManager = LocationManager.getInstance()
+        locationManager.setCurrentLocation(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+        clLocationManager.stopUpdatingLocation()
+    }
 }

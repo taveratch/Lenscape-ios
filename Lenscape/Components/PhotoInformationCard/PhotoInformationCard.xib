@@ -16,6 +16,7 @@
                 <outlet property="mapView" destination="x5r-nS-IJj" id="HhK-HN-T3g"/>
                 <outlet property="moreDetailButton" destination="0vI-U6-4uZ" id="nZC-iV-YbN"/>
                 <outlet property="profileImageView" destination="39v-cM-yeC" id="bpn-7S-JUF"/>
+                <outletCollection property="hiddenView" destination="n68-EF-DAB" collectionClass="NSMutableArray" id="geQ-oh-Hmr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -107,7 +108,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n68-EF-DAB">
-                    <rect key="frame" x="0.0" y="219.5" width="375" height="248"/>
+                    <rect key="frame" x="0.0" y="201.5" width="375" height="248"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxI-PY-cQl">
                             <rect key="frame" x="30" y="0.0" width="33" height="16"/>
@@ -128,6 +129,7 @@
                         <constraint firstItem="x5r-nS-IJj" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" id="6Le-Is-OVe"/>
                         <constraint firstAttribute="bottom" secondItem="x5r-nS-IJj" secondAttribute="bottom" id="ALr-LT-oFV"/>
                         <constraint firstItem="pxI-PY-cQl" firstAttribute="top" secondItem="n68-EF-DAB" secondAttribute="top" id="BUH-Sw-zfa"/>
+                        <constraint firstAttribute="height" constant="248" id="haF-6E-eaM"/>
                         <constraint firstItem="x5r-nS-IJj" firstAttribute="top" secondItem="pxI-PY-cQl" secondAttribute="bottom" constant="12" id="iW5-Lg-DHZ"/>
                         <constraint firstItem="pxI-PY-cQl" firstAttribute="leading" secondItem="n68-EF-DAB" secondAttribute="leading" constant="30" id="kyZ-wr-dEF"/>
                         <constraint firstAttribute="trailing" secondItem="x5r-nS-IJj" secondAttribute="trailing" id="v7K-uv-4Hh"/>
@@ -139,7 +141,7 @@
                 <constraint firstItem="0vI-U6-4uZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1Y0-sZ-heI"/>
                 <constraint firstItem="UBh-2w-CRR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="4io-AO-XyI"/>
                 <constraint firstItem="UBh-2w-CRR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="WYU-sX-mos"/>
-                <constraint firstItem="n68-EF-DAB" firstAttribute="top" secondItem="0vI-U6-4uZ" secondAttribute="bottom" constant="18" id="ZWj-Jm-SaD"/>
+                <constraint firstItem="n68-EF-DAB" firstAttribute="top" secondItem="0vI-U6-4uZ" secondAttribute="bottom" id="ZWj-Jm-SaD"/>
                 <constraint firstItem="0vI-U6-4uZ" firstAttribute="top" secondItem="UBh-2w-CRR" secondAttribute="bottom" constant="18" id="ek0-f7-w4V"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uro-i3-tCF" secondAttribute="trailing" constant="30" id="mgh-mq-JSp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n68-EF-DAB" secondAttribute="trailing" id="paE-aa-ECe"/>

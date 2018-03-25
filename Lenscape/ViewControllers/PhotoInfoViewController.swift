@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import GoogleMaps
 
 class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
@@ -20,7 +21,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         super.viewDidLoad()
         self.imageView.hero.id = self.image?.thumbnailLink!
         
-        //        https://github.com/lkzhao/Hero/issues/187
+        //https://github.com/lkzhao/Hero/issues/187
         self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
         setupPhotoInfoCard()
@@ -35,6 +36,21 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     private func setupUI() {
         let url = URL(string: image!.link!)
         imageView.kf.setImage(with: url, placeholder: uiImage)
+        
+        informationWrapper.mapView.isMyLocationEnabled = true
+        if image?.location != nil {
+            let coordinate = CLLocationCoordinate2D(latitude: (image?.location?.latitude)!, longitude: (image?.location?.longitude)!)
+            informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
+            
+            // Add marker to map
+            let redMarker = UIImage(named: "Maps Marker")!.withRenderingMode(.alwaysOriginal)
+            let markerView = UIImageView(image: redMarker)
+            markerView.bounds.size.width = 40
+            markerView.bounds.size.height = 40
+            let marker = GMSMarker(position: coordinate)
+            marker.iconView = markerView
+            marker.map = informationWrapper.mapView
+        }
     }
     
     private func setupPhotoInfoCard() {
@@ -46,6 +62,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         // add action to button programmatically
         informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
+        
+        informationWrapper.isHideInfo(hide: true)
     }
     
     private func dismissView() {
@@ -56,7 +74,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     @IBAction func dismissBySwipe(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: nil)
         let progress = translation.y / 2 / view.bounds.height
-        let isSwipeTopToBottom = sender.velocity(in: nil).y > 0
         
         switch sender.state {
         case .began:
@@ -80,11 +97,14 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         let progress = translation.y / 2 / view.bounds.height
         let velocity = progress + sender.velocity(in: nil).y / view.bounds.height
         if velocity > 0.8 {
-            moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: view.bounds.height-200)
-            informationWrapper.removeGestureRecognizer(sender)
-            informationWrapper.moreDetailButton.isHidden = false
-            // Enable clicking on ImageView
-            imageView.isUserInteractionEnabled = true
+            moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: view.bounds.height-200, completion: {
+                isFinsihed in
+                self.informationWrapper.removeGestureRecognizer(sender)
+                self.informationWrapper.moreDetailButton.isHidden = false
+                // Enable clicking on ImageView
+                self.imageView.isUserInteractionEnabled = true
+                self.informationWrapper.isHideInfo(hide: true)
+            })
         }
     }
     
@@ -100,10 +120,10 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         present(vc, animated: true)
     }
     
-    private func moveTo(view: UIView, x: CGFloat, y:CGFloat, duration: Double = 0.3) {
+    private func moveTo(view: UIView, x: CGFloat, y:CGFloat, duration: Double = 0.3, completion: ((Bool) -> Void)? = { isFinished in }) {
         UIView.animate(withDuration: duration, animations: {
             view.frame = CGRect(x: x, y: y, width: view.bounds.width, height: view.bounds.height)
-        })
+        }, completion: completion)
     }
     
     @IBAction func showMorePhotoDetail(_ sender: UIButton) {
@@ -114,5 +134,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: 100)
         // Prevent showing Full Image from clicking on ImageView
         imageView.isUserInteractionEnabled = false
+        informationWrapper.isHideInfo(hide: false)
     }
 }

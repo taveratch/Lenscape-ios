@@ -23,8 +23,9 @@ class SignInViewController: UIViewController {
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
+        print("xxxxx: \(emailTextField)")
+//        emailTextField.delegate = self
+//        passwordTextField.delegate = self
         self.navigationController?.isNavigationBarHidden = true
     }
     

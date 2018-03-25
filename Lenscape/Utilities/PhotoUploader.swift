@@ -12,14 +12,14 @@ class PhotoUploader {
     var delegate: PhotoUploadingDelegate?
     var isUploading: Bool = false
     
-    func upload(data: Data) {
+    func upload(data: Data, location: Location? = nil) {
         isUploading = true
         self.delegate?.willUpload()
         let progressHandler = {
             (completedUnit: Int64, totalUnit: Int64) -> Void in
             self.delegate?.uploading(completedUnit: Double(completedUnit), totalUnit: Double(totalUnit))
         }
-        Api.uploadImage(data: data, progressHandler: progressHandler).done {
+        Api.uploadImage(data: data, location: location, progressHandler: progressHandler).done {
             response in
             self.delegate?.didUpload()
         }

@@ -55,7 +55,8 @@ class ExploreViewController: AuthViewController {
     
     private func startUploadPhoto() {
         if let uploadPhoto = UserDefaults.standard.data(forKey: "uploadPhotoData") {
-            photoUploader.upload(data: uploadPhoto)
+            let locationManager = LocationManager.getInstance()
+            photoUploader.upload(data: uploadPhoto, location: locationManager.getCurrentLocation())
             UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
         }
     }

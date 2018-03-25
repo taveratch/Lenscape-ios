@@ -52,7 +52,6 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocation")
         guard let location = locations.first else {
             return
         }

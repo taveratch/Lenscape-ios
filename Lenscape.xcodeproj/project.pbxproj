@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		687686D0758CD9295E1F94F0 /* Pods_Lenscape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */; };
 		95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95028D172061FBF600222BFA /* ExplorePageViewController.swift */; };
+		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
+		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
 		95108EF42054247A0072AC48 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF32054247A0072AC48 /* Error.swift */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.release.xcconfig"; sourceTree = "<group>"; };
 		95028D172061FBF600222BFA /* ExplorePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageViewController.swift; sourceTree = "<group>"; };
+		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		95108EF32054247A0072AC48 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				9582DC31205CC86500779E38 /* PhotoUploader.swift */,
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
+				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
 			);
 			path = Utilities;
@@ -298,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				9597DE63205F7BB200B7E751 /* Image.swift */,
+				9504A15320677CBB00FDF606 /* Location.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
+				9504A15420677CBB00FDF606 /* Location.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
@@ -534,6 +541,7 @@
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
+				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,

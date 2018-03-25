@@ -21,7 +21,11 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        clLocationManager.delegate = self
+        clLocationManager.requestWhenInUseAuthorization()
         clLocationManager.startUpdatingLocation()
+        
         cameraModal = sb?.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
     }
     
@@ -55,6 +59,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
 }
 
+
+//Update current location since app is running
 extension MainTabBarController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {

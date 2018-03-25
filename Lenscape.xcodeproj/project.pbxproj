@@ -48,6 +48,7 @@
 		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
 		9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */; };
 		9597DE64205F7BB200B7E751 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597DE63205F7BB200B7E751 /* Image.swift */; };
+		959D45DC2067850200F82ED5 /* SViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D45DB2067850200F82ED5 /* SViewController.swift */; };
 		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
 		95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7B2051953C007480AA /* ProfileViewController.swift */; };
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
@@ -111,6 +112,7 @@
 		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
 		9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularInfiniteScroll.swift; sourceTree = "<group>"; };
 		9597DE63205F7BB200B7E751 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		959D45DB2067850200F82ED5 /* SViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SViewController.swift; sourceTree = "<group>"; };
 		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		95B8AB7B2051953C007480AA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
 				95B8AB7B2051953C007480AA /* ProfileViewController.swift */,
+				959D45DB2067850200F82ED5 /* SViewController.swift */,
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
 				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
@@ -523,6 +526,7 @@
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
+				959D45DC2067850200F82ED5 /* SViewController.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,

@@ -649,10 +649,10 @@
             </objects>
             <point key="canvasLocation" x="711" y="2122"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="yaM-sE-cRM">
             <objects>
-                <viewController id="bZd-08-zb3" customClass="SignupViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bZd-08-zb3" customClass="SignUpViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oi2-qq-isn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -858,10 +858,10 @@
             </objects>
             <point key="canvasLocation" x="-122.40000000000001" y="31.934032983508249"/>
         </scene>
-        <!--Signin View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SigninViewController" id="BYZ-38-t0r" customClass="SigninViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninViewController" id="BYZ-38-t0r" customClass="SignInViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -952,7 +952,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="singin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTH-oM-Ddp"/>
+                                            <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e2X-6i-bFm"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swv-oj-Oae">
@@ -1039,9 +1039,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="R4G-l6-hCH"/>
                     <connections>
-                        <outlet property="emailTextField" destination="w4n-FG-245" id="vqb-HZ-pd8"/>
-                        <outlet property="passwordTextField" destination="l1o-7a-yZi" id="Cs8-tx-dO8"/>
-                        <outlet property="signinButton" destination="YiT-4T-dvt" id="n0S-r1-2tp"/>
+                        <outlet property="emailTextField" destination="w4n-FG-245" id="VBO-de-Doq"/>
+                        <outlet property="passwordTextField" destination="l1o-7a-yZi" id="hrA-LB-KUS"/>
+                        <outlet property="signinButton" destination="YiT-4T-dvt" id="E8h-Cx-xv3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -19,7 +19,6 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationController?.isNavigationBarHidden = false
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapSignOut))
         signOutButton.addGestureRecognizer(tap)
     }
@@ -42,9 +41,9 @@ class SettingsTableViewController: UITableViewController {
 
     private func signOut() {
         UserController.signOut()
-        let signinVC = self.storyboard?.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
-        self.navigationController?.pushViewController(signinVC!, animated: true)
-
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signinVC = storyboard.instantiateViewController(withIdentifier: Identifier.SigninViewController.rawValue)
+        self.navigationController?.pushViewController(signinVC, animated: true)
     }
 
     // MARK: - Table view data source

@@ -34,10 +34,14 @@ class ApiManager {
                     response in
                     let value = response.result.value as? [String: Any]
                     let statusCode = response.response?.statusCode
-                    if statusCode == 200 {
+                    if statusCode == 200, value != nil {
                         seal.fulfill(value)
                     } else {
-                        seal.reject(NSError(domain: value!["message"] as? String ?? "", code: statusCode!, userInfo: nil))
+                        var message = "Server Error. Status code: \(statusCode!)"
+                        if value != nil {
+                            message = value!["message"] as? String ?? ""
+                        }
+                        seal.reject(NSError(domain: message, code: statusCode!, userInfo: nil))
                     }
             }
         }

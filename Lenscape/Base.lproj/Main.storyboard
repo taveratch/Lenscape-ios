@@ -841,6 +841,7 @@
                         <outlet property="passwordTextField" destination="OsT-z8-VZ3" id="AbI-3t-Jsu"/>
                         <outlet property="profileImageView" destination="82Y-Ug-vvN" id="EIl-jC-Tcd"/>
                         <outlet property="scrollView" destination="cK7-eL-to2" id="fBr-Yt-M4D"/>
+                        <outlet property="signUpButton" destination="N30-JD-CDB" id="vkD-rZ-GCE"/>
                         <outletCollection property="textFields" destination="gBR-aN-fCl" collectionClass="NSMutableArray" id="v2y-kU-Wer"/>
                         <outletCollection property="textFields" destination="vV2-xU-CFS" collectionClass="NSMutableArray" id="oU3-4s-OlS"/>
                         <outletCollection property="textFields" destination="P8t-zV-CHv" collectionClass="NSMutableArray" id="0sZ-Dw-GRT"/>

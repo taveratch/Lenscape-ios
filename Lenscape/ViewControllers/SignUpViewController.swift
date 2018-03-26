@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet private weak var emailTextField: TextField!
     @IBOutlet private weak var passwordTextField: TextField!
     @IBOutlet private weak var confirmPasswordTextField: TextField!
+    @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var scrollView: UIScrollView!
     var activeField: UITextField?
     private lazy var imagePickerController = UIImagePickerController()
@@ -37,6 +38,8 @@ class SignUpViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func signUp(_ sender: UIButton) {
+        signUpButton.setTitle("", for: .normal)
+        signUpButton.loadingIndicator(show: true)
         
         guard isFormCompleted else {
             textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
@@ -89,6 +92,13 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         textFields.forEach { $0.delegate = self }
         imagePickerController.delegate = self
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        // Prevents the scroll view from swallowing up the touch event of child buttons
+        // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,6 +139,11 @@ class SignUpViewController: UIViewController {
     
     private func resetForm() {
         textFields.forEach { $0.hasError = false }
+        signUpButton.loadingIndicator(show: false)
+    }
+    
+    @objc private func hideKeyboard() {
+        textFields.forEach { $0.resignFirstResponder() }
     }
     
 }
@@ -150,7 +165,7 @@ extension SignUpViewController: UITextFieldDelegate {
         activeField = nil
         return true
     }
-    
+
 }
 
 // MARK: - UIImagePickerControllerDelegate

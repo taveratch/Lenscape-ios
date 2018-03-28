@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Validator
 
 class SignUpViewController: UIViewController {
     
@@ -27,10 +28,6 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Computed properties
     
-    private var isPasswordMatched: Bool {
-        return confirmPasswordTextField.text == passwordTextField.text
-    }
-    
     private var isFormCompleted: Bool {
         return textFields.filter { !$0.hasText }.isEmpty
     }
@@ -38,34 +35,21 @@ class SignUpViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func signUp(_ sender: UIButton) {
-        signUpButton.setTitle("", for: .normal)
-        signUpButton.loadingIndicator(show: true)
         
         guard isFormCompleted else {
             textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
             return
         }
         
-        resetForm()
-        
-        guard isPasswordMatched else {
-            confirmPasswordTextField.hasError = true
-            return
-        }
-        
-        resetForm()
-        
-        let firstName = firstNameTextField.text!
-        let lastName = lastNameTextField.text!
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-        
+        signUpButton.setTitle("", for: .normal)
+        signUpButton.loadingIndicator(show: true)
+
         Api.signUp(
             picture: profileImageView.image,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password
+            firstName: firstNameTextField.text!,
+            lastName: lastNameTextField.text!,
+            email: emailTextField.text!,
+            password: passwordTextField.text!
             ).done {
                 user in
                 UserController.saveUser(user: user)
@@ -92,15 +76,11 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         textFields.forEach { $0.delegate = self }
         imagePickerController.delegate = self
-        
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        
-        // Prevents the scroll view from swallowing up the touch event of child buttons
-        // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-        tapGesture.cancelsTouchesInView = false
-        scrollView.addGestureRecognizer(tapGesture)
+        setupKeyboard()
+        setupValidation()
     }
     
+    // MARK: Setup for moving view to show textfield when keyboard is presented
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: .UIKeyboardWillHide, object: nil)
@@ -132,10 +112,108 @@ class SignUpViewController: UIViewController {
                 self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
             }
         }
-
+        
     }
     
     // MARK: - Private Methods
+    
+    private func setupValidation() {
+        
+        // MARK: Email Validation
+        // 1. Required
+        // 2. Valid email pattern
+        var emailRules = ValidationRuleSet<String>()
+        emailRules.add(rule: ValidationRuleCondition<String>(
+            error: ValidationError.required,
+            condition: { _ in self.emailTextField.hasText }
+        ))
+        emailRules.add(rule: ValidationRulePattern(
+            pattern: EmailValidationPattern.standard,
+            error: ValidationError.invalidInput("Please use a valid email")
+        ))
+        emailTextField.validationRules = emailRules
+        emailTextField.validationHandler = makeValidationHandler(for: emailTextField)
+        emailTextField.validateOnEditingEnd(enabled: true)
+        
+        // MARK: Password Validation
+        // 1. Required
+        // 2. More than 6 characters
+        // 3. Have at least 1 number
+        var passwordRules = ValidationRuleSet<String>()
+        passwordRules.add(rule: ValidationRuleCondition<String>(
+            error: ValidationError.required,
+            condition: { $0 != nil }
+        ))
+        passwordRules.add(rule: ValidationRuleLength(
+            min: 6,
+            error: ValidationError.invalidInput("Password needs to be longer than 6 characters")
+        ))
+        passwordRules.add(rule: ValidationRulePattern(
+            pattern: ContainsNumberValidationPattern(),
+            error: ValidationError.invalidInput("Password needs to have at least 1 number")
+        ))
+        passwordTextField.validationRules = passwordRules
+        passwordTextField.validationHandler = makeValidationHandler(for: passwordTextField)
+        passwordTextField.validateOnEditingEnd(enabled: true)
+        
+        // MARK: Confirm password
+        // 1. Required
+        // 2. Match the password
+        var confirmPasswordRules = ValidationRuleSet<String>()
+        confirmPasswordRules.add(rule: ValidationRuleCondition<String>(
+            error: ValidationError.required,
+            condition: { $0 != nil }
+        ))
+        confirmPasswordRules.add(rule: ValidationRuleEquality<String>(
+            dynamicTarget: { return self.passwordTextField.text ?? "" },
+            error: ValidationError.invalidInput("Password doesn't match")
+        ))
+        confirmPasswordTextField.validationRules = confirmPasswordRules
+        confirmPasswordTextField.validationHandler = makeValidationHandler(for: confirmPasswordTextField)
+        confirmPasswordTextField.validateOnEditingEnd(enabled: true)
+    }
+    
+    private func makeValidationHandler(for textField: TextField) -> ((ValidationResult) -> Void) {
+        return { result in
+            switch result {
+            case .valid:
+                textField.isValidated = true
+            case .invalid(let errors):
+                textField.hasError = true
+                self.showValidationError(errors)
+            }
+        }
+    }
+    
+    private func showValidationError(_ errors: [Error]) {
+        var errorMessage: [String] = []
+        if let errors = errors as? [ValidationError] {
+            outerLoop: for error in errors {
+                switch error {
+                case .required:
+                    errorMessage.append("This field is required")
+                    break outerLoop
+                case .invalidInput(let message):
+                    errorMessage.append(message)
+                }
+            }
+        }
+        
+        let alert = UIAlertController(
+            title: nil,
+            message: errorMessage.joined(separator: "\n"),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+            // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    private func setupKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+    }
     
     private func resetForm() {
         textFields.forEach { $0.hasError = false }
@@ -151,7 +229,7 @@ class SignUpViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension SignUpViewController: UITextFieldDelegate {
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -165,13 +243,13 @@ extension SignUpViewController: UITextFieldDelegate {
         activeField = nil
         return true
     }
-
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }

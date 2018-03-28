@@ -756,7 +756,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N30-JD-CDB" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
                                                 <rect key="frame" x="67.666666666666686" y="471" width="279" height="45"/>
-                                                <color key="backgroundColor" red="0.18039215689999999" green="0.83529411760000005" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.18111494183540344" green="0.83375388383865356" blue="0.45213133096694946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="GgE-C5-22h"/>
                                                     <constraint firstAttribute="width" constant="279" id="O1j-V8-h1G"/>

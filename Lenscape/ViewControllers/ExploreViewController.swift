@@ -73,6 +73,7 @@ class ExploreViewController: AuthViewController {
         Api.fetchExploreImages().done {
             images in
             self.images = images
+            self.numberOfPhotos = self.images.count
             }.catch {
                 error in
                 print("error: \(error)")
@@ -88,6 +89,7 @@ class ExploreViewController: AuthViewController {
             images in
             if images.count != 0 {
                 self.images += images
+                self.numberOfPhotos = self.images.count
                 self.collectionView.reloadData()
                 self.shouldFetchMore = true
             }
@@ -167,7 +169,6 @@ extension ExploreViewController: PhotoUploadingDelegate {
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
         UIView.animate(withDuration: 0.5, animations: {
             self.initImagesFromAPI()
-            self.numberOfPhotos += 1
             self.collectionView.collectionViewLayout.invalidateLayout()
         })
         print("didUpload")

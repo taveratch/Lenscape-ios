@@ -86,27 +86,20 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, location: Location? = nil, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+    static func uploadImage(data: Data, location: Location? = nil, imageName: String? = "IUP Building", locationName: String? = "Kasetsart University",progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)",
+            "Authorization": "Bearer \(UserController.getToken())",
             "Content-Type": "multipart/form-data"
         ]
-        
-        var latlong: [String:Double] = [:]
-        if location != nil {
-            latlong = [
-                "latitude": location!.latitude,
-                "longitude": location!.longitude
-            ]
-        }
-        //TODO: Change this, this is Around me album's id
+
         return Promise { seal in
-            ApiManager.upload(url: UPLOAD_HOST, headers: headers,
+            ApiManager.upload(url: "\(HOST)/photo", headers: headers,
                               multipartFormData: { multipartFormData in
                                 multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
-                                multipartFormData.append("3Qg3O".data(using: String.Encoding.ascii)!, withName: "album")
-                                multipartFormData.append(latlong.json().data(using: String.Encoding.ascii)!, withName: "description")
+                                multipartFormData.append(imageName!.data(using: String.Encoding.ascii)!, withName: "image_name")
+                                multipartFormData.append(locationName!.data(using: String.Encoding.ascii)!, withName: "location_name")
+                                multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.ascii)!, withName: "latlong")
             }, progressHandler: progressHandler
                 ).done {
                     response in

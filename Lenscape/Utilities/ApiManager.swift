@@ -68,6 +68,10 @@ class ApiManager {
                         }
                         upload.responseJSON { response in
                             print("uploaded")
+                            guard let value = response.result.value as? [String: Any] else {
+                                seal.fulfill([:])
+                                return
+                            }
                             seal.fulfill(response.result.value as! [String: Any])
                         }
                     case .failure(let encodingError):

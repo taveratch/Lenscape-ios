@@ -58,11 +58,21 @@
                                         </label>
                                     </subviews>
                                 </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlp-s8-Xum">
+                                    <rect key="frame" x="0.0" y="249" width="375" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Reo-le-9iq"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="vlp-s8-Xum" secondAttribute="trailing" id="5pF-HM-Gel"/>
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerX" secondItem="NqI-H8-XT5" secondAttribute="centerX" id="HZy-HQ-Lb5"/>
                                 <constraint firstAttribute="height" constant="250" id="WyK-da-X1u"/>
+                                <constraint firstItem="vlp-s8-Xum" firstAttribute="leading" secondItem="NqI-H8-XT5" secondAttribute="leading" id="ZzT-S2-9WQ"/>
+                                <constraint firstAttribute="bottom" secondItem="vlp-s8-Xum" secondAttribute="bottom" id="apE-Uv-Xgh"/>
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerY" secondItem="NqI-H8-XT5" secondAttribute="centerY" id="s4k-bs-dRz"/>
                             </constraints>
                         </view>

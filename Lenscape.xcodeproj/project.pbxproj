@@ -65,6 +65,7 @@
 		95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
+		D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
 		D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED74C02064156200F197C1 /* ProfileInfoView.xib */; };
 		D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */; };
@@ -132,6 +133,9 @@
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0649138206CF013002ADF2C /* Lenscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lenscape-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		D0C97A82206A4D590054276F /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D0ED74C02064156200F197C1 /* ProfileInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoView.xib; sourceTree = "<group>"; };
 		D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,9 @@
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
 				D0C97A82206A4D590054276F /* ValidationError.swift */,
+				D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */,
+				D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */,
+				D0649138206CF013002ADF2C /* Lenscape-Bridging-Header.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -401,6 +408,7 @@
 				TargetAttributes = {
 					9565692F204C2BB3005F9F6B = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -530,6 +538,7 @@
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				D0C97A83206A4D590054276F /* ValidationError.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
+				D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */,
 				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
@@ -712,6 +721,7 @@
 			baseConfigurationReference = E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
@@ -721,6 +731,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lenscape/Utilities/Lenscape-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -731,6 +743,7 @@
 			baseConfigurationReference = 5362A6BF6BD12409D463E8E5 /* Pods-Lenscape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GN75K5C8B;
@@ -740,6 +753,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lenscape/Utilities/Lenscape-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

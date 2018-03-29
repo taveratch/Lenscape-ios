@@ -38,6 +38,7 @@ class SignUpViewController: UIViewController {
         
         guard isFormCompleted else {
             textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
+            showAlertDialog(title: nil, message: "Please fill out the form")
             return
         }
         
@@ -58,11 +59,11 @@ class SignUpViewController: UIViewController {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }.catch { error in
-                let alert = UIAlertController(title: "Message", message: error.domain
-                , preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true)
+                self.showAlertDialog(title: "Message", message: error.domain)
         }
+        
+        signUpButton.setTitle("Sign up", for: .normal)
+        signUpButton.loadingIndicator(show: false)
         
     }
     
@@ -119,7 +120,27 @@ class SignUpViewController: UIViewController {
     
     private func setupValidation() {
         
-        // MARK: Email Validation
+        // MARK: First name
+        // 1. Required
+        var firstNameRules = ValidationRuleSet<String>()
+        firstNameRules.add(rule: ValidationRuleCondition<String>(
+            error: ValidationError.required,
+            condition: { _ in self.firstNameTextField.hasText }
+        ))
+        firstNameTextField.validationRules = firstNameRules
+        firstNameTextField.validationHandler = makeValidationHandler(for: firstNameTextField)
+        
+        // MARK: Last name
+        // 1. Required
+        var lastNameRules = ValidationRuleSet<String>()
+        lastNameRules.add(rule: ValidationRuleCondition<String>(
+            error: ValidationError.required,
+            condition: { _ in self.lastNameTextField.hasText }
+        ))
+        lastNameTextField.validationRules = lastNameRules
+        lastNameTextField.validationHandler = makeValidationHandler(for: lastNameTextField)
+        
+        // MARK: Email
         // 1. Required
         // 2. Valid email pattern
         var emailRules = ValidationRuleSet<String>()
@@ -135,7 +156,7 @@ class SignUpViewController: UIViewController {
         emailTextField.validationHandler = makeValidationHandler(for: emailTextField)
         emailTextField.validateOnEditingEnd(enabled: true)
         
-        // MARK: Password Validation
+        // MARK: Password
         // 1. Required
         // 2. More than 6 characters
         // 3. Have at least 1 number
@@ -198,10 +219,13 @@ class SignUpViewController: UIViewController {
                 }
             }
         }
-        
+        showAlertDialog(title: nil, message: errorMessage.joined(separator: "\n"))
+    }
+    
+    private func showAlertDialog(title: String?, message: String?) {
         let alert = UIAlertController(
-            title: nil,
-            message: errorMessage.joined(separator: "\n"),
+            title: title,
+            message: message,
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

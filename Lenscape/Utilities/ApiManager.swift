@@ -12,7 +12,8 @@ import PromiseKit
 
 class ApiManager {
     
-    static func fetch(url: String, headers: [String: String]? = nil, body: [String: Any]? = nil, method: String) -> Promise<[String: Any]?> {
+    static func fetch(url: String, headers: [String: String]? = nil, 
+                      body: [String: Any]? = nil, method: String) -> Promise<[String: Any]?> {
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -47,10 +48,15 @@ class ApiManager {
         }
     }
     
-    static func upload(url: String, headers: [String: String]? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
+    static func upload(url: String, headers: [String: String]? = nil,
+                       multipartFormData: @escaping (MultipartFormData) -> Void,
+                       body: [String:String]? = nil,
+                       progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
+        
         return Promise { seal in
-            Alamofire.upload(multipartFormData: multipartFormData
-                , usingThreshold: UInt64.init(), to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
+            Alamofire.upload(multipartFormData: multipartFormData, usingThreshold: UInt64.init(),
+                             to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: {
+                    encodingResult in
                     switch encodingResult {
                     case .success(let upload, _, _):
                         print("uploading...")

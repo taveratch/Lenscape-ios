@@ -10,4 +10,5 @@ target 'Lenscape' do
   pod 'SwiftCarousel'
   pod 'GoogleMaps'
   pod 'Hero'
+  pod 'Validator'
 end

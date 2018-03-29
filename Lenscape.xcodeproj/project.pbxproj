@@ -65,6 +65,7 @@
 		95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
+		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
 		D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED74C02064156200F197C1 /* ProfileInfoView.xib */; };
 		D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C97A82206A4D590054276F /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D0ED74C02064156200F197C1 /* ProfileInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoView.xib; sourceTree = "<group>"; };
 		D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
+				D0C97A82206A4D590054276F /* ValidationError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCarousel/SwiftCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -472,6 +476,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -523,6 +528,7 @@
 			files = (
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
+				D0C97A83206A4D590054276F /* ValidationError.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,
 				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,

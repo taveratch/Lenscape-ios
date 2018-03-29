@@ -40,5 +40,11 @@ class TextField: UITextField {
             }
         }
     }
+    
+    @IBInspectable var isValidated = false {
+        didSet {
+            bottomBorder.backgroundColor = isValidated ? UIColor(cgColor: #colorLiteral(red: 0.1811149418, green: 0.8337538838, blue: 0.452131331, alpha: 1)): UIColor(cgColor: #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1))
+        }
+    }
 }
 

@@ -92,14 +92,14 @@ class Api {
             "Authorization": "Bearer \(UserController.getToken())",
             "Content-Type": "multipart/form-data"
         ]
-
+        
         return Promise { seal in
-            ApiManager.upload(url: "\(HOST)/photo", headers: headers,
+            ApiManager.upload(url: "http://158.108.136.239:8080/photo", headers: headers,
                               multipartFormData: { multipartFormData in
-                                multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
-                                multipartFormData.append(imageName!.data(using: String.Encoding.ascii)!, withName: "image_name")
-                                multipartFormData.append(locationName!.data(using: String.Encoding.ascii)!, withName: "location_name")
-                                multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.ascii)!, withName: "latlong")
+                                multipartFormData.append(data, withName: "picture")
+                                multipartFormData.append(imageName!.data(using: String.Encoding.utf8)!, withName: "image_name")
+                                multipartFormData.append(locationName!.data(using: String.Encoding.utf8)!, withName: "location_name")
+                                multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")
             }, progressHandler: progressHandler
                 ).done {
                     response in
@@ -109,6 +109,8 @@ class Api {
             }
         }
     }
+    
+    
     
     static func fetchExploreImages(page: Int = 0) -> Promise<[Image]>{
         let headers : [String: String] = [

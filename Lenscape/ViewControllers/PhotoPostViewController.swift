@@ -49,7 +49,6 @@ class PhotoPostViewController: UIViewController {
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
         if let data = UIImageJPEGRepresentation(image!,1) {
-            print(data.description)
             // the data can be passed to ExploreViewController via UserDefaults
             UserDefaults.standard.set(data, forKey: "uploadPhotoData")
             self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)

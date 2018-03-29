@@ -97,7 +97,7 @@ class Api {
         return Promise { seal in
             ApiManager.upload(url: "\(HOST)/photo", headers: headers,
                               multipartFormData: { multipartFormData in
-                                multipartFormData.append(data, withName:"picture", fileName: "Photo", mimeType: "image/jpeg")
+                                multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
                                 multipartFormData.append(imageName!.data(using: String.Encoding.utf8)!, withName: "image_name")
                                 multipartFormData.append(locationName!.data(using: String.Encoding.utf8)!, withName: "location_name")
                                 multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 
 class Api {
@@ -88,15 +89,15 @@ class Api {
     // MARK: - Images
     static func uploadImage(data: Data, location: Location? = nil, imageName: String? = "IUP Building", locationName: String? = "Kasetsart University",progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
-        let headers : [String: String] = [
+        let headers : HTTPHeaders = [
             "Authorization": "Bearer \(UserController.getToken())",
             "Content-Type": "multipart/form-data"
         ]
         
         return Promise { seal in
-            ApiManager.upload(url: "http://158.108.136.239:8080/photo", headers: headers,
+            ApiManager.upload(url: "\(HOST)/photo", headers: headers,
                               multipartFormData: { multipartFormData in
-                                multipartFormData.append(data, withName: "picture")
+                                multipartFormData.append(data, withName:"picture", fileName: "Photo", mimeType: "image/jpeg")
                                 multipartFormData.append(imageName!.data(using: String.Encoding.utf8)!, withName: "image_name")
                                 multipartFormData.append(locationName!.data(using: String.Encoding.utf8)!, withName: "location_name")
                                 multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")

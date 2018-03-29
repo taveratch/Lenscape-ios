@@ -47,11 +47,10 @@ class ApiManager {
         }
     }
     
-    static func upload(url: String, headers: [String: String]? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
-        print(url)
+    static func upload(url: String, headers: HTTPHeaders? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
         return Promise { seal in
-            Alamofire.upload(multipartFormData: multipartFormData
-                ,to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
+            Alamofire.upload(multipartFormData: multipartFormData, usingThreshold: 1,
+                to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
                     switch encodingResult {
                     case .success(let upload, _, _):
                         print("uploading...")

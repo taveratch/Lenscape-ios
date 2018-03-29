@@ -104,6 +104,7 @@ class Api {
             }, progressHandler: progressHandler
                 ).done {
                     response in
+                    print(response)
                     seal.fulfill(response)
                 }.catch { error in
                     seal.reject(error)

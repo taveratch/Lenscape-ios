@@ -66,7 +66,6 @@ class ApiManager {
                         }
                         upload.responseJSON { response in
                             print("uploaded")
-                            print(response.result.value)
                             guard let value = response.result.value as? [String: Any] else {
                                 seal.fulfill([:])
                                 return

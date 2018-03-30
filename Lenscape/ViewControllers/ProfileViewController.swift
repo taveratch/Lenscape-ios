@@ -25,12 +25,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        collectionView.emptyDataSetSource = self
+        collectionView.emptyDataSetDelegate = self
         setupRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initImagesFromAPI()
+//        initImagesFromAPI()
     }
     
     // MARK: - Private Methods
@@ -160,7 +162,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -183,6 +185,49 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+}
+
+// MARK: - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+extension ProfileViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No Images"
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "When you have images, you'll see them here."
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+//    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+//        return UIImage(named: "Red heart")
+//    }
+    
+//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+//        let str = "Add an image"
+//        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+    
+//    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+//        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
+//        present(ac, animated: true)
+//    }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        // Using ProfileInfoView header with height 300
+        return 150
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
+        return UIColor(cgColor: #colorLiteral(red: 0.9401558042, green: 0.952983439, blue: 0.956292212, alpha: 1))
+    }
+    
 }
 
 

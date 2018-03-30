@@ -25,45 +25,38 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
-        collectionView.emptyDataSetSource = self
-        collectionView.emptyDataSetDelegate = self
         setupRefreshControl()
+        fetchInitImagesFromAPI()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        initImagesFromAPI()
-    }
-    
+
     // MARK: - Private Methods
     
-    @objc private func initImagesFromAPI() {
-        shouldFetchMore = true
-        page = 0
-        Api.fetchUserImages().done {
+    @objc private func fetchInitImagesFromAPI() {
+        page = 1
+        fetchImagesFromAPI(page: page) {
             images in
             self.images = images
+        }
+    }
+    
+    private func isDisplayAllInOnePage() -> Bool {
+        return self.images.count < 9
+    }
+    
+    private func fetchImagesFromAPI(page: Int, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
+            fulfill in
+            
+            let images = fulfill["images"] as! [Image]
+            let pagination = fulfill["pagination"] as! Pagination
+            modifyImageFunction(images)
+            self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
                 error in
                 print("error: \(error)")
             }.finally {
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
-        }
-    }
-    
-    private func fetchMoreImagesFromAPI(page: Int) {
-        shouldFetchMore = false
-        Api.fetchUserImages(page: page).done {
-            images in
-            if images.count != 0 {
-                self.images += images
-                self.collectionView.reloadData()
-                self.shouldFetchMore = true
-            }
-            }.catch {
-                error in
-                print("error: \(error)")
         }
     }
     
@@ -87,7 +80,7 @@ class ProfileViewController: UIViewController {
         } else {
             collectionView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchInitImagesFromAPI), for: .valueChanged)
     }
     
     @objc private func showSettingsVC() {
@@ -116,7 +109,10 @@ extension ProfileViewController: UICollectionViewDataSource {
         // If scroll before last 4 rows then fetch the next images
         if images.count > itemsPerRow*3, index >= images.count - (itemsPerRow*4), shouldFetchMore {
             page += 1
-            fetchMoreImagesFromAPI(page: page)
+            fetchImagesFromAPI(page: page) {
+                images in
+                self.images += images
+            }
         }
         
         let image = images[index]
@@ -162,7 +158,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -185,49 +181,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-}
-
-// MARK: - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
-
-extension ProfileViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-
-    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "No Images"
-        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let str = "When you have images, you'll see them here."
-        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
-        return NSAttributedString(string: str, attributes: attrs)
-    }
-    
-//    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-//        return UIImage(named: "Red heart")
-//    }
-    
-//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
-//        let str = "Add an image"
-//        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
-//        return NSAttributedString(string: str, attributes: attrs)
-//    }
-    
-//    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-//        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
-//        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
-//        present(ac, animated: true)
-//    }
-    
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-        // Using ProfileInfoView header with height 300
-        return 150
-    }
-    
-    func backgroundColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-        return UIColor(cgColor: #colorLiteral(red: 0.9401558042, green: 0.952983439, blue: 0.956292212, alpha: 1))
-    }
-    
 }
 
 

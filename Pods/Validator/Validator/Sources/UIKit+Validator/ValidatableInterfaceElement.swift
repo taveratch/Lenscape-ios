@@ -83,8 +83,9 @@ public protocol ValidatableInterfaceElement: AnyObject {
      - Returns:
      A validation result.
      
+     // Bug in Xcode 9.3
      */
-    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType
+//    func validate<R: ValidationRule>(rule r: R) -> ValidationResult where R.InputType == InputType
     
     /**
      

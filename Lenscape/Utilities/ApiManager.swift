@@ -12,8 +12,7 @@ import PromiseKit
 
 class ApiManager {
     
-    static func fetch(url: String, headers: [String: String]? = nil, 
-                      body: [String: Any]? = nil, method: String) -> Promise<[String: Any]?> {
+    static func fetch(url: String, headers: [String: String]? = nil, body: [String: Any]? = nil, method: String, encoding: ParameterEncoding? = JSONEncoding.default) -> Promise<[String: Any]?> {
         var httpMethod : HTTPMethod {
             switch method {
             case "GET":
@@ -29,7 +28,7 @@ class ApiManager {
             }
         }
         return Promise { seal in
-            Alamofire.request(url, method: httpMethod, parameters: body, encoding: JSONEncoding.default, headers: headers)
+            Alamofire.request(url, method: httpMethod, parameters: body, encoding: encoding!, headers: headers)
                 .validate(statusCode: 200...500)
                 .responseJSON {
                     response in
@@ -38,25 +37,21 @@ class ApiManager {
                     if statusCode == 200, value != nil {
                         seal.fulfill(value)
                     } else {
+                        print(response)
                         var message = "Server Error. Status code: \(statusCode!)"
                         if value != nil {
                             message = value!["message"] as? String ?? ""
                         }
                         seal.reject(NSError(domain: message, code: statusCode!, userInfo: nil))
                     }
+                }
             }
-        }
     }
     
-    static func upload(url: String, headers: [String: String]? = nil,
-                       multipartFormData: @escaping (MultipartFormData) -> Void,
-                       body: [String:String]? = nil,
-                       progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
-        
+    static func upload(url: String, headers: HTTPHeaders? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
         return Promise { seal in
-            Alamofire.upload(multipartFormData: multipartFormData, usingThreshold: UInt64.init(),
-                             to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: {
-                    encodingResult in
+            Alamofire.upload(multipartFormData: multipartFormData, usingThreshold: 1,
+                to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
                     switch encodingResult {
                     case .success(let upload, _, _):
                         print("uploading...")
@@ -66,8 +61,16 @@ class ApiManager {
                                 progressHandler!(progress.completedUnitCount, progress.totalUnitCount)
                             }
                         }
+                        upload.responseString {
+                            response in
+                            print(response)
+                        }
                         upload.responseJSON { response in
                             print("uploaded")
+                            guard let value = response.result.value as? [String: Any] else {
+                                seal.fulfill([:])
+                                return
+                            }
                             seal.fulfill(response.result.value as! [String: Any])
                         }
                     case .failure(let encodingError):

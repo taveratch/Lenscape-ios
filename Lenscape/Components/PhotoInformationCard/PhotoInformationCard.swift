@@ -16,6 +16,9 @@ class PhotoInformationCard: UIView {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var moreDetailButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var ownerNameLabel: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

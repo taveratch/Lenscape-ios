@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 
 class Api {
@@ -86,30 +87,24 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, location: Location? = nil, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+    static func uploadImage(data: Data, location: Location? = nil, imageName: String? = "IUP Building", locationName: String? = "Kasetsart University",progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
-        let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)",
+        let headers : HTTPHeaders = [
+            "Authorization": "Bearer \(UserController.getToken())",
             "Content-Type": "multipart/form-data"
         ]
         
-        var latlong: [String:Double] = [:]
-        if location != nil {
-            latlong = [
-                "latitude": location!.latitude,
-                "longitude": location!.longitude
-            ]
-        }
-        //TODO: Change this, this is Around me album's id
         return Promise { seal in
-            ApiManager.upload(url: UPLOAD_HOST, headers: headers,
+            ApiManager.upload(url: "\(HOST)/photo", headers: headers,
                               multipartFormData: { multipartFormData in
-                                multipartFormData.append(data, withName: "image", mimeType: "image/jpeg")
-                                multipartFormData.append("3Qg3O".data(using: String.Encoding.ascii)!, withName: "album")
-                                multipartFormData.append(latlong.json().data(using: String.Encoding.ascii)!, withName: "description")
+                                multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
+                                multipartFormData.append(imageName!.data(using: String.Encoding.utf8)!, withName: "image_name")
+                                multipartFormData.append(locationName!.data(using: String.Encoding.utf8)!, withName: "location_name")
+                                multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")
             }, progressHandler: progressHandler
                 ).done {
                     response in
+                    print(response)
                     seal.fulfill(response)
                 }.catch { error in
                     seal.reject(error)
@@ -117,115 +112,130 @@ class Api {
         }
     }
     
-    static func fetchExploreImages(page: Int = 0) -> Promise<[Image]>{
+    
+    
+    static func fetchExploreImages(page: Int = 1, location: Location, month: Int = 0) -> Promise<[String: Any]>{
+        
         let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)",
-            "Content-Type": "multipart/form-data"
+            "Authorization": "Bearer \(UserController.getToken())"
         ]
         
-        let url = "https://api.imgur.com/3/album/3Qg3O/images"
+        let parameters: [String: String] = [
+            "latlong": "\(location.latitude),\(location.longitude)",
+            "month": String(month),
+            "page": String(page)
+        ]
         
+        let url = "\(HOST)/aroundme/photos"
         return Promise {
             seal in
-            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
                 response in
                 let data = response!["data"] as! [Any]
-                let images = data
+                var images = data
                     .map { Image(item: $0) }
-                    .sorted { $0.datetime! > $1.datetime! }
-                seal.fulfill(images)
+                
+                //TODO: Removed this and sort by timestamp
+                images = images.reversed()
+                
+                let fulfill: [String: Any] = [
+                    "images" : images,
+                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])
+                ]
+                
+                seal.fulfill(fulfill)
                 }.catch {
                     error in
+                    print(error.domain)
                     seal.reject(error)
                     print(error)
             }
         }
     }
     
-    static func getExploreImageCount() -> Promise<Int> {
+    static func fetchTrendImages(page: Int = 0) -> Promise<[String: Any]>{
+        
         let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)"
+            "Authorization": "Bearer \(UserController.getToken())"
         ]
         
-        let url = "https://api.imgur.com/3/album/3Qg3O"
+        //TODO: remove this after use trend api
+        let location = LocationManager.getInstance().getCurrentLocation()!
+        
+        //TODO: remove latlong and month
+        let parameters: [String: String] = [
+            "latlong": "\(location.latitude),\(location.longitude)",
+            "month": "0",
+            "page": String(page)
+        ]
+        
+        //TODO: Change to trend api
+        let url = "\(HOST)/aroundme/photos"
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
-                response in
-                let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
-                seal.fulfill(count)
-                }.catch {
-                    error in
-                    seal.reject(error)
-            }
-        }
-    }
-    
-    static func fetchTrendImages(page: Int = 0) -> Promise<[Image]>{
-        let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)",
-            "Content-Type": "multipart/form-data"
-        ]
-        
-        let url = "https://api.imgur.com/3/album/eG5vv/images"
-        
-        return Promise {
-            seal in
-            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
                 response in
                 let data = response!["data"] as! [Any]
-                let images = data
+                var images = data
                     .map { Image(item: $0) }
-                    .sorted { $0.datetime! > $1.datetime! }
-                seal.fulfill(images)
+                
+                //TODO: Remove this and sort by timestamp
+                images = images.reversed()
+                
+                let fulfill: [String: Any] = [
+                    "images" : images,
+                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])
+                ]
+                
+                seal.fulfill(fulfill)
                 }.catch {
                     error in
+                    print(error.domain)
                     seal.reject(error)
                     print(error)
             }
         }
     }
     
-    static func getTrendImageCount() -> Promise<Int> {
+    static func fetchUserImages(page: Int = 0) -> Promise<[String: Any]> {
         let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)"
+            "Authorization": "Bearer \(UserController.getToken())"
         ]
         
-        let url = "https://api.imgur.com/3/album/eG5vv"
+        //TODO: remove this after use trend api
+        let location = LocationManager.getInstance().getCurrentLocation()!
+        
+        //TODO: remove latlong and month
+        let parameters: [String: String] = [
+            "latlong": "\(location.latitude),\(location.longitude)",
+            "month": "0",
+            "page": String(page)
+        ]
+        
+        //TODO: Change to trend api
+        let url = "\(HOST)/aroundme/photos"
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
-                response in
-                let count: Int = response!.valueForKeyPath(keyPath: "data.images_count")!
-                seal.fulfill(count)
-                }.catch {
-                    error in
-                    seal.reject(error)
-            }
-        }
-    }
-    
-    static func fetchUserImages(page: Int = 0) -> Promise<[Image]> {
-        let headers : [String: String] = [
-            "Authorization": "Bearer \(ACCESS_TOKEN)",
-            "Content-Type": "multipart/form-data"
-        ]
-        
-        let url = "https://api.imgur.com/3/album/eG5vv/images"
-        
-        return Promise {
-            seal in
-            ApiManager.fetch(url: "\(url)/\(page)", headers: headers, method: "GET").done {
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
                 response in
                 let data = response!["data"] as! [Any]
-                let images = data
+                var images = data
                     .map { Image(item: $0) }
-                    .sorted { $0.datetime! > $1.datetime! }
-                seal.fulfill(images)
+                
+                //TODO: Remove this and sort by timestamp
+                images = images.reversed()
+                
+                let fulfill: [String: Any] = [
+                    "images" : images,
+                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])
+                ]
+                
+                seal.fulfill(fulfill)
                 }.catch {
                     error in
+                    print(error.domain)
                     seal.reject(error)
                     print(error)
             }

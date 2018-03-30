@@ -64,7 +64,11 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
         
         if image!.isNear! {
-            informationWrapper.distanceLabel.text = "\(image!.distance!) kilometers away"
+            var label = "\(image!.distance!) kilometers away"
+            if image!.distance! < 1 {
+                label = "\(Int(image!.distance! * 1000)) meters away"
+            }
+            informationWrapper.distanceLabel.text = label
         }else {
             informationWrapper.distanceLabel.isHidden = true
         }

@@ -19,6 +19,9 @@
 		9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */; };
 		951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B7204C3C8C00FE6C10 /* Api.swift */; };
 		951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FE8B9204C3C9400FE6C10 /* UserController.swift */; };
+		952EF14E206D2A960032983B /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EF14D206D2A960032983B /* LocationDelegate.swift */; };
+		952EF150206D2BEF0032983B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EF14F206D2BEF0032983B /* UIViewController.swift */; };
+		952EF152206D2D4A0032983B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952EF151206D2D4A0032983B /* Notification.swift */; };
 		953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */; };
 		953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953048A120627C5B00EB5F3F /* FullImageViewController.swift */; };
 		953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953048A32062845600EB5F3F /* PortraitViewController.swift */; };
@@ -58,6 +61,7 @@
 		95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */; };
 		95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
+		95E45148206DF2B7000E5046 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E45147206DF2B7000E5046 /* Pagination.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
 		95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */; };
@@ -84,6 +88,9 @@
 		9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedUIImageView.swift; sourceTree = "<group>"; };
 		951FE8B7204C3C8C00FE6C10 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		951FE8B9204C3C9400FE6C10 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		952EF14D206D2A960032983B /* LocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
+		952EF14F206D2BEF0032983B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		952EF151206D2D4A0032983B /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		953048A120627C5B00EB5F3F /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		953048A32062845600EB5F3F /* PortraitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +132,7 @@
 		95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoInformationCard.xib; sourceTree = "<group>"; };
 		95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInformationCard.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		95E45147206DF2B7000E5046 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -287,6 +295,7 @@
 			children = (
 				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
 				95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */,
+				952EF14D206D2A960032983B /* LocationDelegate.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				9597DE63205F7BB200B7E751 /* Image.swift */,
+				95E45147206DF2B7000E5046 /* Pagination.swift */,
 				9504A15320677CBB00FDF606 /* Location.swift */,
 			);
 			path = DataModels;
@@ -325,6 +335,8 @@
 				95108EF32054247A0072AC48 /* Error.swift */,
 				95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */,
 				95F881402055248D003F61D4 /* UIButton.swift */,
+				952EF14F206D2BEF0032983B /* UIViewController.swift */,
+				952EF151206D2D4A0032983B /* Notification.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -543,6 +555,7 @@
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
+				952EF150206D2BEF0032983B /* UIViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				9504A15420677CBB00FDF606 /* Location.swift in Sources */,
@@ -554,6 +567,7 @@
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
+				952EF152206D2D4A0032983B /* Notification.swift in Sources */,
 				95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */,
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
 				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
@@ -564,6 +578,7 @@
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */,
+				95E45148206DF2B7000E5046 /* Pagination.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */,
 				955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */,
@@ -574,6 +589,7 @@
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
 				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
+				952EF14E206D2A960032983B /* LocationDelegate.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */,
 				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,

@@ -32,8 +32,8 @@ class ExploreViewController: AuthViewController {
             self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
         }
     }
-    var page = 0
-    var shouldFetchMore = true
+    var page = 1
+    var shouldFetchMore = false
     
     
     // MARK: - ViewController Lifecycle
@@ -43,7 +43,9 @@ class ExploreViewController: AuthViewController {
         photoUploader.delegate = self
         collectionView.delegate = self
         setupUI()
-        initImagesFromAPI()
+        
+        //Make ExploreViewController as observer for LocationManager (this vc will be notify from MainTabBarController (CLLocationManagerDelegate))
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,41 +63,33 @@ class ExploreViewController: AuthViewController {
         }
     }
     
-    @objc private func initImagesFromAPIWithoutCache() {
-        ImageCache.default.clearDiskCache()
-        ImageCache.default.clearMemoryCache()
-        initImagesFromAPI()
-    }
-    
-    @objc private func initImagesFromAPI() {
-        shouldFetchMore = true
-        page = 0
-        Api.fetchExploreImages().done {
+    @objc private func fetchInitImageFromAPI() {
+        page = 1
+        fetchImagesFromAPI(page: page) {
             images in
             self.images = images
-            self.numberOfPhotos = self.images.count
+        }
+    }
+    
+    private func isDisplayAllInOnePage() -> Bool {
+        return self.images.count < 9
+    }
+    
+    private func fetchImagesFromAPI(page: Int = 1, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
+            fulfill in
+            
+            let images = fulfill["images"] as! [Image]
+            let pagination = fulfill["pagination"] as! Pagination
+            modifyImageFunction(images)
+            self.numberOfPhotos = pagination.totalNumberOfEntities
+            self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
                 error in
                 print("error: \(error)")
             }.finally {
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
-        }
-    }
-    
-    private func fetchMoreImagesFromAPI(page: Int) {
-        shouldFetchMore = false
-        Api.fetchExploreImages(page: page).done {
-            images in
-            if images.count != 0 {
-                self.images += images
-                self.numberOfPhotos = self.images.count
-                self.collectionView.reloadData()
-                self.shouldFetchMore = true
-            }
-            }.catch {
-                error in
-                print("error: \(error)")
         }
     }
     
@@ -116,7 +110,7 @@ class ExploreViewController: AuthViewController {
         } else {
             collectionView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchInitImageFromAPI), for: .valueChanged)
     }
     
     @objc private func showMapView() {
@@ -168,7 +162,7 @@ extension ExploreViewController: PhotoUploadingDelegate {
         self.progressViewWrapper.isHidden = true
         UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
         UIView.animate(withDuration: 0.5, animations: {
-            self.initImagesFromAPI()
+            self.fetchInitImageFromAPI()
             self.collectionView.collectionViewLayout.invalidateLayout()
         })
         print("didUpload")
@@ -221,7 +215,10 @@ extension ExploreViewController: UICollectionViewDataSource {
         // If scroll before last 3 rows then fetch the next images
         if images.count > itemsPerRow*4, index >= images.count - (itemsPerRow*4), shouldFetchMore {
             page += 1
-            fetchMoreImagesFromAPI(page: page)
+            fetchImagesFromAPI(page: page) {
+                images in
+                self.images += images
+            }
         }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
@@ -252,9 +249,6 @@ extension ExploreViewController: UICollectionViewDataSource {
             headerView.tabHeader.titleLabel.text = "Around you"
             self.descriptionLabel = headerView.tabHeader.descriptionLabel
             
-            if numberOfPhotos == 0 {
-                Api.getExploreImageCount().done { count in self.numberOfPhotos = count }
-            }
             if self.progressView != nil {
                 headerView.progressView.progress = self.progressView.progress
                 headerView.progressBarWrapper.isHidden = self.progressViewWrapper.isHidden

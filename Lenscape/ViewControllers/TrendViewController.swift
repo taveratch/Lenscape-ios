@@ -19,8 +19,8 @@ class TrendViewController: UIViewController {
     
     var images: [Image] = []
     let itemsPerRow: Int = 3
-    var page = 0
-    var shouldFetchMore = true
+    var page = 1
+    var shouldFetchMore = false
     
     var numberOfPhotos = 0 {
         didSet {
@@ -34,42 +34,38 @@ class TrendViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         setupRefreshControl()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        initImagesFromAPI()
+        fetchInitImagesFromAPI()
     }
     
     // MARK: - Private Methods
     
-    @objc private func initImagesFromAPI() {
-        shouldFetchMore = true
-        page = 0
-        Api.fetchTrendImages().done {
+    @objc private func fetchInitImagesFromAPI() {
+        page = 1
+        fetchImagesFromAPI(page: page) {
             images in
             self.images = images
+        }
+    }
+    
+    private func isDisplayAllInOnePage() -> Bool {
+        return self.images.count < 9
+    }
+    
+    private func fetchImagesFromAPI(page: Int, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        Api.fetchTrendImages(page: page).done {
+            fulfill in
+            
+            let images = fulfill["images"] as! [Image]
+            let pagination = fulfill["pagination"] as! Pagination
+            modifyImageFunction(images)
+            self.numberOfPhotos = pagination.totalNumberOfEntities
+            self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
                 error in
                 print("error: \(error)")
             }.finally {
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
-        }
-    }
-    
-    private func fetchMoreImagesFromAPI(page: Int) {
-        shouldFetchMore = false
-        Api.fetchTrendImages(page: page).done {
-            images in
-            if images.count != 0 {
-                self.images += images
-                self.collectionView.reloadData()
-                self.shouldFetchMore = true
-            }
-            }.catch {
-                error in
-                print("error: \(error)")
         }
     }
     
@@ -93,7 +89,7 @@ class TrendViewController: UIViewController {
         } else {
             collectionView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(initImagesFromAPI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchInitImagesFromAPI), for: .valueChanged)
     }
     
 }
@@ -116,7 +112,10 @@ extension TrendViewController: UICollectionViewDataSource {
         // If scroll before last 4 rows then fetch the next images
         if images.count > itemsPerRow*3, index >= images.count - (itemsPerRow*4), shouldFetchMore {
             page += 1
-            fetchMoreImagesFromAPI(page: page)
+            fetchImagesFromAPI(page: page) {
+                images in
+                self.images += images
+            }
         }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
@@ -146,11 +145,7 @@ extension TrendViewController: UICollectionViewDataSource {
             
             tabHeader.titleLabel.text = "Trend"
             self.descriptionLabel = tabHeader.descriptionLabel
-            
-            if numberOfPhotos == 0 {
-                Api.getTrendImageCount().done { count in self.numberOfPhotos = count }
-            }
-            
+  
             return headerView
             
         default:

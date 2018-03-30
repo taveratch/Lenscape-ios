@@ -24,7 +24,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         clLocationManager.delegate = self
         clLocationManager.requestWhenInUseAuthorization()
-        clLocationManager.startUpdatingLocation()
         
         cameraModal = sb?.instantiateViewController(withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue)
     }
@@ -73,8 +72,9 @@ extension MainTabBarController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
+        clLocationManager.stopUpdatingLocation()
         let locationManager = LocationManager.getInstance()
         locationManager.setCurrentLocation(lat: location.coordinate.latitude, long: location.coordinate.longitude)
-        clLocationManager.stopUpdatingLocation()
+        NotificationCenter.default.post(name: .DidUpdateLocation, object: self)
     }
 }

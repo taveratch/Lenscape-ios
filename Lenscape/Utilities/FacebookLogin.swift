@@ -22,6 +22,7 @@ class FacebookLogin {
                 case .cancelled:
                     seal.reject(NSError(domain: "User cancelled login.", code: 0, userInfo: nil))
                 case .success(let accessToken):
+                    print(accessToken)
                     let token = accessToken.token.authenticationToken
                     seal.fulfill(token)
                 }

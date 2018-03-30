@@ -29,20 +29,18 @@ struct Image {
         guard let image = item as? [String: Any] else {
             fatalError("\(item) is not instance of dictionary [String: Any]")
         }
-        title = image["title"] as? String
+        title = image["name"] as? String ?? "Image name"
         type = image["type"] as? String
         id = image["id"] as? String
-        width = image["width"] as? Int
-        height = image["height"] as? Int
-        link = image["link"] as? String
-        datetime = image["datetime"] as? Int64
-        thumbnailLink = getImageUrlFromType(type: "l", link: link!)
+//        width = image["width"] as? Int
+//        height = image["height"] as? Int
+        link = image["original_link"] as? String
+//        datetime = image["datetime"] as? Int64
+        thumbnailLink = image["thumbnail_link"] as? String
         
         //TODO: Change this
-        let locationString = image["description"] as? String
-        if locationString != nil, let locationDic = convertToDictionary(text: locationString!){
-            location = Location(latitude: locationDic["latitude"] as! Double, longitude: locationDic["longitude"] as! Double)
-        }
+        let locationObject = image["location"] as! [String: Any]
+        location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

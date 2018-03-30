@@ -36,7 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             changeViewController(Identifier.SigninViewController.rawValue)
             os_log("User is not signed in", log: .default, type: .debug)
         }
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -18,6 +18,10 @@ struct Image {
     var link: String?
     var thumbnailLink: String?
     var datetime: Int64?
+    var distance: Double?
+    var likes: Int?
+    var ownerName: String?
+    var isNear: Bool?
     var location: Location?
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
@@ -32,15 +36,20 @@ struct Image {
         title = image["name"] as? String ?? "Image name"
         type = image["type"] as? String
         id = image["id"] as? String
-//        width = image["width"] as? Int
-//        height = image["height"] as? Int
+        likes = image["number_of_like"] as? Int
+        
+        let firstname: String = image.valueForKeyPath(keyPath: "Owner.firstname")!
+        let lastname: String = image.valueForKeyPath(keyPath: "Owner.lastname")!
+        ownerName = "\(firstname) \(lastname)"
+        
         link = image["original_link"] as? String
-//        datetime = image["datetime"] as? Int64
         thumbnailLink = image["thumbnail_link"] as? String
         
         //TODO: Change this
         let locationObject = image["location"] as! [String: Any]
         location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
+        distance = locationObject["distance"] as? Double ?? 0
+        isNear = locationObject["is_near"] as? Bool
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

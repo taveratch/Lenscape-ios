@@ -63,6 +63,14 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         // add action to button programmatically
         informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
         
+        if image!.isNear! {
+            informationWrapper.distanceLabel.text = "\(image!.distance!) kilometers away"
+        }else {
+            informationWrapper.distanceLabel.isHidden = true
+        }
+        
+        informationWrapper.likeLabel.text = "\(image!.likes!) likes"
+        informationWrapper.ownerNameLabel.text = image!.ownerName!
         informationWrapper.isHideInfo(hide: true)
     }
     

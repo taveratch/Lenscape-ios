@@ -594,10 +594,45 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cta-cE-GUO" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                                 <rect key="frame" x="24" y="32" width="366" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Red Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Hlb-6d-BpS">
+                                        <rect key="frame" x="16" y="17" width="17" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="17" id="R1q-50-XZB"/>
+                                            <constraint firstAttribute="height" constant="17" id="bTW-xe-Y6G"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zup-Cg-wGa">
+                                        <rect key="frame" x="49.000000000000014" y="16.333333333333336" width="198.33333333333337" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore your favorite place ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
+                                                <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Hlb-6d-BpS" firstAttribute="centerY" secondItem="Cta-cE-GUO" secondAttribute="centerY" id="Kli-o4-2ek"/>
+                                    <constraint firstItem="Zup-Cg-wGa" firstAttribute="centerY" secondItem="Cta-cE-GUO" secondAttribute="centerY" id="bBO-qC-tQC"/>
+                                    <constraint firstItem="URd-ks-LGV" firstAttribute="leading" secondItem="Hlb-6d-BpS" secondAttribute="trailing" constant="16" id="bwZ-tp-jJT"/>
+                                    <constraint firstItem="Hlb-6d-BpS" firstAttribute="leading" secondItem="Cta-cE-GUO" secondAttribute="leading" constant="16" id="l6U-DK-gK6"/>
                                     <constraint firstAttribute="height" constant="50" id="umc-7q-IML"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1332,6 +1367,7 @@
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
+        <image name="Search Red Icon" width="17" height="17"/>
         <image name="Trend_selected_tab_icon" width="27" height="25"/>
         <image name="Trend_tab_icon" width="27" height="25"/>
     </resources>

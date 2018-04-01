@@ -10,12 +10,14 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 import PromiseKit
 
 class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
     
     // MARK: - UI Components
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var searchButton: UIView!
     
     // MARK: - Attributes
     private let locationManager = CLLocationManager()
@@ -24,6 +26,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSearchButton()
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -41,6 +46,18 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
                                            renderer: renderer)
         
         clusterManager.setDelegate(self, mapDelegate: self)
+    }
+    
+    private func setupSearchButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
+        searchButton.addGestureRecognizer(tap)
+        searchButton.isUserInteractionEnabled = true
+    }
+    
+    @objc private func showGMSAutoCompleteViewController() {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
     }
     
     // Generate cluster item from api
@@ -94,8 +111,12 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         return false
     }
     
+    private func cameraTo(coordinate: CLLocationCoordinate2D) {
+        mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+    }
+    
     private func setupMapView(location: CLLocation) {
-        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        cameraTo(coordinate: location.coordinate)
         
         let styleName = "flat-pale-map-style"
         // use custom map style
@@ -108,6 +129,26 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
             }
         } catch {
             NSLog("The style definition could not be loaded: \(error)")
+        }
+    }
+    
+    private func setupCluster(coordinate: CLLocationCoordinate2D) {
+        //Add item to cluster
+        generateClusterItems(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude)).done {
+            poiItems in
+            
+            self.clusterManager.clearItems()
+            
+            for item in poiItems {
+                self.clusterManager.add(item)
+            }
+            
+            // Call cluster() after items have been added to perform the clustering
+            // and rendering on map.
+            self.clusterManager.cluster()
+            }.catch {
+                error in
+                print(error)
         }
     }
     
@@ -130,25 +171,31 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         }
     
         setupMapView(location: location)
+        setupCluster(coordinate: location.coordinate)
         
-        //Add item to cluster
-        generateClusterItems(location: Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)).done {
-            poiItems in
-            
-            self.clusterManager.clearItems()
-            
-            for item in poiItems {
-                self.clusterManager.add(item)
-            }
-            
-            // Call cluster() after items have been added to perform the clustering
-            // and rendering on map.
-            self.clusterManager.cluster()
-            }.catch {
-                error in
-                print(error)
-        }
         locationManager.stopUpdatingLocation()
     }
+}
+
+extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        cameraTo(coordinate: place.coordinate)
+        setupCluster(coordinate: place.coordinate)
+        
+        print("Place name: \(place.name)")
+        print("Place address: \(place.formattedAddress)")
+        print("Place attributions: \(place.attributions)")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }

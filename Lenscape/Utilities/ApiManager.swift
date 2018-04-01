@@ -38,11 +38,11 @@ class ApiManager {
                         seal.fulfill(value)
                     } else {
                         print(response)
-                        var message = "Server Error. Status code: \(statusCode!)"
+                        var message = "Server Error. Status code: \(statusCode ?? 500)"
                         if value != nil {
                             message = value!["message"] as? String ?? ""
                         }
-                        seal.reject(NSError(domain: message, code: statusCode!, userInfo: nil))
+                        seal.reject(NSError(domain: message, code: statusCode ?? 500, userInfo: nil))
                     }
                 }
             }

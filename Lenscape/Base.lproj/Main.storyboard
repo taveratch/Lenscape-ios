@@ -586,22 +586,32 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-Sg-y6g">
-                                <rect key="frame" x="20" y="40" width="34" height="30"/>
+                                <rect key="frame" x="20" y="90" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="back:" destination="H9Q-MQ-yOu" eventType="touchUpInside" id="pto-aS-pIZ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cta-cE-GUO" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="24" y="32" width="366" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="umc-7q-IML"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="w1y-qD-5Ge" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" id="6G0-HD-JSR"/>
+                            <constraint firstItem="Cta-cE-GUO" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="12" id="CUj-hs-KK1"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="bottom" secondItem="w1y-qD-5Ge" secondAttribute="bottom" id="Ij7-KS-RoC"/>
                             <constraint firstItem="pMH-Sg-y6g" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="20" id="L9R-4w-VVf"/>
                             <constraint firstItem="w1y-qD-5Ge" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" id="SWP-1m-A89"/>
+                            <constraint firstItem="Cta-cE-GUO" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="24" id="VFN-d3-Qhb"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="w1y-qD-5Ge" secondAttribute="trailing" id="iFp-dU-RG2"/>
-                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="20" id="rnp-qR-kRd"/>
+                            <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="Cta-cE-GUO" secondAttribute="trailing" constant="24" id="jec-zU-tbs"/>
+                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="70" id="rnp-qR-kRd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
@@ -610,11 +620,12 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="mapView" destination="w1y-qD-5Ge" id="E7C-zr-Otj"/>
+                        <outlet property="searchButton" destination="Cta-cE-GUO" id="Rcr-N4-pFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4106" y="527"/>
+            <point key="canvasLocation" x="4105.7971014492759" y="526.63043478260875"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">

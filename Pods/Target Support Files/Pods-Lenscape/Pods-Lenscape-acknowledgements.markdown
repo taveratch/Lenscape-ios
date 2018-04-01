@@ -149,6 +149,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Copyright 2017 Google
 
+## GooglePlaces
+
+Copyright 2017 Google
+
 ## Hero
 
 The MIT License (MIT)

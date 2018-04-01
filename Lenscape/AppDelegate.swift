@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import os.log
 import GoogleMaps
+import GooglePlaces
 
 let GOOGLE_API_KEY = "AIzaSyAx85iYbXF1YwdZMUPffmAL8gkSSL5-Nac"
 
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Use google api key for maps service
         GMSServices.provideAPIKey(GOOGLE_API_KEY)
+        GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
         
         let changeViewController = { (identifier: String) -> Void in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)

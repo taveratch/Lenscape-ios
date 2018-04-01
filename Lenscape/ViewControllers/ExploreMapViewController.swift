@@ -10,6 +10,7 @@
 
 import UIKit
 import GoogleMaps
+import PromiseKit
 
 class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
     
@@ -39,27 +40,26 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
                                            renderer: renderer)
         
-        // Generate and add random items to the cluster manager.
-        generateClusterItems()
-        
-        // Call cluster() after items have been added to perform the clustering
-        // and rendering on map.
-        clusterManager.cluster()
-        
         clusterManager.setDelegate(self, mapDelegate: self)
     }
     
-    /// Randomly generates cluster items within some extent of the camera and
-    /// adds them to the cluster manager.
-    private func generateClusterItems() {
-        let extent = 0.01
-        for index in 1...100 {
-            let lat = 13.9480486 + extent * randomScale()
-            let lng = 100.4902452 + extent * randomScale()
-            let name = "Item \(index)"
-            let item =
-                POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name)
-            clusterManager.add(item)
+    // Generate cluster item from api
+    private func generateClusterItems(location: Location) -> Promise<[POIItem]> {
+        var poiItems: [POIItem] = []
+        return Promise {
+            seal in
+            Api.fetchExploreImages(location: location).done {
+                fulfill in
+                let images = fulfill["images"] as! [Image]
+                for image in images {
+                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.title!))
+                }
+                seal.fulfill(poiItems)
+                }.catch{
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
         }
     }
     
@@ -79,7 +79,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
                                                            zoom: mapView.camera.zoom + 1)
         let update = GMSCameraUpdate.setCamera(newCamera)
         mapView.moveCamera(update)
-        return true
+        
+        return false
     }
     
     // MARK: - GMUMapViewDelegate
@@ -112,7 +113,27 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
+        
+        print("Did update Location")
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        //Add item to cluster
+        generateClusterItems(location: Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)).done {
+            poiItems in
+            
+            self.clusterManager.clearItems()
+            
+            for item in poiItems {
+                self.clusterManager.add(item)
+            }
+            
+            // Call cluster() after items have been added to perform the clustering
+            // and rendering on map.
+            self.clusterManager.cluster()
+            }.catch {
+                error in
+                print(error)
+        }
         locationManager.stopUpdatingLocation()
     }
     

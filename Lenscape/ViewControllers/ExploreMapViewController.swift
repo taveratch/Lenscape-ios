@@ -90,7 +90,6 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
     }
     
-    
     // Tap on cluster marker
     // MARK: - GMUClusterManagerDelegate
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
@@ -110,7 +109,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
         return false
     }
-    
+
     //When user end draging map
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         setupCluster(coordinate: position.target)
@@ -157,6 +156,13 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
     }
     
+    private func showMarker(place: GMSPlace) {
+        let marker = GMSMarker(position: place.coordinate)
+        marker.title = place.name
+        marker.appearAnimation = .pop
+        marker.map = mapView
+    }
+    
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -187,6 +193,8 @@ extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
         
         cameraTo(coordinate: place.coordinate)
         setupCluster(coordinate: place.coordinate)
+        mapView.clear() //remove all markers
+        showMarker(place: place)
         
         print("Place name: \(place.name)")
         print("Place address: \(place.formattedAddress)")

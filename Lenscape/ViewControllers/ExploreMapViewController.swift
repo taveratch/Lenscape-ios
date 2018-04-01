@@ -97,13 +97,14 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     private func setupMapView(location: CLLocation) {
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         
+        let styleName = "flat-pale-map-style"
         // use custom map style
         do {
             // Set the map style by passing the URL of the local file.
-            if let styleURL = Bundle.main.url(forResource: "flat-map-design", withExtension: "json") {
+            if let styleURL = Bundle.main.url(forResource: styleName, withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
             } else {
-                NSLog("Unable to find flat-map-design.json")
+                NSLog("Unable to find \(styleName).json")
             }
         } catch {
             NSLog("The style definition could not be loaded: \(error)")

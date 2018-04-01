@@ -9,6 +9,7 @@
 import UIKit
 import Hero
 import GoogleMaps
+import GooglePlaces
 
 class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     

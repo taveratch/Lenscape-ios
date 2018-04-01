@@ -12,4 +12,5 @@ target 'Lenscape' do
   pod 'GooglePlaces'
   pod 'Hero'
   pod 'Validator'
+  pod 'SwiftyJSON'
 end

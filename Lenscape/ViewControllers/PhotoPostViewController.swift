@@ -16,10 +16,12 @@ class PhotoPostViewController: UIViewController {
     
     var image: UIImage?
     let photoUploader = PhotoUploader()
+    private let dataProvider = GoogleDataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchNearbyPlaces()
     }
     private func setupUI() {
         imageView.image = image
@@ -52,6 +54,15 @@ class PhotoPostViewController: UIViewController {
             // the data can be passed to ExploreViewController via UserDefaults
             UserDefaults.standard.set(data, forKey: "uploadPhotoData")
             self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
+        }
+    }
+    
+    private func fetchNearbyPlaces() {
+        print("fetchNearbyPlaces")
+        let location = LocationManager.getInstance().currentLocation
+        dataProvider.fetchPlacesNearCoordinate(CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!), radius: 1000, types: ["food"]) {
+            places in
+            print(places)
         }
     }
 }

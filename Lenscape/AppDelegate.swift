@@ -12,18 +12,18 @@ import os.log
 import GoogleMaps
 import GooglePlaces
 
-let GOOGLE_API_KEY = "AIzaSyAx85iYbXF1YwdZMUPffmAL8gkSSL5-Nac"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    static let GOOGLE_API_KEY = "AIzaSyCCeMmQpPef8iidgKcLQ7rGmWHOZfXGtg4"
+    
     var window: UIWindow?
     
     //added these 3 methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Use google api key for maps service
-        GMSServices.provideAPIKey(GOOGLE_API_KEY)
-        GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
+        GMSServices.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
+        GMSPlacesClient.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
         
         let changeViewController = { (identifier: String) -> Void in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)

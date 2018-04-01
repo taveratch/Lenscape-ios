@@ -37,6 +37,8 @@
 		950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */; };
 		950358E22070C59800D424F4 /* flat-map-design.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E02070C59800D424F4 /* flat-map-design.json */; };
 		950358E32070C59800D424F4 /* flat-pale-map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E12070C59800D424F4 /* flat-pale-map-style.json */; };
+		950358E520710C7900D424F4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358E420710C7900D424F4 /* GoogleDataProvider.swift */; };
+		950358E720710D5B00D424F4 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358E620710D5B00D424F4 /* GooglePlace.swift */; };
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
@@ -173,6 +175,8 @@
 		950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClusterRenderer.swift; sourceTree = "<group>"; };
 		950358E02070C59800D424F4 /* flat-map-design.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-map-design.json"; path = "../../../../lenscape_icons/flat-map-design.json"; sourceTree = "<group>"; };
 		950358E12070C59800D424F4 /* flat-pale-map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-pale-map-style.json"; path = "../../../../lenscape_icons/flat-pale-map-style.json"; sourceTree = "<group>"; };
+		950358E420710C7900D424F4 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleDataProvider.swift; path = "../../../../../Downloads/Feed_Me_Starter/Feed Me/Model/GoogleDataProvider.swift"; sourceTree = "<group>"; };
+		950358E620710D5B00D424F4 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlace.swift; path = "../../../../../Downloads/Feed_Me_Starter/Feed Me/Model/GooglePlace.swift"; sourceTree = "<group>"; };
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 		95134E34204C2F0700121514 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				950358E620710D5B00D424F4 /* GooglePlace.swift */,
+				950358E420710C7900D424F4 /* GoogleDataProvider.swift */,
 				D064913D206E89C4002ADF2C /* GoogleMapsUtils */,
 				9582DC2E205CC75100779E38 /* protocols */,
 				95B7C1FA204E9DC800410A48 /* extensions */,
@@ -720,6 +726,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCarousel/SwiftCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -734,6 +741,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950358E720710D5B00D424F4 /* GooglePlace.swift in Sources */,
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				D0C97A83206A4D590054276F /* ValidationError.swift in Sources */,
@@ -805,6 +814,7 @@
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				9504A15420677CBB00FDF606 /* Location.swift in Sources */,
+				950358E520710C7900D424F4 /* GoogleDataProvider.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,

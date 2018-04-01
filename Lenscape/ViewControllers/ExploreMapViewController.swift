@@ -33,9 +33,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
-        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let iconGenerator = CustomGMUClusterIconGenerator()
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
-        let renderer = GMUDefaultClusterRenderer(mapView: mapView,
+        let renderer = CustomClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
         clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
                                            renderer: renderer)
@@ -52,7 +52,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
                 fulfill in
                 let images = fulfill["images"] as! [Image]
                 for image in images {
-                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.title!))
+                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.title!, image: image))
                 }
                 seal.fulfill(poiItems)
                 }.catch{
@@ -73,12 +73,13 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
     }
     
+    
+    // Tap on cluster marker
     // MARK: - GMUClusterManagerDelegate
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
-        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
-                                                           zoom: mapView.camera.zoom + 1)
-        let update = GMSCameraUpdate.setCamera(newCamera)
-        mapView.moveCamera(update)
+        if let items = cluster.items as? [POIItem] {
+            print(items[0].image)
+        }
         
         return false
     }
@@ -92,15 +93,28 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
         return false
     }
+    
+    private func setupMapView(location: CLLocation) {
+        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        // use custom map style
+        do {
+            // Set the map style by passing the URL of the local file.
+            if let styleURL = Bundle.main.url(forResource: "flat-map-design", withExtension: "json") {
+                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find flat-map-design.json")
+            }
+        } catch {
+            NSLog("The style definition could not be loaded: \(error)")
+        }
+    }
+    
 }
 
 // MARK: - CLLocationManagerDelegate
 
 extension ExploreMapViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        locationManager.startUpdatingLocation()
-    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
@@ -113,9 +127,8 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        
-        print("Did update Location")
-        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+    
+        setupMapView(location: location)
         
         //Add item to cluster
         generateClusterItems(location: Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)).done {

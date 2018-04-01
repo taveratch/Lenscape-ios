@@ -111,6 +111,11 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         return false
     }
     
+    //When user end draging map
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        setupCluster(coordinate: position.target)
+    }
+    
     private func cameraTo(coordinate: CLLocationCoordinate2D) {
         mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
     }

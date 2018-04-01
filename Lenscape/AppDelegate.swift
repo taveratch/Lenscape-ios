@@ -51,6 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
+    //https://stackoverflow.com/questions/49565775/facebook-sdk-access-token-issue-with-xcode-9-3
+    // Fix crash in xcode 9.3 and iOS 11.3
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(app,
+                                                                     open: url,
+                                                                     sourceApplication: options[.sourceApplication] as! String,
+                                                                     annotation: options[.annotation])
+    }
+    
     //----
     //Unlock rotation for specific View Controller
     //https://medium.com/@sunnyleeyun/swift-100-days-project-24-portrait-landscape-how-to-allow-rotate-in-one-vc-d717678301c1
@@ -96,7 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

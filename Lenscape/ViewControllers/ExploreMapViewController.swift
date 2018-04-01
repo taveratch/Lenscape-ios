@@ -196,10 +196,11 @@ extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
         mapView.clear() //remove all markers
         showMarker(place: place)
         
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
-        print("Place ID: \(place.placeID)")
+//        print("Place name: \(place.name)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
+//        print("Place ID: \(place.placeID)")
+        
         dismiss(animated: true, completion: nil)
     }
     

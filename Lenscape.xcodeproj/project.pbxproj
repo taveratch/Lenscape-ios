@@ -33,6 +33,10 @@
 		950358D4206F95BB00D424F4 /* GMUWeightedLatLng.m in Sources */ = {isa = PBXBuildFile; fileRef = 950358BA206F95BA00D424F4 /* GMUWeightedLatLng.m */; };
 		950358D5206F95BB00D424F4 /* GMUGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 950358BD206F95BA00D424F4 /* GMUGradient.m */; };
 		950358D6206F95BB00D424F4 /* GMUHeatmapTileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 950358BE206F95BA00D424F4 /* GMUHeatmapTileLayer.m */; };
+		950358D820709FC600D424F4 /* CustomGMUClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */; };
+		950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */; };
+		950358E22070C59800D424F4 /* flat-map-design.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E02070C59800D424F4 /* flat-map-design.json */; };
+		950358E32070C59800D424F4 /* flat-pale-map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E12070C59800D424F4 /* flat-pale-map-style.json */; };
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
@@ -165,6 +169,10 @@
 		950358BC206F95BA00D424F4 /* GMUWeightedLatLng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUWeightedLatLng.h; sourceTree = "<group>"; };
 		950358BD206F95BA00D424F4 /* GMUGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGradient.m; sourceTree = "<group>"; };
 		950358BE206F95BA00D424F4 /* GMUHeatmapTileLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUHeatmapTileLayer.m; sourceTree = "<group>"; };
+		950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGMUClusterIconGenerator.swift; sourceTree = "<group>"; };
+		950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClusterRenderer.swift; sourceTree = "<group>"; };
+		950358E02070C59800D424F4 /* flat-map-design.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-map-design.json"; path = "../../../../lenscape_icons/flat-map-design.json"; sourceTree = "<group>"; };
+		950358E12070C59800D424F4 /* flat-pale-map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-pale-map-style.json"; path = "../../../../lenscape_icons/flat-pale-map-style.json"; sourceTree = "<group>"; };
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -365,6 +373,15 @@
 			path = Heatmap;
 			sourceTree = "<group>";
 		};
+		950358DF2070C58200D424F4 /* Map Designs */ = {
+			isa = PBXGroup;
+			children = (
+				950358E02070C59800D424F4 /* flat-map-design.json */,
+				950358E12070C59800D424F4 /* flat-pale-map-style.json */,
+			);
+			path = "Map Designs";
+			sourceTree = "<group>";
+		};
 		95134E34204C2F0700121514 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +394,8 @@
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
+				950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */,
+				950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
 				D0C97A82206A4D590054276F /* ValidationError.swift */,
 				D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */,
@@ -448,6 +467,7 @@
 		95656932204C2BB3005F9F6B /* Lenscape */ = {
 			isa = PBXGroup;
 			children = (
+				950358DF2070C58200D424F4 /* Map Designs */,
 				9597DE62205F7B8700B7E751 /* DataModels */,
 				956F1702204EA63600CADB75 /* ViewControllers */,
 				955C3AF1204D95890023FAF0 /* Components */,
@@ -664,6 +684,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950358E32070C59800D424F4 /* flat-pale-map-style.json in Resources */,
 				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
@@ -673,6 +694,7 @@
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */,
 				957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */,
+				950358E22070C59800D424F4 /* flat-map-design.json in Resources */,
 				95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */,
 				95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */,
 			);
@@ -727,10 +749,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -771,6 +795,8 @@
 				9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */,
 				950358C2206F95BB00D424F4 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				950358D6206F95BB00D424F4 /* GMUHeatmapTileLayer.m in Sources */,
+				950358D820709FC600D424F4 /* CustomGMUClusterIconGenerator.swift in Sources */,
+				950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				950358D4206F95BB00D424F4 /* GMUWeightedLatLng.m in Sources */,

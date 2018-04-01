@@ -12,9 +12,11 @@ import Foundation
 class POIItem: NSObject, GMUClusterItem {
     var position: CLLocationCoordinate2D
     var name: String!
+    var image: Image!
     
-    init(position: CLLocationCoordinate2D, name: String) {
+    init(position: CLLocationCoordinate2D, name: String, image: Image) {
         self.position = position
         self.name = name
+        self.image = image
     }
 }

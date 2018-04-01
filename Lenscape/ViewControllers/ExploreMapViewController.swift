@@ -186,6 +186,7 @@ extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
         print("Place name: \(place.name)")
         print("Place address: \(place.formattedAddress)")
         print("Place attributions: \(place.attributions)")
+        print("Place ID: \(place.placeID)")
         dismiss(animated: true, completion: nil)
     }
     

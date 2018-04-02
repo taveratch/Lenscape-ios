@@ -56,10 +56,10 @@ class ExploreViewController: AuthViewController {
     // MARK: - Private Methods
     
     private func startUploadPhoto() {
-        if let uploadPhoto = UserDefaults.standard.data(forKey: "uploadPhotoData") {
+        if let picture = UserDefaults.standard.dictionary(forKey: "uploadPhotoInfo") {
             let locationManager = LocationManager.getInstance()
-            photoUploader.upload(data: uploadPhoto, location: locationManager.getCurrentLocation())
-            UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
+            photoUploader.upload(picture: picture, location: locationManager.getCurrentLocation())
+            UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         }
     }
     
@@ -160,7 +160,7 @@ extension ExploreViewController: PhotoUploadingDelegate {
     
     func didUpload() {
         self.progressViewWrapper.isHidden = true
-        UserDefaults.standard.removeObject(forKey: "uploadPhotoData")
+        UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         UIView.animate(withDuration: 0.5, animations: {
             self.fetchInitImageFromAPI()
             self.collectionView.collectionViewLayout.invalidateLayout()

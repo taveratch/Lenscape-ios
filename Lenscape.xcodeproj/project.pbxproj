@@ -37,6 +37,8 @@
 		950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */; };
 		950358E22070C59800D424F4 /* flat-map-design.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E02070C59800D424F4 /* flat-map-design.json */; };
 		950358E32070C59800D424F4 /* flat-pale-map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = 950358E12070C59800D424F4 /* flat-pale-map-style.json */; };
+		950358EB2071147800D424F4 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358E92071147800D424F4 /* GooglePlace.swift */; };
+		950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358EA2071147800D424F4 /* GoogleDataProvider.swift */; };
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
@@ -85,6 +87,10 @@
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
+		95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */; };
+		95C35BBF2071E1B700030B12 /* PhotoUploadInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */; };
+		95C35BC3207215FE00030B12 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BC2207215FE00030B12 /* Owner.swift */; };
+		95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */; };
 		95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */; };
 		95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
@@ -173,6 +179,8 @@
 		950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClusterRenderer.swift; sourceTree = "<group>"; };
 		950358E02070C59800D424F4 /* flat-map-design.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-map-design.json"; path = "../../../../lenscape_icons/flat-map-design.json"; sourceTree = "<group>"; };
 		950358E12070C59800D424F4 /* flat-pale-map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flat-pale-map-style.json"; path = "../../../../lenscape_icons/flat-pale-map-style.json"; sourceTree = "<group>"; };
+		950358E92071147800D424F4 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		950358EA2071147800D424F4 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -224,6 +232,10 @@
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoUploadInformationCard.xib; sourceTree = "<group>"; };
+		95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadInformationCard.swift; sourceTree = "<group>"; };
+		95C35BC2207215FE00030B12 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoInformationCard.xib; sourceTree = "<group>"; };
 		95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInformationCard.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -382,9 +394,19 @@
 			path = "Map Designs";
 			sourceTree = "<group>";
 		};
+		950358E82071146300D424F4 /* GoogleMapsPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				950358EA2071147800D424F4 /* GoogleDataProvider.swift */,
+				950358E92071147800D424F4 /* GooglePlace.swift */,
+			);
+			path = GoogleMapsPlaces;
+			sourceTree = "<group>";
+		};
 		95134E34204C2F0700121514 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				950358E82071146300D424F4 /* GoogleMapsPlaces */,
 				D064913D206E89C4002ADF2C /* GoogleMapsUtils */,
 				9582DC2E205CC75100779E38 /* protocols */,
 				95B7C1FA204E9DC800410A48 /* extensions */,
@@ -426,6 +448,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */,
 				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
 				D0ED74BF2064151D00F197C1 /* UserProfile */,
 				95F85EF12063453A0059ACFB /* ImageCollectionViewCell */,
@@ -485,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
+				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
@@ -547,6 +571,7 @@
 			children = (
 				9597DE63205F7BB200B7E751 /* Image.swift */,
 				95E45147206DF2B7000E5046 /* Pagination.swift */,
+				95C35BC2207215FE00030B12 /* Owner.swift */,
 				9504A15320677CBB00FDF606 /* Location.swift */,
 				D064919C206E8B5F002ADF2C /* POIItem.swift */,
 			);
@@ -564,6 +589,15 @@
 				952EF151206D2D4A0032983B /* Notification.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */ = {
+			isa = PBXGroup;
+			children = (
+				95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */,
+				95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */,
+			);
+			path = PhotoUploadInformationCard;
 			sourceTree = "<group>";
 		};
 		95D43EA72064DA0A00CB3517 /* PhotoInformationCard */ = {
@@ -690,6 +724,7 @@
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */,
 				95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */,
@@ -720,6 +755,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCarousel/SwiftCarousel.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -734,6 +770,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCarousel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -811,7 +848,9 @@
 				950358CF206F95BB00D424F4 /* GMUGroundOverlay.m in Sources */,
 				95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
+				950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */,
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
+				950358EB2071147800D424F4 /* GooglePlace.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				950358D0206F95BB00D424F4 /* GMUStyle.m in Sources */,
 				954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */,
@@ -821,6 +860,7 @@
 				950358CC206F95BB00D424F4 /* GMUPlacemark.m in Sources */,
 				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
+				95C35BC3207215FE00030B12 /* Owner.swift in Sources */,
 				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */,
@@ -859,12 +899,14 @@
 				D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */,
 				950358C3206F95BB00D424F4 /* GMUWrappingDictionaryKey.m in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,
+				95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
 				95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */,
 				9597DE64205F7BB200B7E751 /* Image.swift in Sources */,
 				950358CB206F95BB00D424F4 /* GMUGeometryCollection.m in Sources */,
 				9518DBB82052DE0A00F0BE1B /* ExploreMapViewController.swift in Sources */,
 				950358D2206F95BB00D424F4 /* GMULineString.m in Sources */,
+				95C35BBF2071E1B700030B12 /* PhotoUploadInformationCard.swift in Sources */,
 				950358C9206F95BB00D424F4 /* GMUKMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

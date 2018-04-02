@@ -9,6 +9,7 @@
 import UIKit
 import Hero
 import GoogleMaps
+import GooglePlaces
 
 class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
@@ -54,11 +55,11 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     }
     
     private func setupPhotoInfoCard() {
-        //TODO - Change this
-        if let user = UserController.getCurrentUser() {
-            let url = URL(string: user["picture"] as! String)
-            informationWrapper.profileImageView.kf.setImage(with: url)
-        }
+        let profilePictureUrl = URL(string: image!.owner.profilePictureLink)
+        informationWrapper.profileImageView.kf.setImage(with: profilePictureUrl)
+        
+        informationWrapper.pictureNameLabel.text = image!.name!
+        informationWrapper.locationNameLabel.text = image!.locationName!
         
         // add action to button programmatically
         informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
@@ -74,7 +75,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         }
         
         informationWrapper.likeLabel.text = "\(image!.likes!) likes"
-        informationWrapper.ownerNameLabel.text = image!.ownerName!
+        informationWrapper.ownerNameLabel.text = image!.owner.name
         informationWrapper.isHideInfo(hide: true)
     }
     

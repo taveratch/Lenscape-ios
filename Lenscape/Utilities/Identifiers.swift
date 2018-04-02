@@ -23,4 +23,5 @@ enum Identifier: String {
     case TrendCollectionReusableView = "TrendCollectionReusableView"
     case SettingsViewController = "SettingsViewController"
     case SettingsNavigationController = "SettingsNavigationController"
+    case PhotoPreviewViewController = "PhotoPreviewViewController"
 }

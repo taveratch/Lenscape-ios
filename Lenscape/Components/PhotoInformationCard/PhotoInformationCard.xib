@@ -15,9 +15,11 @@
             <connections>
                 <outlet property="distanceLabel" destination="qJA-Et-6Pk" id="EuA-st-qUX"/>
                 <outlet property="likeLabel" destination="j0C-zI-zFW" id="TgI-Eg-beA"/>
+                <outlet property="locationNameLabel" destination="3PS-6r-68c" id="4vB-L0-fSi"/>
                 <outlet property="mapView" destination="x5r-nS-IJj" id="HhK-HN-T3g"/>
                 <outlet property="moreDetailButton" destination="0vI-U6-4uZ" id="nZC-iV-YbN"/>
                 <outlet property="ownerNameLabel" destination="DwA-es-k90" id="0px-Ia-IVK"/>
+                <outlet property="pictureNameLabel" destination="q9P-Po-1Vb" id="ywC-Ea-zk7"/>
                 <outlet property="profileImageView" destination="39v-cM-yeC" id="bpn-7S-JUF"/>
                 <outletCollection property="hiddenView" destination="n68-EF-DAB" collectionClass="NSMutableArray" id="geQ-oh-Hmr"/>
             </connections>

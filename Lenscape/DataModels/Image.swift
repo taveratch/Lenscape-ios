@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct Image {
-    var title: String?
+    var name: String?
     var type: String?
     var id: String?
     var width: Int?
@@ -23,6 +23,7 @@ struct Image {
     var ownerName: String?
     var isNear: Bool?
     var location: Location?
+    var locationName: String?
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
         let index = link.index(link.endIndex, offsetBy: -4)
@@ -33,7 +34,7 @@ struct Image {
         guard let image = item as? [String: Any] else {
             fatalError("\(item) is not instance of dictionary [String: Any]")
         }
-        title = image["name"] as? String ?? "Image name"
+        name = image["name"] as? String ?? "Image name"
         type = image["type"] as? String
         id = image["id"] as? String
         likes = image["number_of_like"] as? Int
@@ -48,6 +49,7 @@ struct Image {
         //TODO: Change this
         let locationObject = image["location"] as! [String: Any]
         location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
+        locationName = locationObject["name"] as! String
         distance = locationObject["distance"] as? Double ?? 0
         isNear = locationObject["is_near"] as? Bool
     }

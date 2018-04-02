@@ -87,6 +87,8 @@
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
 		95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7F2051954D007480AA /* FavoriteViewController.swift */; };
 		95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB8120523B9E007480AA /* MainTabBarController.swift */; };
+		95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */; };
+		95C35BBF2071E1B700030B12 /* PhotoUploadInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */; };
 		95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */; };
 		95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
@@ -228,6 +230,8 @@
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		95B8AB7F2051954D007480AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		95B8AB8120523B9E007480AA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoUploadInformationCard.xib; sourceTree = "<group>"; };
+		95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadInformationCard.swift; sourceTree = "<group>"; };
 		95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoInformationCard.xib; sourceTree = "<group>"; };
 		95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInformationCard.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -440,6 +444,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */,
 				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
 				D0ED74BF2064151D00F197C1 /* UserProfile */,
 				95F85EF12063453A0059ACFB /* ImageCollectionViewCell */,
@@ -580,6 +585,15 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */ = {
+			isa = PBXGroup;
+			children = (
+				95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */,
+				95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */,
+			);
+			path = PhotoUploadInformationCard;
+			sourceTree = "<group>";
+		};
 		95D43EA72064DA0A00CB3517 /* PhotoInformationCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +718,7 @@
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */,
 				95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
 				D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */,
@@ -883,6 +898,7 @@
 				950358CB206F95BB00D424F4 /* GMUGeometryCollection.m in Sources */,
 				9518DBB82052DE0A00F0BE1B /* ExploreMapViewController.swift in Sources */,
 				950358D2206F95BB00D424F4 /* GMULineString.m in Sources */,
+				95C35BBF2071E1B700030B12 /* PhotoUploadInformationCard.swift in Sources */,
 				950358C9206F95BB00D424F4 /* GMUKMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

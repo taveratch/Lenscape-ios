@@ -87,7 +87,7 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, location: Location? = nil, imageName: String? = "IUP Building", locationName: String? = "Kasetsart University",progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+    static func uploadImage(data: Data, location: Location? = nil, imageName: String, locationName: String, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : HTTPHeaders = [
             "Authorization": "Bearer \(UserController.getToken())",
@@ -98,8 +98,8 @@ class Api {
             ApiManager.upload(url: "\(HOST)/photo", headers: headers,
                               multipartFormData: { multipartFormData in
                                 multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
-                                multipartFormData.append(imageName!.data(using: String.Encoding.utf8)!, withName: "picture_name")
-                                multipartFormData.append(locationName!.data(using: String.Encoding.utf8)!, withName: "location_name")
+                                multipartFormData.append(imageName.data(using: String.Encoding.utf8)!, withName: "image_name")
+                                multipartFormData.append(locationName.data(using: String.Encoding.utf8)!, withName: "location_name")
                                 multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")
             }, progressHandler: progressHandler
                 ).done {

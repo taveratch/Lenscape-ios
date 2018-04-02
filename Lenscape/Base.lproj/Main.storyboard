@@ -41,41 +41,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6C7-Vd-GML">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3us-WQ-5Lk">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6Y-41-cYI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Share Photo" id="ohc-gD-bsu">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ftB-XL-DCV">
-                                            <connections>
-                                                <action selector="back:" destination="9Lh-qe-8A3" id="vSR-U0-gge"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Share" id="W94-Qk-hhJ">
-                                            <connections>
-                                                <action selector="upload:" destination="9Lh-qe-8A3" id="Or0-ot-aAS"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUn-to-aqt">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6C7-Vd-GML">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygy-cb-hPZ" customClass="PhotoUploadInformationCard" customModule="Lenscape" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="466" width="414" height="1000"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1000" id="dnL-tb-cqm"/>
+                                                </constraints>
+                                            </view>
+                                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6Y-41-cYI">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                <items>
+                                                    <navigationItem title="Share Photo" id="ohc-gD-bsu">
+                                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ftB-XL-DCV">
+                                                            <connections>
+                                                                <action selector="back:" destination="9Lh-qe-8A3" id="vSR-U0-gge"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                        <barButtonItem key="rightBarButtonItem" title="Share" id="W94-Qk-hhJ">
+                                                            <connections>
+                                                                <action selector="upload:" destination="9Lh-qe-8A3" id="Or0-ot-aAS"/>
+                                                            </connections>
+                                                        </barButtonItem>
+                                                    </navigationItem>
+                                                </items>
+                                            </navigationBar>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ygy-cb-hPZ" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="Ago-En-JI8"/>
+                                            <constraint firstAttribute="trailing" secondItem="6C7-Vd-GML" secondAttribute="trailing" id="NuS-KC-h00"/>
+                                            <constraint firstItem="w6Y-41-cYI" firstAttribute="top" secondItem="TUn-to-aqt" secondAttribute="top" id="RdH-5P-y8a"/>
+                                            <constraint firstItem="6C7-Vd-GML" firstAttribute="top" secondItem="TUn-to-aqt" secondAttribute="top" id="TdR-zC-x71"/>
+                                            <constraint firstItem="6C7-Vd-GML" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="Y3V-Sj-xLS"/>
+                                            <constraint firstAttribute="trailing" secondItem="w6Y-41-cYI" secondAttribute="trailing" id="h55-eX-nn7"/>
+                                            <constraint firstItem="w6Y-41-cYI" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="lg9-jL-hfA"/>
+                                            <constraint firstAttribute="bottom" secondItem="ygy-cb-hPZ" secondAttribute="bottom" constant="-750" id="rwh-YP-D5Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="6C7-Vd-GML" secondAttribute="bottom" id="uHj-ke-PoG"/>
+                                            <constraint firstAttribute="trailing" secondItem="ygy-cb-hPZ" secondAttribute="trailing" id="uvo-zj-Adb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="TUn-to-aqt" firstAttribute="leading" secondItem="3us-WQ-5Lk" secondAttribute="leading" id="3pB-eW-bQU"/>
+                                    <constraint firstItem="TUn-to-aqt" firstAttribute="top" secondItem="3us-WQ-5Lk" secondAttribute="top" id="Gkr-fo-3ij"/>
+                                    <constraint firstAttribute="bottom" secondItem="TUn-to-aqt" secondAttribute="bottom" id="cos-If-ovd"/>
+                                    <constraint firstAttribute="trailing" secondItem="TUn-to-aqt" secondAttribute="trailing" id="hct-k9-MEB"/>
+                                    <constraint firstItem="TUn-to-aqt" firstAttribute="centerY" secondItem="3us-WQ-5Lk" secondAttribute="centerY" id="iWK-aG-Jp7"/>
+                                    <constraint firstItem="TUn-to-aqt" firstAttribute="centerX" secondItem="3us-WQ-5Lk" secondAttribute="centerX" id="qfj-ql-reM"/>
+                                    <constraint firstItem="TUn-to-aqt" firstAttribute="centerX" secondItem="3us-WQ-5Lk" secondAttribute="centerX" id="sDa-nR-zy2"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="w6Y-41-cYI" firstAttribute="trailing" secondItem="WSl-gM-DZy" secondAttribute="trailing" id="JYq-sv-Pkg"/>
-                            <constraint firstItem="6C7-Vd-GML" firstAttribute="leading" secondItem="WSl-gM-DZy" secondAttribute="leading" id="Oix-aw-9lP"/>
-                            <constraint firstItem="w6Y-41-cYI" firstAttribute="leading" secondItem="WSl-gM-DZy" secondAttribute="leading" id="PAb-Sv-cR9"/>
-                            <constraint firstItem="6C7-Vd-GML" firstAttribute="bottom" secondItem="WSl-gM-DZy" secondAttribute="bottom" id="SLW-D9-JnI"/>
-                            <constraint firstItem="w6Y-41-cYI" firstAttribute="top" secondItem="tqx-xM-6TI" secondAttribute="top" id="jmv-7x-Zbo"/>
-                            <constraint firstItem="6C7-Vd-GML" firstAttribute="trailing" secondItem="WSl-gM-DZy" secondAttribute="trailing" id="nYJ-8m-KGY"/>
-                            <constraint firstItem="6C7-Vd-GML" firstAttribute="top" secondItem="WSl-gM-DZy" secondAttribute="top" id="uDa-Hb-ePO"/>
+                            <constraint firstItem="3us-WQ-5Lk" firstAttribute="top" secondItem="WSl-gM-DZy" secondAttribute="top" id="Kz2-dW-8cR"/>
+                            <constraint firstItem="WSl-gM-DZy" firstAttribute="bottom" secondItem="3us-WQ-5Lk" secondAttribute="bottom" id="M5Z-JG-gF0"/>
+                            <constraint firstItem="WSl-gM-DZy" firstAttribute="trailing" secondItem="3us-WQ-5Lk" secondAttribute="trailing" id="d5C-FW-Nyi"/>
+                            <constraint firstItem="3us-WQ-5Lk" firstAttribute="leading" secondItem="WSl-gM-DZy" secondAttribute="leading" id="eDJ-hd-AWm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WSl-gM-DZy"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="6C7-Vd-GML" id="WTo-1y-Uwh"/>
+                        <outlet property="informationCard" destination="ygy-cb-hPZ" id="5zq-cU-HXf"/>
+                        <outlet property="scrollView" destination="3us-WQ-5Lk" id="S3w-Sm-wcf"/>
                         <outlet property="shareButton" destination="W94-Qk-hhJ" id="Uqp-bB-1Kd"/>
                         <segue destination="pqL-1E-5yq" kind="unwind" identifier="unwindToCameraAndDisiss" unwindAction="unwindToCameraAndDisissWithSender:" id="9Ka-DU-MVW"/>
                     </connections>
@@ -83,7 +120,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvr-9r-NbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pqL-1E-5yq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3400" y="2120"/>
+            <point key="canvasLocation" x="3400.0000000000005" y="2119.5652173913045"/>
         </scene>
         <!--Open Camera View Controller Modal-->
         <scene sceneID="wAY-C6-w1P">

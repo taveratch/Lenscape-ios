@@ -69,7 +69,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
                 fulfill in
                 let images = fulfill["images"] as! [Image]
                 for image in images {
-                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.title!, image: image))
+                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.name!, image: image))
                 }
                 seal.fulfill(poiItems)
                 }.catch{

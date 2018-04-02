@@ -61,6 +61,9 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             informationWrapper.profileImageView.kf.setImage(with: url)
         }
         
+        informationWrapper.pictureNameLabel.text = image!.name!
+        informationWrapper.locationNameLabel.text = image!.locationName!
+        
         // add action to button programmatically
         informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
         

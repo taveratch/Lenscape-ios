@@ -63,11 +63,12 @@ class SignInViewController: UIViewController {
                 self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch {
                     error in
-                    
+                    let nsError = error as NSError
+                    let message = nsError.userInfo["message"] as! String
                     self.signinButton.setTitle("Sign in", for: .normal)
                     self.signinButton.loadingIndicator(show: false)
                     
-                    let alert = UIAlertController(title: "Message", message: error.domain , preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Message", message: message , preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true)
             }

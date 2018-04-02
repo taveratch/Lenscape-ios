@@ -100,6 +100,7 @@ class PhotoPostViewController: UIViewController {
     }
     
     /*
+     TODO: Check place has been selected
     * Are all required information filled or not.
         1. Caption
         2. Place

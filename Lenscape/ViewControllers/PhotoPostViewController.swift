@@ -25,6 +25,9 @@ class PhotoPostViewController: UIViewController {
         setupUI()
         setupKeyboard()
         fetchNearbyPlaces()
+        
+        //https://github.com/lkzhao/Hero/issues/187
+        informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
     }
     
     // MARK: Setup for moving view to show textfield when keyboard is presented

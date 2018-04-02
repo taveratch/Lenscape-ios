@@ -20,7 +20,7 @@ struct Image {
     var datetime: Int64?
     var distance: Double?
     var likes: Int?
-    var ownerName: String?
+    var owner: Owner!
     var isNear: Bool?
     var location: Location?
     var locationName: String?
@@ -39,9 +39,8 @@ struct Image {
         id = image["id"] as? String
         likes = image["number_of_like"] as? Int
         
-        let firstname: String = image.valueForKeyPath(keyPath: "Owner.firstname")!
-        let lastname: String = image.valueForKeyPath(keyPath: "Owner.lastname")!
-        ownerName = "\(firstname) \(lastname)"
+        let ownerObj = image["Owner"] as! Any
+        owner = Owner(item: ownerObj)
         
         link = image["original_link"] as? String
         thumbnailLink = image["thumbnail_link"] as? String

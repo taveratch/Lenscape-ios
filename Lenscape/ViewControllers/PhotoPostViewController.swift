@@ -12,8 +12,9 @@ import Alamofire
 class PhotoPostViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: ShadowView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backButton: UIImageView!
     @IBOutlet weak var informationCard: PhotoUploadInformationCard!
     
     var image: UIImage?
@@ -25,6 +26,8 @@ class PhotoPostViewController: UIViewController {
         setupUI()
         setupKeyboard()
         fetchNearbyPlaces()
+        setupShareButton()
+        setupBackButton()
         
         //https://github.com/lkzhao/Hero/issues/187
         informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
@@ -64,7 +67,7 @@ class PhotoPostViewController: UIViewController {
         return true
     }
     
-    @IBAction func back(_ sender: UIBarButtonItem) {
+    @objc func back() {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
@@ -81,7 +84,7 @@ class PhotoPostViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func upload(_ sender: UIBarButtonItem) {
+    @objc func upload() {
         if let data = UIImageJPEGRepresentation(image!,1) {
             let imageInfo: [String: Any] = [
                 "picture": data,
@@ -92,6 +95,22 @@ class PhotoPostViewController: UIViewController {
             UserDefaults.standard.set(imageInfo, forKey: "uploadPhotoInfo")
             self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
         }
+    }
+    
+//    @objc private func back() {
+//        dismiss(animated: true)
+//    }
+    
+    private func setupShareButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(upload))
+        shareButton.addGestureRecognizer(tap)
+        shareButton.isUserInteractionEnabled = true
+    }
+    
+    private func setupBackButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
+        backButton.addGestureRecognizer(tap)
+        backButton.isUserInteractionEnabled = true
     }
     
     private func fetchNearbyPlaces() {

@@ -45,7 +45,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         dismiss(animated: true)
-        showPhotoPostViewController(image: selectedImage)
+        showPhotoPreviewController(image: selectedImage)
     }
     
     // MARK: - UI Initialization
@@ -118,7 +118,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
                     let dataProvider = CGDataProvider(data: imageData! as CFData )
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                    self.showPhotoPostViewController(image: image)
+                    self.showPhotoPreviewController(image: image)
                 }
             })
         }
@@ -130,12 +130,14 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     
     // MARK: - Misc
     
-    private func showPhotoPostViewController(image: UIImage?) {
+    private func showPhotoPreviewController(image: UIImage?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: Identifier.PhotoPostViewController.rawValue) as? PhotoPostViewController else {
-            fatalError("identifier: \(Identifier.PhotoPostViewController.rawValue) is not type of PhotoPostViewController")
+        guard let vc = storyboard.instantiateViewController(withIdentifier: Identifier.PhotoPreviewViewController.rawValue) as? PhotoPreviewViewController else {
+            fatalError("identifier: \(Identifier.PhotoPreviewViewController.rawValue) is not type of PhotoPreviewViewController")
         }
         vc.image = image
+        vc.hero.isEnabled = true
+        vc.hero.modalAnimationType = .pageIn(direction: .left)
         present(vc, animated: true)
     }
 

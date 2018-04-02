@@ -90,6 +90,7 @@
 		95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */; };
 		95C35BBF2071E1B700030B12 /* PhotoUploadInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */; };
 		95C35BC3207215FE00030B12 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BC2207215FE00030B12 /* Owner.swift */; };
+		95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */; };
 		95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */; };
 		95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */; };
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
@@ -234,6 +235,7 @@
 		95C35BBC2071E1A500030B12 /* PhotoUploadInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoUploadInformationCard.xib; sourceTree = "<group>"; };
 		95C35BBE2071E1B700030B12 /* PhotoUploadInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadInformationCard.swift; sourceTree = "<group>"; };
 		95C35BC2207215FE00030B12 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		95D43EA82064DA2400CB3517 /* PhotoInformationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoInformationCard.xib; sourceTree = "<group>"; };
 		95D43EAA2064DAD500CB3517 /* PhotoInformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInformationCard.swift; sourceTree = "<group>"; };
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
+				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
@@ -896,6 +899,7 @@
 				D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */,
 				950358C3206F95BB00D424F4 /* GMUWrappingDictionaryKey.m in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,
+				95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
 				95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */,
 				9597DE64205F7BB200B7E751 /* Image.swift in Sources */,

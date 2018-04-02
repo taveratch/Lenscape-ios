@@ -37,12 +37,7 @@ class ApiManager {
                     if statusCode == 200, value != nil {
                         seal.fulfill(value)
                     } else {
-                        print(response)
-                        var message = "Server Error. Status code: \(statusCode ?? 500)"
-                        if value != nil {
-                            message = value!["message"] as? String ?? ""
-                        }
-                        seal.reject(NSError(domain: message, code: statusCode ?? 500, userInfo: nil))
+                        seal.reject(NSError(domain: "Error", code: statusCode ?? 500, userInfo: value))
                     }
                 }
             }
@@ -71,7 +66,7 @@ class ApiManager {
                                 seal.fulfill([:])
                                 return
                             }
-                            seal.fulfill(response.result.value as! [String: Any])
+                            seal.fulfill(value)
                         }
                     case .failure(let encodingError):
                         print("error")

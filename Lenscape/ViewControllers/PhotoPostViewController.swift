@@ -31,6 +31,9 @@ class PhotoPostViewController: UIViewController {
         
         //https://github.com/lkzhao/Hero/issues/187
         informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
+        
+        // Shared hero's id with PhotoPreviewViewController
+        shareButton.hero.id = "Next"
     }
     
     // MARK: Setup for moving view to show textfield when keyboard is presented
@@ -40,10 +43,22 @@ class PhotoPostViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        runThisAfter(second: 0.5) {
+            self.informationCard.caption.becomeFirstResponder()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    
+    private func runThisAfter(second: Double, execute: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (second), execute: execute)
     }
     
     // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
@@ -84,7 +99,26 @@ class PhotoPostViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    /*
+    * Are all required information filled or not.
+        1. Caption
+        2. Place
+    */
+    private func isValid() -> Bool {
+        return !informationCard.caption.text!.isEmpty
+    }
+    
+    private func showMessageDialog(message: String) {
+        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     @objc func upload() {
+        if !isValid() {
+            showMessageDialog(message: "Please specify image's caption and place where it has been shot")
+            return
+        }
         if let data = UIImageJPEGRepresentation(image!,1) {
             let imageInfo: [String: Any] = [
                 "picture": data,

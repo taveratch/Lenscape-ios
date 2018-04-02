@@ -22,7 +22,8 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var imagePickerController = UIImagePickerController()
-    
+    var isPortrait = true
+    var uiImageOrientation: UIImageOrientation? = UIImageOrientation.right
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -32,12 +33,32 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         addDismissButtonGesture()
         addOpenCameraRollGesture()
         initCamera()
+        
+        // Subscribe to orientation event.
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         videoPreviewLayer!.frame = previewView.bounds
     }
     
+    // https://stackoverflow.com/a/40263064/6344975
+    // https://www.pinterest.de/pin/223983781440138942/?autologin=true
+    @objc func rotated() {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+            uiImageOrientation = nil
+            isPortrait = false
+            rotateCameraRollImageView(angle: Double.pi / 2)
+        }else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            uiImageOrientation = UIImageOrientation.right
+            isPortrait = true
+            rotateCameraRollImageView(angle: 2 * Double.pi)
+        }else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            uiImageOrientation = UIImageOrientation.down
+            isPortrait = false
+            rotateCameraRollImageView(angle: 3 * Double.pi / 2)
+        }
+    }
     
     // MARK: - ImagePickerController functions
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -80,6 +101,12 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         }
     }
     
+    private func rotateCameraRollImageView(angle: Double) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.cameraRollButton.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
+        })
+    }
+    
     // Hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
@@ -111,13 +138,19 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     }
     
     @objc private func snapPhoto() {
+        
+        previewView.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.previewView.alpha = 1
+        })
+        
         if let videoConnection = stillImageOutput!.connection(with: AVMediaType.video) {
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
                 if sampleBuffer != nil {
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer!)
                     let dataProvider = CGDataProvider(data: imageData! as CFData )
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                    let image = (self.uiImageOrientation != nil) ? UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: self.uiImageOrientation!) : UIImage(cgImage: cgImageRef!)
                     self.showPhotoPreviewController(image: image)
                 }
             })
@@ -136,8 +169,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
             fatalError("identifier: \(Identifier.PhotoPreviewViewController.rawValue) is not type of PhotoPreviewViewController")
         }
         vc.image = image
-        vc.hero.isEnabled = true
-        vc.hero.modalAnimationType = .pageIn(direction: .left)
+        vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
     }
 

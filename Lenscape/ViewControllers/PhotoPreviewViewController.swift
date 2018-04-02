@@ -23,7 +23,12 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
         initZoomComponent()
         setupBackButton()
         setupNextButton()
-        self.hero.isEnabled = true
+        nextButton.hero.id = "Next"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     private func setupUI() {

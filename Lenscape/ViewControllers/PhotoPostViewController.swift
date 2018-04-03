@@ -55,6 +55,7 @@ class PhotoPostViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
     }
+
     
     
     private func runThisAfter(second: Double, execute: @escaping () -> Void) {

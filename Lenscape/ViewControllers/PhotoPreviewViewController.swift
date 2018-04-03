@@ -26,27 +26,26 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
         nextButton.hero.id = "Next"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     private func setupUI() {
         imageView.image = image
+    }
+    
+    /*
+     Set orientation back to portrait when leaving this view
+    */
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    // Before disappear, set back to portrait mode. (See more in AppDelegate)
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if self.isMovingFromParentViewController {
-            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-        }
-    }
-    
+    /*
+     Allow this view to be rotated
+     See more: AppDelegate.swift
+    */
     @objc func canRotate() -> Void {}
 
     // MARK: - Initialize zooming feature
@@ -61,6 +60,7 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func back() {
+        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         dismiss(animated: true)
     }
     

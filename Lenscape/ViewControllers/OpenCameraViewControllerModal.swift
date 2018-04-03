@@ -24,6 +24,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
     private var imagePickerController = UIImagePickerController()
     var isPortrait = true
     var uiImageOrientation: UIImageOrientation? = UIImageOrientation.right
+    var lastOrientation = UIDeviceOrientation.portrait
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -33,17 +34,42 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         addDismissButtonGesture()
         addOpenCameraRollGesture()
         initCamera()
-        
-        // Subscribe to orientation event.
-        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
         videoPreviewLayer!.frame = previewView.bounds
     }
     
-    // https://stackoverflow.com/a/40263064/6344975
-    // https://www.pinterest.de/pin/223983781440138942/?autologin=true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Subscribe Device Orientation event
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        // When user press back from Preview Controller, camera should be shown in the same orientation as it disappeared.
+        setCurrentOrientation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Unsubscribing device orientation event.
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    /*
+     Set current orientation to the same as it disappeared
+    */
+    func setCurrentOrientation() {
+        UIDevice.current.setValue(Int(lastOrientation.rawValue), forKey: "orientation")
+    }
+    
+    /*
+     Rotate camera roll icon and set which orientation that image has to be rotated.
+     https://stackoverflow.com/a/40263064/6344975
+     https://www.pinterest.de/pin/223983781440138942/?autologin=true
+    */
     @objc func rotated() {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
             uiImageOrientation = nil
@@ -57,7 +83,10 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
             uiImageOrientation = UIImageOrientation.down
             isPortrait = false
             rotateCameraRollImageView(angle: 3 * Double.pi / 2)
+        }else {
+            return
         }
+        lastOrientation = UIDevice.current.orientation
     }
     
     // MARK: - ImagePickerController functions

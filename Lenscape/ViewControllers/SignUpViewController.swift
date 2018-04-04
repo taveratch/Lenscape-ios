@@ -59,7 +59,10 @@ class SignUpViewController: UIViewController {
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }.catch { error in
-                self.showAlertDialog(title: "Message", message: error.domain)
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as! String
+                print(message)
+                self.showAlertDialog(title: "Message", message: message)
         }
         
         signUpButton.setTitle("Sign up", for: .normal)
@@ -232,7 +235,7 @@ class SignUpViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-            // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     private func setupKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false

@@ -63,11 +63,13 @@ class ApiManager {
                         }
                         upload.responseJSON { response in
                             print("uploaded")
-                            guard let value = response.result.value as? [String: Any] else {
-                                seal.fulfill([:])
-                                return
+                            let statusCode = response.response?.statusCode
+                            let value = response.result.value as? [String: Any]
+                            if statusCode == 200, let value = value {
+                                seal.fulfill(value)
+                            } else {
+                                seal.reject(NSError(domain: "Error", code: statusCode ?? 500, userInfo: value))
                             }
-                            seal.fulfill(value)
                         }
                     case .failure(let encodingError):
                         print("error")

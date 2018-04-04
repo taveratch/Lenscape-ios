@@ -37,13 +37,14 @@ class ApiManager {
                     if statusCode == 200, value != nil {
                         seal.fulfill(value)
                     } else {
+                        print(value)
                         seal.reject(NSError(domain: "Error", code: statusCode ?? 500, userInfo: value))
                     }
                 }
             }
     }
     
-    static func upload(url: String, headers: HTTPHeaders? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)?) -> Promise<[String: Any]> {
+    static func upload(url: String, headers: HTTPHeaders? = nil, multipartFormData: @escaping (MultipartFormData) -> Void, body: [String:String]? = nil, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         return Promise { seal in
             Alamofire.upload(multipartFormData: multipartFormData, usingThreshold: 1,
                 to: url, method: HTTPMethod.post, headers: headers, encodingCompletion: { encodingResult in
@@ -52,8 +53,8 @@ class ApiManager {
                         print("uploading...")
                         upload.uploadProgress {
                             progress in
-                            if progressHandler != nil {
-                                progressHandler!(progress.completedUnitCount, progress.totalUnitCount)
+                            if let progressHandler = progressHandler {
+                                progressHandler(progress.completedUnitCount, progress.totalUnitCount)
                             }
                         }
                         upload.responseString {

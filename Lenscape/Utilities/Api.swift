@@ -67,18 +67,29 @@ class Api {
     }
     
     // MARK: Sign Up
-    static func signUp(picture: UIImage? = nil, firstName: String, lastName: String, email: String, password: String) -> Promise<[String: Any]> {
-        let body = [
-            "firstname": firstName,
-            "lastname": lastName,
-            "email": email,
-            "password": password
-        ]
+    static func signUp(picture: UIImage? = nil, firstName: String,
+                       lastName: String, email: String, password: String) -> Promise<[String: Any]> {
+
         return Promise { seal in
-            firstly {
-                ApiManager.fetch(url: "\(HOST)/register", body: body, method: "POST")
-                }.done { response in
-                    let user = getUserFromAuthResponse(response: response!)
+            ApiManager.upload(
+                url: "\(HOST)/register",
+                headers: ["Content-Type": "multipart/form-data"],
+                multipartFormData: { data in
+                    if let picture = picture, let imageData = UIImageJPEGRepresentation(picture, 0.5)  {
+                        data.append(
+                            imageData,
+                            withName:"picture",
+                            fileName: "Photo.jpeg",
+                            mimeType: "image/jpeg"
+                        )
+                    }
+                    data.append(firstName.data(using: .utf8)!, withName: "firstname")
+                    data.append(lastName.data(using: .utf8)!, withName: "lastname")
+                    data.append(email.data(using: .utf8)!, withName: "email")
+                    data.append(password.data(using: .utf8)!, withName: "password")
+            }
+                ).done { response in
+                    let user = getUserFromAuthResponse(response: response)
                     seal.fulfill(user)
                 }.catch { error in
                     seal.reject(error)
@@ -87,7 +98,9 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, location: Location? = nil, imageName: String, locationName: String, progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+    static func uploadImage(data: Data, location: Location? = nil,
+                            imageName: String, locationName: String,
+                            progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : HTTPHeaders = [
             "Authorization": "Bearer \(UserController.getToken())",
@@ -95,12 +108,14 @@ class Api {
         ]
         
         return Promise { seal in
-            ApiManager.upload(url: "\(HOST)/photo", headers: headers,
-                              multipartFormData: { multipartFormData in
-                                multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
-                                multipartFormData.append(imageName.data(using: String.Encoding.utf8)!, withName: "image_name")
-                                multipartFormData.append(locationName.data(using: String.Encoding.utf8)!, withName: "location_name")
-                                multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: String.Encoding.utf8)!, withName: "latlong")
+            ApiManager.upload(
+                url: "\(HOST)/photo",
+                headers: headers,
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
+                    multipartFormData.append(imageName.data(using: .utf8)!, withName: "image_name")
+                    multipartFormData.append(locationName.data(using: .utf8)!, withName: "location_name")
+                    multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: .utf8)!, withName: "latlong")
             }, progressHandler: progressHandler
                 ).done {
                     response in

@@ -17,7 +17,7 @@ class ExploreViewController: AuthViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressViewWrapper: UIView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+//    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     private lazy var refreshControl = UIRefreshControl()
     
@@ -29,7 +29,7 @@ class ExploreViewController: AuthViewController {
     let itemsPerRow: Int = 3
     var numberOfPhotos = 0 {
         didSet {
-            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
+//            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
         }
     }
     var page = 1
@@ -147,6 +147,14 @@ class ExploreViewController: AuthViewController {
         return viewContainer
     }
     
+    @objc private func showMapsViewController() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue) else {
+            fatalError("\(Identifier.ExploreMapViewController.rawValue) is not exist")
+        }
+        vc.hero.modalAnimationType = .zoom
+        present(vc, animated: true)
+    }
+    
     // MARK: - unwind
     @IBAction func unwindToGridView(sender: UIStoryboardSegue) {
         
@@ -241,23 +249,17 @@ extension ExploreViewController: UICollectionViewDataSource {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.ExploreSupplementaryCollectionReusableView.rawValue, for: indexPath) as! ExploreSupplementaryView
             
-            if let user = UserController.getCurrentUser() {
-                let profileImage = user["picture"] as! String
-                let url = URL(string: profileImage)
-                headerView.tabHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
-            }
-            headerView.tabHeader.titleLabel.text = "Around you"
-            self.descriptionLabel = headerView.tabHeader.descriptionLabel
-            
             if self.progressView != nil {
                 headerView.progressView.progress = self.progressView.progress
                 headerView.progressBarWrapper.isHidden = self.progressViewWrapper.isHidden
             }
             self.progressView = headerView.progressView
             self.progressViewWrapper = headerView.progressBarWrapper
-            //            let tap = UITapGestureRecognizer(target: self, action: #selector(ExploreViewController.showMapView))
-            //            headerView.switchViewToMap.addGestureRecognizer(tap)
-            //            headerView.switchViewToMap.isUserInteractionEnabled = true
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(showMapsViewController))
+            headerView.showMapButton.addGestureRecognizer(tap)
+            headerView.showMapButton.isUserInteractionEnabled = true
+            
             return headerView
             
         default:
@@ -291,10 +293,12 @@ extension ExploreViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let headerHeight = CGFloat(60.0) //See in ExploreSupplymentaryView.xib
+        let progressBarHeight = CGFloat(40.0)
         if self.progressViewWrapper != nil, !self.progressViewWrapper.isHidden {
-            return CGSize(width: collectionView.bounds.size.width, height: 135)
+            return CGSize(width: collectionView.bounds.size.width, height: headerHeight + progressBarHeight)
         } else {
-            return CGSize(width: collectionView.bounds.size.width, height: 135 - 40)
+            return CGSize(width: collectionView.bounds.size.width, height: headerHeight)
         }
     }
 }

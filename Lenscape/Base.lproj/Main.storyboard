@@ -498,28 +498,28 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgu-LO-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648" y="527"/>
+            <point key="canvasLocation" x="2648" y="-192"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
             <objects>
                 <viewController storyboardIdentifier="ExploreViewController" id="2yq-fR-Unf" customClass="ExploreViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqo-cE-T1t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-8y-AZz" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="-4" y="680" width="422" height="56"/>
+                                <rect key="frame" x="-4" y="631" width="422" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="bfu-uL-EAb"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZlL-37-U8U">
-                                <rect key="frame" x="0.0" y="20" width="414" height="660"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="611"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-tF-gf4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="611"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xtj-SO-6da">
                                             <size key="itemSize" width="50" height="50"/>
@@ -575,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVE-tM-Yb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3400" y="527"/>
+            <point key="canvasLocation" x="2648" y="527"/>
         </scene>
         <!--Photo Info View Controller-->
         <scene sceneID="OK1-Vx-lad">
@@ -744,18 +744,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1y-qD-5Ge" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-Sg-y6g">
-                                <rect key="frame" x="20" y="90" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="back:" destination="H9Q-MQ-yOu" eventType="touchUpInside" id="pto-aS-pIZ"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross Black" translatesAutoresizingMaskIntoConstraints="NO" id="iz6-sL-gq5">
+                                <rect key="frame" x="354" y="30" width="30" height="30"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0Eu-ai-IIG"/>
+                                    <constraint firstAttribute="width" constant="30" id="cKU-9i-WC4"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cta-cE-GUO" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="24" y="32" width="366" height="50"/>
+                                <rect key="frame" x="24" y="80" width="366" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Red Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Hlb-6d-BpS">
                                         <rect key="frame" x="16" y="17" width="17" height="17"/>
@@ -765,7 +766,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zup-Cg-wGa">
-                                        <rect key="frame" x="49.000000000000014" y="16.333333333333336" width="198.33333333333337" height="18"/>
+                                        <rect key="frame" x="49.000000000000014" y="16.333333333333329" width="198.33333333333337" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore your favorite place ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
                                                 <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="18"/>
@@ -806,15 +807,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="iz6-sL-gq5" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="10" id="30a-B7-ULN"/>
                             <constraint firstItem="w1y-qD-5Ge" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" id="6G0-HD-JSR"/>
-                            <constraint firstItem="Cta-cE-GUO" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="12" id="CUj-hs-KK1"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="bottom" secondItem="w1y-qD-5Ge" secondAttribute="bottom" id="Ij7-KS-RoC"/>
-                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="20" id="L9R-4w-VVf"/>
-                            <constraint firstItem="w1y-qD-5Ge" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" id="SWP-1m-A89"/>
+                            <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="iz6-sL-gq5" secondAttribute="trailing" constant="30" id="Kl0-57-QJb"/>
+                            <constraint firstItem="Cta-cE-GUO" firstAttribute="top" secondItem="iz6-sL-gq5" secondAttribute="bottom" constant="20" id="OO4-mr-Xi6"/>
+                            <constraint firstItem="w1y-qD-5Ge" firstAttribute="top" secondItem="6ZQ-sQ-uSh" secondAttribute="top" id="SWP-1m-A89"/>
                             <constraint firstItem="Cta-cE-GUO" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="24" id="VFN-d3-Qhb"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="w1y-qD-5Ge" secondAttribute="trailing" id="iFp-dU-RG2"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="Cta-cE-GUO" secondAttribute="trailing" constant="24" id="jec-zU-tbs"/>
-                            <constraint firstItem="pMH-Sg-y6g" firstAttribute="top" secondItem="B7Q-sO-UIf" secondAttribute="top" constant="70" id="rnp-qR-kRd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
@@ -822,13 +823,14 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="backButton" destination="iz6-sL-gq5" id="WvT-yK-v33"/>
                         <outlet property="mapView" destination="w1y-qD-5Ge" id="E7C-zr-Otj"/>
                         <outlet property="searchButton" destination="Cta-cE-GUO" id="Rcr-N4-pFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4105.7971014492759" y="526.63043478260875"/>
+            <point key="canvasLocation" x="3342" y="527"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -1303,7 +1305,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="ag7-Ib-jKi" kind="relationship" relationship="rootViewController" id="MoC-GM-mth"/>
+                        <segue destination="2yq-fR-Unf" kind="relationship" relationship="rootViewController" id="DI6-kJ-mLF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-nz-Mg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1526,6 +1528,7 @@
     <resources>
         <image name="Camera Roll" width="25" height="20"/>
         <image name="Camera_gradient_tab_icon" width="72" height="72"/>
+        <image name="Cross Black" width="25" height="25"/>
         <image name="Cross White" width="11" height="11"/>
         <image name="Favorite_selected_tab_icon" width="25" height="25"/>
         <image name="Favorite_tab_icon" width="25" height="25"/>

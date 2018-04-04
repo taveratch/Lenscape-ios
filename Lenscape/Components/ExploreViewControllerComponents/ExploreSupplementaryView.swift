@@ -11,9 +11,10 @@ import UIKit
 @IBDesignable
 class ExploreSupplementaryView: UICollectionReusableView {
     
-    @IBOutlet weak var tabHeader: TabHeader!
+    @IBOutlet weak var tabHeader: UIView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressBarWrapper: UIView!
+    @IBOutlet weak var showMapButton: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

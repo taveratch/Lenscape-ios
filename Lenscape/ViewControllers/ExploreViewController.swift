@@ -47,7 +47,7 @@ class ExploreViewController: AuthViewController {
         //Make ExploreViewController as observer for LocationManager (this vc will be notify from MainTabBarController (CLLocationManagerDelegate))
         NotificationCenter.default.addObserver(self, selector: #selector(fetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startUploadPhoto()
@@ -127,7 +127,8 @@ class ExploreViewController: AuthViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
         vc.image = image
         vc.uiImage = cell.imageView.image
-        vc.hero.modalAnimationType = .fade
+        Hero.shared.defaultAnimation = .fade
+//        vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
     }
     
@@ -151,7 +152,7 @@ class ExploreViewController: AuthViewController {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue) else {
             fatalError("\(Identifier.ExploreMapViewController.rawValue) is not exist")
         }
-        vc.hero.modalAnimationType = .zoom
+        Hero.shared.defaultAnimation = .zoom
         present(vc, animated: true)
     }
     

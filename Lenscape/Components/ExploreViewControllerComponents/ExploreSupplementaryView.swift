@@ -9,37 +9,47 @@
 import UIKit
 
 @IBDesignable
-class ExploreSupplementaryView: UICollectionReusableView {
+class ExploreSupplementaryView: UITableViewCell {
     
-    @IBOutlet weak var tabHeader: UIView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressBarWrapper: UIView!
-    @IBOutlet weak var showMapButton: UIImageView!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+    @IBOutlet weak var showMapButton: GradientView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
     
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle.init(for: type(of: self))
-        let nib = UINib(nibName: "ExploreSupplementaryView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view
-    }
-    
-    private func commonInit() {
-        let view = loadViewFromNib()
-        view.frame = self.bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-        self.progressView.progress = 0
-        self.progressBarWrapper.isHidden = true
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        commonInit()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        commonInit()
+//    }
+//
+//    func loadViewFromNib() -> UIView {
+//        let bundle = Bundle.init(for: type(of: self))
+//        let nib = UINib(nibName: "ExploreSupplementaryView", bundle: bundle)
+//        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+//        return view
+//    }
+//
+//    private func commonInit() {
+//        let view = loadViewFromNib()
+//        view.frame = self.bounds
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        addSubview(view)
+//        self.progressView.progress = 0
+//        self.progressBarWrapper.isHidden = true
+//    }
 
 }

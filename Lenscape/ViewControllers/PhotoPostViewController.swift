@@ -45,7 +45,7 @@ class PhotoPostViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        runThisAfter(second: 0.5) {
+        runThisAfter(second: 0.1) {
             self.informationCard.caption.becomeFirstResponder()
         }
     }

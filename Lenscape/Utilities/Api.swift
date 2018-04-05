@@ -150,9 +150,6 @@ class Api {
                 var images = data
                     .map { Image(item: $0) }
                 
-                //TODO: Removed this and sort by timestamp
-                images = images.reversed()
-                
                 let fulfill: [String: Any] = [
                     "images" : images,
                     "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])

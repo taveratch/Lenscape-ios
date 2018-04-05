@@ -82,6 +82,8 @@
 		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
 		9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */; };
 		9597DE64205F7BB200B7E751 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597DE63205F7BB200B7E751 /* Image.swift */; };
+		95A43BA62075CD5700401BFA /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A43BA52075CD5700401BFA /* FeedTableViewCell.xib */; };
+		95A43BA82075CD7100401BFA /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A43BA72075CD7100401BFA /* FeedTableViewCell.swift */; };
 		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
 		95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7B2051953C007480AA /* ProfileViewController.swift */; };
 		95B8AB7E20519544007480AA /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8AB7D20519544007480AA /* TrendViewController.swift */; };
@@ -227,6 +229,8 @@
 		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
 		9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularInfiniteScroll.swift; sourceTree = "<group>"; };
 		9597DE63205F7BB200B7E751 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		95A43BA52075CD5700401BFA /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
+		95A43BA72075CD7100401BFA /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		95B8AB7B2051953C007480AA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		95B8AB7D20519544007480AA /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95A43BA42075CD4500401BFA /* FeedTableViewCell */,
 				95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */,
 				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
 				D0ED74BF2064151D00F197C1 /* UserProfile */,
@@ -578,6 +583,15 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		95A43BA42075CD4500401BFA /* FeedTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				95A43BA52075CD5700401BFA /* FeedTableViewCell.xib */,
+				95A43BA72075CD7100401BFA /* FeedTableViewCell.swift */,
+			);
+			path = FeedTableViewCell;
+			sourceTree = "<group>";
+		};
 		95B7C1FA204E9DC800410A48 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,7 +699,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Lenscape;
 				TargetAttributes = {
 					9565692F204C2BB3005F9F6B = {
@@ -724,6 +738,7 @@
 				958B9215207380DB0061F26A /* flat-pale-map-style.json in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				95A43BA62075CD5700401BFA /* FeedTableViewCell.xib in Resources */,
 				95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */,
 				95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */,
 				9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */,
@@ -850,6 +865,7 @@
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */,
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
+				95A43BA82075CD7100401BFA /* FeedTableViewCell.swift in Sources */,
 				950358EB2071147800D424F4 /* GooglePlace.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				950358D0206F95BB00D424F4 /* GMUStyle.m in Sources */,
@@ -947,6 +963,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -954,6 +971,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1004,6 +1022,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1011,6 +1030,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

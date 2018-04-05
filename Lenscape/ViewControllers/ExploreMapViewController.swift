@@ -18,6 +18,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     // MARK: - UI Components
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchButton: UIView!
+    @IBOutlet weak var backButton: UIImageView!
     
     // MARK: - Attributes
     private let locationManager = CLLocationManager()
@@ -28,6 +29,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         super.viewDidLoad()
         
         setupSearchButton()
+        setupBackButton()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -52,6 +54,12 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
         searchButton.isUserInteractionEnabled = true
+    }
+    
+    private func setupBackButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
+        backButton.addGestureRecognizer(tap)
+        backButton.isUserInteractionEnabled = true
     }
     
     @objc private func showGMSAutoCompleteViewController() {
@@ -84,10 +92,11 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     private func randomScale() -> Double {
         return Double(arc4random()) / Double(UINT32_MAX) * 2.0 - 1.0
     }
-    
-    @IBAction func back(_ sender: UIButton) {
-        let explorePageVC = self.parent as? ExplorePageViewController
-        explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
+ 
+    @objc func back() {
+        dismiss(animated: true)
+//        let explorePageVC = self.parent as? ExplorePageViewController
+//        explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
     }
     
     // Tap on cluster marker

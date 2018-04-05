@@ -1,39 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExploreSupplementaryView" customModule="Lenscape" customModuleProvider="target">
-            <connections>
-                <outlet property="progressBarWrapper" destination="wao-6h-mG1" id="agT-J1-b8T"/>
-                <outlet property="progressView" destination="Mps-1K-Y29" id="1jt-r1-Zma"/>
-                <outlet property="tabHeader" destination="2GJ-Ex-9Qg" id="XlW-uN-zvf"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExploreSupplementaryView" customModule="Lenscape" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2a1-mg-p52">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-Ex-9Qg" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-Ex-9Qg">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-nr-00k">
+                                    <rect key="frame" x="16" y="20.5" width="89" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFr-Jp-6Wl" customClass="GradientView" customModule="Lenscape" customModuleProvider="target">
+                                    <rect key="frame" x="279" y="13.5" width="80" height="33"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White Navigator" translatesAutoresizingMaskIntoConstraints="NO" id="wzg-bS-djz">
+                                            <rect key="frame" x="12" y="10" width="13" height="13"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="13" id="7hm-Yb-EsD"/>
+                                                <constraint firstAttribute="width" constant="13" id="Noe-4p-ZiN"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKq-qU-SHr">
+                                            <rect key="frame" x="34.5" y="6.5" width="33.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="33" id="C6H-eY-zHn"/>
+                                        <constraint firstItem="wzg-bS-djz" firstAttribute="centerY" secondItem="XFr-Jp-6Wl" secondAttribute="centerY" id="ILH-m0-Kk9"/>
+                                        <constraint firstAttribute="width" constant="80" id="Ko5-Ww-juL"/>
+                                        <constraint firstAttribute="trailing" secondItem="mKq-qU-SHr" secondAttribute="trailing" constant="12" id="VjO-tN-ixL"/>
+                                        <constraint firstItem="mKq-qU-SHr" firstAttribute="centerY" secondItem="XFr-Jp-6Wl" secondAttribute="centerY" id="XnX-Y8-oIK"/>
+                                        <constraint firstItem="wzg-bS-djz" firstAttribute="centerY" secondItem="XFr-Jp-6Wl" secondAttribute="centerY" id="d53-Lh-CJQ"/>
+                                        <constraint firstItem="wzg-bS-djz" firstAttribute="leading" secondItem="XFr-Jp-6Wl" secondAttribute="leading" constant="12" id="ngP-Gc-1vg"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                            <color key="value" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                            <color key="value" red="1" green="0.47843137254901957" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowX">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowY">
+                                            <real key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="16.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="93" id="a0S-BM-7dX"/>
+                                <constraint firstItem="wTR-nr-00k" firstAttribute="centerY" secondItem="2GJ-Ex-9Qg" secondAttribute="centerY" id="5aN-5M-oUV"/>
+                                <constraint firstAttribute="trailing" secondItem="XFr-Jp-6Wl" secondAttribute="trailing" constant="16" id="8X4-2w-9f7"/>
+                                <constraint firstItem="XFr-Jp-6Wl" firstAttribute="centerY" secondItem="2GJ-Ex-9Qg" secondAttribute="centerY" id="CM9-Po-B4c"/>
+                                <constraint firstItem="wTR-nr-00k" firstAttribute="leading" secondItem="2GJ-Ex-9Qg" secondAttribute="leading" constant="16" id="Lvv-jo-MAW"/>
+                                <constraint firstAttribute="height" constant="60" id="a0S-BM-7dX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wao-6h-mG1">
-                            <rect key="frame" x="0.0" y="95" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="62" width="375" height="40"/>
                             <subviews>
                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Mps-1K-Y29">
                                     <rect key="frame" x="12" y="19" width="351" height="2"/>
@@ -61,7 +121,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="144.5" y="-206.5"/>
+            <point key="canvasLocation" x="144.5" y="-223"/>
         </view>
     </objects>
+    <resources>
+        <image name="White Navigator" width="22" height="22"/>
+    </resources>
 </document>

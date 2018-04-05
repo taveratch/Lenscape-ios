@@ -17,11 +17,12 @@ enum Identifier: String {
     case OpenCameraViewController = "OpenCameraViewController"
     case OpenCameraViewControllerModal = "OpenCameraViewControllerModal"
     case ImageColelctionViewCell = "ImageColelctionViewCell"
-    case ExploreSupplementaryCollectionReusableView = "ExploreSupplementaryCollectionReusableView"
+    case ExploreHeaderTableViewCell = "ExploreHeaderTableViewCell"
     case PhotoInfoViewController = "PhotoInfoViewController"
     case FullImageViewController = "FullImageViewController"
     case TrendCollectionReusableView = "TrendCollectionReusableView"
     case SettingsViewController = "SettingsViewController"
     case SettingsNavigationController = "SettingsNavigationController"
     case PhotoPreviewViewController = "PhotoPreviewViewController"
+    case FeedTableCell = "FeedTableCell"
 }

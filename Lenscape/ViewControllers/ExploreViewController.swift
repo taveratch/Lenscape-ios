@@ -15,11 +15,11 @@ class ExploreViewController: UIViewController {
     
     //MARK: - UI Components
     @IBOutlet weak var tableView: UITableView!
-    //    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var uploadPreviewImage: UIImageView!
+    @IBOutlet weak var cancelUploadButton: ShadowView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var showMapButton: UIView!
     @IBOutlet weak var progressViewWrapper: UIView!
-    //    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     private lazy var refreshControl = UIRefreshControl()
     
@@ -48,6 +48,7 @@ class ExploreViewController: UIViewController {
         
         setupUI()
         setupShowMapButton()
+        setupCancelUploadingButton()
         
         //Make ExploreViewController as observer for LocationManager (this vc will be notify from MainTabBarController (CLLocationManagerDelegate))
         NotificationCenter.default.addObserver(self, selector: #selector(fetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
@@ -79,6 +80,11 @@ class ExploreViewController: UIViewController {
     
     private func startUploadPhoto() {
         if let picture = UserDefaults.standard.dictionary(forKey: "uploadPhotoInfo") {
+            guard let imageData = picture["picture"] as? Data else {
+                fatalError("picture is missing")
+            }
+            let image = UIImage(data: imageData)
+            uploadPreviewImage.image = image
             let locationManager = LocationManager.getInstance()
             photoUploader.upload(picture: picture, location: locationManager.getCurrentLocation())
             UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
@@ -99,10 +105,6 @@ class ExploreViewController: UIViewController {
         }
     }
     
-    private func isDisplayAllInOnePage() -> Bool {
-        return self.images.count < 9
-    }
-    
     private func fetchImagesFromAPI(page: Int = 1, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
         Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
             fulfill in
@@ -117,6 +119,7 @@ class ExploreViewController: UIViewController {
                 print("error: \(error)")
             }.finally {
                 self.tableView.reloadData()
+                self.scrollToTop()
                 self.refreshControl.endRefreshing()
         }
     }
@@ -147,6 +150,16 @@ class ExploreViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(showMapsViewController))
         showMapButton.addGestureRecognizer(tap)
         showMapButton.isUserInteractionEnabled = true
+    }
+    
+    private func setupCancelUploadingButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cancelUploading))
+        cancelUploadButton.addGestureRecognizer(tap)
+        cancelUploadButton.isUserInteractionEnabled = true
+    }
+    
+    @objc private func cancelUploading() {
+        photoUploader.cancel()
     }
     
     @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
@@ -271,6 +284,11 @@ extension ExploreViewController: PhotoUploadingDelegate {
         progressViewWrapper.isHidden = false
         progressView.progress = 0
         print("willUpload")
+    }
+    
+    func cancelledUpload() {
+        progressViewWrapper.isHidden = true
+        print("Upload has been cancelled")
     }
 }
 

@@ -27,6 +27,10 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setupUI() {
+        // If image is in landscape mode then change imageView content mode to aspect fit.
+        if image.size.width > image.size.height {
+            imageView.contentMode = .scaleAspectFit
+        }
         imageView.image = image
     }
     
@@ -53,6 +57,17 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 6.0
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapZooming))
+        scrollView.addGestureRecognizer(doubleTap)
+    }
+    
+    @objc private func doubleTapZooming() {
+        if scrollView.zoomScale != 1.0 {
+            scrollView.setZoomScale(4, animated: true)
+        }else {
+            scrollView.setZoomScale(1, animated: true)
+        }
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

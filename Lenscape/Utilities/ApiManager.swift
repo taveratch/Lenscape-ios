@@ -51,6 +51,13 @@ class ApiManager {
                     switch encodingResult {
                     case .success(let upload, _, _):
                         print("uploading...")
+                        
+                        NotificationCenter.default.addObserver(forName: .CancelUploading, object: nil, queue: nil) {
+                            notification in
+                            print("Cancel uploading")
+                            upload.cancel()
+                        }
+                        
                         upload.uploadProgress {
                             progress in
                             if let progressHandler = progressHandler {
@@ -63,6 +70,9 @@ class ApiManager {
                         }
                         upload.responseJSON { response in
                             print("uploaded")
+                            
+                            NotificationCenter.default.removeObserver(self)
+                            
                             let statusCode = response.response?.statusCode
                             let value = response.result.value as? [String: Any]
                             if statusCode == 200, let value = value {

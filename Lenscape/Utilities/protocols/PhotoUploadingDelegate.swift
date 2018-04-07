@@ -12,4 +12,5 @@ protocol PhotoUploadingDelegate {
     func didUpload()
     func uploading(completedUnit: Double, totalUnit: Double)
     func willUpload()
+    func cancelledUpload()
 }

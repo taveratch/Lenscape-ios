@@ -40,4 +40,9 @@ class PhotoUploader {
             self.delegate?.didUpload()
         }
     }
+    
+    func cancel() {
+        NotificationCenter.default.post(name: .CancelUploading, object: self)
+        delegate?.cancelledUpload()
+    }
 }

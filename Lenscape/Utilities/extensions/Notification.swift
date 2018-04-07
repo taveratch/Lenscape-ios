@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let DidUpdateLocation = Notification.Name("DidUpdateLocationNotification")
+    static let CancelUploading = Notification.Name("CancelUploadingNotification")
 }

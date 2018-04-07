@@ -142,7 +142,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6C7-Vd-GML">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygy-cb-hPZ" customClass="PhotoUploadInformationCard" customModule="Lenscape" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="416" width="414" height="1000"/>
@@ -205,7 +205,7 @@
                                             <constraint firstItem="6C7-Vd-GML" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="Y3V-Sj-xLS"/>
                                             <constraint firstAttribute="bottom" secondItem="ygy-cb-hPZ" secondAttribute="bottom" constant="-700" id="rwh-YP-D5Y"/>
                                             <constraint firstItem="JVa-lc-VsE" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" constant="20" id="spL-f7-ssM"/>
-                                            <constraint firstAttribute="bottom" secondItem="6C7-Vd-GML" secondAttribute="bottom" id="uHj-ke-PoG"/>
+                                            <constraint firstAttribute="bottom" secondItem="6C7-Vd-GML" secondAttribute="bottom" constant="280" id="uHj-ke-PoG"/>
                                             <constraint firstAttribute="trailing" secondItem="ygy-cb-hPZ" secondAttribute="trailing" id="uvo-zj-Adb"/>
                                         </constraints>
                                     </view>

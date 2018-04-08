@@ -688,7 +688,7 @@
                                         <rect key="frame" x="0.0" y="158" width="414" height="419"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="418.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cCr-VL-VDD">
@@ -841,7 +841,7 @@
                         <outlet property="progressView" destination="Rv6-lw-Nzl" id="shR-eA-sB1"/>
                         <outlet property="progressViewWrapper" destination="aZh-NP-pL6" id="86U-hu-Zr0"/>
                         <outlet property="seasoningScrollView" destination="QSX-8y-AZz" id="2I9-p6-d9q"/>
-                        <outlet property="showMapButton" destination="i78-F7-4NT" id="22p-gg-kIW"/>
+                        <outlet property="showMapButton" destination="3AC-59-vvC" id="Ep1-wz-cxy"/>
                         <outlet property="tableView" destination="gUR-Qh-mbj" id="m1q-62-VaK"/>
                         <outlet property="uploadPreviewImage" destination="rTA-wP-6YL" id="PPM-ur-fe0"/>
                     </connections>

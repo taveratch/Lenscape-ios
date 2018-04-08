@@ -29,17 +29,12 @@ class ExploreViewController: UIViewController {
     let photoUploader = PhotoUploader()
     var images: [Image] = []
     let itemsPerRow: Int = 3
-    var numberOfPhotos = 0 {
-        didSet {
-            //            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
-        }
-    }
+    var numberOfPhotos = 0
     var page = 1
     var shouldFetchMore = false
     
     
     // MARK: - ViewController Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoUploader.delegate = self

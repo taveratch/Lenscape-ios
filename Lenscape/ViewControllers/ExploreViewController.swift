@@ -22,6 +22,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var progressViewWrapper: UIView!
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     private lazy var refreshControl = UIRefreshControl()
+    @IBOutlet weak var header: UIView!
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
@@ -29,17 +30,14 @@ class ExploreViewController: UIViewController {
     let photoUploader = PhotoUploader()
     var images: [Image] = []
     let itemsPerRow: Int = 3
-    var numberOfPhotos = 0 {
-        didSet {
-            //            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
-        }
-    }
+    var numberOfPhotos = 0
     var page = 1
     var shouldFetchMore = false
-    
+    var lastContentOffset: CGFloat = 0
+    var shouldUpdateHeaderVisibility = true
+    var headerHeightConstraint: NSLayoutConstraint?
     
     // MARK: - ViewController Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoUploader.delegate = self
@@ -57,23 +55,6 @@ class ExploreViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startUploadPhoto()
-    }
-    
-    // Adjust height of Header every time subview has been changed
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        guard let headerView = tableView.tableHeaderView else {
-            return
-        }
-        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        if headerView.frame.size.height != size.height {
-            headerView.frame.size.height = size.height
-            tableView.tableHeaderView = headerView
-            UIView.animate(withDuration: 0.5, animations: {
-                self.tableView.layoutIfNeeded()
-                self.scrollToTop()
-            })
-        }
     }
     
     // MARK: - Private Methods
@@ -120,6 +101,7 @@ class ExploreViewController: UIViewController {
             }.finally {
                 self.tableView.reloadData()
                 self.scrollToTop()
+                self.showHeader(isShow: true)
                 self.refreshControl.endRefreshing()
         }
     }
@@ -187,7 +169,6 @@ class ExploreViewController: UIViewController {
     }
     
     @objc private func showMapsViewController() {
-        print("showMapsViewController")
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue) else {
             fatalError("\(Identifier.ExploreMapViewController.rawValue) is not exist")
         }
@@ -200,6 +181,24 @@ class ExploreViewController: UIViewController {
         
     }
     
+    private func showHeader(isShow: Bool) {
+        let isUploading = !self.progressViewWrapper.isHidden
+        let marginHeight = 20
+        let headerSectionHeight = 60
+        let uploadSectionHeight = 70
+        let height = isShow ? isUploading ? (marginHeight + headerSectionHeight + uploadSectionHeight) : (marginHeight + headerSectionHeight) : 0
+        
+        if headerHeightConstraint == nil {
+            headerHeightConstraint = header.heightAnchor.constraint(equalToConstant: CGFloat(height))
+            headerHeightConstraint!.isActive = true
+        }else {
+            headerHeightConstraint?.constant = CGFloat(height)
+        }
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+        animator.startAnimation()
+    }
     
 }
 
@@ -261,6 +260,28 @@ extension ExploreViewController: UITableViewDelegate {
     }
 }
 
+extension ExploreViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if lastContentOffset - yOffset > 100, shouldUpdateHeaderVisibility {
+            // going up
+            showHeader(isShow: true)
+            shouldUpdateHeaderVisibility = false
+        }else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
+            // going down
+            showHeader(isShow: false)
+            shouldUpdateHeaderVisibility = false
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+//        print("BeginDragging: \(scrollView.contentOffset.y)")
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        shouldUpdateHeaderVisibility = true
+    }
+}
 // MARK: - PhotoUploadingDelegate
 
 extension ExploreViewController: PhotoUploadingDelegate {
@@ -283,11 +304,13 @@ extension ExploreViewController: PhotoUploadingDelegate {
     func willUpload() {
         progressViewWrapper.isHidden = false
         progressView.progress = 0
+        showHeader(isShow: true)
         print("willUpload")
     }
     
     func cancelledUpload() {
         progressViewWrapper.isHidden = true
+        showHeader(isShow: true)
         print("Upload has been cancelled")
     }
 }

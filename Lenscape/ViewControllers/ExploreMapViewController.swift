@@ -63,9 +63,11 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     }
     
     @objc private func showGMSAutoCompleteViewController() {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
+//        let autocompleteController = GMSAutocompleteViewController()
+//        autocompleteController.delegate = self
+//        present(autocompleteController, animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.GooglePlacesAutoCompleteViewController.rawValue)
+        present(vc!, animated: true)
     }
     
     // Generate cluster item from api

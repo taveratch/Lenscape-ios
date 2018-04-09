@@ -25,4 +25,5 @@ enum Identifier: String {
     case SettingsNavigationController = "SettingsNavigationController"
     case PhotoPreviewViewController = "PhotoPreviewViewController"
     case FeedTableCell = "FeedTableCell"
+    case GooglePlacesAutoCompleteViewController = "GooglePlacesAutoCompleteViewController"
 }

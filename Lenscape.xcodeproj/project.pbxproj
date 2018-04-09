@@ -52,6 +52,8 @@
 		953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */; };
 		953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953048A120627C5B00EB5F3F /* FullImageViewController.swift */; };
 		953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953048A32062845600EB5F3F /* PortraitViewController.swift */; };
+		9541DB3A207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541DB39207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift */; };
+		9541DB3C207BC81100F7BE65 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541DB3B207BC81100F7BE65 /* SearchResult.swift */; };
 		95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EF92060059800F8CD43 /* TabHeader.swift */; };
 		95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431EFC206005AC00F8CD43 /* TabHeader.xib */; };
 		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
@@ -200,6 +202,8 @@
 		9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		953048A120627C5B00EB5F3F /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		953048A32062845600EB5F3F /* PortraitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitViewController.swift; sourceTree = "<group>"; };
+		9541DB39207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutoCompleteTableViewCell.swift; sourceTree = "<group>"; };
+		9541DB3B207BC81100F7BE65 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		95431EF92060059800F8CD43 /* TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		95431EFC206005AC00F8CD43 /* TabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabHeader.xib; sourceTree = "<group>"; };
 		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
@@ -437,6 +441,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		9541DB38207BC70900F7BE65 /* SearchAutoCompleteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9541DB39207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift */,
+			);
+			path = SearchAutoCompleteTableViewCell;
+			sourceTree = "<group>";
+		};
 		95431EFB2060059C00F8CD43 /* TabHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +470,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9541DB38207BC70900F7BE65 /* SearchAutoCompleteTableViewCell */,
 				95A43BA42075CD4500401BFA /* FeedTableViewCell */,
 				95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */,
 				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
@@ -587,6 +600,7 @@
 				95C35BC2207215FE00030B12 /* Owner.swift */,
 				9504A15320677CBB00FDF606 /* Location.swift */,
 				D064919C206E8B5F002ADF2C /* POIItem.swift */,
+				9541DB3B207BC81100F7BE65 /* SearchResult.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -914,6 +928,7 @@
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				950358CE206F95BB00D424F4 /* GMUFeature.m in Sources */,
 				950358CD206F95BB00D424F4 /* GMUPolygon.m in Sources */,
+				9541DB3A207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift in Sources */,
 				950358C1206F95BB00D424F4 /* GMUClusterManager.m in Sources */,
 				D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */,
 				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
@@ -929,6 +944,7 @@
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,
 				95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
+				9541DB3C207BC81100F7BE65 /* SearchResult.swift in Sources */,
 				95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */,
 				9597DE64205F7BB200B7E751 /* Image.swift in Sources */,
 				950358CB206F95BB00D424F4 /* GMUGeometryCollection.m in Sources */,

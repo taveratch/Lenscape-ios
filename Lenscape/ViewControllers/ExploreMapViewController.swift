@@ -12,6 +12,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import PromiseKit
+import Hero
 
 class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
     
@@ -54,6 +55,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
         searchButton.isUserInteractionEnabled = true
+        searchButton.hero.id = "searchViewWrapper"
     }
     
     private func setupBackButton() {
@@ -67,6 +69,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
 //        autocompleteController.delegate = self
 //        present(autocompleteController, animated: true, completion: nil)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.GooglePlacesAutoCompleteViewController.rawValue)
+        Hero.shared.defaultAnimation = .fade
         present(vc!, animated: true)
     }
     

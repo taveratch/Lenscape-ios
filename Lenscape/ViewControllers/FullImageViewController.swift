@@ -58,8 +58,16 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Initialize zooming feature
     private func initZoomComponent() {
         scrollView.delegate = self
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 6.0
+        scrollView.isZoomable(active: true)
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapToZoom(recognizer:)))
+        doubleTap.numberOfTapsRequired = 2
+        scrollView.addGestureRecognizer(doubleTap)
+    }
+    
+    @objc private func doubleTapToZoom(recognizer: UITapGestureRecognizer) {
+        let pointInView = recognizer.location(in: scrollView)
+        scrollView.doubleTapZoom(pointInView: pointInView)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

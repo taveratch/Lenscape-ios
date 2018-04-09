@@ -82,6 +82,7 @@
 		9595F0742056103100A740E1 /* CircularInfiniteScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */; };
 		9595F076205610FE00A740E1 /* CircularInfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */; };
 		9597DE64205F7BB200B7E751 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597DE63205F7BB200B7E751 /* Image.swift */; };
+		959D25D4207B5F4700650D08 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D25D3207B5F4700650D08 /* UIScrollView.swift */; };
 		95A43BA62075CD5700401BFA /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95A43BA52075CD5700401BFA /* FeedTableViewCell.xib */; };
 		95A43BA82075CD7100401BFA /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A43BA72075CD7100401BFA /* FeedTableViewCell.swift */; };
 		95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C1FB204E9DD100410A48 /* Dictionary.swift */; };
@@ -229,6 +230,7 @@
 		9595F0732056103100A740E1 /* CircularInfiniteScroll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularInfiniteScroll.xib; sourceTree = "<group>"; };
 		9595F075205610FE00A740E1 /* CircularInfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularInfiniteScroll.swift; sourceTree = "<group>"; };
 		9597DE63205F7BB200B7E751 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		959D25D3207B5F4700650D08 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		95A43BA52075CD5700401BFA /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		95A43BA72075CD7100401BFA /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		95B7C1FB204E9DD100410A48 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 		95B7C1FA204E9DC800410A48 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				959D25D3207B5F4700650D08 /* UIScrollView.swift */,
 				95B7C1FB204E9DD100410A48 /* Dictionary.swift */,
 				95108EF32054247A0072AC48 /* Error.swift */,
 				95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */,
@@ -877,6 +880,7 @@
 				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				95C35BC3207215FE00030B12 /* Owner.swift in Sources */,
+				959D25D4207B5F4700650D08 /* UIScrollView.swift in Sources */,
 				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */,

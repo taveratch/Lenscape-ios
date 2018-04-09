@@ -55,19 +55,17 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Initialize zooming feature
     private func initZoomComponent() {
         scrollView.delegate = self
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 6.0
+        scrollView.isZoomable(active: true)
         
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapZooming))
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapForZoom(recognizer:)))
+        doubleTap.numberOfTapsRequired = 2
         scrollView.addGestureRecognizer(doubleTap)
+        scrollView.isUserInteractionEnabled = true
     }
     
-    @objc private func doubleTapZooming() {
-        if scrollView.zoomScale != 1.0 {
-            scrollView.setZoomScale(4, animated: true)
-        }else {
-            scrollView.setZoomScale(1, animated: true)
-        }
+    @objc private func doubleTapForZoom(recognizer: UITapGestureRecognizer) {
+        let pointInView = recognizer.location(in: scrollView)
+        scrollView.doubleTapZoom(pointInView: pointInView)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

@@ -25,6 +25,7 @@ class MainTabBarController: UITabBarController {
         cameraModal = storyboard?.instantiateViewController(
             withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue
         )
+        cameraModal?.loadViewIfNeeded()
     }
 
 }

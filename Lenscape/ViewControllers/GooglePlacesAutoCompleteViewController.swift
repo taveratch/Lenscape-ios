@@ -36,7 +36,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        searchViewWrapper.becomeFirstResponder()
+        searchTextField.becomeFirstResponder()
     }
     
     private func setupFetcher() {

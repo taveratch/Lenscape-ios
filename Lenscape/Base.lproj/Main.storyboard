@@ -687,7 +687,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="419"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="418.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cCr-VL-VDD">
@@ -1042,12 +1042,12 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zup-Cg-wGa">
-                                        <rect key="frame" x="49.000000000000014" y="16.333333333333329" width="198.33333333333337" height="18"/>
+                                        <rect key="frame" x="49.000000000000014" y="16.333333333333329" width="191.33333333333337" height="18"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore your favorite place ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
-                                                <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your favorite place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.33333333333334" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="0.57724208050000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1066,7 +1066,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="3"/>
+                                        <size key="value" width="0.0" height="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="3"/>
@@ -1184,14 +1184,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
-                                                    <rect key="frame" x="20" y="14" width="14" height="20"/>
+                                                    <rect key="frame" x="20" y="15" width="14" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="14" id="aCj-0m-7vb"/>
                                                         <constraint firstAttribute="width" secondItem="pob-7E-dR0" secondAttribute="height" multiplier="7:10" id="oTR-vk-oTp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3ao-kr-Vtj">
-                                                    <rect key="frame" x="54" y="7" width="153.66666666666663" height="36.666666666666664"/>
+                                                    <rect key="frame" x="53.999999999999986" y="7" width="153.66666666666663" height="36.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kasetsart University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8t-qb-6lV">
                                                             <rect key="frame" x="0.0" y="0.0" width="153.66666666666666" height="20.333333333333332"/>

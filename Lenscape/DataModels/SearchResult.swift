@@ -12,9 +12,11 @@ import GooglePlaces
 struct SearchResult {
     var name: String!
     var address: String!
+    var placeID: String!
     
     init(prediction: GMSAutocompletePrediction) {
         name = prediction.attributedPrimaryText.string
         address = prediction.attributedSecondaryText?.string
+        placeID = prediction.placeID!
     }
 }

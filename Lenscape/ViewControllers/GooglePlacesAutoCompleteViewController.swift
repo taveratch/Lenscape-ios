@@ -18,6 +18,8 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     
     var fetcher: GMSAutocompleteFetcher?
     var searchResults: [SearchResult] = []
+    var placesClient: GMSPlacesClient?
+    var delegate: GooglePlacesAutoCompleteViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        placesClient = GMSPlacesClient()
         
         searchViewWrapper.hero.id = "searchViewWrapper"
         setupFetcher()
@@ -108,5 +111,14 @@ extension GooglePlacesAutoCompleteViewController: UITextFieldDelegate {
 }
 
 extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let searchResult = searchResults[indexPath.row]
+        placesClient!.lookUpPlaceID(searchResult.placeID, callback: {
+            place, error in
+            if let place = place {
+                self.delegate?.didSelectPlace(place: place)
+                self.dismiss(animated: true)
+            }
+        })
+    }
 }

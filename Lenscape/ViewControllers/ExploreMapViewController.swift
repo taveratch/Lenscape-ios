@@ -191,7 +191,10 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-    
+        
+        // Update location in LocationManager
+        LocationManager.getInstance().setCurrentLocation(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+        
         setupMapView(location: location)
         setupCluster(coordinate: location.coordinate)
         

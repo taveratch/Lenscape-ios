@@ -27,7 +27,6 @@ class MainTabBarController: UITabBarController {
         )
         cameraModal?.loadViewIfNeeded()
     }
-
 }
 
 

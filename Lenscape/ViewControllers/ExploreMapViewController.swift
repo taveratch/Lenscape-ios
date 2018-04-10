@@ -199,32 +199,6 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
     }
 }
 
-//extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
-//    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-//
-//        cameraTo(coordinate: place.coordinate)
-//        setupCluster(coordinate: place.coordinate)
-//        mapView.clear() //remove all markers
-//        showMarker(place: place)
-//
-////        print("Place name: \(place.name)")
-////        print("Place address: \(place.formattedAddress)")
-////        print("Place attributions: \(place.attributions)")
-////        print("Place ID: \(place.placeID)")
-//
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-//        print("Error: ", error.localizedDescription)
-//    }
-//
-//    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//}
-
 extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelegate {
     func didSelectPlace(place: GMSPlace) {
         cameraTo(coordinate: place.coordinate)

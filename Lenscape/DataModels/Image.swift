@@ -37,12 +37,12 @@ struct Image {
         name = image["name"] as? String ?? "Image name"
         type = image["type"] as? String
         id = image["id"] as? String
-        likes = image["number_of_like"] as? Int
+        likes = image["number_of_likes"] as? Int
         
-        let ownerObj = image["Owner"] as! Any
+        let ownerObj = image["owner"] as! Any
         owner = Owner(item: ownerObj)
         
-        link = image["original_link"] as? String
+        link = image["original_url"] as? String
         thumbnailLink = image["thumbnail_link"] as? String
         
         //TODO: Change this

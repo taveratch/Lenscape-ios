@@ -25,7 +25,10 @@ class PhotoPostViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupKeyboard()
+        
+        // TODO: Remove this
         fetchNearbyPlaces()
+        
         setupShareButton()
         setupBackButton()
         
@@ -132,10 +135,6 @@ class PhotoPostViewController: UIViewController {
             self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
         }
     }
-    
-//    @objc private func back() {
-//        dismiss(animated: true)
-//    }
     
     private func setupShareButton() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(upload))

@@ -94,8 +94,8 @@ class PhotoPostViewController: UIViewController {
     }
     
     private func closeMe() {
-        let mainTabBarViewController = self.tabBarController as? MainTabBarController
-        mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
+//        let mainTabBarViewController = self.tabBarController as? MainTabBarController
+//        mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
         dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }

@@ -1129,6 +1129,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
+                        <outlet property="customTabBar" destination="9fG-qd-fNW" id="1cU-6A-ako"/>
                         <outlet property="tabBar" destination="9fG-qd-fNW" id="3Zq-Sw-3yb"/>
                         <segue destination="C9r-nG-mFp" kind="relationship" relationship="viewControllers" id="Xcj-m2-noR"/>
                         <segue destination="aTU-4c-zJx" kind="relationship" relationship="viewControllers" id="Cad-rm-z48"/>

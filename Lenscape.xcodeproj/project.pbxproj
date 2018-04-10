@@ -105,6 +105,7 @@
 		95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EFA20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift */; };
 		95F881412055248E003F61D4 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F881402055248D003F61D4 /* UIButton.swift */; };
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
+		D007EEF0207BD2FE00C46129 /* HeroUITabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */; };
 		D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */; };
 		D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064919C206E8B5F002ADF2C /* POIItem.swift */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
@@ -254,6 +255,7 @@
 		95F881402055248D003F61D4 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		95F8814420555309003F61D4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUITabBarDelegate.swift; sourceTree = "<group>"; };
 		D0649138206CF013002ADF2C /* Lenscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lenscape-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
 				95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */,
 				952EF14D206D2A960032983B /* LocationDelegate.swift */,
+				D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
 				950358CC206F95BB00D424F4 /* GMUPlacemark.m in Sources */,
 				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
+				D007EEF0207BD2FE00C46129 /* HeroUITabBarDelegate.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				95C35BC3207215FE00030B12 /* Owner.swift in Sources */,
 				959D25D4207B5F4700650D08 /* UIScrollView.swift in Sources */,

@@ -35,7 +35,9 @@ class PhotoUploader {
             fatalError("location_name attribute expected for uploading photo")
         }
         
-        Api.uploadImage(data: data, location: location, imageName: imageName, locationName: locationName, progressHandler: progressHandler).done {
+        let gplaceID = picture["gplace_id"] as? String
+        
+        let _ = Api.uploadImage(data: data, location: location, imageName: imageName, locationName: locationName, gplaceID: gplaceID, progressHandler: progressHandler).done {
             response in
             self.delegate?.didUpload()
         }

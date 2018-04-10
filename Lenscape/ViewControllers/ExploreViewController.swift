@@ -64,10 +64,18 @@ class ExploreViewController: UIViewController {
             guard let imageData = picture["picture"] as? Data else {
                 fatalError("picture is missing")
             }
+            guard let lat = picture["lat"] as? Double else {
+                fatalError("lat is missing")
+            }
+            
+            guard let long = picture["long"] as? Double else {
+                fatalError("long is missing")
+            }
+            
             let image = UIImage(data: imageData)
             uploadPreviewImage.image = image
-            let locationManager = LocationManager.getInstance()
-            photoUploader.upload(picture: picture, location: locationManager.getCurrentLocation())
+            
+            photoUploader.upload(picture: picture, location: Location(latitude: lat, longitude: long))
             UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         }
     }

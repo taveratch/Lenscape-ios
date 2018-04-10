@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import GooglePlaces
 
 class PhotoPostViewController: UIViewController {
     
@@ -19,7 +20,7 @@ class PhotoPostViewController: UIViewController {
     
     var image: UIImage?
     let photoUploader = PhotoUploader()
-    
+    var place: GMSPlace?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class PhotoPostViewController: UIViewController {
         
         setupShareButton()
         setupBackButton()
+        setupPlaceButton()
         
         //https://github.com/lkzhao/Hero/issues/187
         informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
@@ -45,6 +47,9 @@ class PhotoPostViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if place != nil { // do not show keyboard if come from GooglePlacesAutoCompleteViewController
+            return
+        }
         runThisAfter(second: 0.1) {
             self.informationCard.caption.becomeFirstResponder()
         }
@@ -107,7 +112,7 @@ class PhotoPostViewController: UIViewController {
         2. Place
     */
     private func isValid() -> Bool {
-        return !informationCard.caption.text!.isEmpty
+        return !informationCard.caption.text!.isEmpty && place != nil
     }
     
     private func showMessageDialog(message: String) {
@@ -124,9 +129,13 @@ class PhotoPostViewController: UIViewController {
         if let data = UIImageJPEGRepresentation(image!,1) {
             let imageInfo: [String: Any] = [
                 "picture": data,
-                "image_name": informationCard.caption.text ?? "CPE Building",
-                "location_name": "Kasetsart University"
+                "image_name": informationCard.caption.text!,
+                "location_name": place!.name,
+                "gplace_id": place!.placeID,
+                "lat": Double(place!.coordinate.latitude),
+                "long": Double(place!.coordinate.longitude)
             ]
+
             // the data can be passed to ExploreViewController via UserDefaults
             UserDefaults.standard.set(imageInfo, forKey: "uploadPhotoInfo")
             self.performSegue(withIdentifier: "unwindToCameraAndDisiss", sender: self)
@@ -145,6 +154,17 @@ class PhotoPostViewController: UIViewController {
         backButton.isUserInteractionEnabled = true
     }
     
+    private func setupPlaceButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showSearchPlaceViewController))
+        informationCard.placeLabel.addGestureRecognizer(tap)
+        informationCard.placeLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc private func showSearchPlaceViewController() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.GooglePlacesAutoCompleteViewController.rawValue) as! GooglePlacesAutoCompleteViewController
+        vc.delegate = self
+        present(vc, animated: true)
+    }
     
     
     @objc func keyboardWillBeHidden(notification: NSNotification) {
@@ -168,14 +188,14 @@ class PhotoPostViewController: UIViewController {
         }
     }
     
-//    @IBAction func showFullImage(_ sender: UITapGestureRecognizer) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
-//        vc.image = image
-//        vc.placeHolderImage = uiImage
-//        vc.hero.modalAnimationType = .auto
-//        present(vc, animated: true)
-//    }
-    
+}
+
+extension PhotoPostViewController: GooglePlacesAutoCompleteViewControllerDelegate {
+    func didSelectPlace(place: GMSPlace) {
+        self.informationCard.placeLabel.text = place.name
+        self.informationCard.placeLabel.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.place = place
+    }
 }
 
 extension PhotoPostViewController: UITextFieldDelegate {

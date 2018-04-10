@@ -8,9 +8,11 @@
 
 import UIKit
 
+@IBDesignable
 class PhotoUploadInformationCard: UIView {
 
     @IBOutlet weak var caption: UITextField!
+    @IBOutlet weak var placeLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

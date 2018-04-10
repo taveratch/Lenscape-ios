@@ -687,7 +687,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="419"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="418.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cCr-VL-VDD">
@@ -1042,12 +1042,12 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zup-Cg-wGa">
-                                        <rect key="frame" x="49.000000000000014" y="16.333333333333329" width="198.33333333333337" height="18"/>
+                                        <rect key="frame" x="49.000000000000014" y="16.333333333333329" width="191.33333333333337" height="18"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore your favorite place ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
-                                                <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your favorite place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URd-ks-LGV">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.33333333333334" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1066,7 +1066,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="3"/>
+                                        <size key="value" width="0.0" height="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="3"/>
@@ -1107,6 +1107,147 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3342" y="527"/>
+        </scene>
+        <!--Google Places Auto Complete View Controller-->
+        <scene sceneID="Rh0-xr-r3x">
+            <objects>
+                <viewController storyboardIdentifier="GooglePlacesAutoCompleteViewController" id="Tgo-05-dDV" customClass="GooglePlacesAutoCompleteViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TJe-gp-UyU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KC0-IH-Tkc" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="24" y="44" width="366" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Red Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YXf-2u-BHx">
+                                        <rect key="frame" x="16" y="17" width="17" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="17" id="Yoe-q0-wiv"/>
+                                            <constraint firstAttribute="height" constant="17" id="sG0-Nf-c2N"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search your favorite place..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aip-GM-Q0i">
+                                        <rect key="frame" x="49" y="10.333333333333336" width="274" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Uub-FK-9DL"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross Black" translatesAutoresizingMaskIntoConstraints="NO" id="psX-2f-hKC">
+                                        <rect key="frame" x="331" y="12" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="psX-2f-hKC" secondAttribute="height" multiplier="1:1" id="dq0-YE-DTo"/>
+                                            <constraint firstAttribute="width" constant="27" id="el9-Ei-fLc"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="psX-2f-hKC" firstAttribute="centerY" secondItem="KC0-IH-Tkc" secondAttribute="centerY" id="CzC-Wh-Gr6"/>
+                                    <constraint firstItem="aip-GM-Q0i" firstAttribute="centerY" secondItem="KC0-IH-Tkc" secondAttribute="centerY" id="Dbq-WB-M8d"/>
+                                    <constraint firstItem="aip-GM-Q0i" firstAttribute="leading" secondItem="YXf-2u-BHx" secondAttribute="trailing" constant="16" id="IKE-zz-pPa"/>
+                                    <constraint firstItem="psX-2f-hKC" firstAttribute="leading" secondItem="aip-GM-Q0i" secondAttribute="trailing" constant="8" id="J2e-EZ-LOa"/>
+                                    <constraint firstAttribute="trailing" secondItem="psX-2f-hKC" secondAttribute="trailing" constant="8" id="T9f-Oe-dWk"/>
+                                    <constraint firstItem="YXf-2u-BHx" firstAttribute="leading" secondItem="KC0-IH-Tkc" secondAttribute="leading" constant="16" id="ZbB-71-hCz"/>
+                                    <constraint firstItem="YXf-2u-BHx" firstAttribute="centerY" secondItem="KC0-IH-Tkc" secondAttribute="centerY" id="cQ1-ug-TQM"/>
+                                    <constraint firstAttribute="height" constant="50" id="q7q-mU-fLN"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666669999997" alpha="0.57724208050000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-GS-LhL">
+                                <rect key="frame" x="24" y="102" width="366" height="634"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchAutoCompleteTableViewCell" rowHeight="50" id="6Iy-it-B18" customClass="SearchAutoCompleteTableViewCell" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="366" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
+                                                    <rect key="frame" x="20" y="15" width="14" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="14" id="aCj-0m-7vb"/>
+                                                        <constraint firstAttribute="width" secondItem="pob-7E-dR0" secondAttribute="height" multiplier="7:10" id="oTR-vk-oTp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3ao-kr-Vtj">
+                                                    <rect key="frame" x="53.999999999999986" y="7" width="153.66666666666663" height="36.666666666666664"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kasetsart University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8t-qb-6lV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="153.66666666666666" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKE-D8-L3P">
+                                                            <rect key="frame" x="0.0" y="22.333333333333332" width="153.66666666666666" height="14.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3ao-kr-Vtj" firstAttribute="centerY" secondItem="Fsc-A9-cah" secondAttribute="centerY" id="7B9-A9-OHS"/>
+                                                <constraint firstItem="pob-7E-dR0" firstAttribute="leading" secondItem="Fsc-A9-cah" secondAttribute="leadingMargin" id="A12-u2-h1X"/>
+                                                <constraint firstItem="3ao-kr-Vtj" firstAttribute="leading" secondItem="pob-7E-dR0" secondAttribute="trailing" constant="20" id="PdB-7t-98N"/>
+                                                <constraint firstItem="pob-7E-dR0" firstAttribute="centerY" secondItem="Fsc-A9-cah" secondAttribute="centerY" id="Q2I-EI-P8I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="placeAddressLabel" destination="dKE-D8-L3P" id="fPw-nP-pyo"/>
+                                            <outlet property="placeNameLabel" destination="y8t-qb-6lV" id="6wb-eV-ryc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fCF-GS-LhL" firstAttribute="leading" secondItem="fQs-9T-wG4" secondAttribute="leading" constant="24" id="Hen-5F-XdW"/>
+                            <constraint firstItem="fCF-GS-LhL" firstAttribute="top" secondItem="KC0-IH-Tkc" secondAttribute="bottom" constant="8" id="T7R-qa-6vm"/>
+                            <constraint firstItem="fQs-9T-wG4" firstAttribute="trailing" secondItem="fCF-GS-LhL" secondAttribute="trailing" constant="24" id="VQV-mK-gcE"/>
+                            <constraint firstItem="KC0-IH-Tkc" firstAttribute="top" secondItem="fQs-9T-wG4" secondAttribute="top" constant="24" id="Xoo-ot-gwI"/>
+                            <constraint firstItem="fQs-9T-wG4" firstAttribute="bottom" secondItem="fCF-GS-LhL" secondAttribute="bottom" id="k8L-6F-U7u"/>
+                            <constraint firstItem="fQs-9T-wG4" firstAttribute="trailing" secondItem="KC0-IH-Tkc" secondAttribute="trailing" constant="24" id="nLt-bm-j7I"/>
+                            <constraint firstItem="KC0-IH-Tkc" firstAttribute="leading" secondItem="fQs-9T-wG4" secondAttribute="leading" constant="24" id="piE-4m-LCn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fQs-9T-wG4"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="dismissButton" destination="psX-2f-hKC" id="GLi-ig-Gfw"/>
+                        <outlet property="searchTextField" destination="aip-GM-Q0i" id="l1S-VP-bd5"/>
+                        <outlet property="searchViewWrapper" destination="KC0-IH-Tkc" id="vK8-dI-HbT"/>
+                        <outlet property="tableView" destination="fCF-GS-LhL" id="JfM-Fr-hvB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nQ-26-WqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4095.652173913044" y="526.63043478260875"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="U4O-61-FaB">
@@ -1817,6 +1958,7 @@
         <image name="Profile_tab_icon" width="24" height="25"/>
         <image name="Red Heart Clear" width="20" height="17"/>
         <image name="Red Next Arrow" width="24" height="27"/>
+        <image name="Red Pin" width="28" height="40"/>
         <image name="Search Red Icon" width="17" height="17"/>
         <image name="Share" width="11" height="16"/>
         <image name="Trend_selected_tab_icon" width="27" height="25"/>

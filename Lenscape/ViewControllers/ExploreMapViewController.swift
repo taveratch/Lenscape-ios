@@ -12,6 +12,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import PromiseKit
+import Hero
 
 class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
     
@@ -54,6 +55,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
         searchButton.isUserInteractionEnabled = true
+        searchButton.hero.id = "searchViewWrapper"
     }
     
     private func setupBackButton() {
@@ -63,9 +65,10 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     }
     
     @objc private func showGMSAutoCompleteViewController() {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.GooglePlacesAutoCompleteViewController.rawValue) as! GooglePlacesAutoCompleteViewController
+        vc.delegate = self
+        Hero.shared.defaultAnimation = .fade
+        present(vc, animated: true)
     }
     
     // Generate cluster item from api
@@ -94,9 +97,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     }
  
     @objc func back() {
+        Hero.shared.defaultAnimation = .zoom
         dismiss(animated: true)
-//        let explorePageVC = self.parent as? ExplorePageViewController
-//        explorePageVC!.setViewControllers([(explorePageVC!.views.first)!], direction: .reverse, animated: true, completion: nil)
     }
     
     // Tap on cluster marker
@@ -197,29 +199,11 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension ExploreMapViewController: GMSAutocompleteViewControllerDelegate {
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
+extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelegate {
+    func didSelectPlace(place: GMSPlace) {
         cameraTo(coordinate: place.coordinate)
         setupCluster(coordinate: place.coordinate)
         mapView.clear() //remove all markers
         showMarker(place: place)
-        
-//        print("Place name: \(place.name)")
-//        print("Place address: \(place.formattedAddress)")
-//        print("Place attributions: \(place.attributions)")
-//        print("Place ID: \(place.placeID)")
-        
-        dismiss(animated: true, completion: nil)
     }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print("Error: ", error.localizedDescription)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
 }

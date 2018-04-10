@@ -20,6 +20,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     var searchResults: [SearchResult] = []
     var placesClient: GMSPlacesClient?
     var delegate: GooglePlacesAutoCompleteViewControllerDelegate?
+    private let dataProvider = GoogleDataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
         searchViewWrapper.hero.id = "searchViewWrapper"
         setupFetcher()
         setupDismissButton()
+        fetchNearbyPlaces()
         
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(textField:)), for: .editingChanged)
     }
@@ -43,10 +45,33 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     }
     
     private func setupFetcher() {
+        var location = LocationManager.getInstance().getCurrentLocation()
+        if location == nil {
+            location = Location(latitude: 13.8458781, longitude: 100.5687592) //Kasetsart University
+        }
+        
+        //set boundary to current location
+        let neBoundsCorner = CLLocationCoordinate2D(latitude: location!.latitude,
+                                                    longitude: location!.longitude)
+        let swBoundsCorner = CLLocationCoordinate2D(latitude: location!.latitude,
+                                                    longitude: location!.longitude)
+        let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner,
+                                         coordinate: swBoundsCorner)
+        
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
-        fetcher = GMSAutocompleteFetcher(bounds: nil, filter: filter)
+        fetcher = GMSAutocompleteFetcher(bounds: bounds, filter: filter)
         fetcher?.delegate = self
+    }
+    
+    private func fetchNearbyPlaces() {
+        let location = LocationManager.getInstance().currentLocation
+        dataProvider.fetchPlacesNearCoordinate(CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!), radius: 1000, types: []) {
+            places in
+            self.searchResults = places.map { SearchResult(name: $0.name, address: $0.address, placeID: $0.placeID!) }
+            self.tableView.reloadData()
+//            print(places)
+        }
     }
     
     private func setupDismissButton() {

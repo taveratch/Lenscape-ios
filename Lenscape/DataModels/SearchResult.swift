@@ -19,4 +19,10 @@ struct SearchResult {
         address = prediction.attributedSecondaryText?.string
         placeID = prediction.placeID!
     }
+    
+    init(name: String, address: String, placeID: String) {
+        self.name = name
+        self.address = address
+        self.placeID = placeID
+    }
 }

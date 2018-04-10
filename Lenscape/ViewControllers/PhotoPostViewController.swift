@@ -19,15 +19,12 @@ class PhotoPostViewController: UIViewController {
     
     var image: UIImage?
     let photoUploader = PhotoUploader()
-    private let dataProvider = GoogleDataProvider()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupKeyboard()
-        
-        // TODO: Remove this
-        fetchNearbyPlaces()
         
         setupShareButton()
         setupBackButton()
@@ -148,14 +145,7 @@ class PhotoPostViewController: UIViewController {
         backButton.isUserInteractionEnabled = true
     }
     
-    private func fetchNearbyPlaces() {
-        print("fetchNearbyPlaces")
-        let location = LocationManager.getInstance().currentLocation
-        dataProvider.fetchPlacesNearCoordinate(CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!), radius: 1000, types: ["food"]) {
-            places in
-            print(places)
-        }
-    }
+    
     
     @objc func keyboardWillBeHidden(notification: NSNotification) {
         let contentInsets = UIEdgeInsets.zero

@@ -1100,11 +1100,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2GN75K5C8B;
+				DEVELOPMENT_TEAM = 58243UN24G;
 				INFOPLIST_FILE = Lenscape/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
+				PRODUCT_BUNDLE_IDENTIFIER = lenscape.me;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lenscape/Utilities/Lenscape-Bridging-Header.h";
@@ -1122,11 +1122,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2GN75K5C8B;
+				DEVELOPMENT_TEAM = 58243UN24G;
 				INFOPLIST_FILE = Lenscape/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lenscape.Lenscape;
+				PRODUCT_BUNDLE_IDENTIFIER = lenscape.me;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lenscape/Utilities/Lenscape-Bridging-Header.h";

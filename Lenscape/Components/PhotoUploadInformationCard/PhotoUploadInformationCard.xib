@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoUploadInformationCard" customModule="Lenscape" customModuleProvider="target">
             <connections>
                 <outlet property="caption" destination="m2f-bY-GYQ" id="oUH-cD-BFK"/>
+                <outlet property="placeLabel" destination="d7n-8D-b15" id="7FK-El-YFx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

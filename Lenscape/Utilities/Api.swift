@@ -100,6 +100,7 @@ class Api {
     // MARK: - Images
     static func uploadImage(data: Data, location: Location? = nil,
                             imageName: String, locationName: String,
+                            gplaceID: String? = "",
                             progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : HTTPHeaders = [
@@ -116,6 +117,7 @@ class Api {
                     multipartFormData.append(imageName.data(using: .utf8)!, withName: "image_name")
                     multipartFormData.append(locationName.data(using: .utf8)!, withName: "location_name")
                     multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: .utf8)!, withName: "latlong")
+                    multipartFormData.append(gplaceID!.data(using: .utf8)!, withName: "gplace_id")
             }, progressHandler: progressHandler
                 ).done {
                     response in

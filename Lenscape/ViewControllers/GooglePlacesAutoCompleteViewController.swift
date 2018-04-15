@@ -106,16 +106,21 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        return searchResults.count + 1 // 1 is row for create new place
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.SearchAutoCompleteTableViewCell.rawValue, for: indexPath) as! SearchAutoCompleteTableViewCell
-        let searchResult = searchResults[indexPath.row]
+        if indexPath.row < searchResults.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.SearchAutoCompleteTableViewCell.rawValue, for: indexPath) as! SearchAutoCompleteTableViewCell
+            let searchResult = searchResults[indexPath.row]
+            
+            cell.placeNameLabel.text = searchResult.name
+            cell.placeAddressLabel.text = searchResult.address
+            
+            return cell
+        }
         
-        cell.placeNameLabel.text = searchResult.name
-        cell.placeAddressLabel.text = searchResult.address
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.AddNewPlaceTableViewCell.rawValue, for: indexPath)
         return cell
     }
 }
@@ -137,13 +142,19 @@ extension GooglePlacesAutoCompleteViewController: UITextFieldDelegate {
 
 extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let searchResult = searchResults[indexPath.row]
-        placesClient!.lookUpPlaceID(searchResult.placeID, callback: {
-            place, error in
-            if let place = place {
-                self.delegate?.didSelectPlace(place: place)
-                self.dismiss(animated: true)
-            }
-        })
+        if indexPath.row < searchResults.count {
+            let searchResult = searchResults[indexPath.row]
+            placesClient!.lookUpPlaceID(searchResult.placeID, callback: {
+                place, error in
+                if let place = place {
+                    self.delegate?.didSelectPlace(place: place)
+                    self.dismiss(animated: true)
+                }
+            })
+        }else {
+            // open add new place view controller
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.AddNewPlaceViewController.rawValue)
+            present(vc!, animated: true)
+        }
     }
 }

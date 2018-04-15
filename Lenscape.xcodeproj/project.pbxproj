@@ -60,6 +60,7 @@
 		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
 		95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */; };
 		95431F0420600A0000F8CD43 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431F0320600A0000F8CD43 /* CustomView.swift */; };
+		9544EEEF20832ED700A4E9AC /* AddNewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544EEEE20832ED700A4E9AC /* AddNewPlaceViewController.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
 		954672BB2050DF7800035B94 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672BA2050DF7800035B94 /* AuthViewController.swift */; };
 		955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */; };
@@ -212,6 +213,7 @@
 		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
 		95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreSupplementaryView.xib; sourceTree = "<group>"; };
 		95431F0320600A0000F8CD43 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		9544EEEE20832ED700A4E9AC /* AddNewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlaceViewController.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		954672BA2050DF7800035B94 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCameraViewControllerModal.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				95028D172061FBF600222BFA /* ExplorePageViewController.swift */,
 				959D25D5207BB31100650D08 /* GooglePlacesAutoCompleteViewController.swift */,
 				9530489F206210CA00EB5F3F /* PhotoInfoViewController.swift */,
+				9544EEEE20832ED700A4E9AC /* AddNewPlaceViewController.swift */,
 				955606A0205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift */,
 				957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */,
 				953048A32062845600EB5F3F /* PortraitViewController.swift */,
@@ -883,6 +886,7 @@
 				950358D4206F95BB00D424F4 /* GMUWeightedLatLng.m in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
 				952EF150206D2BEF0032983B /* UIViewController.swift in Sources */,
+				9544EEEF20832ED700A4E9AC /* AddNewPlaceViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
 				9504A15420677CBB00FDF606 /* Location.swift in Sources */,

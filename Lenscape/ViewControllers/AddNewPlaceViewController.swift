@@ -10,10 +10,12 @@ import UIKit
 
 class AddNewPlaceViewController: UIViewController {
 
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var placeNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeNameTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,5 +36,15 @@ class AddNewPlaceViewController: UIViewController {
 extension AddNewPlaceViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Hide keyboard when touch outside textfields
+        self.view.endEditing(true)
     }
 }

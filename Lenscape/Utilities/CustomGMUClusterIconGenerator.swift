@@ -21,11 +21,18 @@ class CustomGMUClusterIconGenerator: GMUDefaultClusterIconGenerator {
         
         let height: CGFloat = 50
         let width: CGFloat = 50
+        var textString: NSString = text
         UIGraphicsBeginImageContext(CGSize(width: width, height: height))
         image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
         
         let textStyle = NSMutableParagraphStyle()
         textStyle.alignment = NSTextAlignment.center
+        
+        // If number of item reach maximum of fetched item from api then it could be more.
+        if textString as String == String(Constants.MAX_FETCHED_ITEM_MAP) {
+            textString = textString.appending("+") as NSString
+        }
+        
         let textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let attributes=[
             NSAttributedStringKey.font: font,
@@ -36,7 +43,7 @@ class CustomGMUClusterIconGenerator: GMUDefaultClusterIconGenerator {
         let textH = font.lineHeight
         let textY = (height-textH)/2
         let textRect = CGRect(x: 0, y: textY, width: width, height: textH)
-        text.draw(in: textRect.integral, withAttributes: attributes)
+        textString.draw(in: textRect.integral, withAttributes: attributes)
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return result!

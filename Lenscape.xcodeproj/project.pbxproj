@@ -39,6 +39,7 @@
 		950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358EA2071147800D424F4 /* GoogleDataProvider.swift */; };
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
+		9509A5342084EB1C00334B74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5332084EB1C00334B74 /* Constants.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
 		95108EF42054247A0072AC48 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF32054247A0072AC48 /* Error.swift */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
@@ -189,6 +190,7 @@
 		950358EA2071147800D424F4 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9509A5332084EB1C00334B74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		95108EF32054247A0072AC48 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */,
+				9509A5332084EB1C00334B74 /* Constants.swift */,
 				950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
 				D0C97A82206A4D590054276F /* ValidationError.swift */,
@@ -935,6 +938,7 @@
 				9541DB3A207BC72700F7BE65 /* SearchAutoCompleteTableViewCell.swift in Sources */,
 				950358C1206F95BB00D424F4 /* GMUClusterManager.m in Sources */,
 				D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */,
+				9509A5342084EB1C00334B74 /* Constants.swift in Sources */,
 				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
 				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
 				950358D3206F95BB00D424F4 /* GMUGeoJSONParser.m in Sources */,

@@ -14,6 +14,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - UI Components
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var closeButton: UIView!
     
     // MARK: - Attributes
     var image: Image?
@@ -25,6 +26,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         initZoomComponent()
         initHeroComponents()
         initImageComponent()
+        setupCloseButton()
     }
     
     // Before disappear, set back to portrait mode. (See more in AppDelegate)
@@ -39,8 +41,18 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @objc func canRotate() -> Void {}
 
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
+        self.back(recognizer: nil)
+    }
+    
+    @objc func back(recognizer: UITapGestureRecognizer?) {
         Hero.shared.defaultAnimation = .none
         self.hero.dismissViewController()
+    }
+    
+    private func setupCloseButton() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(back(recognizer:)))
+        closeButton.addGestureRecognizer(tap)
+        closeButton.isUserInteractionEnabled = true
     }
     
 

@@ -15,11 +15,26 @@ class AddNewPlaceViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
     
 
     /*

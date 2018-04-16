@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -240,7 +239,7 @@
                         <outlet property="informationCard" destination="ygy-cb-hPZ" id="5zq-cU-HXf"/>
                         <outlet property="scrollView" destination="3us-WQ-5Lk" id="S3w-Sm-wcf"/>
                         <outlet property="shareButton" destination="Q6Y-PC-osD" id="fBH-nP-XkC"/>
-                        <segue destination="pqL-1E-5yq" kind="unwind" identifier="unwindToCameraAndDisiss" unwindAction="unwindToCameraAndDisissWithSender:" id="9Ka-DU-MVW"/>
+                        <segue destination="pqL-1E-5yq" kind="unwind" identifier="unwindToCameraAndDismiss" unwindAction="unwindToCameraAndDismissWithSender:" id="9Ka-DU-MVW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvr-9r-NbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -259,6 +258,10 @@
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4M-w5-qHf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Aiy-Nb-ash" appends="YES" id="Ay2-M2-Idb"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioK-48-z8a">
                                 <rect key="frame" x="364" y="40" width="30" height="30"/>
@@ -331,6 +334,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olp-e6-68F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Aiy-Nb-ash">
+                    <connections>
+                        <action selector="focusAndExposeTap:" destination="n0A-Ff-Aqv" id="IQf-eh-CxJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2648" y="2121"/>
         </scene>
@@ -1872,7 +1880,7 @@
                             <tableViewSection headerTitle="" id="bif-Vf-bHx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="KgA-Bk-ssb" style="IBUITableViewCellStyleDefault" id="GlZ-U6-Hti">
-                                        <rect key="frame" x="0.0" y="223.33333333333334" width="414" height="44.000000000000028"/>
+                                        <rect key="frame" x="0.0" y="223.33333333333334" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GlZ-U6-Hti" id="K0Z-Cf-7ce">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>

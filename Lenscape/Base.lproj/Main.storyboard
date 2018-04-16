@@ -1385,7 +1385,11 @@
                                 <action selector="back:" destination="cTH-XT-R8C" id="v7T-nJ-MvB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="KKf-Mz-276"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="KKf-Mz-276">
+                            <connections>
+                                <action selector="add:" destination="cTH-XT-R8C" id="1oc-VG-iWR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="pee-4K-Ird" id="Qod-Px-Hvo"/>

@@ -40,11 +40,28 @@ class AddNewPlaceViewController: UIViewController {
         placeNameTextField.becomeFirstResponder()
     }
     
+    private func isValid() -> Bool {
+        return !(placeNameTextField.text!.isEmpty)
+    }
+    
     @IBAction func back(_ sender: UIBarButtonItem) {
         // Hide keyboard
         placeNameTextField.resignFirstResponder()
         
         dismiss(animated: true)
+    }
+    
+    @IBAction func add(_ sender: UIBarButtonItem) {
+        if !isValid() {
+            showAlert()
+            return
+        }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Mesage", message: "Please enter place's name", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
     private func cameraTo(coordinate: CLLocationCoordinate2D) {
@@ -122,7 +139,6 @@ extension AddNewPlaceViewController: CLLocationManagerDelegate {
 
 extension AddNewPlaceViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//        print(position.target)
         updateMarkerLocation(location: position.target)
     }
 }

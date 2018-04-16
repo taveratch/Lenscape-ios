@@ -145,5 +145,8 @@ extension AddNewPlaceViewController: CLLocationManagerDelegate {
 extension AddNewPlaceViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         updateMarkerLocation(location: position.target)
+        
+        // Hide keyboard
+        self.view.endEditing(true)
     }
 }

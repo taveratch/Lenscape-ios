@@ -1328,7 +1328,35 @@
                     <view key="view" contentMode="scaleToFill" id="rit-ZH-Jdk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ewJ-b2-Sbd">
+                                <rect key="frame" x="32" y="96" width="350" height="20"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="X4n-I5-ivp">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="hpo-0H-rlT"/>
+                                            <constraint firstAttribute="width" secondItem="X4n-I5-ivp" secondAttribute="height" multiplier="7:10" id="okQ-f7-c6x"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Place's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7nt-HI-0L6">
+                                        <rect key="frame" x="29" y="0.0" width="321" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="X4n-I5-ivp" firstAttribute="width" secondItem="X4n-I5-ivp" secondAttribute="height" multiplier="7:10" id="9Zh-nt-lLE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ewJ-b2-Sbd" firstAttribute="top" secondItem="lAU-ml-wBe" secondAttribute="top" constant="32" id="LEZ-Gf-RyB"/>
+                            <constraint firstItem="lAU-ml-wBe" firstAttribute="trailing" secondItem="ewJ-b2-Sbd" secondAttribute="trailing" constant="32" id="b4U-Eb-ZyF"/>
+                            <constraint firstItem="ewJ-b2-Sbd" firstAttribute="leading" secondItem="lAU-ml-wBe" secondAttribute="leading" constant="32" id="qKW-UY-Bac"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lAU-ml-wBe"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Place" id="Mxf-xT-OfA">
@@ -1339,6 +1367,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="KKf-Mz-276"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="placeNameTextField" destination="7nt-HI-0L6" id="g1T-W4-OfA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eu-f6-TVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

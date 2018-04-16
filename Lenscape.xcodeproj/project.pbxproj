@@ -40,6 +40,7 @@
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
 		9509A5342084EB1C00334B74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5332084EB1C00334B74 /* Constants.swift */; };
+		9509A5322084DBCE00334B74 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5312084DBCE00334B74 /* Place.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
 		95108EF42054247A0072AC48 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF32054247A0072AC48 /* Error.swift */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
@@ -192,6 +193,7 @@
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9509A5332084EB1C00334B74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9509A5312084DBCE00334B74 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		95108EF32054247A0072AC48 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 		9597DE62205F7B8700B7E751 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				9509A5312084DBCE00334B74 /* Place.swift */,
 				9597DE63205F7BB200B7E751 /* Image.swift */,
 				95E45147206DF2B7000E5046 /* Pagination.swift */,
 				95C35BC2207215FE00030B12 /* Owner.swift */,
@@ -923,6 +926,7 @@
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				950358D5206F95BB00D424F4 /* GMUGradient.m in Sources */,
 				953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */,
+				9509A5322084DBCE00334B74 /* Place.swift in Sources */,
 				95E45148206DF2B7000E5046 /* Pagination.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */,

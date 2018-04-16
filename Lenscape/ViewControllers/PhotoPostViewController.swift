@@ -20,7 +20,7 @@ class PhotoPostViewController: UIViewController {
     
     var image: UIImage?
     let photoUploader = PhotoUploader()
-    var place: GMSPlace?
+    var place: Place?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,8 +132,8 @@ class PhotoPostViewController: UIViewController {
                 "image_name": informationCard.caption.text!,
                 "location_name": place!.name,
                 "gplace_id": place!.placeID,
-                "lat": Double(place!.coordinate.latitude),
-                "long": Double(place!.coordinate.longitude)
+                "lat": Double(place!.location.latitude),
+                "long": Double(place!.location.longitude)
             ]
 
             // the data can be passed to ExploreViewController via UserDefaults
@@ -191,7 +191,7 @@ class PhotoPostViewController: UIViewController {
 }
 
 extension PhotoPostViewController: GooglePlacesAutoCompleteViewControllerDelegate {
-    func didSelectPlace(place: GMSPlace) {
+    func didSelectPlace(place: Place) {
         self.informationCard.placeLabel.text = place.name
         self.informationCard.placeLabel.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         self.place = place

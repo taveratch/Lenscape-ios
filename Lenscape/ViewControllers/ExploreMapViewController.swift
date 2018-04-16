@@ -167,8 +167,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
     }
     
-    private func showMarker(place: GMSPlace) {
-        let marker = GMSMarker(position: place.coordinate)
+    private func showMarker(place: Place) {
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude))
         marker.title = place.name
         marker.appearAnimation = .pop
         marker.map = mapView
@@ -203,9 +203,10 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
 }
 
 extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelegate {
-    func didSelectPlace(place: GMSPlace) {
-        cameraTo(coordinate: place.coordinate)
-        setupCluster(coordinate: place.coordinate)
+    func didSelectPlace(place: Place) {
+        let coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
+        cameraTo(coordinate: coordinate)
+        setupCluster(coordinate: coordinate)
         mapView.clear() //remove all markers
         showMarker(place: place)
     }

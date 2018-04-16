@@ -17,6 +17,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     @IBOutlet weak var searchViewWrapper: UIView!
     
     var fetcher: GMSAutocompleteFetcher?
+    var place: Place?
     var searchResults: [SearchResult] = []
     var placesClient: GMSPlacesClient?
     var delegate: GooglePlacesAutoCompleteViewControllerDelegate?
@@ -86,6 +87,16 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     @objc func searchTextFieldDidChange(textField: UITextField) {
         fetcher!.sourceTextHasChanged(textField.text!)
     }
+    
+    /*
+     unwind after click `add` from AddPlaceViewController
+    */
+    @IBAction func unwindToGooglePlacesAutoCompleteAndDismiss(sender: UIStoryboardSegue) {
+        if place != nil {
+            delegate?.didSelectPlace(place: place!)
+            dismiss(animated: true)
+        }
+    }
 }
 
 extension GooglePlacesAutoCompleteViewController: GMSAutocompleteFetcherDelegate {
@@ -146,7 +157,9 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
             let searchResult = searchResults[indexPath.row]
             placesClient!.lookUpPlaceID(searchResult.placeID, callback: {
                 place, error in
-                if let place = place {
+                if let gmsPlace = place {
+                    var place = Place(name: gmsPlace.name, location: Location(latitude: gmsPlace.coordinate.latitude, longitude: gmsPlace.coordinate.longitude))
+                    place.placeID = gmsPlace.placeID
                     self.delegate?.didSelectPlace(place: place)
                     self.dismiss(animated: true)
                 }

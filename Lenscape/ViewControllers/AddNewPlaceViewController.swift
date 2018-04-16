@@ -53,13 +53,18 @@ class AddNewPlaceViewController: UIViewController {
     
     @IBAction func add(_ sender: UIBarButtonItem) {
         if !isValid() {
-            showAlert()
+            showAlert(message: "Please enter place's name")
             return
         }
+        
+        if let presenter = presentingViewController as? GooglePlacesAutoCompleteViewController {
+            presenter.place = Place(name: placeNameTextField.text!, location: Location(latitude: placeMarker!.position.latitude, longitude: placeMarker!.position.longitude))
+        }
+        performSegue(withIdentifier: "unwindToGooglePlacesAutoCompleteAndDismiss", sender: self)
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: "Mesage", message: "Please enter place's name", preferredStyle: .alert)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }

@@ -1394,9 +1394,11 @@
                     <connections>
                         <outlet property="mapView" destination="pee-4K-Ird" id="Qod-Px-Hvo"/>
                         <outlet property="placeNameTextField" destination="7nt-HI-0L6" id="g1T-W4-OfA"/>
+                        <segue destination="jG3-xy-Ddq" kind="unwind" identifier="unwindToGooglePlacesAutoCompleteAndDismiss" unwindAction="unwindToGooglePlacesAutoCompleteAndDismissWithSender:" id="H2H-nt-C3u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eu-f6-TVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jG3-xy-Ddq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4883" y="526"/>
         </scene>

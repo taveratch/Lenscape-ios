@@ -1350,19 +1350,31 @@
                                     <constraint firstItem="X4n-I5-ivp" firstAttribute="width" secondItem="X4n-I5-ivp" secondAttribute="height" multiplier="7:10" id="9Zh-nt-lLE"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pee-4K-Ird" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfR-lG-VII">
                                 <rect key="frame" x="0.0" y="132" width="414" height="604"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pee-4K-Ird" customClass="GMSMapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="604"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pee-4K-Ird" secondAttribute="bottom" id="79l-ML-rl4"/>
+                                    <constraint firstItem="pee-4K-Ird" firstAttribute="leading" secondItem="UfR-lG-VII" secondAttribute="leading" id="7Bc-DD-vYa"/>
+                                    <constraint firstAttribute="trailing" secondItem="pee-4K-Ird" secondAttribute="trailing" id="FQK-4g-VpZ"/>
+                                    <constraint firstItem="pee-4K-Ird" firstAttribute="top" secondItem="UfR-lG-VII" secondAttribute="top" id="JCP-LA-ewo"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pee-4K-Ird" firstAttribute="top" secondItem="ewJ-b2-Sbd" secondAttribute="bottom" constant="24" id="9Pl-mT-kzo"/>
-                            <constraint firstItem="lAU-ml-wBe" firstAttribute="trailing" secondItem="pee-4K-Ird" secondAttribute="trailing" id="Fc3-mk-blT"/>
+                            <constraint firstItem="lAU-ml-wBe" firstAttribute="trailing" secondItem="UfR-lG-VII" secondAttribute="trailing" id="4IN-dk-mra"/>
+                            <constraint firstItem="UfR-lG-VII" firstAttribute="leading" secondItem="lAU-ml-wBe" secondAttribute="leading" id="Jen-Aq-z3c"/>
                             <constraint firstItem="ewJ-b2-Sbd" firstAttribute="top" secondItem="lAU-ml-wBe" secondAttribute="top" constant="24" id="LEZ-Gf-RyB"/>
-                            <constraint firstItem="lAU-ml-wBe" firstAttribute="bottom" secondItem="pee-4K-Ird" secondAttribute="bottom" id="Oik-xT-fLw"/>
+                            <constraint firstItem="UfR-lG-VII" firstAttribute="top" secondItem="ewJ-b2-Sbd" secondAttribute="bottom" constant="24" id="XWQ-wQ-hGS"/>
+                            <constraint firstItem="lAU-ml-wBe" firstAttribute="bottom" secondItem="UfR-lG-VII" secondAttribute="bottom" id="agQ-zX-aXu"/>
                             <constraint firstItem="lAU-ml-wBe" firstAttribute="trailing" secondItem="ewJ-b2-Sbd" secondAttribute="trailing" constant="32" id="b4U-Eb-ZyF"/>
-                            <constraint firstItem="pee-4K-Ird" firstAttribute="leading" secondItem="lAU-ml-wBe" secondAttribute="leading" id="miA-lg-6dp"/>
                             <constraint firstItem="ewJ-b2-Sbd" firstAttribute="leading" secondItem="lAU-ml-wBe" secondAttribute="leading" constant="32" id="qKW-UY-Bac"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lAU-ml-wBe"/>

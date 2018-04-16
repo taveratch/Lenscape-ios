@@ -34,7 +34,7 @@ class OpenCameraViewControllerModal: UIViewController, UIImagePickerControllerDe
         addDismissButtonGesture()
         addOpenCameraRollGesture()
         initCamera()
-        videoPreviewLayer!.frame = previewView.bounds
+        videoPreviewLayer!.frame = view.layer.bounds
     }
     
     override func viewWillAppear(_ animated: Bool) {

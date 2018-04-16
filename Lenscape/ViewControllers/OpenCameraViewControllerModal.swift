@@ -5,6 +5,7 @@
 //  Created by TAWEERAT CHAIMAN on 17/3/2561 BE.
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
+//https://github.com/codepath/ios_guides/wiki/Creating-a-Custom-Camera-View
 
 import UIKit
 import AVFoundation

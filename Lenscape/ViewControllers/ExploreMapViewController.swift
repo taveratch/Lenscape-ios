@@ -76,7 +76,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         var poiItems: [POIItem] = []
         return Promise {
             seal in
-            Api.fetchExploreImages(location: location).done {
+            Api.fetchExploreImages(location: location, size: Constants.MAX_FETCHED_ITEM_MAP).done {
                 fulfill in
                 let images = fulfill["images"] as! [Image]
                 for image in images {

@@ -1005,7 +1005,7 @@
                                 <rect key="frame" x="0.0" y="616" width="414" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b2P-AY-m7E">
-                                        <rect key="frame" x="24.000000000000007" y="16.000000000000004" width="117.66666666666669" height="38.333333333333343"/>
+                                        <rect key="frame" x="24" y="16.000000000000004" width="288.66666666666669" height="38.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-Xm-1Y8">
                                                 <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20.333333333333332"/>
@@ -1022,7 +1022,7 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White Heart" translatesAutoresizingMaskIntoConstraints="NO" id="41Q-FU-qvJ">
-                                        <rect key="frame" x="364.66666666666669" y="24" width="25.333333333333314" height="20"/>
+                                        <rect key="frame" x="328.66666666666669" y="16" width="25.333333333333314" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="JVZ-Wb-FWj"/>
                                             <constraint firstAttribute="width" secondItem="41Q-FU-qvJ" secondAttribute="height" multiplier="19:15" id="gF7-tj-RxV"/>
@@ -1049,14 +1049,35 @@
                                             <action selector="seeMore:" destination="yKk-Co-UHk" eventType="touchUpInside" id="aSC-RW-5Wl"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-fp-hFe">
+                                        <rect key="frame" x="321" y="40" width="40" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="h0m-pm-LDN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share White" translatesAutoresizingMaskIntoConstraints="NO" id="AMS-iM-bLL">
+                                        <rect key="frame" x="375.33333333333331" y="15" width="14.666666666666686" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0yt-YM-zwY"/>
+                                            <constraint firstAttribute="width" secondItem="AMS-iM-bLL" secondAttribute="height" multiplier="11:15" id="A4o-41-Tmf"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="41Q-FU-qvJ" secondAttribute="trailing" constant="24" id="3Q4-Vv-UIE"/>
+                                    <constraint firstAttribute="trailing" secondItem="cEN-fp-hFe" secondAttribute="trailing" constant="53" id="239-BI-JgW"/>
+                                    <constraint firstAttribute="trailing" secondItem="41Q-FU-qvJ" secondAttribute="trailing" constant="60" id="3Q4-Vv-UIE"/>
+                                    <constraint firstItem="cEN-fp-hFe" firstAttribute="top" secondItem="41Q-FU-qvJ" secondAttribute="bottom" constant="4" id="EZK-Lo-12F"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="leading" secondItem="AVO-Fe-1tY" secondAttribute="leading" constant="24" id="N9o-Pg-sDQ"/>
                                     <constraint firstAttribute="bottom" secondItem="ZrJ-9C-f8l" secondAttribute="bottom" constant="16" id="Qkk-dt-lPg"/>
-                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="24" id="Xkk-s7-SZy"/>
+                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="Xkk-s7-SZy"/>
+                                    <constraint firstItem="AMS-iM-bLL" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="15" id="pum-vB-jNA"/>
                                     <constraint firstItem="ZrJ-9C-f8l" firstAttribute="centerX" secondItem="AVO-Fe-1tY" secondAttribute="centerX" id="qC9-c0-Amq"/>
                                     <constraint firstAttribute="height" constant="120" id="sBQ-Bi-zS7"/>
+                                    <constraint firstAttribute="trailing" secondItem="AMS-iM-bLL" secondAttribute="trailing" constant="24" id="t7F-zD-QcN"/>
+                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="leading" secondItem="b2P-AY-m7E" secondAttribute="trailing" constant="16" id="x1W-3D-38R"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="y9q-Xp-kWu"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1128,6 +1149,7 @@
                         <outlet property="infoView" destination="AVO-Fe-1tY" id="Aup-8T-HgS"/>
                         <outlet property="likeButton" destination="41Q-FU-qvJ" id="b3s-M9-ZvC"/>
                         <outlet property="locationNameLabel" destination="MKQ-xw-fcp" id="dre-Sn-v2g"/>
+                        <outlet property="numberOfLikeLabel" destination="cEN-fp-hFe" id="k17-zm-IVP"/>
                         <outlet property="scrollView" destination="ipm-c1-6bd" id="yv2-cP-UHl"/>
                     </connections>
                 </viewController>
@@ -2230,6 +2252,7 @@
         <image name="Red Next Arrow" width="24" height="27"/>
         <image name="Red Pin" width="28" height="40"/>
         <image name="Search Red Icon" width="17" height="17"/>
+        <image name="Share White" width="22" height="30"/>
         <image name="Trend_selected_tab_icon" width="27" height="25"/>
         <image name="Trend_tab_icon" width="27" height="25"/>
         <image name="White Back Arrow Shadow" width="39" height="46"/>

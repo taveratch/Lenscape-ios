@@ -19,6 +19,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var likeButton: UIImageView!
+    @IBOutlet weak var numberOfLikeLabel: UILabel!
     
     // MARK: - Attributes
     var image: Image?
@@ -71,6 +72,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         
         imageNameLabel.text = image!.name
         locationNameLabel.text = image!.locationName
+        numberOfLikeLabel.text = String(image!.likes!)
     }
     
     // MARK: - Hero components

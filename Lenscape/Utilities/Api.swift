@@ -98,15 +98,23 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, location: Location? = nil,
-                            imageName: String, locationName: String,
-                            gplaceID: String? = "",
+    static func uploadImage(data: Data, imageName: String, place: Place,
                             progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : HTTPHeaders = [
             "Authorization": "Bearer \(UserController.getToken())",
             "Content-Type": "multipart/form-data"
         ]
+        
+        let latlong = "\(place.location.latitude),\(place.location.longitude)"
+        
+        print("--Api.uploadImage--")
+        print("picture: \(data)")
+        print("image_name: \(imageName)")
+        print("location_name: \(place.name)")
+        print("latlong: \(latlong)")
+        print("place_id: \(place.placeID)")
+        print("place_type: \(place.type)")
         
         return Promise { seal in
             ApiManager.upload(
@@ -115,9 +123,10 @@ class Api {
                 multipartFormData: { multipartFormData in
                     multipartFormData.append(data, withName:"picture", fileName: "Photo.jpeg", mimeType: "image/jpeg")
                     multipartFormData.append(imageName.data(using: .utf8)!, withName: "image_name")
-                    multipartFormData.append(locationName.data(using: .utf8)!, withName: "location_name")
-                    multipartFormData.append("\(location!.latitude),\(location!.longitude)".data(using: .utf8)!, withName: "latlong")
-                    multipartFormData.append(gplaceID!.data(using: .utf8)!, withName: "gplace_id")
+                    multipartFormData.append(place.name.data(using: .utf8)!, withName: "location_name")
+                    multipartFormData.append(latlong.data(using: .utf8)!, withName: "latlong")
+                    multipartFormData.append(place.placeID.data(using: .utf8)!, withName: "place_id")
+                    multipartFormData.append(place.type.data(using: .utf8)!, withName: "place_type")
             }, progressHandler: progressHandler
                 ).done {
                     response in

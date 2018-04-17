@@ -58,9 +58,11 @@ class AddNewPlaceViewController: UIViewController {
         }
         
         if let presenter = presentingViewController as? GooglePlacesAutoCompleteViewController {
-            presenter.place = Place(name: placeNameTextField.text!, location: Location(latitude: placeMarker!.position.latitude, longitude: placeMarker!.position.longitude))
+            var place = Place(name: placeNameTextField.text!, location: Location(latitude: placeMarker!.position.latitude, longitude: placeMarker!.position.longitude))
+            place.type = PlaceType.LENSCAPE_TYPE
+            presenter.place = place
         }
-        performSegue(withIdentifier: "unwindToGooglePlacesAutoCompleteAndDismiss", sender: self)
+        performSegue(withIdentifier: SegueIdentifier.UnwindToGooglePlacesAutoCompleteAndDismiss.rawValue, sender: self)
     }
     
     private func showAlert(message: String) {

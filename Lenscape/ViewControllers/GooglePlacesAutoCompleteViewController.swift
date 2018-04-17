@@ -71,7 +71,6 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
             places in
             self.searchResults = places.map { SearchResult(name: $0.name, address: $0.address, placeID: $0.placeID!) }
             self.tableView.reloadData()
-//            print(places)
         }
     }
     

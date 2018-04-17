@@ -92,7 +92,7 @@ class PhotoPostViewController: UIViewController {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            self.performSegue(withIdentifier: "unwindToCameraAndDismiss", sender: self)
+            self.performSegue(withIdentifier: SegueIdentifier.UnwindToCameraAndDismiss.rawValue, sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -127,18 +127,17 @@ class PhotoPostViewController: UIViewController {
             return
         }
         if let data = UIImageJPEGRepresentation(image!,1) {
+            
+            let encodedPlace = try? JSONEncoder().encode(place)
             let imageInfo: [String: Any] = [
                 "picture": data,
                 "image_name": informationCard.caption.text!,
-                "location_name": place!.name,
-                "gplace_id": place!.placeID,
-                "lat": Double(place!.location.latitude),
-                "long": Double(place!.location.longitude)
+                "place": encodedPlace
             ]
 
             // the data can be passed to ExploreViewController via UserDefaults
             UserDefaults.standard.set(imageInfo, forKey: "uploadPhotoInfo")
-            self.performSegue(withIdentifier: "unwindToCameraAndDismiss", sender: self)
+            self.performSegue(withIdentifier: SegueIdentifier.UnwindToCameraAndDismiss.rawValue, sender: self)
         }
     }
     

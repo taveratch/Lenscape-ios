@@ -78,7 +78,6 @@ class GoogleDataProvider {
         let results = json["results"].arrayObject as? [[String: Any]] else {
           return
       }
-        print(results)
       results.forEach {
         let place = GooglePlace(dictionary: $0, acceptedTypes: types)
         placesArray.append(place)

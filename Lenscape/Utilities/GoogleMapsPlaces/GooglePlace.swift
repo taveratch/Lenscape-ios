@@ -47,7 +47,6 @@ class GooglePlace {
   init(dictionary: [String: Any], acceptedTypes: [String])
   {
     let json = JSON(dictionary)
-    print(json)
     name = json["name"].stringValue
     address = json["vicinity"].stringValue
     

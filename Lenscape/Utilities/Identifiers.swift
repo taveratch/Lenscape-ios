@@ -30,3 +30,8 @@ enum Identifier: String {
     case AddNewPlaceTableViewCell = "AddNewPlaceTableViewCell"
     case AddNewPlaceViewController = "AddNewPlaceViewController"
 }
+
+enum SegueIdentifier: String {
+    case UnwindToGooglePlacesAutoCompleteAndDismiss = "unwindToGooglePlacesAutoCompleteAndDismiss"
+    case UnwindToCameraAndDismiss = "unwindToCameraAndDismiss"
+}

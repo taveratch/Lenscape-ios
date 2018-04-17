@@ -105,7 +105,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     // MARK: - GMUClusterManagerDelegate
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
         if let items = cluster.items as? [POIItem] {
-            print(items[0].image)
+//            print(items[0].image)
         }
         
         return false

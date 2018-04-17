@@ -704,16 +704,16 @@
                                                     <rect key="frame" x="20" y="16" width="374" height="283"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tNM-or-Z5x">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="250"/>
+                                                            <rect key="frame" x="4" y="4" width="366" height="250"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="250" id="xoj-N0-4am"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GL-DR-4UL">
-                                                            <rect key="frame" x="0.0" y="258" width="374" height="17"/>
+                                                            <rect key="frame" x="0.0" y="262" width="374" height="13"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qyu-cV-b1M">
-                                                                    <rect key="frame" x="226" y="-1.3333333333333144" width="132" height="20"/>
+                                                                    <rect key="frame" x="226" y="-3.3333333333333144" width="132" height="20"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q9p-Q7-6fU" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -738,7 +738,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjH-9z-KIW">
-                                                                    <rect key="frame" x="16" y="-0.33333333333331439" width="90" height="18.333333333333332"/>
+                                                                    <rect key="frame" x="16" y="-2.3333333333333144" width="90" height="18.333333333333332"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHJ-3a-Tzo">
                                                                             <rect key="frame" x="23.333333333333336" y="0.0" width="25.333333333333336" height="18"/>
@@ -782,10 +782,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="tNM-or-Z5x" firstAttribute="leading" secondItem="QGx-56-hnB" secondAttribute="leading" id="1xE-k6-A0u"/>
+                                                        <constraint firstItem="tNM-or-Z5x" firstAttribute="leading" secondItem="QGx-56-hnB" secondAttribute="leading" constant="4" id="1xE-k6-A0u"/>
                                                         <constraint firstAttribute="trailing" secondItem="5GL-DR-4UL" secondAttribute="trailing" id="5r2-6r-lhw"/>
-                                                        <constraint firstItem="tNM-or-Z5x" firstAttribute="top" secondItem="QGx-56-hnB" secondAttribute="top" id="Oik-SH-mlT"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tNM-or-Z5x" secondAttribute="trailing" id="ikn-uQ-QDa"/>
+                                                        <constraint firstItem="tNM-or-Z5x" firstAttribute="top" secondItem="QGx-56-hnB" secondAttribute="top" constant="4" id="Oik-SH-mlT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tNM-or-Z5x" secondAttribute="trailing" constant="4" id="ikn-uQ-QDa"/>
                                                         <constraint firstItem="5GL-DR-4UL" firstAttribute="leading" secondItem="QGx-56-hnB" secondAttribute="leading" id="lKV-20-Tas"/>
                                                         <constraint firstAttribute="bottom" secondItem="5GL-DR-4UL" secondAttribute="bottom" constant="8" id="tiI-X9-aaP"/>
                                                         <constraint firstItem="5GL-DR-4UL" firstAttribute="top" secondItem="tNM-or-Z5x" secondAttribute="bottom" constant="8" id="woX-FV-Wsc"/>

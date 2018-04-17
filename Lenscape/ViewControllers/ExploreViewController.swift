@@ -154,12 +154,11 @@ class ExploreViewController: UIViewController {
     @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: tableView)
         let indexPath = tableView.indexPathForRow(at: tapLocation)
-        let cell = tableView.cellForRow(at: indexPath!) as! FeedTableViewCell
+//        let cell = tableView.cellForRow(at: indexPath!) as! FeedTableViewCell
         let index = indexPath!.row
         let image = images[index]
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
-        vc.uiImage = cell.uiImageView.image
         Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }

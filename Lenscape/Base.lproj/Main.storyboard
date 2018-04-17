@@ -1001,6 +1001,88 @@
                                     <constraint firstItem="EEx-Ot-5Ia" firstAttribute="top" secondItem="ipm-c1-6bd" secondAttribute="top" id="qbx-RP-hTp"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVO-Fe-1tY" customClass="GradientView" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="616" width="414" height="120"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b2P-AY-m7E">
+                                        <rect key="frame" x="24.000000000000007" y="16.000000000000004" width="117.66666666666669" height="38.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-Xm-1Y8">
+                                                <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at Location name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKQ-xw-fcp">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="117.66666666666667" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White Heart" translatesAutoresizingMaskIntoConstraints="NO" id="41Q-FU-qvJ">
+                                        <rect key="frame" x="364.66666666666669" y="24" width="25.333333333333314" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="JVZ-Wb-FWj"/>
+                                            <constraint firstAttribute="width" secondItem="41Q-FU-qvJ" secondAttribute="height" multiplier="19:15" id="gF7-tj-RxV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrJ-9C-f8l" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="158" y="74" width="98" height="30"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        <state key="normal" title="    See More    ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.40000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="seeMore:" destination="yKk-Co-UHk" eventType="touchUpInside" id="aSC-RW-5Wl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="41Q-FU-qvJ" secondAttribute="trailing" constant="24" id="3Q4-Vv-UIE"/>
+                                    <constraint firstItem="b2P-AY-m7E" firstAttribute="leading" secondItem="AVO-Fe-1tY" secondAttribute="leading" constant="24" id="N9o-Pg-sDQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZrJ-9C-f8l" secondAttribute="bottom" constant="16" id="Qkk-dt-lPg"/>
+                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="24" id="Xkk-s7-SZy"/>
+                                    <constraint firstItem="ZrJ-9C-f8l" firstAttribute="centerX" secondItem="AVO-Fe-1tY" secondAttribute="centerX" id="qC9-c0-Amq"/>
+                                    <constraint firstAttribute="height" constant="120" id="sBQ-Bi-zS7"/>
+                                    <constraint firstItem="b2P-AY-m7E" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="y9q-Xp-kWu"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowX">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowY">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endPointY">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fd-bU-PWR">
                                 <rect key="frame" x="364" y="40" width="30" height="30"/>
                                 <subviews>
@@ -1026,8 +1108,11 @@
                         <constraints>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="7FM-i9-2Zz"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="top" secondItem="oy5-pX-e3v" secondAttribute="top" id="8Yg-zj-6p7"/>
+                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="bottom" secondItem="AVO-Fe-1tY" secondAttribute="bottom" id="QSk-25-1qi"/>
+                            <constraint firstItem="AVO-Fe-1tY" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="U5z-m7-Oho"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="trailing" secondItem="uPZ-3u-PiH" secondAttribute="trailing" id="V9g-25-fic"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="bottom" secondItem="uPZ-3u-PiH" secondAttribute="bottom" id="gsu-6P-J5D"/>
+                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="AVO-Fe-1tY" secondAttribute="trailing" id="joA-JT-Zek"/>
                             <constraint firstItem="5Fd-bU-PWR" firstAttribute="top" secondItem="uPZ-3u-PiH" secondAttribute="top" constant="20" id="uJn-n1-G4j"/>
                             <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="5Fd-bU-PWR" secondAttribute="trailing" constant="20" id="wdv-in-OVt"/>
                         </constraints>
@@ -1038,7 +1123,11 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="closeButton" destination="5Fd-bU-PWR" id="xZp-Xs-Oir"/>
+                        <outlet property="imageNameLabel" destination="0uw-Xm-1Y8" id="I3h-xw-41I"/>
                         <outlet property="imageView" destination="EEx-Ot-5Ia" id="JlW-Oh-fPO"/>
+                        <outlet property="infoView" destination="AVO-Fe-1tY" id="Aup-8T-HgS"/>
+                        <outlet property="likeButton" destination="41Q-FU-qvJ" id="b3s-M9-ZvC"/>
+                        <outlet property="locationNameLabel" destination="MKQ-xw-fcp" id="dre-Sn-v2g"/>
                         <outlet property="scrollView" destination="ipm-c1-6bd" id="yv2-cP-UHl"/>
                     </connections>
                 </viewController>
@@ -1049,7 +1138,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4097" y="1270"/>
+            <point key="canvasLocation" x="4095.652173913044" y="1269.2934782608697"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -2144,6 +2233,7 @@
         <image name="Trend_selected_tab_icon" width="27" height="25"/>
         <image name="Trend_tab_icon" width="27" height="25"/>
         <image name="White Back Arrow Shadow" width="39" height="46"/>
+        <image name="White Heart" width="31" height="26"/>
         <image name="White Navigator" width="14" height="14"/>
     </resources>
 </document>

@@ -15,6 +15,10 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIView!
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var imageNameLabel: UILabel!
+    @IBOutlet weak var locationNameLabel: UILabel!
+    @IBOutlet weak var likeButton: UIImageView!
     
     // MARK: - Attributes
     var image: Image?
@@ -23,10 +27,14 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initZoomComponent()
         initHeroComponents()
-        initImageComponent()
+        setupUI()
         setupCloseButton()
+        
+        // https://github.com/lkzhao/Hero/issues/187
+        self.infoView.hero.modifiers = [.duration(0.4), .translate(y: infoView.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
     }
     
     // Before disappear, set back to portrait mode. (See more in AppDelegate)
@@ -45,8 +53,8 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func back(recognizer: UITapGestureRecognizer?) {
-        Hero.shared.defaultAnimation = .none
-        self.hero.dismissViewController()
+        Hero.shared.defaultAnimation = .fade
+        dismiss(animated: true)
     }
     
     private func setupCloseButton() {
@@ -57,9 +65,12 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
 
     // MARK: - Initialize Image Component
-    private func initImageComponent() {
+    private func setupUI() {
         let url = URL(string: (image!.link!))
         imageView.kf.setImage(with: url, placeholder: placeHolderImage)
+        
+        imageNameLabel.text = image!.name
+        locationNameLabel.text = image!.locationName
     }
     
     // MARK: - Hero components
@@ -84,5 +95,8 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    @IBAction func seeMore(_ sender: UIButton) {
     }
 }

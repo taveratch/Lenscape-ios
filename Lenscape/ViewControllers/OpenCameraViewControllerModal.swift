@@ -185,6 +185,8 @@ extension OpenCameraViewControllerModal: AVCapturePhotoCaptureDelegate {
         UIView.animate(withDuration: 0.3) {
             self.previewView.alpha = 1
         }
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
     }
 
 }

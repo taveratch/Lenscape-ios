@@ -8,8 +8,9 @@
 
 import UIKit
 import GoogleMaps
+import UserNotifications
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var customTabBar: CustomTabBar!
     
@@ -21,6 +22,14 @@ class MainTabBarController: UITabBarController {
         customTabBar.heroUITabBarDelegate = self
         clLocationManager.delegate = self
         clLocationManager.requestWhenInUseAuthorization()
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(
+            options: [.alert, .badge, .sound],
+            completionHandler: {_, _ in }
+        )
+        UIApplication.shared.registerForRemoteNotifications()
         
         cameraModal = storyboard?.instantiateViewController(
             withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue

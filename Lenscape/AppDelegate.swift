@@ -11,6 +11,7 @@ import FBSDKLoginKit
 import os.log
 import GoogleMaps
 import GooglePlaces
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,9 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //added these 3 methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Use google api key for maps service
         GMSServices.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
         GMSPlacesClient.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
+        
+        // Firebase
+        FirebaseApp.configure()
         
         let changeViewController = { (identifier: String) -> Void in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)

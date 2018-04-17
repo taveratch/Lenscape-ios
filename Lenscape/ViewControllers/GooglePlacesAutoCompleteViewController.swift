@@ -159,6 +159,7 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
                 if let gmsPlace = place {
                     var place = Place(name: gmsPlace.name, location: Location(latitude: gmsPlace.coordinate.latitude, longitude: gmsPlace.coordinate.longitude))
                     place.placeID = gmsPlace.placeID
+                    place.type = PlaceType.GOOGLE_TYPE
                     self.delegate?.didSelectPlace(place: place)
                     self.dismiss(animated: true)
                 }

@@ -245,7 +245,7 @@ extension ExploreViewController: UITableViewDataSource {
         cell.uiImageView.hero.id = image.thumbnailLink!
         
         cell.numberOfLikeLabel.text = "\(image.likes!)"
-        cell.imageNameLabel.text = image.name!
+//        cell.imageNameLabel.text = image.name!
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoInfoVC(sender:)))
         cell.uiImageView.addGestureRecognizer(tap)

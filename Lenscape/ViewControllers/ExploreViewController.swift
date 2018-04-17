@@ -72,7 +72,7 @@ class ExploreViewController: UIViewController {
             let place = try? JSONDecoder().decode(Place.self, from: encodedPlace)
             
             let image = UIImage(data: imageData)
-            uploadPreviewImage.image = image  
+            uploadPreviewImage.image = image
             
             photoUploader.upload(picture: picture, place: place!)
             UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")

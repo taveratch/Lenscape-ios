@@ -108,13 +108,14 @@ class Api {
         
         let latlong = "\(place.location.latitude),\(place.location.longitude)"
         
-        print("--Api.uploadImage--")
+        print("\n-- Api.uploadImage --")
         print("picture: \(data)")
         print("image_name: \(imageName)")
         print("location_name: \(place.name)")
         print("latlong: \(latlong)")
         print("place_id: \(place.placeID)")
         print("place_type: \(place.type)")
+        print("--------------------\n")
         
         return Promise { seal in
             ApiManager.upload(

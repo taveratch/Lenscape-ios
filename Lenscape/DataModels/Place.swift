@@ -10,11 +10,11 @@ import Foundation
 
 class PlaceType {
     static let GOOGLE_TYPE = "google"
-    static let LENSCAPE_TYPE = "lenscale"
+    static let LENSCAPE_TYPE = ""
 }
 
 struct Place: Codable {
-    var name: String!
+    var name: String
     var location: Location!
     var placeID: String = ""
     var type: String = PlaceType.GOOGLE_TYPE

@@ -12,7 +12,7 @@ class PhotoUploader {
     var delegate: PhotoUploadingDelegate?
     var isUploading: Bool = false
     
-    func upload(picture: [String: Any], location: Location? = nil) {
+    func upload(picture: [String: Any], place: Place) {
         isUploading = true
         self.delegate?.willUpload()
         let progressHandler = {
@@ -27,17 +27,15 @@ class PhotoUploader {
             fatalError("image_name attribute expected for uploading photo")
         }
         
-        guard location != nil else {
+        guard place.location != nil else {
             fatalError("location Object expected for uploading photo")
         }
         
-        guard let locationName = picture["location_name"] as? String else {
-            fatalError("location_name attribute expected for uploading photo")
+        guard place.name != nil else {
+            fatalError("place.name attribute expected for uploading photo")
         }
         
-        let gplaceID = picture["gplace_id"] as? String
-        
-        let _ = Api.uploadImage(data: data, location: location, imageName: imageName, locationName: locationName, gplaceID: gplaceID, progressHandler: progressHandler).done {
+        let _ = Api.uploadImage(data: data, imageName: imageName, place: place, progressHandler: progressHandler).done {
             response in
             self.delegate?.didUpload()
         }

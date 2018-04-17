@@ -64,18 +64,17 @@ class ExploreViewController: UIViewController {
             guard let imageData = picture["picture"] as? Data else {
                 fatalError("picture is missing")
             }
-            guard let lat = picture["lat"] as? Double else {
-                fatalError("lat is missing")
+            
+            guard let encodedPlace = picture["place"] as? Data else {
+                fatalError("place is missing")
             }
             
-            guard let long = picture["long"] as? Double else {
-                fatalError("long is missing")
-            }
+            let place = try? JSONDecoder().decode(Place.self, from: encodedPlace)
             
             let image = UIImage(data: imageData)
             uploadPreviewImage.image = image
             
-            photoUploader.upload(picture: picture, location: Location(latitude: lat, longitude: long))
+            photoUploader.upload(picture: picture, place: place!)
             UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         }
     }
@@ -284,7 +283,6 @@ extension ExploreViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.y
-//        print("BeginDragging: \(scrollView.contentOffset.y)")
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         shouldUpdateHeaderVisibility = true

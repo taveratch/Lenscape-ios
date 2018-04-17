@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import GooglePlaces
 
 protocol GooglePlacesAutoCompleteViewControllerDelegate {
-    func didSelectPlace(place: GMSPlace)
+    func didSelectPlace(place: Place)
 }

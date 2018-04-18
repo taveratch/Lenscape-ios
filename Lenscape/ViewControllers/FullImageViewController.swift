@@ -100,5 +100,10 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func seeMore(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        vc.image = image
+        vc.uiImage = placeHolderImage
+        vc.hero.modalAnimationType = .fade
+        present(vc, animated: true)
     }
 }

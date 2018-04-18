@@ -22,11 +22,11 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         super.viewDidLoad()
         self.imageView.hero.id = self.image?.thumbnailLink!
         
-        //https://github.com/lkzhao/Hero/issues/187
+        self.setupUI()
+        // https://github.com/lkzhao/Hero/issues/187
         self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
         setupPhotoInfoCard()
-        self.setupUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,22 +61,21 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.pictureNameLabel.text = image!.name!
         informationWrapper.locationNameLabel.text = image!.locationName!
         
-        // add action to button programmatically
-        informationWrapper.moreDetailButton.addTarget(self, action: #selector(showMorePhotoDetail(_:)), for: .touchUpInside)
-        
         if image!.isNear! {
-            var label = "\(image!.distance!) kilometers away"
+            var distance = "\(image!.distance!)"
+            var unit = "kilometers away"
             if image!.distance! < 1 {
-                label = "\(Int(image!.distance! * 1000)) meters away"
+                distance = "\(Int(image!.distance! * 1000))"
+                unit = "meters away"
             }
-            informationWrapper.distanceLabel.text = label
+            informationWrapper.distanceLabel.text = distance
+            informationWrapper.distanceUnitLabel.text = unit
         }else {
             informationWrapper.distanceLabel.isHidden = true
         }
         
-        informationWrapper.likeLabel.text = "\(image!.likes!) likes"
+        informationWrapper.likeLabel.text = "\(image!.likes!)"
         informationWrapper.ownerNameLabel.text = image!.owner.name
-        informationWrapper.isHideInfo(hide: true)
     }
     
     private func dismissView() {
@@ -113,10 +112,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: view.bounds.height-200, completion: {
                 isFinsihed in
                 self.informationWrapper.removeGestureRecognizer(sender)
-                self.informationWrapper.moreDetailButton.isHidden = false
                 // Enable clicking on ImageView
                 self.imageView.isUserInteractionEnabled = true
-                self.informationWrapper.isHideInfo(hide: true)
             })
         }
     }
@@ -143,7 +140,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(hidePhotoDetail(_:)))
         informationWrapper.addGestureRecognizer(panGesture)
         informationWrapper.isUserInteractionEnabled = true
-        informationWrapper.moreDetailButton.isHidden = true
         moveTo(view: informationWrapper, x: informationWrapper.frame.origin.x, y: 100)
         // Prevent showing Full Image from clicking on ImageView
         imageView.isUserInteractionEnabled = false

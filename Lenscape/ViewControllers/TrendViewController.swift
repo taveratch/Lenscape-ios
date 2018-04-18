@@ -69,15 +69,15 @@ class TrendViewController: UIViewController {
         }
     }
     
-    @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
+    @objc private func showFullPhoto(sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: collectionView)
         let indexPath = collectionView.indexPathForItem(at: tapLocation)
         let cell = collectionView.cellForItem(at: indexPath!) as! ImageCollectionViewCell
         let index = indexPath!.row
         let image = images[index]
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
-        vc.uiImage = cell.imageView.image
+        vc.placeHolderImage = cell.imageView.image
         vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
     }
@@ -122,7 +122,7 @@ extension TrendViewController: UICollectionViewDataSource {
         cell.imageView.hero.id = image.thumbnailLink!
         cell.imageView.kf.indicatorType = .activity
         cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoInfoVC(sender:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
         cell.imageView.addGestureRecognizer(tap)
         cell.imageView.isUserInteractionEnabled = true
         return cell

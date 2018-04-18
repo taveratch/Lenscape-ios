@@ -24,6 +24,8 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Attributes
     var image: Image?
     var placeHolderImage: UIImage?
+    var isShowBottomInfo: Bool = true
+    var alwaysHideBottomInfo: Bool = false
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -36,24 +38,74 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         
         // https://github.com/lkzhao/Hero/issues/187
         self.infoView.hero.modifiers = [.duration(0.4), .translate(y: infoView.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
+        
+        addGesture(for: imageView, with: #selector(toggleBottomInfo))
     }
     
     // Before disappear, set back to portrait mode. (See more in AppDelegate)
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isMovingFromParentViewController {
-            UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-        }
+        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
     }
     
-    
     @objc func canRotate() -> Void {}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(rotated),
+                                               name: .UIDeviceOrientationDidChange,
+                                               object: nil
+        )
+    }
 
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
         self.back(recognizer: nil)
     }
     
+    @objc private func rotated() {
+        if UIDevice.current.orientation.isLandscape {
+            alwaysHideBottomInfo = true
+            showBottomInfo(isHidden: true, force: true)
+        }else {
+            alwaysHideBottomInfo = false
+            showBottomInfo(isHidden: false, force: true)
+        }
+    }
+    
+    private func addGesture(for view: UIView, with action: Selector?) {
+        let tap = UITapGestureRecognizer(target: self, action: action)
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+    }
+    
+    @objc private func toggleBottomInfo() {
+        showBottomInfo(isHidden: isShowBottomInfo)
+        isShowBottomInfo = !isShowBottomInfo
+    }
+    
+    @objc private func showBottomInfo(isHidden: Bool, force: Bool = false) {
+        if alwaysHideBottomInfo && !force {
+            return
+        }
+        if isHidden {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.infoView.alpha = 0
+            }) {
+                finished in
+                self.infoView.isHidden = true
+            }
+        }else {
+            infoView.isHidden = false
+            UIView.animate(withDuration: 0.2, animations: {
+                self.infoView.alpha = 1
+            })
+        }
+    }
+    
     @objc func back(recognizer: UITapGestureRecognizer?) {
+        UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         Hero.shared.defaultAnimation = .fade
         dismiss(animated: true)
     }

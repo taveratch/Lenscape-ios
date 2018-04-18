@@ -31,7 +31,7 @@ class OpenCameraViewControllerModal: UIViewController {
     
     private var photoSettings: AVCapturePhotoSettings {
         let settings = AVCapturePhotoSettings()
-        settings.flashMode = .auto
+        settings.flashMode = .off
         settings.isAutoStillImageStabilizationEnabled = true
         settings.isHighResolutionPhotoEnabled = true
         return settings
@@ -62,9 +62,12 @@ class OpenCameraViewControllerModal: UIViewController {
             do {
                 try self.device.lockForConfiguration()
                 self.device.focusMode = .continuousAutoFocus
+                self.device.exposureMode = .continuousAutoExposure
                 self.device.unlockForConfiguration()
             } catch { print(error) }
-            self.session.startRunning()
+            if !self.session.isRunning {
+                self.session.startRunning()
+            }
         }
         setCurrentOrientation()
     }
@@ -119,7 +122,7 @@ class OpenCameraViewControllerModal: UIViewController {
         let devicePoint = videoPreviewLayer.captureDevicePointConverted(
             fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)
         )
-        focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint)
+        focus(at: devicePoint)
     }
     
     // MARK: - Unwind
@@ -182,6 +185,8 @@ extension OpenCameraViewControllerModal: AVCapturePhotoCaptureDelegate {
         UIView.animate(withDuration: 0.3) {
             self.previewView.alpha = 1
         }
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
     }
 
 }
@@ -242,20 +247,20 @@ extension OpenCameraViewControllerModal {
         view.isUserInteractionEnabled = true
     }
     
-    private func focus(with focusMode: AVCaptureDevice.FocusMode,
-                       exposureMode: AVCaptureDevice.ExposureMode, at devicePoint: CGPoint) {
+    private func focus(at devicePoint: CGPoint) {
         sessionQueue.async {
             do {
                 try self.device.lockForConfiguration()
-
-                if self.device.isFocusPointOfInterestSupported && self.device.isFocusModeSupported(focusMode) {
+                
+                if self.device.isFocusPointOfInterestSupported &&
+                    self.device.isFocusModeSupported(.autoFocus) {
                     self.device.focusPointOfInterest = devicePoint
-                    self.device.focusMode = focusMode
+                    self.device.focusMode = .autoFocus
                 }
                 
-                if self.device.isExposurePointOfInterestSupported && self.device.isExposureModeSupported(exposureMode) {
+                if self.device.isExposurePointOfInterestSupported && self.device.isExposureModeSupported(.autoExpose) {
                     self.device.exposurePointOfInterest = devicePoint
-                    self.device.exposureMode = exposureMode
+                    self.device.exposureMode = .autoExpose
                 }
                 
                 self.device.isSubjectAreaChangeMonitoringEnabled = true

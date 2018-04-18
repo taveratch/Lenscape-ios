@@ -121,6 +121,8 @@ extension AppDelegate: MessagingDelegate {
         print("Firebase registration token: \(fcmToken)")
         
         // TODO: If necessary send token to application server.
+        Messaging.messaging().subscribe(toTopic: "photoOfTheDay")
+        Messaging.messaging().subscribe(toTopic: "weeklyInsights")
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }

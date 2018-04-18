@@ -11,6 +11,7 @@ import FBSDKLoginKit
 import os.log
 import GoogleMaps
 import GooglePlaces
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,21 +22,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //added these 3 methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Use google api key for maps service
         GMSServices.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
         GMSPlacesClient.provideAPIKey(AppDelegate.GOOGLE_API_KEY)
         
-        let changeViewController = { (identifier: String) -> Void in
+        // Firebase
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        
+        let changeViewController = { (identifier: Identifier) -> Void in
             let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-            let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
-            let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
+            let navigationController = (self.window?.rootViewController as? UINavigationController)
+            let vc = storyBoard.instantiateViewController(withIdentifier: identifier.rawValue)
             navigationController?.pushViewController(vc, animated: false)
         }
         if UserController.getCurrentUser() != nil {
-            changeViewController(Identifier.MainTabBarController.rawValue)
+            changeViewController(.MainTabBarController)
         }
-        UserController.isLoggedIn().catch{ error in
-            changeViewController(Identifier.SigninViewController.rawValue)
+        UserController.isLoggedIn().catch { error in
+            changeViewController(.SigninViewController)
             os_log("User is not signed in", log: .default, type: .debug)
         }
         
@@ -108,5 +114,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
 }
 

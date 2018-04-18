@@ -13,4 +13,6 @@ target 'Lenscape' do
   pod 'Hero'
   pod 'Validator'
   pod 'SwiftyJSON'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 end

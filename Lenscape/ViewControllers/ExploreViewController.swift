@@ -151,15 +151,15 @@ class ExploreViewController: UIViewController {
         photoUploader.cancel()
     }
     
-    @objc private func showPhotoInfoVC(sender: UITapGestureRecognizer) {
+    @objc private func showFullPhoto(sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: tableView)
         let indexPath = tableView.indexPathForRow(at: tapLocation)
         let cell = tableView.cellForRow(at: indexPath!) as! FeedTableViewCell
         let index = indexPath!.row
         let image = images[index]
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
-        vc.uiImage = cell.uiImageView.image
+        vc.placeHolderImage = cell.uiImageView.image
         Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
@@ -245,9 +245,9 @@ extension ExploreViewController: UITableViewDataSource {
         cell.uiImageView.hero.id = image.thumbnailLink!
         
         cell.numberOfLikeLabel.text = "\(image.likes!)"
-        cell.imageNameLabel.text = image.name!
+//        cell.imageNameLabel.text = image.name!
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showPhotoInfoVC(sender:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
         cell.uiImageView.addGestureRecognizer(tap)
         cell.uiImageView.isUserInteractionEnabled = true
         return cell

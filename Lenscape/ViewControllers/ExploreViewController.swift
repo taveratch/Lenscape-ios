@@ -113,21 +113,15 @@ class ExploreViewController: UIViewController {
     
     @objc private func fetchInitImageFromAPI() {
         page = 1
-        fetchImagesFromAPI(page: page, at: currentFeedLocation) {
+        fetchImagesFromAPI(page: page, at: currentFeedLocation!) {
             images in
             self.images = images
             self.stopActivityIndicator()
         }
     }
     
-    private func fetchImagesFromAPI(page: Int = 1, at: Location?, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
-        var location: Location?
-        if at == nil {
-            location = LocationManager.getInstance().getCurrentLocation()!
-        }else {
-            location = at
-        }
-        Api.fetchExploreImages(page: page, location: location!).done {
+    private func fetchImagesFromAPI(page: Int = 1, at location: Location, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        Api.fetchExploreImages(page: page, location: location).done {
             fulfill in
             
             let images = fulfill["images"] as! [Image]
@@ -294,7 +288,7 @@ extension ExploreViewController: UITableViewDelegate {
         let lastElement = images.count - 1
         if indexPath.row == lastElement, shouldFetchMore {
             page += 1
-            fetchImagesFromAPI(page: page, at: nil) {
+            fetchImagesFromAPI(page: page, at: currentFeedLocation!) {
                 images in
                 self.images += images
             }

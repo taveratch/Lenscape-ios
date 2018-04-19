@@ -877,44 +877,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="una-p1-bF9" customClass="PhotoInformationCard" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-fd-TT0">
-                                <rect key="frame" x="368" y="16" width="30" height="30"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross Black No Margin" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-TM-dP9">
-                                        <rect key="frame" x="8" y="8" width="15" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="8dc-TM-dP9" secondAttribute="height" multiplier="1:1" id="5Kg-XF-uIU"/>
-                                            <constraint firstAttribute="width" constant="15" id="GHA-fj-5IP"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                    </imageView>
-                                </subviews>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="FWH-DX-RhG"/>
-                                    <constraint firstItem="8dc-TM-dP9" firstAttribute="centerY" secondItem="Gti-fd-TT0" secondAttribute="centerY" id="cLZ-mf-vVv"/>
-                                    <constraint firstItem="8dc-TM-dP9" firstAttribute="centerX" secondItem="Gti-fd-TT0" secondAttribute="centerX" id="kr3-Ek-hyN"/>
-                                    <constraint firstAttribute="height" constant="30" id="uD0-7T-oeI"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="una-p1-bF9" firstAttribute="top" secondItem="ZDD-y2-fVk" secondAttribute="top" id="038-XG-slf"/>
-                            <constraint firstItem="Gti-fd-TT0" firstAttribute="top" secondItem="ZDD-y2-fVk" secondAttribute="top" constant="16" id="Hxj-p7-gCE"/>
                             <constraint firstItem="una-p1-bF9" firstAttribute="leading" secondItem="8NZ-bw-4On" secondAttribute="leading" id="dHG-u0-QRv"/>
                             <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="una-p1-bF9" secondAttribute="trailing" id="n5h-1i-Sx8"/>
-                            <constraint firstItem="8NZ-bw-4On" firstAttribute="trailing" secondItem="Gti-fd-TT0" secondAttribute="trailing" constant="16" id="ubC-MU-dOt"/>
-                            <constraint firstItem="una-p1-bF9" firstAttribute="bottom" secondItem="8NZ-bw-4On" secondAttribute="bottom" constant="30" id="y5J-cN-J7c"/>
+                            <constraint firstItem="una-p1-bF9" firstAttribute="bottom" secondItem="8NZ-bw-4On" secondAttribute="bottom" id="y5J-cN-J7c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NZ-bw-4On"/>
                     </view>
@@ -922,7 +895,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="closeButton" destination="Gti-fd-TT0" id="cZU-EE-sKK"/>
                         <outlet property="informationWrapper" destination="una-p1-bF9" id="sck-RE-dOQ"/>
                     </connections>
                 </viewController>
@@ -1061,26 +1033,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fd-bU-PWR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGB-lm-ij1">
                                 <rect key="frame" x="364" y="40" width="30" height="30"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross White Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="1E9-51-Edi">
-                                        <rect key="frame" x="4.6666666666666856" y="4.6666666666666643" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="qMR-rj-ANG"/>
-                                            <constraint firstAttribute="width" secondItem="1E9-51-Edi" secondAttribute="height" multiplier="1:1" id="xWW-i0-RnZ"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                    </imageView>
-                                </subviews>
-                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0sL-h6-lmf"/>
-                                    <constraint firstAttribute="width" constant="30" id="CAt-e4-KtD"/>
-                                    <constraint firstItem="1E9-51-Edi" firstAttribute="centerY" secondItem="5Fd-bU-PWR" secondAttribute="centerY" id="aBD-iT-Mlo"/>
-                                    <constraint firstItem="1E9-51-Edi" firstAttribute="centerX" secondItem="5Fd-bU-PWR" secondAttribute="centerX" id="wl5-qB-BAJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="4UB-e9-cgP"/>
+                                    <constraint firstAttribute="width" constant="30" id="5IY-uI-I5S"/>
                                 </constraints>
-                            </view>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="Cross White Shadow"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="yKk-Co-UHk" eventType="touchUpInside" id="Xz4-63-VFJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1091,8 +1055,8 @@
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="trailing" secondItem="uPZ-3u-PiH" secondAttribute="trailing" id="V9g-25-fic"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="bottom" secondItem="uPZ-3u-PiH" secondAttribute="bottom" id="gsu-6P-J5D"/>
                             <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="AVO-Fe-1tY" secondAttribute="trailing" id="joA-JT-Zek"/>
-                            <constraint firstItem="5Fd-bU-PWR" firstAttribute="top" secondItem="uPZ-3u-PiH" secondAttribute="top" constant="20" id="uJn-n1-G4j"/>
-                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="5Fd-bU-PWR" secondAttribute="trailing" constant="20" id="wdv-in-OVt"/>
+                            <constraint firstItem="uGB-lm-ij1" firstAttribute="top" secondItem="uPZ-3u-PiH" secondAttribute="top" constant="20" id="qCf-xV-oAQ"/>
+                            <constraint firstItem="uPZ-3u-PiH" firstAttribute="trailing" secondItem="uGB-lm-ij1" secondAttribute="trailing" constant="20" id="tE6-kR-nf6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uPZ-3u-PiH"/>
                     </view>
@@ -1100,7 +1064,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="closeButton" destination="5Fd-bU-PWR" id="xZp-Xs-Oir"/>
                         <outlet property="imageNameLabel" destination="0uw-Xm-1Y8" id="I3h-xw-41I"/>
                         <outlet property="imageView" destination="EEx-Ot-5Ia" id="JlW-Oh-fPO"/>
                         <outlet property="infoView" destination="AVO-Fe-1tY" id="Aup-8T-HgS"/>
@@ -2194,9 +2157,8 @@
         <image name="Add Blue" width="22" height="22"/>
         <image name="Camera Roll" width="25" height="20"/>
         <image name="Cross Black" width="25" height="25"/>
-        <image name="Cross Black No Margin" width="48" height="46"/>
         <image name="Cross White" width="11" height="11"/>
-        <image name="Cross White Shadow" width="18" height="18"/>
+        <image name="Cross White Shadow" width="36" height="36"/>
         <image name="Favorite_selected_tab_icon" width="25" height="25"/>
         <image name="Favorite_tab_icon" width="25" height="25"/>
         <image name="Gray Heart" width="20" height="15"/>

@@ -16,7 +16,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     var image: Image?
     var uiImage: UIImage?
     @IBOutlet weak var informationWrapper: PhotoInformationCard!
-    @IBOutlet weak var closeButton: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +23,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         // https://github.com/lkzhao/Hero/issues/187
         self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
-        addGesture(for: closeButton, with: #selector(dismissView))
-        
+        addButtonTarget(for: informationWrapper.closeButton, with: #selector(dismissView))
         self.setupUI()
         setupPhotoInfoCard()
     }
@@ -39,10 +37,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         return true
     }
     
-    private func addGesture(for view: UIView, with action: Selector?) {
-        let tap = UITapGestureRecognizer(target: self, action: action)
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
+    private func addButtonTarget(for button: UIButton, with action: Selector?) {
+        button.addTarget(self, action: action!, for: .touchUpInside)
     }
     
     private func setupUI() {

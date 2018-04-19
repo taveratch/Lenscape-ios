@@ -12,9 +12,7 @@ import GoogleMaps
 @IBDesignable
 class PhotoInformationCard: UIView {
 
-    @IBOutlet var hiddenView: [UIView]!
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var moreDetailButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
@@ -22,13 +20,7 @@ class PhotoInformationCard: UIView {
     @IBOutlet weak var pictureNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var distanceUnitLabel: UILabel!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    @IBOutlet weak var closeButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,12 +44,6 @@ class PhotoInformationCard: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-    }
-    
-    func isHideInfo(hide: Bool) {
-        for view in hiddenView {
-            view.isHidden = hide
-        }
     }
 
 }

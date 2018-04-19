@@ -14,7 +14,6 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - UI Components
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var closeButton: UIView!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var imageNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
@@ -34,7 +33,6 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         initZoomComponent()
         initHeroComponents()
         setupUI()
-        setupCloseButton()
         
         // https://github.com/lkzhao/Hero/issues/187
         self.infoView.hero.modifiers = [.duration(0.4), .translate(y: infoView.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
@@ -49,6 +47,10 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @objc func canRotate() -> Void {}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +63,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
 
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
-        self.back(recognizer: nil)
+        self.back()
     }
     
     @objc private func rotated() {
@@ -104,18 +106,15 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @objc func back(recognizer: UITapGestureRecognizer?) {
+    func back() {
         UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
         Hero.shared.defaultAnimation = .fade
         dismiss(animated: true)
     }
     
-    private func setupCloseButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back(recognizer:)))
-        closeButton.addGestureRecognizer(tap)
-        closeButton.isUserInteractionEnabled = true
+    @IBAction func dismissView(_ sender: UIButton) {
+        back()
     }
-    
 
     // MARK: - Initialize Image Component
     private func setupUI() {

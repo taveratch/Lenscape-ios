@@ -39,8 +39,8 @@
 		950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950358EA2071147800D424F4 /* GoogleDataProvider.swift */; };
 		9504A15420677CBB00FDF606 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15320677CBB00FDF606 /* Location.swift */; };
 		9504A15620677DB200FDF606 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9504A15520677DB200FDF606 /* LocationManager.swift */; };
-		9509A5342084EB1C00334B74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5332084EB1C00334B74 /* Constants.swift */; };
 		9509A5322084DBCE00334B74 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5312084DBCE00334B74 /* Place.swift */; };
+		9509A5342084EB1C00334B74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509A5332084EB1C00334B74 /* Constants.swift */; };
 		95108EF220541B760072AC48 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF120541B760072AC48 /* Identifiers.swift */; };
 		95108EF42054247A0072AC48 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108EF32054247A0072AC48 /* Error.swift */; };
 		95134E36204C2F1500121514 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95134E35204C2F1500121514 /* ApiManager.swift */; };
@@ -193,8 +193,8 @@
 		950358EA2071147800D424F4 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		9504A15320677CBB00FDF606 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9504A15520677DB200FDF606 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		9509A5332084EB1C00334B74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9509A5312084DBCE00334B74 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		9509A5332084EB1C00334B74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		95108EF120541B760072AC48 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		95108EF32054247A0072AC48 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		95134E35204C2F1500121514 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -810,8 +810,10 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -828,8 +830,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",

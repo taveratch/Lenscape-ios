@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import FacebookShare
 
 class FullImageViewController: UIViewController, UIScrollViewDelegate {
 
@@ -160,7 +161,22 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     private func savePhotoToCameraRoll() {
         UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
-        let alert = UIAlertController(title: nil, message: "Photo has been saved to Camera Roll", preferredStyle: .alert)
+        showAlert(title: nil, message: "Photo has been saved to Camera Roll")
+    }
+    
+    private func shareToFacebook() {
+        let photo = Photo(image: imageView.image!, userGenerated: true)
+        let content = PhotoShareContent(photos: [photo])
+        do {
+            try ShareDialog.show(from: self, content: content)
+        }catch {
+            showAlert(message: "Something went wrong!. Could not find Facebook App")
+            print(error)
+        }
+    }
+    
+    private func showAlert(title: String? = "Message", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel) {
             action in
             alert.dismiss(animated: true)
@@ -176,5 +192,9 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
+    }
+    
+    @IBAction func share(_ sender: UIButton) {
+        shareToFacebook()
     }
 }

@@ -695,7 +695,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="319.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-56-hnB" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -987,13 +987,17 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share White" translatesAutoresizingMaskIntoConstraints="NO" id="AMS-iM-bLL">
-                                        <rect key="frame" x="375.66666666666669" y="15" width="14.333333333333314" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxj-zo-dTL">
+                                        <rect key="frame" x="375.33333333333331" y="15" width="14.666666666666686" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="0yt-YM-zwY"/>
-                                            <constraint firstAttribute="width" secondItem="AMS-iM-bLL" secondAttribute="height" multiplier="11:15" id="A4o-41-Tmf"/>
+                                            <constraint firstAttribute="height" constant="20" id="Ich-Gu-qrP"/>
+                                            <constraint firstAttribute="width" secondItem="Qxj-zo-dTL" secondAttribute="height" multiplier="11:15" id="J16-Bg-Pbg"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" image="Share White"/>
+                                        <connections>
+                                            <action selector="share:" destination="yKk-Co-UHk" eventType="touchUpInside" id="SJb-cm-EIL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cEN-fp-hFe" secondAttribute="trailing" constant="53" id="239-BI-JgW"/>
@@ -1002,10 +1006,10 @@
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="leading" secondItem="AVO-Fe-1tY" secondAttribute="leading" constant="24" id="N9o-Pg-sDQ"/>
                                     <constraint firstAttribute="bottom" secondItem="ZrJ-9C-f8l" secondAttribute="bottom" constant="16" id="Qkk-dt-lPg"/>
                                     <constraint firstItem="41Q-FU-qvJ" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="Xkk-s7-SZy"/>
-                                    <constraint firstItem="AMS-iM-bLL" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="15" id="pum-vB-jNA"/>
+                                    <constraint firstItem="Qxj-zo-dTL" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="15" id="YX4-1H-vdS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qxj-zo-dTL" secondAttribute="trailing" constant="24" id="i46-gq-smF"/>
                                     <constraint firstItem="ZrJ-9C-f8l" firstAttribute="centerX" secondItem="AVO-Fe-1tY" secondAttribute="centerX" id="qC9-c0-Amq"/>
                                     <constraint firstAttribute="height" constant="120" id="sBQ-Bi-zS7"/>
-                                    <constraint firstAttribute="trailing" secondItem="AMS-iM-bLL" secondAttribute="trailing" constant="24" id="t7F-zD-QcN"/>
                                     <constraint firstItem="41Q-FU-qvJ" firstAttribute="leading" secondItem="b2P-AY-m7E" secondAttribute="trailing" constant="16" id="x1W-3D-38R"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="y9q-Xp-kWu"/>
                                 </constraints>
@@ -1265,7 +1269,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
@@ -1312,7 +1316,7 @@
                                         <rect key="frame" x="0.0" y="78" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">

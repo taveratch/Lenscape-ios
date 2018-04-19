@@ -1045,11 +1045,25 @@
                                     <action selector="dismissView:" destination="yKk-Co-UHk" eventType="touchUpInside" id="Xz4-63-VFJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcN-3B-mKp">
+                                <rect key="frame" x="20" y="40" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6CC-05-xyz"/>
+                                    <constraint firstAttribute="height" constant="30" id="Cs8-pO-IAj"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="3 Dots White"/>
+                                <connections>
+                                    <action selector="showMoreActions:" destination="yKk-Co-UHk" eventType="touchUpInside" id="Rc6-EZ-oOX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="7FM-i9-2Zz"/>
+                            <constraint firstItem="pcN-3B-mKp" firstAttribute="top" secondItem="uPZ-3u-PiH" secondAttribute="top" constant="20" id="81b-j8-RbS"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="top" secondItem="oy5-pX-e3v" secondAttribute="top" id="8Yg-zj-6p7"/>
+                            <constraint firstItem="pcN-3B-mKp" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" constant="20" id="AJH-Th-iD0"/>
                             <constraint firstItem="uPZ-3u-PiH" firstAttribute="bottom" secondItem="AVO-Fe-1tY" secondAttribute="bottom" id="QSk-25-1qi"/>
                             <constraint firstItem="AVO-Fe-1tY" firstAttribute="leading" secondItem="uPZ-3u-PiH" secondAttribute="leading" id="U5z-m7-Oho"/>
                             <constraint firstItem="ipm-c1-6bd" firstAttribute="trailing" secondItem="uPZ-3u-PiH" secondAttribute="trailing" id="V9g-25-fic"/>
@@ -1080,7 +1094,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4041" y="1315"/>
+            <point key="canvasLocation" x="4040.579710144928" y="1314.9456521739132"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="BUx-1C-UqC">
@@ -2154,6 +2168,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3 Dots White" width="21" height="5"/>
         <image name="Add Blue" width="22" height="22"/>
         <image name="Camera Roll" width="25" height="20"/>
         <image name="Cross Black" width="25" height="25"/>

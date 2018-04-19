@@ -20,17 +20,19 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSCameraUsageDescription</key>
-	<string>to take photos</string>
+	<string>Use camera to take photos</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Download photos and save to camera roll</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
 	<key>FacebookAppID</key>
 	<string>1170955609674395</string>
 	<key>CFBundleInfoDictionaryVersion</key>

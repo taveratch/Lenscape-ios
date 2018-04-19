@@ -157,4 +157,24 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
     }
+    
+    private func savePhotoToCameraRoll() {
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
+        let alert = UIAlertController(title: nil, message: "Photo has been saved to Camera Roll", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel) {
+            action in
+            alert.dismiss(animated: true)
+        })
+        present(alert, animated: true)
+    }
+    
+    @IBAction func showMoreActions(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Save Photo", style: .default, handler: {
+            action in
+            self.savePhotoToCameraRoll()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
 }

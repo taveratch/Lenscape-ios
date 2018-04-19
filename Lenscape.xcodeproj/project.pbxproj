@@ -81,6 +81,7 @@
 		957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */; };
 		9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */; };
 		9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC31205CC86500779E38 /* PhotoUploader.swift */; };
+		958A4D9120889A5F00C9BA6B /* ComponentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */; };
 		958B9214207380DB0061F26A /* flat-map-design.json in Resources */ = {isa = PBXBuildFile; fileRef = 958B9212207380DB0061F26A /* flat-map-design.json */; };
 		958B9215207380DB0061F26A /* flat-pale-map-style.json in Resources */ = {isa = PBXBuildFile; fileRef = 958B9213207380DB0061F26A /* flat-pale-map-style.json */; };
 		9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */; };
@@ -238,6 +239,7 @@
 		957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
 		9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadingDelegate.swift; sourceTree = "<group>"; };
 		9582DC31205CC86500779E38 /* PhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploader.swift; sourceTree = "<group>"; };
+		958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentUtil.swift; sourceTree = "<group>"; };
 		958B9212207380DB0061F26A /* flat-map-design.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flat-map-design.json"; sourceTree = "<group>"; };
 		958B9213207380DB0061F26A /* flat-pale-map-style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flat-pale-map-style.json"; sourceTree = "<group>"; };
 		9595F06E2055712300A740E1 /* CircularScrollViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularScrollViewItem.xib; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
+				958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */,
 				950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */,
 				9509A5332084EB1C00334B74 /* Constants.swift */,
 				950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */,
@@ -925,6 +928,7 @@
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
 				95A43BA82075CD7100401BFA /* FeedTableViewCell.swift in Sources */,
 				950358EB2071147800D424F4 /* GooglePlace.swift in Sources */,
+				958A4D9120889A5F00C9BA6B /* ComponentUtil.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,
 				956F271A207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift in Sources */,
 				950358D0206F95BB00D424F4 /* GMUStyle.m in Sources */,

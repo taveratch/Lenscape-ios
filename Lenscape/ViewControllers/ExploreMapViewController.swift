@@ -14,12 +14,11 @@ import GooglePlaces
 import PromiseKit
 import Hero
 
-class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
+class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     
     // MARK: - UI Components
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchButton: UIView!
-    @IBOutlet weak var backButton: UIImageView!
     @IBOutlet weak var seeInFeedButton: UIView!
     
     // MARK: - Attributes
@@ -31,7 +30,6 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         super.viewDidLoad()
         
         setupSearchButton()
-        setupBackButton()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -52,17 +50,15 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         clusterManager.setDelegate(self, mapDelegate: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ComponentUtil.fade(of: seeInFeedButton, hidden: true)
+    }
     private func setupSearchButton() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
         searchButton.isUserInteractionEnabled = true
         searchButton.hero.id = "searchViewWrapper"
-    }
-    
-    private func setupBackButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
-        backButton.addGestureRecognizer(tap)
-        backButton.isUserInteractionEnabled = true
     }
     
     @objc private func showGMSAutoCompleteViewController() {
@@ -97,7 +93,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         return Double(arc4random()) / Double(UINT32_MAX) * 2.0 - 1.0
     }
  
-    @objc func back() {
+    @IBAction func back(_ sender: UIButton) {
         Hero.shared.defaultAnimation = .zoom
         dismiss(animated: true)
     }
@@ -110,21 +106,6 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
         
         return false
-    }
-    
-    // MARK: - GMUMapViewDelegate
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let poiItem = marker.userData as? POIItem {
-            NSLog("Did tap marker for cluster item \(poiItem.name)")
-        } else {
-            NSLog("Did tap a normal marker")
-        }
-        return false
-    }
-
-    //When user end draging map
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        setupCluster(coordinate: position.target)
     }
     
     private func cameraTo(coordinate: CLLocationCoordinate2D) {
@@ -211,8 +192,27 @@ extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelega
         mapView.clear() //remove all markers
         showMarker(place: place)
     }
+}
+
+extension ExploreMapViewController: GMSMapViewDelegate {
+    // MARK: - GMUMapViewDelegate
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        print("willMove")
+        ComponentUtil.fade(of: seeInFeedButton, hidden: true)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let poiItem = marker.userData as? POIItem {
+            NSLog("Did tap marker for cluster item \(poiItem.name)")
+        } else {
+            NSLog("Did tap a normal marker")
+        }
+        return false
+    }
+    
+    //When user end draging map
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        ComponentUtil.fade(of: seeInFeedButton, hidden: false)
+        setupCluster(coordinate: position.target)
     }
 }

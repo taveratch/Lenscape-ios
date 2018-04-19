@@ -23,6 +23,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     private lazy var refreshControl = UIRefreshControl()
     @IBOutlet weak var header: UIView!
+    var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var itemsViews: [CircularScrollViewItem]?
@@ -47,6 +48,8 @@ class ExploreViewController: UIViewController {
         setupUI()
         setupShowMapButton()
         setupCancelUploadingButton()
+        setupActivityIndicator()
+        startActivityIndicator()
         
         //Make ExploreViewController as observer for LocationManager (this vc will be notify from MainTabBarController (CLLocationManagerDelegate))
         NotificationCenter.default.addObserver(self, selector: #selector(fetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
@@ -84,12 +87,30 @@ class ExploreViewController: UIViewController {
         tableView.setContentOffset(CGPoint(x: 0, y: -20), animated: true)
     }
     
+    private func setupActivityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.activityIndicatorViewStyle = .gray
+        indicator.center = view.center
+        view.addSubview(indicator)
+    }
+    
+    private func startActivityIndicator() {
+        indicator.startAnimating()
+        indicator.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+    }
+    
+    private func stopActivityIndicator() {
+        indicator.stopAnimating()
+        indicator.hidesWhenStopped = true
+    }
+    
     @objc private func fetchInitImageFromAPI() {
         print("FetchInitImageFromAPI")
         page = 1
         fetchImagesFromAPI(page: page) {
             images in
             self.images = images
+            self.stopActivityIndicator()
         }
     }
     

@@ -14,23 +14,27 @@ import GooglePlaces
 import PromiseKit
 import Hero
 
-class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
+class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     
     // MARK: - UI Components
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchButton: UIView!
-    @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var seeInFeedButton: UIView!
     
     // MARK: - Attributes
     private let locationManager = CLLocationManager()
     private var clusterManager: GMUClusterManager!
+    var delegate: ExploreMapViewControllerDelegate?
+    var currentMapViewLocation: Location?
+    private var currentMapViewPlace: Place?
+    var placesClient: GMSPlacesClient?
+    var images: [Image] = []
 
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSearchButton()
-        setupBackButton()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -38,6 +42,10 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.zoomGestures = true
+        
+        placesClient = GMSPlacesClient()
+        
+        ComponentUtil.addTapGesture(parentViewController: self, for: seeInFeedButton, with: #selector(seeInFeed))
         
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
@@ -51,17 +59,16 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         clusterManager.setDelegate(self, mapDelegate: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ComponentUtil.fade(of: seeInFeedButton, hidden: true)
+    }
+    
     private func setupSearchButton() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
         searchButton.isUserInteractionEnabled = true
         searchButton.hero.id = "searchViewWrapper"
-    }
-    
-    private func setupBackButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
-        backButton.addGestureRecognizer(tap)
-        backButton.isUserInteractionEnabled = true
     }
     
     @objc private func showGMSAutoCompleteViewController() {
@@ -79,6 +86,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
             Api.fetchExploreImages(location: location, size: Constants.MAX_FETCHED_ITEM_MAP).done {
                 fulfill in
                 let images = fulfill["images"] as! [Image]
+                self.images = images
                 for image in images {
                     poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.name!, image: image))
                 }
@@ -95,10 +103,59 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     private func randomScale() -> Double {
         return Double(arc4random()) / Double(UINT32_MAX) * 2.0 - 1.0
     }
- 
-    @objc func back() {
+    
+    private func dismissView() {
         Hero.shared.defaultAnimation = .zoom
         dismiss(animated: true)
+    }
+ 
+    @IBAction func back(_ sender: UIButton) {
+        dismissView()
+    }
+    
+    @objc private func seeInFeed() {
+        if delegate == nil || currentMapViewLocation == nil {
+            return
+        }
+        var locationName: String? = nil
+        
+        // If marker in still on the map, assume that marker's name should be header text for Feed
+        if let place = currentMapViewPlace, isMarkerWithinScreen(markerLocation: place.location) {
+            locationName = "Around \(place.name)"
+        }else if isMarkerWithinScreen(markerLocation: LocationManager.getInstance().getCurrentLocation()!) {
+            // If user's current location is still on the map, assume that photos are from around you
+            locationName = "Around You"
+        }else if images.count > 0 { //If there are photos from fetching api, pick location's name from first photo
+            locationName = "Around \(images.first!.locationName!)"
+        }
+        
+        delegate?.didMapChangeLocation(location: currentMapViewLocation!, locationName: locationName)
+//        if locationName == nil {
+//            getLikelihoodPlace().done {
+//                likelihoodPlaces in
+//                self.delegate?.didUpdateLocationName(locationName: likelihoodPlaces.first!.name)
+//                }.catch{
+//                    error in
+//            }
+//        }
+        dismissView()
+    }
+    
+    private func getLikelihoodPlace() -> Promise<[GMSPlace]> {
+        return Promise {
+            seal in
+            placesClient?.currentPlace() {
+                placeLikelihoods, error in
+                if let error = error {
+                    seal.reject(error)
+                    return
+                }
+                // Get likely places and add to the list.
+                if let likelihoodList = placeLikelihoods {
+                    seal.fulfill(likelihoodList.likelihoods.map { return $0.place })
+                }
+            }
+        }
     }
     
     // Tap on cluster marker
@@ -111,27 +168,18 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         return false
     }
     
-    // MARK: - GMUMapViewDelegate
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let poiItem = marker.userData as? POIItem {
-            NSLog("Did tap marker for cluster item \(poiItem.name)")
-        } else {
-            NSLog("Did tap a normal marker")
-        }
-        return false
-    }
-
-    //When user end draging map
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        setupCluster(coordinate: position.target)
+    private func cameraTo(coordinate: Location) {
+        mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude), zoom: 15, bearing: 0, viewingAngle: 0)
     }
     
-    private func cameraTo(coordinate: CLLocationCoordinate2D) {
-        mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+    private func isMarkerWithinScreen(markerLocation: Location) -> Bool {
+        let region = self.mapView.projection.visibleRegion()
+        let bounds = GMSCoordinateBounds(region: region)
+        return bounds.contains(CLLocationCoordinate2D(latitude: markerLocation.latitude, longitude: markerLocation.longitude))
     }
     
-    private func setupMapView(location: CLLocation) {
-        cameraTo(coordinate: location.coordinate)
+    private func setupMapView(location: Location) {
+        cameraTo(coordinate: location)
         
         let styleName = "flat-pale-map-style"
         // use custom map style
@@ -147,9 +195,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
         }
     }
     
-    private func setupCluster(coordinate: CLLocationCoordinate2D) {
+    private func setupCluster(coordinate: Location) {
         //Add item to cluster
-        generateClusterItems(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude)).done {
+        generateClusterItems(location: coordinate).done {
             poiItems in
             
             self.clusterManager.clearItems()
@@ -195,8 +243,12 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         // Update location in LocationManager
         LocationManager.getInstance().setCurrentLocation(lat: location.coordinate.latitude, long: location.coordinate.longitude)
         
-        setupMapView(location: location)
-        setupCluster(coordinate: location.coordinate)
+        if currentMapViewLocation == nil {
+            currentMapViewLocation = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        }
+        setupMapView(location: currentMapViewLocation!)
+        setupCluster(coordinate: currentMapViewLocation!)
+        
         
         locationManager.stopUpdatingLocation()
     }
@@ -204,10 +256,39 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
 
 extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelegate {
     func didSelectPlace(place: Place) {
+        currentMapViewPlace = place
         let coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
-        cameraTo(coordinate: coordinate)
-        setupCluster(coordinate: coordinate)
+        cameraTo(coordinate: place.location)
+        setupCluster(coordinate: place.location)
         mapView.clear() //remove all markers
         showMarker(place: place)
     }
 }
+
+extension ExploreMapViewController: GMSMapViewDelegate {
+    // MARK: - GMUMapViewDelegate
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        ComponentUtil.fade(of: seeInFeedButton, hidden: true)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let poiItem = marker.userData as? POIItem {
+            NSLog("Did tap marker for cluster item \(poiItem.name)")
+        } else {
+            NSLog("Did tap a normal marker")
+        }
+        return false
+    }
+    
+    //When user end draging map and when map is initialized
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        currentMapViewLocation = Location(latitude: position.target.latitude, longitude: position.target.longitude)
+        ComponentUtil.fade(of: seeInFeedButton, hidden: false)
+        setupCluster(coordinate: currentMapViewLocation!)
+    }
+}
+
+
+// isMarkerWithinScreen
+// https://stackoverflow.com/questions/30065098/google-maps-for-ios-how-can-you-tell-if-a-marker-is-within-the-bounds-of-the-s

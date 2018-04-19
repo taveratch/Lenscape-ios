@@ -213,6 +213,7 @@ class ExploreViewController: UIViewController {
             fatalError("\(Identifier.ExploreMapViewController.rawValue) is not exist")
         }
         vc.delegate = self
+        vc.currentMapViewLocation = currentFeedLocation
         Hero.shared.defaultAnimation = .zoom
         present(vc, animated: true)
     }

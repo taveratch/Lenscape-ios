@@ -25,7 +25,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     private let locationManager = CLLocationManager()
     private var clusterManager: GMUClusterManager!
     var delegate: ExploreMapViewControllerDelegate?
-    private var currentMapViewLocation: Location?
+    var currentMapViewLocation: Location?
     private var currentMapViewPlace: Place?
     var placesClient: GMSPlacesClient?
     var images: [Image] = []
@@ -168,8 +168,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         return false
     }
     
-    private func cameraTo(coordinate: CLLocationCoordinate2D) {
-        mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+    private func cameraTo(coordinate: Location) {
+        mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude), zoom: 15, bearing: 0, viewingAngle: 0)
     }
     
     private func isMarkerWithinScreen(markerLocation: Location) -> Bool {
@@ -178,8 +178,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         return bounds.contains(CLLocationCoordinate2D(latitude: markerLocation.latitude, longitude: markerLocation.longitude))
     }
     
-    private func setupMapView(location: CLLocation) {
-        cameraTo(coordinate: location.coordinate)
+    private func setupMapView(location: Location) {
+        cameraTo(coordinate: location)
         
         let styleName = "flat-pale-map-style"
         // use custom map style
@@ -195,9 +195,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         }
     }
     
-    private func setupCluster(coordinate: CLLocationCoordinate2D) {
+    private func setupCluster(coordinate: Location) {
         //Add item to cluster
-        generateClusterItems(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude)).done {
+        generateClusterItems(location: coordinate).done {
             poiItems in
             
             self.clusterManager.clearItems()
@@ -243,8 +243,12 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
         // Update location in LocationManager
         LocationManager.getInstance().setCurrentLocation(lat: location.coordinate.latitude, long: location.coordinate.longitude)
         
-        setupMapView(location: location)
-        setupCluster(coordinate: location.coordinate)
+        if currentMapViewLocation == nil {
+            currentMapViewLocation = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        }
+        setupMapView(location: currentMapViewLocation!)
+        setupCluster(coordinate: currentMapViewLocation!)
+        
         
         locationManager.stopUpdatingLocation()
     }
@@ -254,8 +258,8 @@ extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelega
     func didSelectPlace(place: Place) {
         currentMapViewPlace = place
         let coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
-        cameraTo(coordinate: coordinate)
-        setupCluster(coordinate: coordinate)
+        cameraTo(coordinate: place.location)
+        setupCluster(coordinate: place.location)
         mapView.clear() //remove all markers
         showMarker(place: place)
     }
@@ -281,7 +285,7 @@ extension ExploreMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         currentMapViewLocation = Location(latitude: position.target.latitude, longitude: position.target.longitude)
         ComponentUtil.fade(of: seeInFeedButton, hidden: false)
-        setupCluster(coordinate: position.target)
+        setupCluster(coordinate: currentMapViewLocation!)
     }
 }
 

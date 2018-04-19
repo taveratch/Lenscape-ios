@@ -15,4 +15,5 @@ target 'Lenscape' do
   pod 'SwiftyJSON'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'FacebookShare'
 end

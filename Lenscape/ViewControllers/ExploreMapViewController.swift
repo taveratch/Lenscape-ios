@@ -20,6 +20,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate, GMS
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchButton: UIView!
     @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var seeInFeedButton: UIView!
     
     // MARK: - Attributes
     private let locationManager = CLLocationManager()
@@ -209,5 +210,9 @@ extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelega
         setupCluster(coordinate: coordinate)
         mapView.clear() //remove all markers
         showMarker(place: place)
+    }
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        print("willMove")
     }
 }

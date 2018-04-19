@@ -345,7 +345,7 @@
             <objects>
                 <viewController id="Q56-6C-TH4" customClass="ProfileViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gvd-b2-aPl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6uv-c9-bns">
@@ -695,7 +695,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="319.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-56-hnB" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -1110,7 +1110,30 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1y-qD-5Ge" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1t-FR-o5v" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="149" y="146" width="116" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See in Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiz-Lm-hzi">
+                                                <rect key="frame" x="18" y="6" width="80" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Fiz-Lm-hzi" firstAttribute="centerY" secondItem="c1t-FR-o5v" secondAttribute="centerY" id="Grw-He-kwi"/>
+                                            <constraint firstAttribute="height" constant="30" id="R44-EB-5Ra"/>
+                                            <constraint firstAttribute="width" constant="116" id="XTl-V6-vKB"/>
+                                            <constraint firstItem="Fiz-Lm-hzi" firstAttribute="centerX" secondItem="c1t-FR-o5v" secondAttribute="centerX" id="ziw-EJ-Hp1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="c1t-FR-o5v" firstAttribute="centerX" secondItem="w1y-qD-5Ge" secondAttribute="centerX" id="0og-4u-u8I"/>
+                                </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross Black" translatesAutoresizingMaskIntoConstraints="NO" id="iz6-sL-gq5">
                                 <rect key="frame" x="354" y="30" width="30" height="30"/>
@@ -1181,6 +1204,7 @@
                             <constraint firstItem="Cta-cE-GUO" firstAttribute="leading" secondItem="B7Q-sO-UIf" secondAttribute="leading" constant="24" id="VFN-d3-Qhb"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="w1y-qD-5Ge" secondAttribute="trailing" id="iFp-dU-RG2"/>
                             <constraint firstItem="B7Q-sO-UIf" firstAttribute="trailing" secondItem="Cta-cE-GUO" secondAttribute="trailing" constant="24" id="jec-zU-tbs"/>
+                            <constraint firstItem="c1t-FR-o5v" firstAttribute="top" secondItem="Cta-cE-GUO" secondAttribute="bottom" constant="16" id="tRE-DS-Qkz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
@@ -1191,11 +1215,12 @@
                         <outlet property="backButton" destination="iz6-sL-gq5" id="WvT-yK-v33"/>
                         <outlet property="mapView" destination="w1y-qD-5Ge" id="E7C-zr-Otj"/>
                         <outlet property="searchButton" destination="Cta-cE-GUO" id="Rcr-N4-pFc"/>
+                        <outlet property="seeInFeedButton" destination="c1t-FR-o5v" id="gBr-cK-aHW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3335" y="527"/>
+            <point key="canvasLocation" x="3334.7826086956525" y="526.63043478260875"/>
         </scene>
         <!--Google Places Auto Complete View Controller-->
         <scene sceneID="Rh0-xr-r3x">
@@ -1269,7 +1294,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
@@ -1316,7 +1341,7 @@
                                         <rect key="frame" x="0.0" y="78" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">

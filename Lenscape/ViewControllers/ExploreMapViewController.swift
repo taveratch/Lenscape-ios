@@ -24,6 +24,11 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     // MARK: - Attributes
     private let locationManager = CLLocationManager()
     private var clusterManager: GMUClusterManager!
+    var delegate: ExploreMapViewControllerDelegate?
+    private var currentMapViewLocation: Location?
+    private var currentMapViewPlace: Place?
+    var placesClient: GMSPlacesClient?
+    var images: [Image] = []
 
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -37,6 +42,10 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.zoomGestures = true
+        
+        placesClient = GMSPlacesClient()
+        
+        ComponentUtil.addTapGesture(parentViewController: self, for: seeInFeedButton, with: #selector(seeInFeed))
         
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
@@ -54,6 +63,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         super.viewWillAppear(animated)
         ComponentUtil.fade(of: seeInFeedButton, hidden: true)
     }
+    
     private func setupSearchButton() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
         searchButton.addGestureRecognizer(tap)
@@ -76,6 +86,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
             Api.fetchExploreImages(location: location, size: Constants.MAX_FETCHED_ITEM_MAP).done {
                 fulfill in
                 let images = fulfill["images"] as! [Image]
+                self.images = images
                 for image in images {
                     poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.name!, image: image))
                 }
@@ -92,10 +103,59 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     private func randomScale() -> Double {
         return Double(arc4random()) / Double(UINT32_MAX) * 2.0 - 1.0
     }
- 
-    @IBAction func back(_ sender: UIButton) {
+    
+    private func dismissView() {
         Hero.shared.defaultAnimation = .zoom
         dismiss(animated: true)
+    }
+ 
+    @IBAction func back(_ sender: UIButton) {
+        dismissView()
+    }
+    
+    @objc private func seeInFeed() {
+        if delegate == nil || currentMapViewLocation == nil {
+            return
+        }
+        var locationName: String? = nil
+        
+        // If marker in still on the map, assume that marker's name should be header text for Feed
+        if let place = currentMapViewPlace, isMarkerWithinScreen(markerLocation: place.location) {
+            locationName = "Around \(place.name)"
+        }else if isMarkerWithinScreen(markerLocation: LocationManager.getInstance().getCurrentLocation()!) {
+            // If user's current location is still on the map, assume that photos are from around you
+            locationName = "Around You"
+        }else if images.count > 0 { //If there are photos from fetching api, pick location's name from first photo
+            locationName = "Around \(images.first!.locationName!)"
+        }
+        
+        delegate?.didMapChangeLocation(location: currentMapViewLocation!, locationName: locationName)
+//        if locationName == nil {
+//            getLikelihoodPlace().done {
+//                likelihoodPlaces in
+//                self.delegate?.didUpdateLocationName(locationName: likelihoodPlaces.first!.name)
+//                }.catch{
+//                    error in
+//            }
+//        }
+        dismissView()
+    }
+    
+    private func getLikelihoodPlace() -> Promise<[GMSPlace]> {
+        return Promise {
+            seal in
+            placesClient?.currentPlace() {
+                placeLikelihoods, error in
+                if let error = error {
+                    seal.reject(error)
+                    return
+                }
+                // Get likely places and add to the list.
+                if let likelihoodList = placeLikelihoods {
+                    seal.fulfill(likelihoodList.likelihoods.map { return $0.place })
+                }
+            }
+        }
     }
     
     // Tap on cluster marker
@@ -110,6 +170,12 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     
     private func cameraTo(coordinate: CLLocationCoordinate2D) {
         mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+    }
+    
+    private func isMarkerWithinScreen(markerLocation: Location) -> Bool {
+        let region = self.mapView.projection.visibleRegion()
+        let bounds = GMSCoordinateBounds(region: region)
+        return bounds.contains(CLLocationCoordinate2D(latitude: markerLocation.latitude, longitude: markerLocation.longitude))
     }
     
     private func setupMapView(location: CLLocation) {
@@ -186,6 +252,7 @@ extension ExploreMapViewController: CLLocationManagerDelegate {
 
 extension ExploreMapViewController: GooglePlacesAutoCompleteViewControllerDelegate {
     func didSelectPlace(place: Place) {
+        currentMapViewPlace = place
         let coordinate = CLLocationCoordinate2D(latitude: place.location.latitude, longitude: place.location.longitude)
         cameraTo(coordinate: coordinate)
         setupCluster(coordinate: coordinate)
@@ -210,9 +277,14 @@ extension ExploreMapViewController: GMSMapViewDelegate {
         return false
     }
     
-    //When user end draging map
+    //When user end draging map and when map is initialized
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        currentMapViewLocation = Location(latitude: position.target.latitude, longitude: position.target.longitude)
         ComponentUtil.fade(of: seeInFeedButton, hidden: false)
         setupCluster(coordinate: position.target)
     }
 }
+
+
+// isMarkerWithinScreen
+// https://stackoverflow.com/questions/30065098/google-maps-for-ios-how-can-you-tell-if-a-marker-is-within-the-bounds-of-the-s

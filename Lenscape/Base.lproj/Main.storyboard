@@ -345,7 +345,7 @@
             <objects>
                 <viewController id="Q56-6C-TH4" customClass="ProfileViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gvd-b2-aPl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6uv-c9-bns">
@@ -525,7 +525,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDV-A4-9ds">
-                                                        <rect key="frame" x="32.000000000000007" y="20.666666666666664" width="88.666666666666686" height="20.333333333333336"/>
+                                                        <rect key="frame" x="32" y="20.666666666666664" width="262" height="20.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -587,6 +587,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="3AC-59-vvC" firstAttribute="leading" secondItem="sDV-A4-9ds" secondAttribute="trailing" constant="8" id="7um-OE-kas"/>
                                                     <constraint firstAttribute="height" constant="60" id="CSr-WK-fJI"/>
                                                     <constraint firstItem="sDV-A4-9ds" firstAttribute="leading" secondItem="i78-F7-4NT" secondAttribute="leading" constant="32" id="Dfg-hR-5Ck"/>
                                                     <constraint firstItem="sDV-A4-9ds" firstAttribute="centerY" secondItem="i78-F7-4NT" secondAttribute="centerY" id="EEA-gs-aYw"/>
@@ -856,6 +857,7 @@
                     <connections>
                         <outlet property="cancelUploadButton" destination="EaF-UD-LCp" id="UuN-U3-zE8"/>
                         <outlet property="header" destination="iIj-Dd-qAK" id="xa4-Si-bhO"/>
+                        <outlet property="headerLabel" destination="sDV-A4-9ds" id="gbu-hG-eKw"/>
                         <outlet property="progressView" destination="Rv6-lw-Nzl" id="shR-eA-sB1"/>
                         <outlet property="progressViewWrapper" destination="aZh-NP-pL6" id="86U-hu-Zr0"/>
                         <outlet property="seasoningScrollView" destination="QSX-8y-AZz" id="2I9-p6-d9q"/>

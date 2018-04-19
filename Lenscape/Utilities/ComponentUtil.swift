@@ -24,4 +24,10 @@ class ComponentUtil {
             })
         }
     }
+    
+    static func addTapGesture(parentViewController: UIViewController, for view: UIView, with action: Selector?) {
+        let tap = UITapGestureRecognizer(target: parentViewController, action: action)
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+    }
 }

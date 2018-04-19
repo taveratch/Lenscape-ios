@@ -38,7 +38,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         // https://github.com/lkzhao/Hero/issues/187
         self.infoView.hero.modifiers = [.duration(0.4), .translate(y: infoView.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
-        addGesture(for: imageView, with: #selector(toggleBottomInfo))
+        ComponentUtil.addTapGesture(parentViewController: self, for: imageView, with: #selector(toggleBottomInfo))
     }
     
     // Before disappear, set back to portrait mode. (See more in AppDelegate)
@@ -75,12 +75,6 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
             alwaysHideBottomInfo = false
             showBottomInfo(isHidden: false, force: true)
         }
-    }
-    
-    private func addGesture(for view: UIView, with action: Selector?) {
-        let tap = UITapGestureRecognizer(target: self, action: action)
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
     }
     
     @objc private func toggleBottomInfo() {

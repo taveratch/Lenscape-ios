@@ -23,6 +23,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var seasoningScrollView: CircularInfiniteScroll!
     private lazy var refreshControl = UIRefreshControl()
     @IBOutlet weak var header: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
     var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -37,6 +38,7 @@ class ExploreViewController: UIViewController {
     var lastContentOffset: CGFloat = 0
     var shouldUpdateHeaderVisibility = true
     var headerHeightConstraint: NSLayoutConstraint?
+    var currentFeedLocation: Location?
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -52,7 +54,7 @@ class ExploreViewController: UIViewController {
         startActivityIndicator()
         
         //Make ExploreViewController as observer for LocationManager (this vc will be notify from MainTabBarController (CLLocationManagerDelegate))
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setAndFetchInitImageFromAPI), name: .DidUpdateLocation, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,18 +106,28 @@ class ExploreViewController: UIViewController {
         indicator.hidesWhenStopped = true
     }
     
+    @objc private func setAndFetchInitImageFromAPI() {
+        currentFeedLocation = LocationManager.getInstance().getCurrentLocation()
+        fetchInitImageFromAPI()
+    }
+    
     @objc private func fetchInitImageFromAPI() {
-        print("FetchInitImageFromAPI")
         page = 1
-        fetchImagesFromAPI(page: page) {
+        fetchImagesFromAPI(page: page, at: currentFeedLocation) {
             images in
             self.images = images
             self.stopActivityIndicator()
         }
     }
     
-    private func fetchImagesFromAPI(page: Int = 1, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
-        Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
+    private func fetchImagesFromAPI(page: Int = 1, at: Location?, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        var location: Location?
+        if at == nil {
+            location = LocationManager.getInstance().getCurrentLocation()!
+        }else {
+            location = at
+        }
+        Api.fetchExploreImages(page: page, location: location!).done {
             fulfill in
             
             let images = fulfill["images"] as! [Image]
@@ -197,9 +209,10 @@ class ExploreViewController: UIViewController {
     }
     
     @objc private func showMapsViewController() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue) else {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ExploreMapViewController.rawValue) as? ExploreMapViewController else {
             fatalError("\(Identifier.ExploreMapViewController.rawValue) is not exist")
         }
+        vc.delegate = self
         Hero.shared.defaultAnimation = .zoom
         present(vc, animated: true)
     }
@@ -280,7 +293,7 @@ extension ExploreViewController: UITableViewDelegate {
         let lastElement = images.count - 1
         if indexPath.row == lastElement, shouldFetchMore {
             page += 1
-            fetchImagesFromAPI(page: page) {
+            fetchImagesFromAPI(page: page, at: nil) {
                 images in
                 self.images += images
             }
@@ -355,4 +368,23 @@ extension ExploreViewController: SwiftCarouselDelegate {
     }
 }
 
+extension ExploreViewController: ExploreMapViewControllerDelegate {
+    func didUpdateLocationName(locationName: String) {
+        headerLabel.text = locationName
+    }
+    
+    func didMapChangeLocation(location: Location, locationName: String?) {
+        if locationName != nil {
+            headerLabel.text = locationName
+        }else {
+            headerLabel.text = ""
+        }
+        currentFeedLocation = location
+        images = []
+        tableView.reloadData()
+        startActivityIndicator()
+        fetchInitImageFromAPI()
+    }
+    
+}
 

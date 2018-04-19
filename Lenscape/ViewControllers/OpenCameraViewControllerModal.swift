@@ -45,9 +45,9 @@ class OpenCameraViewControllerModal: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-        addGesture(for: cameraButton, with: #selector(snapPhoto))
-        addGesture(for: cameraRollButton, with: #selector(openCameraRoll))
-        addGesture(for: dismissButton, with: #selector(close))
+        ComponentUtil.addTapGesture(parentViewController: self, for: cameraButton, with: #selector(snapPhoto))
+        ComponentUtil.addTapGesture(parentViewController: self, for: cameraRollButton, with: #selector(openCameraRoll))
+        ComponentUtil.addTapGesture(parentViewController: self, for: dismissButton, with: #selector(close))
         sessionQueue.async { self.initCamera() }
     }
     
@@ -239,12 +239,6 @@ extension OpenCameraViewControllerModal {
         UIView.animate(withDuration: 0.4, animations: {
             self.cameraRollButton.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
         })
-    }
-    
-    private func addGesture(for view: UIView, with action: Selector?) {
-        let tap = UITapGestureRecognizer(target: self, action: action)
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
     }
     
     private func focus(at devicePoint: CGPoint) {

@@ -40,14 +40,14 @@ class CustomTabBar : UITabBar {
     }
 
     func setupMiddleButton() {
-        let width: CGFloat = 60, height: CGFloat = 60
+        let width: CGFloat = 55, height: CGFloat = 55
         middleButton.frame.size = CGSize(width: width, height: height)
         middleButton.setBackgroundImage(UIImage(named: "Camera Gradient Icon No Shadow"), for: .normal)
         middleButton.layer.masksToBounds = false
-        middleButton.layer.shadowColor = #colorLiteral(red: 0.9450980392, green: 0.4705882353, blue: 0.3647058824, alpha: 0.67)
-        middleButton.layer.shadowRadius = 4
+        middleButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6597105704)
+        middleButton.layer.shadowRadius = 2
         middleButton.layer.shadowOpacity = 1
-        middleButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        middleButton.layer.shadowOffset = CGSize(width: 1, height: 2)
         middleButton.layer.cornerRadius = width/2
         middleButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 0)
         middleButton.addTarget(self, action: #selector(onClick), for: .touchUpInside)

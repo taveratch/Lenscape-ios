@@ -38,13 +38,17 @@ class CustomTabBar : UITabBar {
         
         return sqrt((from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)) <= 39 ? middleButton : super.hitTest(point, with: event)
     }
-    
-    // TODO: Fix button shape not being completely round and image appears to be blurry
+
     func setupMiddleButton() {
-        middleButton.frame.size = CGSize(width: 74, height: 74)
-        middleButton.layer.cornerRadius = 74/2
-        middleButton.setBackgroundImage(UIImage(named: "Camera_gradient_tab_icon"), for: .normal)
-        middleButton.layer.masksToBounds = true
+        let width: CGFloat = 60, height: CGFloat = 60
+        middleButton.frame.size = CGSize(width: width, height: height)
+        middleButton.setBackgroundImage(UIImage(named: "Camera Gradient Icon No Shadow"), for: .normal)
+        middleButton.layer.masksToBounds = false
+        middleButton.layer.shadowColor = #colorLiteral(red: 0.9450980392, green: 0.4705882353, blue: 0.3647058824, alpha: 0.67)
+        middleButton.layer.shadowRadius = 4
+        middleButton.layer.shadowOpacity = 1
+        middleButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        middleButton.layer.cornerRadius = width/2
         middleButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 0)
         middleButton.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         addSubview(middleButton)

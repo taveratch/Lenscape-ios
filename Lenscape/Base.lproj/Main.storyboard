@@ -21,9 +21,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wTk-aP-SrS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Camera_gradient_tab_icon" id="ZG1-30-V4i">
-                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="ZG1-30-V4i"/>
                     <connections>
                         <outlet property="imageView" destination="6C7-Vd-GML" id="ONh-xt-xRM"/>
                     </connections>
@@ -2195,7 +2193,6 @@
     <resources>
         <image name="Add Blue" width="22" height="22"/>
         <image name="Camera Roll" width="25" height="20"/>
-        <image name="Camera_gradient_tab_icon" width="72" height="72"/>
         <image name="Cross Black" width="25" height="25"/>
         <image name="Cross Black No Margin" width="48" height="46"/>
         <image name="Cross White" width="11" height="11"/>

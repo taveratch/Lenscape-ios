@@ -79,6 +79,7 @@
 		957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */; };
 		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
 		957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */; };
+		9581492F20899D5300623AC2 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581492E20899D5300623AC2 /* DateUtil.swift */; };
 		9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */; };
 		9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC31205CC86500779E38 /* PhotoUploader.swift */; };
 		958A4D9120889A5F00C9BA6B /* ComponentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */; };
@@ -238,6 +239,7 @@
 		957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasoningScrollView.xib; sourceTree = "<group>"; };
 		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
 		957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
+		9581492E20899D5300623AC2 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadingDelegate.swift; sourceTree = "<group>"; };
 		9582DC31205CC86500779E38 /* PhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploader.swift; sourceTree = "<group>"; };
 		958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentUtil.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				9582DC31205CC86500779E38 /* PhotoUploader.swift */,
 				951FE8B9204C3C9400FE6C10 /* UserController.swift */,
 				954672B8204EAFE400035B94 /* FacebookLogin.swift */,
+				9581492E20899D5300623AC2 /* DateUtil.swift */,
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */,
 				950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */,
@@ -941,6 +944,7 @@
 				957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */,
 				950358CC206F95BB00D424F4 /* GMUPlacemark.m in Sources */,
 				9504A15620677DB200FDF606 /* LocationManager.swift in Sources */,
+				9581492F20899D5300623AC2 /* DateUtil.swift in Sources */,
 				D007EEF0207BD2FE00C46129 /* HeroUITabBarDelegate.swift in Sources */,
 				9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */,
 				95C35BC3207215FE00030B12 /* Owner.swift in Sources */,

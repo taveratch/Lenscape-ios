@@ -80,6 +80,8 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         informationWrapper.likeLabel.text = "\(image!.likes!)"
         informationWrapper.ownerNameLabel.text = image!.owner.name
+        
+        informationWrapper.dateLabel.text = image!.relativeDatetimeString
     }
     
     @objc private func dismissView() {

@@ -16,8 +16,8 @@ class PlaceType {
 struct Place: Codable {
     var name: String
     var location: Location!
-    var placeID: String?
-    var type: String?
+    var placeID: String = ""
+    var type: String = PlaceType.LENSCAPE_TYPE
     
     init(name: String, location: Location) {
         self.name = name

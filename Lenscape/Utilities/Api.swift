@@ -126,12 +126,12 @@ class Api {
                     multipartFormData.append(imageName.data(using: .utf8)!, withName: "image_name")
                     multipartFormData.append(place.name.data(using: .utf8)!, withName: "location_name")
                     multipartFormData.append(latlong.data(using: .utf8)!, withName: "latlong")
-                    if let placeID = place.placeID {
-                        multipartFormData.append(placeID.data(using: .utf8)!, withName: "place_id")
-                    }
-                    if let placeType = place.type {
-                        multipartFormData.append(placeType.data(using: .utf8)!, withName: "place_type")
-                    }
+//                    if let placeID = place.placeID {
+                        multipartFormData.append(place.placeID.data(using: .utf8)!, withName: "place_id")
+//                    }
+//                    if let placeType = place.type {
+                        multipartFormData.append(place.type.data(using: .utf8)!, withName: "place_type")
+//                    }
             }, progressHandler: progressHandler
                 ).done {
                     response in

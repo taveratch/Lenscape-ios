@@ -8,28 +8,38 @@
 
 import Foundation
 
-let hour = 60 * 60
-let hours_24 = hour * 24
-let days_2 = hour * 48
+let minute = 60.0
+let hour = minute * 60.0
+let hours_24 = hour * 24.0
+let days_2 = hour * 48.0
 
 class DateUtil {
-    static func getRelativeTimeString(since sinceMillisecond: Double, until untilMillisecond: Double = Double(Date().timeIntervalSince1970)) -> String {
+    
+    static private func isPlural(n: Double) -> Bool {
+        return n != 1.0
+    }
+    
+    static func getRelativeTimeString(since sinceMillisecond: Double, until untilMillisecond: Double = Double(Date().timeIntervalSince1970*1000)) -> String {
         let sinceDate = Date(timeIntervalSince1970: sinceMillisecond/1000.0)
         let untilDate = Date(timeIntervalSince1970: untilMillisecond/1000.0)
-        let diff = (Int((untilDate.timeIntervalSince1970).rounded()) - Int((sinceDate.timeIntervalSince1970).rounded()))
+        let diff = (Double((untilDate.timeIntervalSince1970).rounded()) - Double((sinceDate.timeIntervalSince1970).rounded()))
         
         if diff < 0 {
             return "since cannot be greater than until"
         }
         
+        let (dateString,timeString) = getDateTimeString(of: sinceMillisecond)
+        
         if diff < hour {
-            return "\(diff/60) minutes ago"
+            let n = ceil(diff/60.0)
+            return "\(Int(n)) minute\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
         }else if diff < hours_24 {
-            return "\(diff/60/60) hours ago"
+            let n = ceil(diff/hour)
+            return "\(Int(n)) hour\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
         }else if diff < days_2 {
-            return "\(diff/60/60/24) days ago"
+            let n = ceil(diff/hours_24)
+            return "\(Int(n)) day\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
         }else {
-            let (dateString,timeString) = getDateTimeString(of: sinceMillisecond)
             return "\(dateString) \(timeString)"
         }
     }
@@ -38,6 +48,7 @@ class DateUtil {
         let date = Date(timeIntervalSince1970: millisecond/1000.0)
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM yyyy"
+        formatter.locale = Locale(identifier: "en_US")
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "H:mm"

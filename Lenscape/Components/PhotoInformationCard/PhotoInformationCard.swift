@@ -21,6 +21,7 @@ class PhotoInformationCard: UIView {
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var distanceUnitLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

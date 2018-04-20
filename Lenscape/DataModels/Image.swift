@@ -17,7 +17,10 @@ struct Image {
     var height: Int?
     var link: String?
     var thumbnailLink: String?
-    var datetime: Int64?
+    var datetime: Double!
+    var relativeDatetimeString: String!
+    var dateString: String
+    var timeString: String
     var distance: Double?
     var likes: Int?
     var owner: Owner!
@@ -51,6 +54,10 @@ struct Image {
         locationName = locationObject["name"] as! String
         distance = locationObject["distance"] as? Double ?? 0
         isNear = locationObject["is_near"] as? Bool
+        
+        datetime = image["timestamp"] as? Double
+        relativeDatetimeString = DateUtil.getRelativeTimeString(since: datetime)
+        (dateString, timeString) = DateUtil.getDateTimeString(of: datetime)
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

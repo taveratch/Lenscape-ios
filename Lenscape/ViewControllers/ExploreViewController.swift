@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import SwiftCarousel
 import Hero
+import ReactiveCocoa
 
 class ExploreViewController: UIViewController {
     
@@ -193,6 +194,14 @@ class ExploreViewController: UIViewController {
         vc.image = image
         vc.placeHolderImage = cell.uiImageView.image
         Hero.shared.defaultAnimation = .fade
+        
+        // Observe dismiss event from modal, then notify parent (this) to do something.
+        // https://github.com/ReactiveCocoa/ReactiveCocoa
+        vc.reactive
+            .trigger(for: #selector(vc.viewWillDisappear(_:)))
+            .observe { _ in
+                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+            }
         present(vc, animated: true)
     }
     

@@ -934,7 +934,7 @@
                                 <rect key="frame" x="0.0" y="616" width="414" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b2P-AY-m7E">
-                                        <rect key="frame" x="24" y="16.000000000000004" width="281" height="38.333333333333343"/>
+                                        <rect key="frame" x="24" y="16.000000000000004" width="282" height="38.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-Xm-1Y8">
                                                 <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20.333333333333332"/>
@@ -983,7 +983,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="154" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEN-fp-hFe">
-                                        <rect key="frame" x="321" y="40" width="40" height="18"/>
+                                        <rect key="frame" x="322" y="40" width="40" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="h0m-pm-LDN"/>
                                         </constraints>
@@ -1004,7 +1004,6 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cEN-fp-hFe" secondAttribute="trailing" constant="53" id="239-BI-JgW"/>
                                     <constraint firstItem="cEN-fp-hFe" firstAttribute="leading" secondItem="b2P-AY-m7E" secondAttribute="trailing" constant="16" id="E2V-sv-L8b"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="leading" secondItem="AVO-Fe-1tY" secondAttribute="leading" constant="24" id="N9o-Pg-sDQ"/>
                                     <constraint firstAttribute="trailing" secondItem="QNW-8d-phV" secondAttribute="trailing" constant="60" id="QO1-qe-nBp"/>
@@ -1012,6 +1011,7 @@
                                     <constraint firstItem="Qxj-zo-dTL" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="15" id="YX4-1H-vdS"/>
                                     <constraint firstItem="QNW-8d-phV" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="h5O-zt-Ygx"/>
                                     <constraint firstAttribute="trailing" secondItem="Qxj-zo-dTL" secondAttribute="trailing" constant="24" id="i46-gq-smF"/>
+                                    <constraint firstItem="QNW-8d-phV" firstAttribute="centerX" secondItem="cEN-fp-hFe" secondAttribute="centerX" id="kGR-F5-v9q"/>
                                     <constraint firstItem="cEN-fp-hFe" firstAttribute="top" secondItem="QNW-8d-phV" secondAttribute="bottom" constant="4" id="q9a-y2-xEW"/>
                                     <constraint firstItem="ZrJ-9C-f8l" firstAttribute="centerX" secondItem="AVO-Fe-1tY" secondAttribute="centerX" id="qC9-c0-Amq"/>
                                     <constraint firstAttribute="height" constant="120" id="sBQ-Bi-zS7"/>
@@ -1089,6 +1089,7 @@
                         <outlet property="imageNameLabel" destination="0uw-Xm-1Y8" id="I3h-xw-41I"/>
                         <outlet property="imageView" destination="EEx-Ot-5Ia" id="JlW-Oh-fPO"/>
                         <outlet property="infoView" destination="AVO-Fe-1tY" id="Aup-8T-HgS"/>
+                        <outlet property="likeButton" destination="QNW-8d-phV" id="5IY-KV-q8B"/>
                         <outlet property="locationNameLabel" destination="MKQ-xw-fcp" id="dre-Sn-v2g"/>
                         <outlet property="numberOfLikeLabel" destination="cEN-fp-hFe" id="k17-zm-IVP"/>
                         <outlet property="scrollView" destination="ipm-c1-6bd" id="yv2-cP-UHl"/>

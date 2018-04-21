@@ -19,6 +19,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var numberOfLikeLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Attributes
     var image: Image?
@@ -109,7 +110,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setupLikeComponentsUI() {
-        LikeButton.setImage(UIImage(named: image!.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+        likeButton.setImage(UIImage(named: image!.is_liked ? "Red heart": "White Heart"), for: .normal)
         numberOfLikeLabel.text = String(image!.likes!)
     }
     

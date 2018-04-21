@@ -16,4 +16,5 @@ target 'Lenscape' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'FacebookShare'
+  pod 'ReactiveCocoa'
 end

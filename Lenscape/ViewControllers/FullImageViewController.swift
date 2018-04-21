@@ -18,7 +18,6 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var imageNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
-    @IBOutlet weak var likeButton: UIImageView!
     @IBOutlet weak var numberOfLikeLabel: UILabel!
     
     // MARK: - Attributes
@@ -106,6 +105,11 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         
         imageNameLabel.text = image!.name
         locationNameLabel.text = image!.locationName
+        setupLikeComponentsUI()
+    }
+    
+    private func setupLikeComponentsUI() {
+        LikeButton.setImage(UIImage(named: image!.is_liked ? "Red heart": "Gray Heart"), for: .normal)
         numberOfLikeLabel.text = String(image!.likes!)
     }
     
@@ -169,5 +173,31 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func share(_ sender: UIButton) {
         shareToFacebook()
+    }
+    
+    @IBAction func likeImage(_ sender: UIButton) {
+        let updateImage = {
+            self.image!.is_liked = !self.image!.is_liked
+            self.image!.likes! += self.image!.is_liked ? 1 : -1
+        }
+        
+        updateImage()
+        setupLikeComponentsUI()
+       
+        let _ = Api.likeImage(imageId: image!.id).done {
+            image in
+            self.image!.is_liked = image.is_liked
+            self.image!.likes = image.likes
+            }.catch {
+                error in
+                //Update back to state before press
+                updateImage()
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as! String
+                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+            }
+            .finally {
+                self.setupLikeComponentsUI()
+        }
     }
 }

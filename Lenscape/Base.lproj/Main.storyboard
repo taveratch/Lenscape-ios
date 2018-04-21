@@ -934,7 +934,7 @@
                                 <rect key="frame" x="0.0" y="616" width="414" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b2P-AY-m7E">
-                                        <rect key="frame" x="24" y="16.000000000000004" width="288.66666666666669" height="38.333333333333343"/>
+                                        <rect key="frame" x="24" y="16.000000000000004" width="281" height="38.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uw-Xm-1Y8">
                                                 <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="20.333333333333332"/>
@@ -950,13 +950,17 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White Heart" translatesAutoresizingMaskIntoConstraints="NO" id="41Q-FU-qvJ">
-                                        <rect key="frame" x="328.66666666666669" y="16" width="25.333333333333314" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNW-8d-phV">
+                                        <rect key="frame" x="330" y="16" width="24" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="JVZ-Wb-FWj"/>
-                                            <constraint firstAttribute="width" secondItem="41Q-FU-qvJ" secondAttribute="height" multiplier="19:15" id="gF7-tj-RxV"/>
+                                            <constraint firstAttribute="width" secondItem="QNW-8d-phV" secondAttribute="height" multiplier="31:26" id="Gaq-9m-Pul"/>
+                                            <constraint firstAttribute="height" constant="20" id="pVg-IH-v0i"/>
                                         </constraints>
-                                    </imageView>
+                                        <state key="normal" image="White Heart"/>
+                                        <connections>
+                                            <action selector="likeImage:" destination="yKk-Co-UHk" eventType="touchUpInside" id="0CY-q2-cfK"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrJ-9C-f8l" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
                                         <rect key="frame" x="158" y="74" width="98" height="30"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -1001,16 +1005,16 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cEN-fp-hFe" secondAttribute="trailing" constant="53" id="239-BI-JgW"/>
-                                    <constraint firstAttribute="trailing" secondItem="41Q-FU-qvJ" secondAttribute="trailing" constant="60" id="3Q4-Vv-UIE"/>
-                                    <constraint firstItem="cEN-fp-hFe" firstAttribute="top" secondItem="41Q-FU-qvJ" secondAttribute="bottom" constant="4" id="EZK-Lo-12F"/>
+                                    <constraint firstItem="cEN-fp-hFe" firstAttribute="leading" secondItem="b2P-AY-m7E" secondAttribute="trailing" constant="16" id="E2V-sv-L8b"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="leading" secondItem="AVO-Fe-1tY" secondAttribute="leading" constant="24" id="N9o-Pg-sDQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="QNW-8d-phV" secondAttribute="trailing" constant="60" id="QO1-qe-nBp"/>
                                     <constraint firstAttribute="bottom" secondItem="ZrJ-9C-f8l" secondAttribute="bottom" constant="16" id="Qkk-dt-lPg"/>
-                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="Xkk-s7-SZy"/>
                                     <constraint firstItem="Qxj-zo-dTL" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="15" id="YX4-1H-vdS"/>
+                                    <constraint firstItem="QNW-8d-phV" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="h5O-zt-Ygx"/>
                                     <constraint firstAttribute="trailing" secondItem="Qxj-zo-dTL" secondAttribute="trailing" constant="24" id="i46-gq-smF"/>
+                                    <constraint firstItem="cEN-fp-hFe" firstAttribute="top" secondItem="QNW-8d-phV" secondAttribute="bottom" constant="4" id="q9a-y2-xEW"/>
                                     <constraint firstItem="ZrJ-9C-f8l" firstAttribute="centerX" secondItem="AVO-Fe-1tY" secondAttribute="centerX" id="qC9-c0-Amq"/>
                                     <constraint firstAttribute="height" constant="120" id="sBQ-Bi-zS7"/>
-                                    <constraint firstItem="41Q-FU-qvJ" firstAttribute="leading" secondItem="b2P-AY-m7E" secondAttribute="trailing" constant="16" id="x1W-3D-38R"/>
                                     <constraint firstItem="b2P-AY-m7E" firstAttribute="top" secondItem="AVO-Fe-1tY" secondAttribute="top" constant="16" id="y9q-Xp-kWu"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1085,7 +1089,6 @@
                         <outlet property="imageNameLabel" destination="0uw-Xm-1Y8" id="I3h-xw-41I"/>
                         <outlet property="imageView" destination="EEx-Ot-5Ia" id="JlW-Oh-fPO"/>
                         <outlet property="infoView" destination="AVO-Fe-1tY" id="Aup-8T-HgS"/>
-                        <outlet property="likeButton" destination="41Q-FU-qvJ" id="b3s-M9-ZvC"/>
                         <outlet property="locationNameLabel" destination="MKQ-xw-fcp" id="dre-Sn-v2g"/>
                         <outlet property="numberOfLikeLabel" destination="cEN-fp-hFe" id="k17-zm-IVP"/>
                         <outlet property="scrollView" destination="ipm-c1-6bd" id="yv2-cP-UHl"/>

@@ -143,7 +143,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     private func savePhotoToCameraRoll() {
         UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
-        showAlert(title: nil, message: "Photo has been saved to Camera Roll")
+        AlertController.showAlert(viewController: self, title: nil, message: "Photo has been saved to Camera Roll")
     }
     
     private func shareToFacebook() {
@@ -152,18 +152,9 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         do {
             try ShareDialog.show(from: self, content: content)
         }catch {
-            showAlert(message: "Something went wrong!. Could not find Facebook App")
+            AlertController.showAlert(viewController: self, message: "Something went wrong!. Could not find Facebook App")
             print(error)
         }
-    }
-    
-    private func showAlert(title: String? = "Message", message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel) {
-            action in
-            alert.dismiss(animated: true)
-        })
-        present(alert, animated: true)
     }
     
     @IBAction func showMoreActions(_ sender: UIButton) {

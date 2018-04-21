@@ -80,6 +80,7 @@
 		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
 		957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */; };
 		9581492F20899D5300623AC2 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581492E20899D5300623AC2 /* DateUtil.swift */; };
+		95814931208B026900623AC2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95814930208B026800623AC2 /* AlertController.swift */; };
 		9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */; };
 		9582DC32205CC86500779E38 /* PhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582DC31205CC86500779E38 /* PhotoUploader.swift */; };
 		958A4D9120889A5F00C9BA6B /* ComponentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */; };
@@ -240,6 +241,7 @@
 		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
 		957FA7DE20565E9C005F2E91 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
 		9581492E20899D5300623AC2 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		95814930208B026800623AC2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadingDelegate.swift; sourceTree = "<group>"; };
 		9582DC31205CC86500779E38 /* PhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploader.swift; sourceTree = "<group>"; };
 		958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentUtil.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				9504A15520677DB200FDF606 /* LocationManager.swift */,
 				958A4D9020889A5F00C9BA6B /* ComponentUtil.swift */,
 				950358D720709FC600D424F4 /* CustomGMUClusterIconGenerator.swift */,
+				95814930208B026800623AC2 /* AlertController.swift */,
 				9509A5332084EB1C00334B74 /* Constants.swift */,
 				950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
@@ -922,6 +925,7 @@
 				9544EEEF20832ED700A4E9AC /* AddNewPlaceViewController.swift in Sources */,
 				9595F0712055714800A740E1 /* CircularScrollViewItem.swift in Sources */,
 				955606A1205CE3BA007B3B17 /* OpenCameraViewControllerModal.swift in Sources */,
+				95814931208B026900623AC2 /* AlertController.swift in Sources */,
 				9504A15420677CBB00FDF606 /* Location.swift in Sources */,
 				95B8AB7C2051953C007480AA /* ProfileViewController.swift in Sources */,
 				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,

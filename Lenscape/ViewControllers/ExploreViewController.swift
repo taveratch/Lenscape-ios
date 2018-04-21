@@ -40,6 +40,11 @@ class ExploreViewController: UIViewController {
     var headerHeightConstraint: NSLayoutConstraint?
     var currentFeedLocation: Location?
     
+    // Fix tableview row's offset change after call reloadRowsAt... in likeImage()
+    // https://stackoverflow.com/questions/27102887/maintain-offset-when-reloadrowsatindexpaths
+    fileprivate var heightForIndexPath = [IndexPath: CGFloat]()
+    fileprivate let averageRowHeight: CGFloat = 327 //your best estimate
+    
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,15 +196,37 @@ class ExploreViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    @objc private func likePhoto(sender: UIButton) {
+    @objc private func likeImage(sender: UIButton) {
         let index = sender.tag
-        print(index)
+
         guard index >= 0 && index < images.count else {
             fatalError("sender.tag must be number in range of 0..images.count")
         }
+        
         let image = images[index]
-        image.is_liked = !image.is_liked
-        sender.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+        let updateImage = {
+            image.is_liked = !image.is_liked
+            image.likes! += image.is_liked ? 1 : -1
+            sender.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+        }
+        updateImage()
+        
+        // Reload table row immediately with updated image's info
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        
+        let _ = Api.likeImage(imageId: image.id).done {
+            image in
+            self.images[index] = image
+            }.catch {
+                error in
+                //Update back to state before press
+                updateImage()
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as! String
+                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+            }.finally {
+                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        }
     }
     
     func labelForMonthItem(index: Int) -> CircularScrollViewItem {
@@ -292,13 +319,14 @@ extension ExploreViewController: UITableViewDataSource {
         cell.likeButton.tag = indexPath.row
         cell.likeButton.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
         
-        cell.likeButton.addTarget(self, action: #selector(likePhoto(sender:)), for: .touchUpInside)
+        cell.likeButton.addTarget(self, action: #selector(likeImage(sender:)), for: .touchUpInside)
         return cell
     }
 }
 
 extension ExploreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        heightForIndexPath[indexPath] = cell.frame.height
         let lastElement = images.count - 1
         if indexPath.row == lastElement, shouldFetchMore {
             page += 1
@@ -307,6 +335,10 @@ extension ExploreViewController: UITableViewDelegate {
                 self.images += images
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heightForIndexPath[indexPath] ?? averageRowHeight
     }
 }
 

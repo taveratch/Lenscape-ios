@@ -270,4 +270,25 @@ class Api {
             }
         }
     }
+    
+    static func likeImage(imageId: Int) -> Promise<Image> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let url = "\(HOST)/photo/\(imageId)/like"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: "POST").done {
+                response in
+                let image = Image(item: response)
+                seal.fulfill(image)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
 }

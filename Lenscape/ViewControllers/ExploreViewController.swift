@@ -191,6 +191,17 @@ class ExploreViewController: UIViewController {
         present(vc, animated: true)
     }
     
+    @objc private func likePhoto(sender: UIButton) {
+        let index = sender.tag
+        print(index)
+        guard index >= 0 && index < images.count else {
+            fatalError("sender.tag must be number in range of 0..images.count")
+        }
+        let image = images[index]
+        image.is_liked = !image.is_liked
+        sender.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+    }
+    
     func labelForMonthItem(index: Int) -> CircularScrollViewItem {
         let string = items[index]
         let viewContainer = CircularScrollViewItem()
@@ -274,11 +285,14 @@ extension ExploreViewController: UITableViewDataSource {
         cell.uiImageView.hero.id = image.thumbnailLink!
         
         cell.numberOfLikeLabel.text = "\(image.likes!)"
-//        cell.imageNameLabel.text = image.name!
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
-        cell.uiImageView.addGestureRecognizer(tap)
-        cell.uiImageView.isUserInteractionEnabled = true
+        ComponentUtil.addTapGesture(parentViewController: self, for: cell.uiImageView, with: #selector(showFullPhoto(sender:)))
+        
+        // Tag like button with row number. use "tag" to get specific image in like()
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+        
+        cell.likeButton.addTarget(self, action: #selector(likePhoto(sender:)), for: .touchUpInside)
         return cell
     }
 }

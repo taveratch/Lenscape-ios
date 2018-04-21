@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Image {
+class Image {
     var name: String?
     var type: String?
     var id: String?
@@ -27,6 +27,7 @@ struct Image {
     var isNear: Bool?
     var location: Location?
     var locationName: String?
+    var is_liked: Bool
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
         let index = link.index(link.endIndex, offsetBy: -4)
@@ -58,6 +59,9 @@ struct Image {
         datetime = image["timestamp"] as? Double
         relativeDatetimeString = DateUtil.getRelativeTimeString(since: datetime)
         (dateString, timeString) = DateUtil.getDateTimeString(of: datetime)
+        
+        // TODO: set is_liked with data from API
+        is_liked = false
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

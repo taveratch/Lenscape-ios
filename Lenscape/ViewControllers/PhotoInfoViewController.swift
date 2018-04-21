@@ -65,9 +65,9 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.pictureNameLabel.text = image!.name!
         informationWrapper.locationNameLabel.text = image!.locationName!
         
-        if image!.isNear! {
-            var distance = "\(image!.distance!)"
-            var unit = "kilometers away"
+        if image!.isNear != nil, image!.isNear! {
+            var distance = String(format: "%.2f", image!.distance!)
+            var unit = "km away"
             if image!.distance! < 1 {
                 distance = "\(Int(image!.distance! * 1000))"
                 unit = "meters away"
@@ -75,7 +75,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             informationWrapper.distanceLabel.text = distance
             informationWrapper.distanceUnitLabel.text = unit
         }else {
-            informationWrapper.distanceLabel.isHidden = true
+            informationWrapper.distanceStackView.isHidden = true
         }
         
         informationWrapper.likeLabel.text = "\(image!.likes!)"

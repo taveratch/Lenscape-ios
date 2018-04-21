@@ -15,6 +15,7 @@
                 <outlet property="closeButton" destination="VaN-OO-ett" id="keQ-VP-QzR"/>
                 <outlet property="dateLabel" destination="WYe-I1-r9w" id="iii-2d-RU9"/>
                 <outlet property="distanceLabel" destination="7EO-5c-RcS" id="Xuc-cH-vla"/>
+                <outlet property="distanceStackView" destination="CjA-5V-1gE" id="Cgk-5O-XTJ"/>
                 <outlet property="distanceUnitLabel" destination="pqF-Fk-trf" id="VRC-cy-RcA"/>
                 <outlet property="likeLabel" destination="tcZ-6F-31A" id="zWO-Mv-ERy"/>
                 <outlet property="locationNameLabel" destination="3PS-6r-68c" id="4vB-L0-fSi"/>
@@ -240,7 +241,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0H-HT-ka0">
                                                     <rect key="frame" x="35" y="0.0" width="50.666666666666657" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Winter Black" translatesAutoresizingMaskIntoConstraints="NO" id="Wko-oM-maU">
@@ -263,7 +264,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date taken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9S-59-CJb">
                                                     <rect key="frame" x="23" y="0.0" width="74" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 2, 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWy-mN-ufj">

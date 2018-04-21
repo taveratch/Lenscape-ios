@@ -18,8 +18,8 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var imageNameLabel: UILabel!
     @IBOutlet weak var locationNameLabel: UILabel!
-    @IBOutlet weak var likeButton: UIImageView!
     @IBOutlet weak var numberOfLikeLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Attributes
     var image: Image?
@@ -106,6 +106,11 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         
         imageNameLabel.text = image!.name
         locationNameLabel.text = image!.locationName
+        setupLikeComponentsUI()
+    }
+    
+    private func setupLikeComponentsUI() {
+        likeButton.setImage(UIImage(named: image!.is_liked ? "Red heart": "White Heart"), for: .normal)
         numberOfLikeLabel.text = String(image!.likes!)
     }
     
@@ -143,7 +148,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     private func savePhotoToCameraRoll() {
         UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
-        showAlert(title: nil, message: "Photo has been saved to Camera Roll")
+        AlertController.showAlert(viewController: self, title: nil, message: "Photo has been saved to Camera Roll")
     }
     
     private func shareToFacebook() {
@@ -152,18 +157,9 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         do {
             try ShareDialog.show(from: self, content: content)
         }catch {
-            showAlert(message: "Something went wrong!. Could not find Facebook App")
+            AlertController.showAlert(viewController: self, message: "Something went wrong!. Could not find Facebook App")
             print(error)
         }
-    }
-    
-    private func showAlert(title: String? = "Message", message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel) {
-            action in
-            alert.dismiss(animated: true)
-        })
-        present(alert, animated: true)
     }
     
     @IBAction func showMoreActions(_ sender: UIButton) {
@@ -178,5 +174,31 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func share(_ sender: UIButton) {
         shareToFacebook()
+    }
+    
+    @IBAction func likeImage(_ sender: UIButton) {
+        let updateImage = {
+            self.image!.is_liked = !self.image!.is_liked
+            self.image!.likes! += self.image!.is_liked ? 1 : -1
+        }
+        
+        updateImage()
+        setupLikeComponentsUI()
+       
+        let _ = Api.likeImage(imageId: image!.id, liked: self.image!.is_liked).done {
+            image in
+            self.image!.is_liked = image.is_liked
+            self.image!.likes = image.likes
+            }.catch {
+                error in
+                //Update back to state before press
+                updateImage()
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as! String
+                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+            }
+            .finally {
+                self.setupLikeComponentsUI()
+        }
     }
 }

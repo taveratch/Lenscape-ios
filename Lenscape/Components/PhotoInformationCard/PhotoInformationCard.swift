@@ -26,6 +26,7 @@ class PhotoInformationCard: UIView {
     @IBOutlet weak var takenTimeLabel: UILabel!
     @IBOutlet weak var seasonImageView: UIImageView!
     @IBOutlet weak var seasonLabel: UILabel!
+    @IBOutlet weak var distanceStackView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

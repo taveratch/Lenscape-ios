@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-struct Image {
+class Image {
     var name: String?
     var type: String?
-    var id: String?
+    var id: Int
     var width: Int?
     var height: Int?
     var link: String?
@@ -27,6 +27,7 @@ struct Image {
     var isNear: Bool?
     var location: Location?
     var locationName: String?
+    var is_liked: Bool
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
         let index = link.index(link.endIndex, offsetBy: -4)
@@ -39,10 +40,10 @@ struct Image {
         }
         name = image["name"] as? String ?? "Image name"
         type = image["type"] as? String
-        id = image["id"] as? String
+        id = image["id"] as! Int
         likes = image["number_of_likes"] as? Int
         
-        let ownerObj = image["owner"] as! Any
+        let ownerObj = image["owner"] as Any
         owner = Owner(item: ownerObj)
         
         link = image["original_url"] as? String
@@ -51,13 +52,15 @@ struct Image {
         //TODO: Change this
         let locationObject = image["location"] as! [String: Any]
         location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
-        locationName = locationObject["name"] as! String
+        locationName = locationObject["name"] as? String
         distance = locationObject["distance"] as? Double ?? 0
         isNear = locationObject["is_near"] as? Bool
         
         datetime = image["timestamp"] as? Double
         relativeDatetimeString = DateUtil.getRelativeTimeString(since: datetime)
         (dateString, timeString) = DateUtil.getDateTimeString(of: datetime)
+        
+        is_liked = image["is_liked"] as? Bool ?? false
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

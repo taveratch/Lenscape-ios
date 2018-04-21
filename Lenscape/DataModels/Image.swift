@@ -60,8 +60,7 @@ class Image {
         relativeDatetimeString = DateUtil.getRelativeTimeString(since: datetime)
         (dateString, timeString) = DateUtil.getDateTimeString(of: datetime)
         
-        // TODO: set is_liked with data from API
-        is_liked = false
+        is_liked = image["is_liked"] as? Bool ?? false
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

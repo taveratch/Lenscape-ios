@@ -185,7 +185,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         updateImage()
         setupLikeComponentsUI()
        
-        let _ = Api.likeImage(imageId: image!.id).done {
+        let _ = Api.likeImage(imageId: image!.id, liked: self.image!.is_liked).done {
             image in
             self.image!.is_liked = image.is_liked
             self.image!.likes = image.likes

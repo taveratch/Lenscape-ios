@@ -151,20 +151,26 @@ class Api {
             "Authorization": "Bearer \(UserController.getToken())"
         ]
         
+        var userLocation = LocationManager.getInstance().getCurrentLocation()
+        if userLocation == nil {
+            userLocation = location
+        }
+        
         let parameters: [String: String] = [
-            "latlong": "\(location.latitude),\(location.longitude)",
+            "target_latlong": "\(location.latitude),\(location.longitude)",
+            "user_latlong": "\(userLocation!.latitude),\(userLocation!.longitude)",
             "month": String(month),
             "page": String(page),
             "size": String(size)
         ]
         
-        let url = "\(HOST)/aroundme/photos"
+        let url = "\(HOST)/photos"
         return Promise {
             seal in
             ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
                 response in
                 let data = response!["data"] as! [Any]
-                var images = data
+                let images = data
                     .map { Image(item: $0) }
                 
                 let fulfill: [String: Any] = [
@@ -271,16 +277,17 @@ class Api {
         }
     }
     
-    static func likeImage(imageId: Int) -> Promise<Image> {
+    static func likeImage(imageId: Int, liked: Bool) -> Promise<Image> {
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"
         ]
         
         let url = "\(HOST)/photo/\(imageId)/like"
+        let method = liked ? "POST" : "DELETE"
         
         return Promise {
             seal in
-            ApiManager.fetch(url: url, headers: headers, body: nil, method: "POST").done {
+            ApiManager.fetch(url: url, headers: headers, body: nil, method: method).done {
                 response in
                 let image = Image(item: response)
                 seal.fulfill(image)

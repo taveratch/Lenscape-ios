@@ -223,7 +223,7 @@ class ExploreViewController: UIViewController {
         // Reload table row immediately with updated image's info
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         
-        let _ = Api.likeImage(imageId: image.id).done {
+        let _ = Api.likeImage(imageId: image.id, liked: image.is_liked).done {
             image in
             self.images[index] = image
             }.catch {

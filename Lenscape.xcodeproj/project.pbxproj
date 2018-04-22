@@ -126,6 +126,8 @@
 		95F8814520555309003F61D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F8814420555309003F61D4 /* GradientView.swift */; };
 		D007EEF0207BD2FE00C46129 /* HeroUITabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */; };
 		D0131854207F6DD500BA9A96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0131853207F6DD400BA9A96 /* GoogleService-Info.plist */; };
+		D036D5AF208D00FD00DADDC8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */; };
+		D036D5B2208D04BF00DADDC8 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5B1208D04BF00DADDC8 /* NotificationTableViewCell.swift */; };
 		D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */; };
 		D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064919C206E8B5F002ADF2C /* POIItem.swift */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
@@ -296,6 +298,8 @@
 		9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lenscape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUITabBarDelegate.swift; sourceTree = "<group>"; };
 		D0131853207F6DD400BA9A96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		D036D5B1208D04BF00DADDC8 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		D0649138206CF013002ADF2C /* Lenscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lenscape-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 			children = (
 				95619D4A208ECED9001A89A5 /* PlaceVCFeedItemTableViewCell */,
 				9560EA24208EC34C0013AB22 /* FeedItemTableViewCell */,
+				D036D5B0208D049600DADDC8 /* NotificationTableViewCell */,
 				9541DB38207BC70900F7BE65 /* SearchAutoCompleteTableViewCell */,
 				95A43BA42075CD4500401BFA /* FeedItem */,
 				95C35BBB2071E19000030B12 /* PhotoUploadInformationCard */,
@@ -615,6 +620,7 @@
 				9518DBB72052DE0A00F0BE1B /* ExploreMapViewController.swift */,
 				956F1705204EAB0000CADB75 /* SignUpViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
+				D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -739,6 +745,14 @@
 				9DD7EF58BBD9E3A705AFBDCC /* Pods_Lenscape.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D036D5B0208D049600DADDC8 /* NotificationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D036D5B1208D04BF00DADDC8 /* NotificationTableViewCell.swift */,
+			);
+			path = NotificationTableViewCell;
 			sourceTree = "<group>";
 		};
 		D064913D206E89C4002ADF2C /* GoogleMapsUtils */ = {
@@ -964,6 +978,7 @@
 				950358C2206F95BB00D424F4 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				950358D6206F95BB00D424F4 /* GMUHeatmapTileLayer.m in Sources */,
 				950358D820709FC600D424F4 /* CustomGMUClusterIconGenerator.swift in Sources */,
+				D036D5AF208D00FD00DADDC8 /* NotificationViewController.swift in Sources */,
 				950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
@@ -984,6 +999,8 @@
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,
 				950358EC2071147800D424F4 /* GoogleDataProvider.swift in Sources */,
 				95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */,
+				95A43BA82075CD7100401BFA /* FeedTableViewCell.swift in Sources */,
+				D036D5B2208D04BF00DADDC8 /* NotificationTableViewCell.swift in Sources */,
 				950358EB2071147800D424F4 /* GooglePlace.swift in Sources */,
 				958A4D9120889A5F00C9BA6B /* ComponentUtil.swift in Sources */,
 				95B8AB802051954D007480AA /* FavoriteViewController.swift in Sources */,

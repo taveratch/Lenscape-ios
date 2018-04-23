@@ -53,11 +53,21 @@
                         <constraint firstItem="ZXQ-vf-GK8" firstAttribute="width" secondItem="ZXQ-vf-GK8" secondAttribute="height" multiplier="7:10" id="6AD-aY-2Ql"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf9-9w-0ex">
+                    <rect key="frame" x="16" y="53.5" width="343" height="0.5"/>
+                    <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.40000000000000002" id="BXW-ru-y2K"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ha8-Zi-whs" secondAttribute="trailing" constant="24" id="9lT-XE-TYM"/>
+                <constraint firstItem="jf9-9w-0ex" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="F8K-SW-zZE"/>
                 <constraint firstItem="ha8-Zi-whs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NJu-Gz-AYb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jf9-9w-0ex" secondAttribute="trailing" constant="16" id="VnK-cL-Unj"/>
+                <constraint firstItem="jf9-9w-0ex" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ZAj-Kz-4j1"/>
                 <constraint firstItem="ha8-Zi-whs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="wnJ-hD-eg1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

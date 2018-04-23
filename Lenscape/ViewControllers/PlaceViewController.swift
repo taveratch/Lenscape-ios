@@ -7,31 +7,58 @@
 //
 
 import UIKit
+import Hero
 
 class PlaceViewController: UIViewController {
 
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var numberOfPhotoLabel: UILabel!
+    @IBOutlet weak var placeNameStackView: UIStackView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var recentContainerView: UIView!
+    @IBOutlet weak var historyContainerView: UIView!
+    
+    var place: Place?
+    var images: [Image] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setupUI() {
+        guard let place = place else {
+            fatalError("place cannot be nil")
+        }
+        
+        ComponentUtil.addTapGesture(parentViewController: self, for: placeNameStackView, with: #selector(dismissView))
+        
+        placeNameLabel.text = place.name
+        
+        recentContainerView.alpha = 1
+        historyContainerView.alpha = 0
     }
-    */
-
+    
+    private func fetchImageFromAPI() {
+        
+    }
+    
+    @objc private func dismissView() {
+        Hero.shared.defaultAnimation = .push(direction: .right)
+        dismiss(animated: true)
+    }
+    
+    @IBAction func segmentIndexChanged(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            recentContainerView.alpha = 1
+            historyContainerView.alpha = 0
+        case 1:
+            recentContainerView.alpha = 0
+            historyContainerView.alpha = 1
+        default:
+            break
+        }
+    }
+    
 }

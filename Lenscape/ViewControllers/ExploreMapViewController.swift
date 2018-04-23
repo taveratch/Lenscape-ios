@@ -88,7 +88,8 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
                 let images = fulfill["images"] as! [Image]
                 self.images = images
                 for image in images {
-                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: (image.location?.latitude)!, longitude: (image.location?.longitude)!), name: image.name!, image: image))
+                    poiItems.append(POIItem(position: CLLocationCoordinate2D(latitude: image.place
+                        .location.latitude, longitude: image.place.location.longitude), name: image.name!, image: image))
                 }
                 seal.fulfill(poiItems)
                 }.catch{
@@ -126,7 +127,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
             // If user's current location is still on the map, assume that photos are from around you
             locationName = "Around You"
         }else if images.count > 0 { //If there are photos from fetching api, pick location's name from first photo
-            locationName = "Around \(images.first!.locationName!)"
+            locationName = "Around \(images.first!.place.name)"
         }
         
         delegate?.didMapChangeLocation(location: currentMapViewLocation!, locationName: locationName)
@@ -162,7 +163,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     // MARK: - GMUClusterManagerDelegate
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
         if let items = cluster.items as? [POIItem] {
-//            print(items[0].image)
+            print(items[0].image)
+            let item = items.first!
+            showPlaceViewController(place: item.image.place)
         }
         
         return false
@@ -272,9 +275,17 @@ extension ExploreMapViewController: GMSMapViewDelegate {
         ComponentUtil.fade(of: seeInFeedButton, hidden: true)
     }
     
+    private func showPlaceViewController(place: Place) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PlaceViewController.rawValue) as! PlaceViewController
+        vc.place = place
+        Hero.shared.defaultAnimation = .push(direction: .left)
+        present(vc, animated: true)
+    }
+    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if let poiItem = marker.userData as? POIItem {
             NSLog("Did tap marker for cluster item \(poiItem.name)")
+            showPlaceViewController(place: poiItem.image.place)
         } else {
             NSLog("Did tap a normal marker")
         }

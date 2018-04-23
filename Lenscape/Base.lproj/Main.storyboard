@@ -372,7 +372,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-iW-7Va" customClass="ProfileInfoView" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
@@ -1204,6 +1204,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7Q-sO-UIf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Vpu-a0-W6y"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -1215,7 +1216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY4-7d-OQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334.7826086956525" y="526.63043478260875"/>
+            <point key="canvasLocation" x="3494" y="525"/>
         </scene>
         <!--Google Places Auto Complete View Controller-->
         <scene sceneID="Rh0-xr-r3x">
@@ -1396,7 +1397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nQ-26-WqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4041" y="527"/>
+            <point key="canvasLocation" x="4201" y="526"/>
         </scene>
         <!--New Place-->
         <scene sceneID="xe8-s1-euJ">
@@ -1477,7 +1478,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eu-f6-TVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jG3-xy-Ddq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4823" y="527"/>
+            <point key="canvasLocation" x="4982" y="526"/>
         </scene>
         <!--Place View Controller-->
         <scene sceneID="7ai-tx-yya">
@@ -1490,28 +1491,41 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlC-gk-CRe">
                                 <rect key="frame" x="0.0" y="20" width="375" height="80"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hTP-8a-ejT">
-                                        <rect key="frame" x="16" y="18" width="101" height="44.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BLd-QM-WV0">
+                                        <rect key="frame" x="16" y="18.5" width="124" height="44.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place's name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-q0-zvF">
-                                                <rect key="frame" x="0.0" y="0.0" width="101" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-Po-xx0">
-                                                <rect key="frame" x="0.0" y="28.5" width="101" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Back Arrow Black" translatesAutoresizingMaskIntoConstraints="NO" id="JkA-v4-jdF">
+                                                <rect key="frame" x="0.0" y="15" width="15" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="JkA-v4-jdF" secondAttribute="height" multiplier="1:1" id="Eu9-hY-TQE"/>
+                                                    <constraint firstAttribute="width" constant="15" id="gmX-wb-HvC"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hTP-8a-ejT">
+                                                <rect key="frame" x="23" y="0.0" width="101" height="44.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place's name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DP-q0-zvF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="101" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kf-Po-xx0">
+                                                        <rect key="frame" x="0.0" y="28.5" width="101" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="hTP-8a-ejT" firstAttribute="leading" secondItem="FlC-gk-CRe" secondAttribute="leading" constant="16" id="VSM-3k-h69"/>
-                                    <constraint firstItem="hTP-8a-ejT" firstAttribute="centerY" secondItem="FlC-gk-CRe" secondAttribute="centerY" id="Wob-kw-Gf9"/>
+                                    <constraint firstItem="BLd-QM-WV0" firstAttribute="leading" secondItem="FlC-gk-CRe" secondAttribute="leading" constant="16" id="AFc-2W-qgy"/>
+                                    <constraint firstItem="BLd-QM-WV0" firstAttribute="centerY" secondItem="FlC-gk-CRe" secondAttribute="centerY" id="Ggh-pF-UGi"/>
                                     <constraint firstAttribute="height" constant="80" id="mVM-zu-r6W"/>
                                 </constraints>
                             </view>
@@ -1579,6 +1593,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentIndexChanged:" destination="KbB-Bx-Sf9" eventType="valueChanged" id="o3V-98-gpu"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MG-js-4Uo" userLabel="Recent Container View">
                                 <rect key="frame" x="0.0" y="233" width="375" height="434"/>
@@ -1618,9 +1635,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Tb-d5-Wu8"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="historyContainerView" destination="dAw-Jb-jmh" id="1of-bQ-5Ld"/>
                         <outlet property="numberOfPhotoLabel" destination="3Kf-Po-xx0" id="eIj-Mz-0Ig"/>
                         <outlet property="placeNameLabel" destination="5DP-q0-zvF" id="cOT-5U-p2A"/>
+                        <outlet property="placeNameStackView" destination="BLd-QM-WV0" id="39e-I7-iOi"/>
+                        <outlet property="recentContainerView" destination="1MG-js-4Uo" id="AF7-Eo-gLg"/>
+                        <outlet property="segmentControl" destination="z7O-6M-VgY" id="ugO-Wy-Va7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h01-y1-aeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2336,7 +2360,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yph-3L-bbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4822" y="-261"/>
+            <point key="canvasLocation" x="4982" y="-261"/>
         </scene>
         <!--Place Recent Photo View Controller-->
         <scene sceneID="lut-Nk-WdM">
@@ -2394,6 +2418,15 @@
                     <view key="view" contentMode="scaleToFill" id="asv-7q-tHP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="434"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4za-LJ-DLk">
+                                <rect key="frame" x="166" y="207" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>

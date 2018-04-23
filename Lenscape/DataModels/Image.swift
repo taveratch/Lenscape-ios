@@ -25,8 +25,7 @@ class Image {
     var likes: Int?
     var owner: Owner!
     var isNear: Bool?
-    var location: Location?
-    var locationName: String?
+    var place: Place
     var is_liked: Bool
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
@@ -49,10 +48,13 @@ class Image {
         link = image["original_url"] as? String
         thumbnailLink = image["thumbnail_link"] as? String
         
-        //TODO: Change this
         let locationObject = image["location"] as! [String: Any]
-        location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
-        locationName = locationObject["name"] as? String
+        let location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
+        let locationName = locationObject["name"] as! String
+        place = Place(name: locationName, location: location)
+        place.placeID = locationObject["id"] as! String
+        place.type = locationObject["is_google_place"] as! Bool ? PlaceType.GOOGLE_TYPE : PlaceType.LENSCAPE_TYPE
+        
         distance = locationObject["distance"] as? Double ?? 0
         isNear = locationObject["is_near"] as? Bool
         

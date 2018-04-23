@@ -105,7 +105,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         imageView.kf.setImage(with: url, placeholder: placeHolderImage)
         
         imageNameLabel.text = image!.name
-        locationNameLabel.text = image!.locationName
+        locationNameLabel.text = image!.place.name
         setupLikeComponentsUI()
     }
     

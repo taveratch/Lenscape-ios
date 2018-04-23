@@ -29,6 +29,7 @@ enum Identifier: String {
     case SearchAutoCompleteTableViewCell = "SearchAutoCompleteTableViewCell"
     case AddNewPlaceTableViewCell = "AddNewPlaceTableViewCell"
     case AddNewPlaceViewController = "AddNewPlaceViewController"
+    case PlaceViewController = "PlaceViewController"
 }
 
 enum SegueIdentifier: String {

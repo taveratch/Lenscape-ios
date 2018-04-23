@@ -68,6 +68,8 @@
 		955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A9205CEBEC007B3B17 /* CameraShotButton.swift */; };
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
+		9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */; };
+		9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA18208D862D0013AB22 /* PlaceViewController.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -227,6 +229,8 @@
 		955606A9205CEBEC007B3B17 /* CameraShotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraShotButton.swift; sourceTree = "<group>"; };
 		955C3AF4204D95C40023FAF0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
+		9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecentPhotoViewController.swift; sourceTree = "<group>"; };
+		9560EA18208D862D0013AB22 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +563,8 @@
 				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
 				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
+				9560EA18208D862D0013AB22 /* PlaceViewController.swift */,
+				9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
@@ -978,8 +984,10 @@
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */,
 				950358C6206F95BB00D424F4 /* GMUDefaultClusterRenderer.m in Sources */,
+				9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */,
 				950358C0206F95BB00D424F4 /* GQTPointQuadTreeChild.m in Sources */,
 				950358CA206F95BB00D424F4 /* GMUGeometryRenderer.m in Sources */,
+				9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				950358C4206F95BB00D424F4 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,

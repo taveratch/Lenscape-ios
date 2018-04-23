@@ -163,9 +163,9 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     // MARK: - GMUClusterManagerDelegate
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
         if let items = cluster.items as? [POIItem] {
-            print(items[0].image)
-            let item = items.first!
-            showPlaceViewController(place: item.image.place)
+            let places = items.map { $0.image.place }
+            let placesWithoutDuplicate = Array(Set<Place>(places))
+            showPlaceListViewController(places: placesWithoutDuplicate)
         }
         
         return false
@@ -275,17 +275,17 @@ extension ExploreMapViewController: GMSMapViewDelegate {
         ComponentUtil.fade(of: seeInFeedButton, hidden: true)
     }
     
-    private func showPlaceViewController(place: Place) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PlaceViewController.rawValue) as! PlaceViewController
-        vc.place = place
+    private func showPlaceListViewController(places: [Place]) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PlaceListViewController.rawValue) as! PlaceListViewController
+        vc.places = places
+        let navigationController = UINavigationController(rootViewController: vc)
         Hero.shared.defaultAnimation = .push(direction: .left)
-        present(vc, animated: true)
+        present(navigationController, animated: true)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if let poiItem = marker.userData as? POIItem {
             NSLog("Did tap marker for cluster item \(poiItem.name)")
-            showPlaceViewController(place: poiItem.image.place)
         } else {
             NSLog("Did tap a normal marker")
         }

@@ -73,6 +73,7 @@
 		9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */; };
 		9560EA1D208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560EA1B208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib */; };
 		9560EA1F208DB8690013AB22 /* SearchItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560EA1E208DB8690013AB22 /* SearchItemTableViewCell.xib */; };
+		9560EA23208DBD4F0013AB22 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -237,6 +238,7 @@
 		9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageThumbnailTableViewCell.swift; sourceTree = "<group>"; };
 		9560EA1B208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageThumbnailTableViewCell.xib; sourceTree = "<group>"; };
 		9560EA1E208DB8690013AB22 /* SearchItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemTableViewCell.xib; sourceTree = "<group>"; };
+		9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				9560EA18208D862D0013AB22 /* PlaceViewController.swift */,
 				9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
+				9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */,
 				95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */,
 				95B8AB8120523B9E007480AA /* MainTabBarController.swift */,
 				956F1703204EA69000CADB75 /* ExploreViewController.swift */,
@@ -985,6 +988,7 @@
 				950358C8206F95BB00D424F4 /* GMUStaticCluster.m in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				950358D5206F95BB00D424F4 /* GMUGradient.m in Sources */,
+				9560EA23208DBD4F0013AB22 /* PlaceListViewController.swift in Sources */,
 				953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */,
 				9509A5322084DBCE00334B74 /* Place.swift in Sources */,
 				95E45148206DF2B7000E5046 /* Pagination.swift in Sources */,

@@ -61,6 +61,7 @@ class PlaceViewController: UIViewController {
     
     @objc private func dismissView() {
         Hero.shared.defaultAnimation = .push(direction: .right)
+        print("dismiss")
         dismiss(animated: true)
     }
     

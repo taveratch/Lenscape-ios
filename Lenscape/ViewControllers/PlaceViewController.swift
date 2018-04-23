@@ -20,6 +20,7 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var hofImage: UIImageView!
     
     var place: Place?
+    var hof: Image?
     var images: [Image] = []
     var placeRecentPhotoViewController: PlaceRecentPhotoViewController?
     
@@ -37,7 +38,15 @@ class PlaceViewController: UIViewController {
         ComponentUtil.addTapGesture(parentViewController: self, for: placeNameStackView, with: #selector(dismissView))
         
         placeNameLabel.text = place.name
-       
+    }
+    
+    private func showFullImageViewController(image: Image, uiImage: UIImage) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+        vc.image = image
+        vc.placeHolderImage = uiImage
+        
+        Hero.shared.defaultAnimation = .fade
+        present(vc, animated: true)
     }
     
     private func getHOFImage(images: [Image]) -> Image? {
@@ -45,8 +54,16 @@ class PlaceViewController: UIViewController {
         return sortedImages.first
     }
     
+    @objc private func showFullHOFImage() {
+        showFullImageViewController(image: hof!, uiImage: hofImage.image!)
+    }
+    
     private func setupHOFUI(image: Image) {
+        hofImage.hero.id = image.thumbnailLink!
+        ComponentUtil.addTapGesture(parentViewController: self, for: hofImage, with: #selector(showFullHOFImage))
+        
         let imageUrl = URL(string: image.thumbnailLink!)
+        
         hofImage.kf.indicatorType = .activity
         hofImage.kf.setImage(with: imageUrl, options: [.forceTransition]) {
             _,_,_,_ in
@@ -66,6 +83,7 @@ class PlaceViewController: UIViewController {
             images in
             self.images = images
             if let hofImage = self.getHOFImage(images: images) {
+                self.hof = hofImage
                 self.setupHOFUI(image: hofImage)
             }
         }

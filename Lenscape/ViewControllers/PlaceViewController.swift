@@ -14,9 +14,6 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var numberOfPhotoLabel: UILabel!
     @IBOutlet weak var placeNameStackView: UIStackView!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var recentContainerView: UIView!
-    @IBOutlet weak var historyContainerView: UIView!
     
     var place: Place?
     var images: [Image] = []
@@ -36,9 +33,7 @@ class PlaceViewController: UIViewController {
         ComponentUtil.addTapGesture(parentViewController: self, for: placeNameStackView, with: #selector(dismissView))
         
         placeNameLabel.text = place.name
-        
-        recentContainerView.alpha = 1
-        historyContainerView.alpha = 0
+       
     }
     
     private func fetchInitImageFromAPI() {
@@ -67,19 +62,6 @@ class PlaceViewController: UIViewController {
     @objc private func dismissView() {
         Hero.shared.defaultAnimation = .push(direction: .right)
         dismiss(animated: true)
-    }
-    
-    @IBAction func segmentIndexChanged(_ sender: UISegmentedControl) {
-        switch segmentControl.selectedSegmentIndex {
-        case 0:
-            recentContainerView.alpha = 1
-            historyContainerView.alpha = 0
-        case 1:
-            recentContainerView.alpha = 0
-            historyContainerView.alpha = 1
-        default:
-            break
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
+            <connections>
+                <outlet property="placeAddressLabel" destination="RRl-Jh-Zgw" id="k9F-oJ-K1m"/>
+                <outlet property="placeNameLabel" destination="mUk-Cz-DrM" id="2Qo-EO-Emg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ha8-Zi-whs">
+                    <rect key="frame" x="24" y="8.5" width="327" height="37"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="ZXQ-vf-GK8">
+                            <rect key="frame" x="0.0" y="8.5" width="14" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ZXQ-vf-GK8" secondAttribute="height" multiplier="7:10" id="0Pb-bd-RMk"/>
+                                <constraint firstAttribute="width" constant="14" id="6zU-bn-0YI"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Dej-Q7-6lg">
+                            <rect key="frame" x="34" y="0.0" width="293" height="37"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kasetsart University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUk-Cz-DrM">
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRl-Jh-Zgw">
+                                    <rect key="frame" x="0.0" y="22.5" width="293" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ZXQ-vf-GK8" firstAttribute="width" secondItem="ZXQ-vf-GK8" secondAttribute="height" multiplier="7:10" id="6AD-aY-2Ql"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ha8-Zi-whs" secondAttribute="trailing" constant="24" id="9lT-XE-TYM"/>
+                <constraint firstItem="ha8-Zi-whs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NJu-Gz-AYb"/>
+                <constraint firstItem="ha8-Zi-whs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="wnJ-hD-eg1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Red Pin" width="42" height="60"/>
+    </resources>
+</document>

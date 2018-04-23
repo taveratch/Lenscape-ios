@@ -26,7 +26,7 @@ enum Identifier: String {
     case PhotoPreviewViewController = "PhotoPreviewViewController"
     case FeedTableCell = "FeedTableCell"
     case GooglePlacesAutoCompleteViewController = "GooglePlacesAutoCompleteViewController"
-    case SearchAutoCompleteTableViewCell = "SearchAutoCompleteTableViewCell"
+    case SearchItemTableViewCell = "SearchItemTableViewCell"
     case AddNewPlaceTableViewCell = "AddNewPlaceTableViewCell"
     case AddNewPlaceViewController = "AddNewPlaceViewController"
     case PlaceViewController = "PlaceViewController"

@@ -128,6 +128,7 @@
 		D0131854207F6DD500BA9A96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0131853207F6DD400BA9A96 /* GoogleService-Info.plist */; };
 		D036D5AF208D00FD00DADDC8 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */; };
 		D036D5B2208D04BF00DADDC8 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5B1208D04BF00DADDC8 /* NotificationTableViewCell.swift */; };
+		D036D5B6208DA50400DADDC8 /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5B5208DA50400DADDC8 /* NotificationItem.swift */; };
 		D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */; };
 		D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064919C206E8B5F002ADF2C /* POIItem.swift */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
@@ -300,6 +301,7 @@
 		D0131853207F6DD400BA9A96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		D036D5B1208D04BF00DADDC8 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		D036D5B5208DA50400DADDC8 /* NotificationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItem.swift; sourceTree = "<group>"; };
 		D0649138206CF013002ADF2C /* Lenscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lenscape-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				9504A15320677CBB00FDF606 /* Location.swift */,
 				D064919C206E8B5F002ADF2C /* POIItem.swift */,
 				9541DB3B207BC81100F7BE65 /* SearchResult.swift */,
+				D036D5B5208DA50400DADDC8 /* NotificationItem.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				95C35BC3207215FE00030B12 /* Owner.swift in Sources */,
 				959D25D4207B5F4700650D08 /* UIScrollView.swift in Sources */,
 				953048A0206210CA00EB5F3F /* PhotoInfoViewController.swift in Sources */,
+				D036D5B6208DA50400DADDC8 /* NotificationItem.swift in Sources */,
 				954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */,
 				95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */,
 				950358D1206F95BB00D424F4 /* GMUPoint.m in Sources */,

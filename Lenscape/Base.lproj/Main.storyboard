@@ -422,43 +422,53 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKc-lg-SvK" id="cFU-mH-Ico">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-Q1-pjn" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                                                     <rect key="frame" x="17" y="6" width="340" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo of the day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-Yo-sYy">
-                                                            <rect key="frame" x="16" y="15" width="122.5" height="20"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                            <rect key="frame" x="16" y="16" width="109" height="19"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98V-3U-4p5">
                                                             <rect key="frame" x="16" y="45" width="308" height="33.5"/>
                                                             <string key="text">Hi there, here's our pick for today's best photo. 
-We hope you like it</string>
+Have a good day.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 minutes ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESn-oI-FZa">
-                                                            <rect key="frame" x="249.5" y="16" width="74.5" height="13.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESn-oI-FZa">
+                                                            <rect key="frame" x="303" y="16" width="21" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTp-TU-2cu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="340" height="5"/>
+                                                            <color key="backgroundColor" red="0.68235294117647061" green="0.83529411764705885" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="5" id="fx6-Dd-btZ"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="OGf-Yo-sYy" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="16" id="1TL-GE-oW8"/>
                                                         <constraint firstAttribute="bottom" secondItem="OGf-Yo-sYy" secondAttribute="bottom" constant="55" id="3eU-u0-GBI"/>
-                                                        <constraint firstItem="OGf-Yo-sYy" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" constant="15" id="KT0-B8-g5e"/>
+                                                        <constraint firstItem="NTp-TU-2cu" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" id="H8v-MC-t9x"/>
+                                                        <constraint firstItem="OGf-Yo-sYy" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" constant="16" id="KT0-B8-g5e"/>
                                                         <constraint firstItem="ESn-oI-FZa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="20" symbolic="YES" id="Pln-vT-3Td"/>
+                                                        <constraint firstItem="NTp-TU-2cu" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" id="QdI-EQ-dNn"/>
                                                         <constraint firstAttribute="trailing" secondItem="98V-3U-4p5" secondAttribute="trailing" constant="16" id="c0b-9d-rfX"/>
                                                         <constraint firstAttribute="trailing" secondItem="ESn-oI-FZa" secondAttribute="trailing" constant="16" id="dwF-9z-T55"/>
                                                         <constraint firstItem="ESn-oI-FZa" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" constant="16" id="fS9-Vs-pN5"/>
                                                         <constraint firstItem="98V-3U-4p5" firstAttribute="top" secondItem="OGf-Yo-sYy" secondAttribute="bottom" constant="10" id="jH4-7e-39v"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NTp-TU-2cu" secondAttribute="trailing" id="k7i-DK-qxB"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OGf-Yo-sYy" secondAttribute="trailing" id="m4b-H3-5DP"/>
                                                         <constraint firstItem="98V-3U-4p5" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="16" id="nLn-nd-BHf"/>
                                                     </constraints>
@@ -482,6 +492,11 @@ We hope you like it</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="body" destination="98V-3U-4p5" id="nWy-Ur-Kt4"/>
+                                            <outlet property="time" destination="ESn-oI-FZa" id="Iyz-J2-3ku"/>
+                                            <outlet property="title" destination="OGf-Yo-sYy" id="DrY-1W-roY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -807,7 +822,7 @@ We hope you like it</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-56-hnB" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -1400,7 +1415,7 @@ We hope you like it</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
@@ -1447,7 +1462,7 @@ We hope you like it</string>
                                         <rect key="frame" x="0.0" y="78" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">
@@ -2305,7 +2320,7 @@ We hope you like it</string>
         <scene sceneID="pmj-1v-anQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="R5q-r2-OOQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Notification_tab_icon" selectedImage="Notification_selected_tab_icon" id="8WQ-ZU-F3n">
+                    <tabBarItem key="tabBarItem" title="" image="bell_icon" selectedImage="bell_selected_icon" id="8WQ-ZU-F3n">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                     </tabBarItem>
@@ -2335,8 +2350,6 @@ We hope you like it</string>
         <image name="Home_selected_tab_icon" width="25" height="25"/>
         <image name="Home_tab_icon" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>
-        <image name="Notification_selected_tab_icon" width="18" height="20"/>
-        <image name="Notification_tab_icon" width="18" height="20"/>
         <image name="Profile Image Placeholder" width="201" height="201"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
@@ -2349,5 +2362,7 @@ We hope you like it</string>
         <image name="White Back Arrow Shadow" width="59" height="70"/>
         <image name="White Heart" width="47" height="40"/>
         <image name="White Navigator" width="22" height="22"/>
+        <image name="bell_icon" width="15" height="18"/>
+        <image name="bell_selected_icon" width="15" height="18"/>
     </resources>
 </document>

@@ -14,6 +14,10 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var numberOfPhotoLabel: UILabel!
     @IBOutlet weak var placeNameStackView: UIStackView!
+    @IBOutlet weak var hofPhotoNameLabel: UILabel!
+    @IBOutlet weak var hofOwnerNameLabel: UILabel!
+    @IBOutlet weak var hofOwnerProfileImage: EnhancedUIImage!
+    @IBOutlet weak var hofImage: UIImageView!
     
     var place: Place?
     var images: [Image] = []
@@ -36,10 +40,34 @@ class PlaceViewController: UIViewController {
        
     }
     
+    private func getHOFImage(images: [Image]) -> Image? {
+        let sortedImages: [Image] = images.sorted(by: {$0.likes! > $1.likes!} )
+        return sortedImages.first
+    }
+    
+    private func setupHOFUI(image: Image) {
+        let imageUrl = URL(string: image.thumbnailLink!)
+        hofImage.kf.indicatorType = .activity
+        hofImage.kf.setImage(with: imageUrl, options: [.forceTransition]) {
+            _,_,_,_ in
+            let imageUrl = URL(string: image.link!)
+            self.hofImage.kf.setImage(with: imageUrl)
+        }
+        
+        let profileImageUrl = URL(string: image.owner.profilePictureLink)
+        hofOwnerProfileImage.kf.setImage(with: profileImageUrl)
+        
+        hofOwnerNameLabel.text = image.owner.name
+        hofPhotoNameLabel.text = image.name
+    }
+    
     private func fetchInitImageFromAPI() {
         fetchImageFromAPI(page: 1) {
             images in
             self.images = images
+            if let hofImage = self.getHOFImage(images: images) {
+                self.setupHOFUI(image: hofImage)
+            }
         }
     }
     

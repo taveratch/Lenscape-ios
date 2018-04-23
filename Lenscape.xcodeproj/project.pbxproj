@@ -70,6 +70,8 @@
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
 		9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */; };
 		9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA18208D862D0013AB22 /* PlaceViewController.swift */; };
+		9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */; };
+		9560EA1D208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560EA1B208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -231,6 +233,8 @@
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
 		9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecentPhotoViewController.swift; sourceTree = "<group>"; };
 		9560EA18208D862D0013AB22 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageThumbnailTableViewCell.swift; sourceTree = "<group>"; };
+		9560EA1B208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageThumbnailTableViewCell.xib; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -513,6 +517,8 @@
 				95431F0320600A0000F8CD43 /* CustomView.swift */,
 				955606A9205CEBEC007B3B17 /* CameraShotButton.swift */,
 				95DD8284206156F40073B097 /* CustomTabBar.swift */,
+				9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */,
+				9560EA1B208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib */,
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
@@ -798,6 +804,7 @@
 				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
+				9560EA1D208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib in Resources */,
 				958B9215207380DB0061F26A /* flat-pale-map-style.json in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
@@ -1006,6 +1013,7 @@
 				950358C7206F95BB00D424F4 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
+				9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */,
 				D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */,
 				950358C3206F95BB00D424F4 /* GMUWrappingDictionaryKey.m in Sources */,
 				95F881412055248E003F61D4 /* UIButton.swift in Sources */,

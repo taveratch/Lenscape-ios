@@ -20,6 +20,7 @@ class PlaceViewController: UIViewController {
     
     var place: Place?
     var images: [Image] = []
+    var placeRecentPhotoViewController: PlaceRecentPhotoViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class PlaceViewController: UIViewController {
         guard let place = place else {
             fatalError("place cannot be nil")
         }
+        fetchInitImageFromAPI()
         
         ComponentUtil.addTapGesture(parentViewController: self, for: placeNameStackView, with: #selector(dismissView))
         
@@ -39,8 +41,27 @@ class PlaceViewController: UIViewController {
         historyContainerView.alpha = 0
     }
     
-    private func fetchImageFromAPI() {
-        
+    private func fetchInitImageFromAPI() {
+        fetchImageFromAPI(page: 1) {
+            images in
+            self.images = images
+        }
+    }
+    
+    private func fetchImageFromAPI(page: Int = 1, modifyImagesFunction: @escaping ([Image]) -> Void = { _ in }) {
+        let _ = Api.getImages(placeId: place!.placeID, page: page).done {
+            response in
+            let pagination = response["pagination"] as! Pagination
+            let images = response["images"] as! [Image]
+            modifyImagesFunction(images)
+            self.numberOfPhotoLabel.text = "\(String(pagination.totalNumberOfEntities)) Photos"
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? ""
+                AlertController.showAlert(viewController: self, message: "Error. \(message)")
+                self.dismissView()
+        }
     }
     
     @objc private func dismissView() {
@@ -61,4 +82,13 @@ class PlaceViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.destination {
+        case is PlaceRecentPhotoViewController:
+            let vc = segue.destination as! PlaceRecentPhotoViewController
+            placeRecentPhotoViewController = vc
+        default:
+            break
+        }
+    }
 }

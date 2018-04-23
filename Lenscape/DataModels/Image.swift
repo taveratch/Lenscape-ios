@@ -52,7 +52,7 @@ class Image {
         let location = Location(latitude: locationObject["latitude"] as! Double, longitude: locationObject["longitude"] as! Double)
         let locationName = locationObject["name"] as! String
         place = Place(name: locationName, location: location)
-        place.placeID = locationObject["id"] as! String
+        place.placeID = locationObject["id"] as? String ?? String(locationObject["id"] as! Int)
         place.type = locationObject["is_google_place"] as! Bool ? PlaceType.GOOGLE_TYPE : PlaceType.LENSCAPE_TYPE
         
         distance = locationObject["distance"] as? Double ?? 0

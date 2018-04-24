@@ -233,7 +233,7 @@ class Api {
         }
     }
     
-    static func fetchUserImages(page: Int = 0) -> Promise<[String: Any]> {
+    static func fetchUserImages(page: Int = 1) -> Promise<[String: Any]> {
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"
         ]
@@ -291,6 +291,36 @@ class Api {
                 response in
                 let image = Image(item: response)
                 seal.fulfill(image)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func getImages(placeId: String, page: Int = 1) -> Promise<[String: Any]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let url = "\(HOST)/location/\(placeId)/photos"
+        
+        let parameters : [String: String] = [
+            "page": String(page)
+        ]
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
+                response in
+                let data = response!["data"] as! [Any]
+                let images = data.map { Image(item: $0) }
+                
+                seal.fulfill([
+                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any]),
+                    "images": images
+                ])
                 }.catch {
                     error in
                     print(error)

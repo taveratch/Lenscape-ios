@@ -1,21 +1,16 @@
 //
-//  FeedTableViewCell.swift
+//  FeedItemTableViewCell.swift
 //  Lenscape
 //
-//  Created by TAWEERAT CHAIMAN on 5/4/2561 BE.
+//  Created by TAWEERAT CHAIMAN on 24/4/2561 BE.
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable
-class FeedTableViewCell: UITableViewCell {
+class FeedItemTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var ownerNameLabel: UILabel!
-    @IBOutlet weak var uiImageView: UIImageView!
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var numberOfLikeLabel: UILabel!
+    @IBOutlet weak var feedItem: FeedItem!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,4 +22,5 @@ class FeedTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

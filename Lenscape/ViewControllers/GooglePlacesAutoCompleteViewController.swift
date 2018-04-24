@@ -121,7 +121,7 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < searchResults.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.SearchAutoCompleteTableViewCell.rawValue, for: indexPath) as! SearchAutoCompleteTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.SearchItemTableViewCell.rawValue, for: indexPath) as! SearchItemTableViewCell
             let searchResult = searchResults[indexPath.row]
             
             cell.placeNameLabel.text = searchResult.name

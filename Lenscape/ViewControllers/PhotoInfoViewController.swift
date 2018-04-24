@@ -43,19 +43,17 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
     private func setupUI() {
         informationWrapper.mapView.isMyLocationEnabled = true
-        if image?.location != nil {
-            let coordinate = CLLocationCoordinate2D(latitude: (image?.location?.latitude)!, longitude: (image?.location?.longitude)!)
-            informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
-            
-            // Add marker to map
-            let redMarker = UIImage(named: "Maps Marker")!.withRenderingMode(.alwaysOriginal)
-            let markerView = UIImageView(image: redMarker)
-            markerView.bounds.size.width = 40
-            markerView.bounds.size.height = 40
-            let marker = GMSMarker(position: coordinate)
-            marker.iconView = markerView
-            marker.map = informationWrapper.mapView
-        }
+        let coordinate = CLLocationCoordinate2D(latitude: (image?.place.location.latitude)!, longitude: (image?.place.location.longitude)!)
+        informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
+        
+        // Add marker to map
+        let redMarker = UIImage(named: "Maps Marker")!.withRenderingMode(.alwaysOriginal)
+        let markerView = UIImageView(image: redMarker)
+        markerView.bounds.size.width = 40
+        markerView.bounds.size.height = 40
+        let marker = GMSMarker(position: coordinate)
+        marker.iconView = markerView
+        marker.map = informationWrapper.mapView
     }
     
     private func setupPhotoInfoCard() {
@@ -63,7 +61,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.profileImageView.kf.setImage(with: profilePictureUrl)
         
         informationWrapper.pictureNameLabel.text = image!.name!
-        informationWrapper.locationNameLabel.text = image!.locationName!
+        informationWrapper.locationNameLabel.text = image!.place.name
         
         if image!.isNear != nil, image!.isNear! {
             var distance = String(format: "%.2f", image!.distance!)

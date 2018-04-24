@@ -61,8 +61,6 @@ class PhotoPostViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
     }
 
-    
-    
     private func runThisAfter(second: Double, execute: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + (second), execute: execute)
     }

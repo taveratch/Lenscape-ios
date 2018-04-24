@@ -21,9 +21,15 @@ class PhotoPostViewController: UIViewController {
     var image: UIImage?
     let photoUploader = PhotoUploader()
     var place: Place?
+    var season: Season?
+    var partOfDay: PartOfDay?
+    var seasons: [Season] = []
+    var partsOfDay: [PartOfDay] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchSeasons()
+        fetchPartsOfDay()
         setupUI()
         setupKeyboard()
         
@@ -36,6 +42,10 @@ class PhotoPostViewController: UIViewController {
         
         // Shared hero's id with PhotoPreviewViewController
         shareButton.hero.id = "Next"
+        
+        runThisAfter(second: 0.1) {
+            self.informationCard.caption.becomeFirstResponder()
+        }
     }
     
     // MARK: Setup for moving view to show textfield when keyboard is presented
@@ -49,9 +59,6 @@ class PhotoPostViewController: UIViewController {
         super.viewDidAppear(animated)
         if place != nil { // do not show keyboard if come from GooglePlacesAutoCompleteViewController
             return
-        }
-        runThisAfter(second: 0.1) {
-            self.informationCard.caption.becomeFirstResponder()
         }
     }
     
@@ -86,6 +93,30 @@ class PhotoPostViewController: UIViewController {
         return true
     }
     
+    private func fetchSeasons() {
+        Api.getSeasons().done {
+            seasons in
+            self.seasons = seasons
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? ""
+                AlertController.showAlert(viewController: self, message: message)
+        }
+    }
+    
+    private func fetchPartsOfDay() {
+        Api.getPartsOfDay().done {
+            partsOfDay in
+            self.partsOfDay = partsOfDay
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? ""
+                AlertController.showAlert(viewController: self, message: message)
+        }
+    }
+    
     @objc func back() {
         let alert = UIAlertController(title: "Cancel", message: "Cancel sharing photo?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
@@ -102,24 +133,20 @@ class PhotoPostViewController: UIViewController {
     }
     
     /*
-     TODO: Check place has been selected
     * Are all required information filled or not.
         1. Caption
         2. Place
     */
     private func isValid() -> Bool {
-        return !informationCard.caption.text!.isEmpty && place != nil
-    }
-    
-    private func showMessageDialog(message: String) {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        return !informationCard.caption.text!.isEmpty
+            && place != nil
+            && season != nil
+            && partOfDay != nil
     }
     
     @objc func upload() {
         if !isValid() {
-            showMessageDialog(message: "Please specify image's caption and place where it has been shot")
+            AlertController.showAlert(viewController: self, message: "Please specify image's caption and place where it has been shot")
             return
         }
         if let data = UIImageJPEGRepresentation(image!,1) {
@@ -129,8 +156,8 @@ class PhotoPostViewController: UIViewController {
                 "picture": data,
                 "image_name": informationCard.caption.text!,
                 "place": encodedPlace,
-                "season": 1,
-                "time": 1,
+                "season": season!.id,
+                "time": partOfDay!.id,
                 "date_taken": Int(Date().timeIntervalSince1970 * 1000)
             ]
 
@@ -154,7 +181,28 @@ class PhotoPostViewController: UIViewController {
     
     private func setupGestures() {
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
-        
+        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.seasonView, with: #selector(showSeasonsList))
+        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.timeTakenView, with: #selector(showPartsOfDayList))
+    }
+    
+    private func showListTableViewController(texts: [String], items: [Any], title: String="") {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.ListTableViewController.rawValue) as! ListTableViewController
+        vc.texts = texts
+        vc.items = items
+        vc.delegate = self
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.title = title
+        present(navigationController, animated: true)
+    }
+    
+    @objc private func showSeasonsList() {
+        let texts = seasons.map { $0.name }
+        showListTableViewController(texts: texts, items: seasons, title: "Seasons")
+    }
+    
+    @objc private func showPartsOfDayList() {
+        let texts = partsOfDay.map { $0.name }
+        showListTableViewController(texts: texts, items: partsOfDay, title: "Parts of day")
     }
     
     @objc private func showSearchPlaceViewController() {
@@ -203,5 +251,24 @@ extension PhotoPostViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
+    }
+}
+
+extension PhotoPostViewController: ListTableViewControllerDelegate {
+    func didSelectItem(item: Any, index: Int) {
+        switch item {
+        case is Season:
+            let season = item as! Season
+            self.season = season
+            self.informationCard.seasonLabel.text = season.name
+            self.informationCard.seasonLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        case is PartOfDay:
+            let partOfDay = item as! PartOfDay
+            self.partOfDay = partOfDay
+            self.informationCard.partOfDayLabel.text = partOfDay.name
+            self.informationCard.partOfDayLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        default:
+            break
+        }
     }
 }

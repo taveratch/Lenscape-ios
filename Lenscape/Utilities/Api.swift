@@ -337,7 +337,40 @@ class Api {
         
         return Promise {
             seal in
-            
+            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                let partsOfDay = data.map { PartOfDay(item: $0) }
+                
+                seal.fulfill(partsOfDay)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func getSeasons() -> Promise<[Season]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let url = "\(HOST)/seasons"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                let seasons = data.map { Season(item: $0) }
+                
+                seal.fulfill(seasons)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
         }
     }
 }

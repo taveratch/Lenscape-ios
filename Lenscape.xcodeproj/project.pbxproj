@@ -79,6 +79,8 @@
 		95619D4E208F8EC2001A89A5 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */; };
 		95619D50208F9038001A89A5 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D4F208F9038001A89A5 /* ListTableViewCell.swift */; };
 		95619D52208F9290001A89A5 /* PartOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D51208F9290001A89A5 /* PartOfDay.swift */; };
+		95619D54208F948A001A89A5 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D53208F948A001A89A5 /* Season.swift */; };
+		95619D56208F99E9001A89A5 /* ListTableViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D55208F99E9001A89A5 /* ListTableViewControllerDelegate.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -252,6 +254,8 @@
 		95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		95619D4F208F9038001A89A5 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		95619D51208F9290001A89A5 /* PartOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartOfDay.swift; sourceTree = "<group>"; };
+		95619D53208F948A001A89A5 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		95619D55208F99E9001A89A5 /* ListTableViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewControllerDelegate.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +654,7 @@
 			children = (
 				956F2719207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift */,
 				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
+				95619D55208F99E9001A89A5 /* ListTableViewControllerDelegate.swift */,
 				95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */,
 				952EF14D206D2A960032983B /* LocationDelegate.swift */,
 				D007EEEF207BD2FE00C46129 /* HeroUITabBarDelegate.swift */,
@@ -681,6 +686,7 @@
 			children = (
 				9509A5312084DBCE00334B74 /* Place.swift */,
 				9597DE63205F7BB200B7E751 /* Image.swift */,
+				95619D53208F948A001A89A5 /* Season.swift */,
 				95E45147206DF2B7000E5046 /* Pagination.swift */,
 				95C35BC2207215FE00030B12 /* Owner.swift */,
 				9504A15320677CBB00FDF606 /* Location.swift */,
@@ -1052,6 +1058,7 @@
 				951FE8B8204C3C8C00FE6C10 /* Api.swift in Sources */,
 				95619D4C208ECEF2001A89A5 /* PlaceVCFeedItemTableViewCell.swift in Sources */,
 				95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */,
+				95619D54208F948A001A89A5 /* Season.swift in Sources */,
 				950358C6206F95BB00D424F4 /* GMUDefaultClusterRenderer.m in Sources */,
 				9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */,
 				950358C0206F95BB00D424F4 /* GQTPointQuadTreeChild.m in Sources */,
@@ -1059,6 +1066,7 @@
 				9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */,
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				950358C4206F95BB00D424F4 /* GMUSimpleClusterAlgorithm.m in Sources */,
+				95619D56208F99E9001A89A5 /* ListTableViewControllerDelegate.swift in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				950358CE206F95BB00D424F4 /* GMUFeature.m in Sources */,

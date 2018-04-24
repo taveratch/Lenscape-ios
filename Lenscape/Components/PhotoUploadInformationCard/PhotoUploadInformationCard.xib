@@ -13,8 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoUploadInformationCard" customModule="Lenscape" customModuleProvider="target">
             <connections>
                 <outlet property="caption" destination="m2f-bY-GYQ" id="oUH-cD-BFK"/>
+                <outlet property="dateTakenLabel" destination="WLe-kP-qSN" id="YF6-1J-c0c"/>
                 <outlet property="dateTakenView" destination="jBJ-Vd-Zec" id="t6b-QO-g4b"/>
+                <outlet property="partOfDayLabel" destination="XFw-DI-kWE" id="bBc-6D-PNf"/>
                 <outlet property="placeLabel" destination="d7n-8D-b15" id="7FK-El-YFx"/>
+                <outlet property="seasonLabel" destination="tH6-Jo-uoK" id="sVd-bv-eNf"/>
                 <outlet property="seasonView" destination="Nsi-JM-hcE" id="2r5-36-Vm7"/>
                 <outlet property="timeTakenView" destination="pQT-RM-Bps" id="4zZ-MY-nU3"/>
             </connections>

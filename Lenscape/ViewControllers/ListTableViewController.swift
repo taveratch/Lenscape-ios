@@ -12,6 +12,7 @@ class ListTableViewController: UITableViewController {
     
     var texts: [String] = []
     var items: [Any] = []
+    var delegate: ListTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,19 @@ class ListTableViewController: UITableViewController {
         return cell
     }
     
-
+    @IBAction func dismissView(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if delegate == nil {
+            return
+        }
+        let index = indexPath.row
+        delegate?.didSelectItem(item: items[index], index: index)
+        self.dismiss(animated: true)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -16,6 +16,9 @@ class PhotoUploadInformationCard: UIView {
     @IBOutlet weak var dateTakenView: UIStackView!
     @IBOutlet weak var timeTakenView: UIStackView!
     @IBOutlet weak var seasonView: UIStackView!
+    @IBOutlet weak var partOfDayLabel: UILabel!
+    @IBOutlet weak var seasonLabel: UILabel!
+    @IBOutlet weak var dateTakenLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

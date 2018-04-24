@@ -76,6 +76,9 @@
 		9560EA23208DBD4F0013AB22 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */; };
 		9560EA26208EC62F0013AB22 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA25208EC62F0013AB22 /* FeedItem.swift */; };
 		95619D4C208ECEF2001A89A5 /* PlaceVCFeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D4B208ECEF2001A89A5 /* PlaceVCFeedItemTableViewCell.swift */; };
+		95619D4E208F8EC2001A89A5 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */; };
+		95619D50208F9038001A89A5 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D4F208F9038001A89A5 /* ListTableViewCell.swift */; };
+		95619D52208F9290001A89A5 /* PartOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95619D51208F9290001A89A5 /* PartOfDay.swift */; };
 		95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656933204C2BB3005F9F6B /* AppDelegate.swift */; };
 		95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95656935204C2BB3005F9F6B /* SignInViewController.swift */; };
 		95656939204C2BB3005F9F6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95656937204C2BB3005F9F6B /* Main.storyboard */; };
@@ -246,6 +249,9 @@
 		9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		9560EA25208EC62F0013AB22 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		95619D4B208ECEF2001A89A5 /* PlaceVCFeedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceVCFeedItemTableViewCell.swift; sourceTree = "<group>"; };
+		95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		95619D4F208F9038001A89A5 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		95619D51208F9290001A89A5 /* PartOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartOfDay.swift; sourceTree = "<group>"; };
 		95656930204C2BB3005F9F6B /* Lenscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lenscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95656933204C2BB3005F9F6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95656935204C2BB3005F9F6B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -540,6 +546,7 @@
 				9518DBB92052E1E000F0BE1B /* ShadowView.swift */,
 				9518DBBB2052E3F500F0BE1B /* EnhancedUIImageView.swift */,
 				955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */,
+				95619D4F208F9038001A89A5 /* ListTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -604,6 +611,7 @@
 				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				9560EA18208D862D0013AB22 /* PlaceViewController.swift */,
+				95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */,
 				9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */,
 				95B8AB7F2051954D007480AA /* FavoriteViewController.swift */,
 				9560EA22208DBD4F0013AB22 /* PlaceListViewController.swift */,
@@ -679,6 +687,7 @@
 				D064919C206E8B5F002ADF2C /* POIItem.swift */,
 				9541DB3B207BC81100F7BE65 /* SearchResult.swift */,
 				D036D5B5208DA50400DADDC8 /* NotificationItem.swift */,
+				95619D51208F9290001A89A5 /* PartOfDay.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -984,6 +993,7 @@
 				D036D5AF208D00FD00DADDC8 /* NotificationViewController.swift in Sources */,
 				950358DA2070A2C200D424F4 /* CustomClusterRenderer.swift in Sources */,
 				95656936204C2BB3005F9F6B /* SignInViewController.swift in Sources */,
+				95619D52208F9290001A89A5 /* PartOfDay.swift in Sources */,
 				95431F0420600A0000F8CD43 /* CustomView.swift in Sources */,
 				950358D4206F95BB00D424F4 /* GMUWeightedLatLng.m in Sources */,
 				956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */,
@@ -1060,6 +1070,7 @@
 				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
 				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
 				950358D3206F95BB00D424F4 /* GMUGeoJSONParser.m in Sources */,
+				95619D4E208F8EC2001A89A5 /* ListTableViewController.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */,
 				950358C7206F95BB00D424F4 /* GMUDefaultClusterIconGenerator.m in Sources */,
@@ -1072,6 +1083,7 @@
 				95C35BC5207232D100030B12 /* PhotoPreviewViewController.swift in Sources */,
 				95108EF42054247A0072AC48 /* Error.swift in Sources */,
 				9541DB3C207BC81100F7BE65 /* SearchResult.swift in Sources */,
+				95619D50208F9038001A89A5 /* ListTableViewCell.swift in Sources */,
 				95028D182061FBF600222BFA /* ExplorePageViewController.swift in Sources */,
 				9597DE64205F7BB200B7E751 /* Image.swift in Sources */,
 				950358CB206F95BB00D424F4 /* GMUGeometryCollection.m in Sources */,

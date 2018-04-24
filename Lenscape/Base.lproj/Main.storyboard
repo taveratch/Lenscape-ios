@@ -140,13 +140,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6C7-Vd-GML">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="Us3-H9-U4D"/>
+                                                </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygy-cb-hPZ" customClass="PhotoUploadInformationCard" customModule="Lenscape" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="450" width="375" height="1000"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1000" id="DTp-jz-8MB"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="300" width="375" height="367"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Y-PC-osD" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
                                                 <rect key="frame" x="285" y="577" width="60" height="60"/>
@@ -197,12 +197,12 @@
                                             <constraint firstItem="ygy-cb-hPZ" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="Ago-En-JI8"/>
                                             <constraint firstAttribute="trailing" secondItem="Q6Y-PC-osD" secondAttribute="trailing" constant="30" id="BHX-l1-d8P"/>
                                             <constraint firstAttribute="bottom" secondItem="Q6Y-PC-osD" secondAttribute="bottom" constant="30" id="Beh-s0-Y1D"/>
+                                            <constraint firstAttribute="bottom" secondItem="ygy-cb-hPZ" secondAttribute="bottom" id="E4f-Eb-40P"/>
                                             <constraint firstAttribute="trailing" secondItem="6C7-Vd-GML" secondAttribute="trailing" id="NuS-KC-h00"/>
-                                            <constraint firstItem="ygy-cb-hPZ" firstAttribute="top" secondItem="6C7-Vd-GML" secondAttribute="bottom" constant="-70" id="Qre-54-yeo"/>
                                             <constraint firstItem="6C7-Vd-GML" firstAttribute="top" secondItem="TUn-to-aqt" secondAttribute="top" id="TdR-zC-x71"/>
                                             <constraint firstItem="JVa-lc-VsE" firstAttribute="top" secondItem="TUn-to-aqt" secondAttribute="top" constant="40" id="Xsd-WY-vnK"/>
                                             <constraint firstItem="6C7-Vd-GML" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" id="Y3V-Sj-xLS"/>
-                                            <constraint firstItem="ygy-cb-hPZ" firstAttribute="top" secondItem="TUn-to-aqt" secondAttribute="top" constant="450" id="hLI-FQ-5ZP"/>
+                                            <constraint firstItem="ygy-cb-hPZ" firstAttribute="top" secondItem="6C7-Vd-GML" secondAttribute="bottom" id="YQm-lm-Jct"/>
                                             <constraint firstItem="JVa-lc-VsE" firstAttribute="leading" secondItem="TUn-to-aqt" secondAttribute="leading" constant="20" id="spL-f7-ssM"/>
                                             <constraint firstAttribute="trailing" secondItem="ygy-cb-hPZ" secondAttribute="trailing" id="uvo-zj-Adb"/>
                                         </constraints>
@@ -243,7 +243,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvr-9r-NbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pqL-1E-5yq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4040.579710144928" y="2118.75"/>
+            <point key="canvasLocation" x="4039.1999999999998" y="2117.9910044977514"/>
         </scene>
         <!--Open Camera View Controller Modal-->
         <scene sceneID="wAY-C6-w1P">

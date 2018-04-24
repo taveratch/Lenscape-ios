@@ -13,6 +13,9 @@ class PhotoUploadInformationCard: UIView {
 
     @IBOutlet weak var caption: UITextField!
     @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var dateTakenView: UIStackView!
+    @IBOutlet weak var timeTakenView: UIStackView!
+    @IBOutlet weak var seasonView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

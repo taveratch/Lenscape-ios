@@ -327,4 +327,17 @@ class Api {
             }
         }
     }
+    
+    static func getPartsOfDay() -> Promise<[PartOfDay]> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let url = "\(HOST)/times"
+        
+        return Promise {
+            seal in
+            
+        }
+    }
 }

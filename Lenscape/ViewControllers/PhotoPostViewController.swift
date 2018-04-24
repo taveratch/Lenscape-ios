@@ -29,7 +29,7 @@ class PhotoPostViewController: UIViewController {
         
         setupShareButton()
         setupBackButton()
-        setupPlaceButton()
+        setupGestures()
         
         //https://github.com/lkzhao/Hero/issues/187
         informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
@@ -97,8 +97,6 @@ class PhotoPostViewController: UIViewController {
     }
     
     private func closeMe() {
-//        let mainTabBarViewController = self.tabBarController as? MainTabBarController
-//        mainTabBarViewController?.selectedIndex = (mainTabBarViewController?.currentSelectedIndex)!
         dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
@@ -154,10 +152,9 @@ class PhotoPostViewController: UIViewController {
         backButton.isUserInteractionEnabled = true
     }
     
-    private func setupPlaceButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showSearchPlaceViewController))
-        informationCard.placeLabel.addGestureRecognizer(tap)
-        informationCard.placeLabel.isUserInteractionEnabled = true
+    private func setupGestures() {
+        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
+        
     }
     
     @objc private func showSearchPlaceViewController() {

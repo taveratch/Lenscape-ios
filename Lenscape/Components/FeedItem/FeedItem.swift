@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class FeedItem: UIView {
 
     @IBOutlet weak var ownerNameLabel: UILabel!

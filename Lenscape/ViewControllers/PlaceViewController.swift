@@ -22,6 +22,7 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var hofImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var hofWrapper: UIView!
+    @IBOutlet weak var statusbarSpaceView: UIView!
     
     var place: Place?
     var hof: Image?
@@ -46,6 +47,8 @@ class PlaceViewController: UIViewController {
     }
     
     private func setupUI() {
+        statusbarSpaceView.isHidden = true
+        
         guard let place = place else {
             fatalError("place cannot be nil")
         }
@@ -119,8 +122,10 @@ class PlaceViewController: UIViewController {
     }
     
     private func showHOF(isShow: Bool) {
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.hofWrapper.isHidden = !isShow
+            self.statusbarSpaceView.isHidden = isShow
+            self.numberOfPhotoLabel.isHidden = !isShow
         })
     }
     

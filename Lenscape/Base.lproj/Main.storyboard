@@ -1594,6 +1594,7 @@
                         <outlet property="hofOwnerNameLabel" destination="VCg-Yv-4GH" id="N7x-Q9-kIg"/>
                         <outlet property="hofOwnerProfileImage" destination="NUb-EX-JIt" id="mrK-hN-Uvb"/>
                         <outlet property="hofPhotoNameLabel" destination="2Fc-nw-kZX" id="0mY-PK-ac2"/>
+                        <outlet property="hofWrapper" destination="lIm-hk-B5P" id="qTm-BI-Hd5"/>
                         <outlet property="numberOfPhotoLabel" destination="3Kf-Po-xx0" id="eIj-Mz-0Ig"/>
                         <outlet property="placeNameLabel" destination="5DP-q0-zvF" id="cOT-5U-p2A"/>
                         <outlet property="placeNameStackView" destination="BLd-QM-WV0" id="39e-I7-iOi"/>

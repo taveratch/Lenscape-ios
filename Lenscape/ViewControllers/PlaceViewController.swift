@@ -21,6 +21,7 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var hofOwnerProfileImage: EnhancedUIImage!
     @IBOutlet weak var hofImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var hofWrapper: UIView!
     
     var place: Place?
     var hof: Image?
@@ -28,6 +29,9 @@ class PlaceViewController: UIViewController {
     var placeRecentPhotoViewController: PlaceRecentPhotoViewController?
     var page = 1
     var shouldFetchMore = false
+    
+    var lastContentOffset: CGFloat = 0
+    var shouldUpdateHeaderVisibility = true
     
     // Fix tableview row's offset change after call reloadRowsAt... in likeImage()
     // https://stackoverflow.com/questions/27102887/maintain-offset-when-reloadrowsatindexpaths
@@ -112,6 +116,12 @@ class PlaceViewController: UIViewController {
         
         hofOwnerNameLabel.text = image.owner.name
         hofPhotoNameLabel.text = image.name
+    }
+    
+    private func showHOF(isShow: Bool) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.hofWrapper.isHidden = !isShow
+        })
     }
     
     private func fetchInitImagesFromAPI() {
@@ -259,5 +269,31 @@ extension PlaceViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightForIndexPath[indexPath] ?? averageRowHeight
+    }
+}
+
+extension PlaceViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // If there is one image, do not hide HOF cause this image is perfectly shown in UI
+        if self.images.count <= 1 {
+            return
+        }
+        let yOffset = scrollView.contentOffset.y
+        if yOffset == 0, shouldUpdateHeaderVisibility {
+            // going up
+            showHOF(isShow: true)
+            shouldUpdateHeaderVisibility = false
+        }else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
+            // going down
+            showHOF(isShow: false)
+            shouldUpdateHeaderVisibility = false
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        shouldUpdateHeaderVisibility = true
     }
 }

@@ -9,13 +9,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="xR1-G0-BKh" id="9v7-XA-19g"/>
-                <outlet property="likeButton" destination="R7j-aw-yQv" id="8cE-qU-dJ8"/>
-                <outlet property="numberOfLikeLabel" destination="gQy-vg-VgV" id="WbO-Az-dbQ"/>
-                <outlet property="ownerNameLabel" destination="ESX-Kx-YdQ" id="afo-VQ-Qto"/>
-                <outlet property="ownerProfileImageView" destination="Swf-9t-fLB" id="Wg3-8O-vCz"/>
+                <outlet property="imageView" destination="xR1-G0-BKh" id="tg1-bF-3wm"/>
+                <outlet property="likeButton" destination="R7j-aw-yQv" id="FbC-AF-3bw"/>
+                <outlet property="numberOfLikeLabel" destination="gQy-vg-VgV" id="hSH-F0-fGB"/>
+                <outlet property="ownerNameLabel" destination="ESX-Kx-YdQ" id="1Fg-Qq-8v4"/>
+                <outlet property="ownerProfileImageView" destination="Swf-9t-fLB" id="rD3-sg-8fQ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

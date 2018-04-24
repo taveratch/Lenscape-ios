@@ -30,4 +30,8 @@ class ComponentUtil {
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
     }
+    
+    static func runThisAfter(second: Double, execute: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (second), execute: execute)
+    }
 }

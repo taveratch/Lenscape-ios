@@ -44,7 +44,7 @@ class ExploreViewController: UIViewController {
     // Fix tableview row's offset change after call reloadRowsAt... in likeImage()
     // https://stackoverflow.com/questions/27102887/maintain-offset-when-reloadrowsatindexpaths
     fileprivate var heightForIndexPath = [IndexPath: CGFloat]()
-    fileprivate let averageRowHeight: CGFloat = 327 //your best estimate
+    fileprivate let averageRowHeight: CGFloat = 312 //your best estimate
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -187,12 +187,13 @@ class ExploreViewController: UIViewController {
     @objc private func showFullPhoto(sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: tableView)
         let indexPath = tableView.indexPathForRow(at: tapLocation)
-        let cell = tableView.cellForRow(at: indexPath!) as! FeedTableViewCell
+        let cell = tableView.cellForRow(at: indexPath!) as! FeedItemTableViewCell
+        let feedItem = cell.feedItem
         let index = indexPath!.row
         let image = images[index]
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
-        vc.placeHolderImage = cell.uiImageView.image
+        vc.placeHolderImage = feedItem?.imageView.image
         Hero.shared.defaultAnimation = .fade
         
         // Observe dismiss event from modal, then notify parent (this) to do something.
@@ -297,38 +298,39 @@ extension ExploreViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.FeedTableCell.rawValue, for: indexPath) as! FeedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.FeedItemTableViewCell.rawValue, for: indexPath) as! FeedItemTableViewCell
         let image = images[indexPath.row]
+        let feedItem: FeedItem = cell.feedItem
         let profileImageUrl = URL(string: image.owner.profilePictureLink)
-        cell.profileImage.kf.setImage(with: profileImageUrl, options: [.transition(.fade(0.5))])
+        feedItem.ownerProfileImageView.kf.setImage(with: profileImageUrl, options: [.transition(.fade(0.5))])
         
-        cell.ownerNameLabel.text = image.owner.name
+        feedItem.ownerNameLabel.text = image.owner.name
         
         let imageUrl = URL(string: image.thumbnailLink!)
-        cell.uiImageView.kf.indicatorType = .activity
-        cell.uiImageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.5))], completionHandler: {
+        feedItem.imageView.kf.indicatorType = .activity
+        feedItem.imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.5))], completionHandler: {
             (downloadedImage, error, cacheType, imageUrl) in
             // Show the original image from cache only
             ImageCache.default.retrieveImage(forKey: image.link!, options: nil) {
                 (image, cacheType) in
                 if let image = image {
-                    cell.uiImageView.image = image
+                    feedItem.imageView.image = image
                 }
             }
         })
         
         // Used for animation between this and PhotoInfoViewController
-        cell.uiImageView.hero.id = image.thumbnailLink!
+        feedItem.imageView.hero.id = image.thumbnailLink!
         
-        cell.numberOfLikeLabel.text = "\(image.likes!)"
+        feedItem.numberOfLikeLabel.text = "\(image.likes!)"
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: cell.uiImageView, with: #selector(showFullPhoto(sender:)))
+        ComponentUtil.addTapGesture(parentViewController: self, for: feedItem.imageView, with: #selector(showFullPhoto(sender:)))
         
         // Tag like button with row number. use "tag" to get specific image in like()
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
+        feedItem.likeButton.tag = indexPath.row
+        feedItem.likeButton.setImage(UIImage(named: image.is_liked ? "Red heart": "Gray Heart"), for: .normal)
         
-        cell.likeButton.addTarget(self, action: #selector(likeImage(sender:)), for: .touchUpInside)
+        feedItem.likeButton.addTarget(self, action: #selector(likeImage(sender:)), for: .touchUpInside)
         return cell
     }
 }

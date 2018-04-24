@@ -1,14 +1,13 @@
 //
-//  FeedItem.swift
+//  FeedItem
 //  Lenscape
 //
-//  Created by TAWEERAT CHAIMAN on 5/4/2561 BE.
+//  Created by TAWEERAT CHAIMAN on 24/4/2561 BE.
 //  Copyright © 2561 Lenscape. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable
 class FeedItem: UIView {
 
     @IBOutlet weak var ownerNameLabel: UILabel!
@@ -34,10 +33,12 @@ class FeedItem: UIView {
         return view
     }
     
+    
     private func commonInit() {
         let view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
     }
+
 }

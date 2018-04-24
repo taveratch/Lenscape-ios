@@ -24,13 +24,14 @@ enum Identifier: String {
     case SettingsViewController = "SettingsViewController"
     case SettingsNavigationController = "SettingsNavigationController"
     case PhotoPreviewViewController = "PhotoPreviewViewController"
-    case FeedTableCell = "FeedTableCell"
+    case FeedItemTableViewCell = "FeedItemTableViewCell"
     case GooglePlacesAutoCompleteViewController = "GooglePlacesAutoCompleteViewController"
     case SearchItemTableViewCell = "SearchItemTableViewCell"
     case AddNewPlaceTableViewCell = "AddNewPlaceTableViewCell"
     case AddNewPlaceViewController = "AddNewPlaceViewController"
     case PlaceViewController = "PlaceViewController"
     case PlaceListViewController = "PlaceListViewController"
+    case PlaceVCFeedItemTableViewCell = "PlaceVCFeedItemTableViewCell"
 }
 
 enum SegueIdentifier: String {

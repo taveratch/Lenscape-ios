@@ -26,6 +26,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     var placeHolderImage: UIImage?
     var isShowBottomInfo: Bool = true
     var alwaysHideBottomInfo: Bool = false
+    var imageViewHeroId: String?
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -116,7 +117,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Hero components
     private func initHeroComponents() {
-        self.imageView.hero.id = self.image?.thumbnailLink!
+        self.imageView.hero.id = imageViewHeroId == nil ? self.image?.thumbnailLink! : imageViewHeroId!
     }
     
     // MARK: - Initialize zooming feature

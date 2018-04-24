@@ -98,7 +98,7 @@ class Api {
     }
     
     // MARK: - Images
-    static func uploadImage(data: Data, imageName: String, place: Place,
+    static func uploadImage(data: Data, imageName: String, place: Place, seasonId: Int, timeId: Int, dateTaken: Int64,
                             progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
         
         let headers : HTTPHeaders = [
@@ -126,12 +126,11 @@ class Api {
                     multipartFormData.append(imageName.data(using: .utf8)!, withName: "image_name")
                     multipartFormData.append(place.name.data(using: .utf8)!, withName: "location_name")
                     multipartFormData.append(latlong.data(using: .utf8)!, withName: "latlong")
-//                    if let placeID = place.placeID {
-                        multipartFormData.append(place.placeID.data(using: .utf8)!, withName: "place_id")
-//                    }
-//                    if let placeType = place.type {
-                        multipartFormData.append(place.type.data(using: .utf8)!, withName: "place_type")
-//                    }
+                    multipartFormData.append(place.placeID.data(using: .utf8)!, withName: "place_id")
+                    multipartFormData.append(place.type.data(using: .utf8)!, withName: "place_type")
+                    multipartFormData.append(String(seasonId).data(using: .utf8)!, withName: "season")
+                    multipartFormData.append(String(timeId).data(using: .utf8)!, withName: "time_taken")
+                    multipartFormData.append(String(dateTaken).data(using: .utf8)!, withName: "date_taken")
             }, progressHandler: progressHandler
                 ).done {
                     response in

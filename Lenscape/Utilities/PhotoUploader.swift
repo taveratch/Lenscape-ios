@@ -35,7 +35,19 @@ class PhotoUploader {
             fatalError("place.name attribute expected for uploading photo")
         }
         
-        let _ = Api.uploadImage(data: data, imageName: imageName, place: place, progressHandler: progressHandler).done {
+        guard let seasonId = picture["season"] as? Int else {
+            fatalError("season is missing")
+        }
+        
+        guard let timeId = picture["time"] as? Int else {
+            fatalError("time is missing")
+        }
+        
+        guard let dateTaken = picture["date_taken"] as? Int64 else {
+            fatalError("date_taken is missing")
+        }
+        
+        let _ = Api.uploadImage(data: data, imageName: imageName, place: place, seasonId: seasonId, timeId: timeId, dateTaken: dateTaken, progressHandler: progressHandler).done {
             response in
             self.delegate?.didUpload()
         }

@@ -130,7 +130,10 @@ class PhotoPostViewController: UIViewController {
             let imageInfo: [String: Any] = [
                 "picture": data,
                 "image_name": informationCard.caption.text!,
-                "place": encodedPlace
+                "place": encodedPlace,
+                "season": 1,
+                "time": 1,
+                "date_taken": Int(Date().timeIntervalSince1970 * 1000)
             ]
 
             // the data can be passed to ExploreViewController via UserDefaults

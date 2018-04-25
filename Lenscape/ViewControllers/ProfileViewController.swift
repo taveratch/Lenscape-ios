@@ -146,9 +146,7 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.descriptionLabel.text = user["email"] as? String
             }
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(showSettingsVC))
-            profileHeader.settingsButton.addGestureRecognizer(tap)
-            profileHeader.settingsButton.isUserInteractionEnabled = true
+            ComponentUtil.addTapGesture(parentViewController: self, for: profileHeader.settingsButton, with: #selector(showSettingsVC))
 
             return headerView
             

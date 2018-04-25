@@ -17,10 +17,14 @@ class Image {
     var height: Int?
     var link: String?
     var thumbnailLink: String?
-    var datetime: Double!
+    var datetime: Int64!
     var relativeDatetimeString: String!
     var dateString: String
     var timeString: String
+    var dateTaken: Int64
+    var dateTakenString: String
+    var partOfDayString: String
+    var seasonString: String
     var distance: Double?
     var likes: Int?
     var owner: Owner!
@@ -58,9 +62,15 @@ class Image {
         distance = locationObject["distance"] as? Double ?? 0
         isNear = locationObject["is_near"] as? Bool
         
-        datetime = image["timestamp"] as? Double
-        relativeDatetimeString = DateUtil.getRelativeTimeString(since: datetime)
-        (dateString, timeString) = DateUtil.getDateTimeString(of: datetime)
+        datetime = image["timestamp"] as? Int64
+        relativeDatetimeString = DateUtil.getRelativeTimeString(since: Double(datetime))
+        (dateString, timeString) = DateUtil.getDateTimeString(of: Double(datetime))
+        
+        dateTaken = image["date_taken"] as! Int64
+        dateTakenString = image["date_taken_string"] as! String
+        
+        partOfDayString = image["time_taken"] as! String
+        seasonString = image["season"] as! String
         
         is_liked = image["is_liked"] as? Bool ?? false
     }

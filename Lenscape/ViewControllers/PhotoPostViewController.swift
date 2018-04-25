@@ -22,6 +22,7 @@ class PhotoPostViewController: UIViewController {
     let photoUploader = PhotoUploader()
     var place: Place?
     var season: Season?
+    var dateTaken: Date?
     var partOfDay: PartOfDay?
     var seasons: [Season] = []
     var partsOfDay: [PartOfDay] = []
@@ -84,6 +85,7 @@ class PhotoPostViewController: UIViewController {
     private func setupUI() {
         imageView.image = image
         informationCard.caption.delegate = self
+        informationCard.dateTakenPicker.isHidden = true
     }
     
     // Hide status bar
@@ -140,11 +142,12 @@ class PhotoPostViewController: UIViewController {
             && place != nil
             && season != nil
             && partOfDay != nil
+            && dateTaken != nil
     }
     
     @objc func upload() {
         if !isValid() {
-            AlertController.showAlert(viewController: self, message: "Please specify image's caption and place where it has been shot")
+            AlertController.showAlert(viewController: self, message: "Please fill in the information.")
             return
         }
         if let data = UIImageJPEGRepresentation(image!,1) {
@@ -156,7 +159,7 @@ class PhotoPostViewController: UIViewController {
                 "place": encodedPlace,
                 "season": season!.id,
                 "time": partOfDay!.id,
-                "date_taken": Int(Date().timeIntervalSince1970 * 1000)
+                "date_taken": Int(dateTaken!.timeIntervalSince1970 * 1000)
             ]
 
             // the data can be passed to ExploreViewController via UserDefaults
@@ -171,6 +174,8 @@ class PhotoPostViewController: UIViewController {
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.seasonView, with: #selector(showSeasonsList))
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.timeTakenView, with: #selector(showPartsOfDayList))
+        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.dateTakenView, with: #selector(toggleDateTakenPicker))
+        informationCard.dateTakenPicker.addTarget(self, action: #selector(handleDateTakenValueChanged), for: .valueChanged)
     }
     
     private func showListTableViewController(texts: [String], items: [Any], title: String="") {
@@ -191,6 +196,20 @@ class PhotoPostViewController: UIViewController {
     @objc private func showPartsOfDayList() {
         let texts = partsOfDay.map { $0.name }
         showListTableViewController(texts: texts, items: partsOfDay, title: "Parts of day")
+    }
+    
+    @objc private func toggleDateTakenPicker() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.informationCard.dateTakenPicker.isHidden = !self.informationCard.dateTakenPicker.isHidden
+        })
+    }
+    
+    @objc private func handleDateTakenValueChanged(sender: UIDatePicker) {
+        dateTaken = sender.date
+        let time = Double(sender.date.timeIntervalSince1970 * 1000)
+        let (dateString, _) = DateUtil.getDateTimeString(of: time)
+        informationCard.dateTakenLabel.text = dateString
+        informationCard.dateTakenLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     }
     
     @objc private func showSearchPlaceViewController() {

@@ -20,6 +20,7 @@ class PhotoUploadInformationCard: UIView {
     @IBOutlet weak var seasonLabel: UILabel!
     @IBOutlet weak var dateTakenLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var dateTakenPicker: UIDatePicker!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

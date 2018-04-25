@@ -20,6 +20,7 @@ struct Place: Codable, Hashable {
     var hashValue: Int { get { return placeID.hashValue } }
     var type: String = PlaceType.LENSCAPE_TYPE
     var address: String = ""
+    var distanceKM: Double?
     
     init(name: String, location: Location) {
         self.name = name
@@ -45,6 +46,8 @@ struct Place: Codable, Hashable {
         let isGooglePlace = place["is_google_place"] as! Bool
         type = isGooglePlace ? PlaceType.GOOGLE_TYPE : PlaceType.LENSCAPE_TYPE
         address = place["address"] as? String ?? ""
+        
+        distanceKM = place["distance"] as? Double
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GooglePlaces
 
 class GooglePlacesAutoCompleteViewController: UIViewController {
 
@@ -94,7 +93,7 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDataSource {
             let searchResult = searchResults[indexPath.row]
             
             cell.placeNameLabel.text = searchResult.name
-            cell.placeAddressLabel.text = searchResult.address
+            cell.placeAddressLabel.text = "\(DistanceUtil.getProperDistanceFormat(distanceKM: searchResult.distanceKM)), \(searchResult.address)"
             
             return cell
         }

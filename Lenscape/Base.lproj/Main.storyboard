@@ -1294,7 +1294,7 @@ Have a good day.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">
-                                                    <rect key="frame" x="58.000000000000014" y="20" width="237.33333333333337" height="20.333333333333329"/>
+                                                    <rect key="frame" x="58" y="20" width="237.33333333333337" height="20.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No places found? Add new one" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WO-nF-DSg">
                                                             <rect key="frame" x="0.0" y="0.0" width="237.33333333333334" height="20.333333333333332"/>

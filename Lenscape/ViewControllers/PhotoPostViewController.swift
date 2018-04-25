@@ -179,7 +179,7 @@ class PhotoPostViewController: UIViewController {
         vc.items = items
         vc.delegate = self
         let navigationController = UINavigationController(rootViewController: vc)
-        navigationController.title = title
+        vc.title = title
         present(navigationController, animated: true)
     }
     

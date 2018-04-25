@@ -25,12 +25,6 @@ class ComponentUtil {
         }
     }
     
-    static func addTapGesture(parentViewController: UIViewController, for view: UIView, with action: Selector?) {
-        let tap = UITapGestureRecognizer(target: parentViewController, action: action)
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
-    }
-    
     static func runThisAfter(second: Double, execute: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + (second), execute: execute)
     }

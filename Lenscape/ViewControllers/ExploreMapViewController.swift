@@ -45,7 +45,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         
         placesClient = GMSPlacesClient()
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: seeInFeedButton, with: #selector(seeInFeed))
+        addTapGesture(for: seeInFeedButton, with: #selector(seeInFeed))
         
         // Set up the cluster manager with the supplied icon generator and
         // renderer.

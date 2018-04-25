@@ -30,4 +30,10 @@ extension UIViewController {
             spinner.removeFromSuperview()
         }
     }
+    
+    func addTapGesture(for view: UIView, with action: Selector?) {
+        let tap = UITapGestureRecognizer(target: self, action: action)
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+    }
 }

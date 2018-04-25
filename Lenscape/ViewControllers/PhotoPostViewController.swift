@@ -33,15 +33,13 @@ class PhotoPostViewController: UIViewController {
         setupUI()
         setupKeyboard()
         
-        setupShareButton()
-        setupBackButton()
         setupGestures()
         
         //https://github.com/lkzhao/Hero/issues/187
         informationCard.hero.modifiers = [.duration(0.4), .translate(y: informationCard.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
         // Shared hero's id with PhotoPreviewViewController
-        shareButton.hero.id = "Next"
+//        shareButton.hero.id = "Next"
         
         runThisAfter(second: 0.1) {
             self.informationCard.caption.becomeFirstResponder()
@@ -167,19 +165,9 @@ class PhotoPostViewController: UIViewController {
         }
     }
     
-    private func setupShareButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(upload))
-        shareButton.addGestureRecognizer(tap)
-        shareButton.isUserInteractionEnabled = true
-    }
-    
-    private func setupBackButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
-        backButton.addGestureRecognizer(tap)
-        backButton.isUserInteractionEnabled = true
-    }
-    
     private func setupGestures() {
+        informationCard.shareButton.addTarget(self, action: #selector(upload), for: .touchUpInside)
+        ComponentUtil.addTapGesture(parentViewController: self, for: backButton, with: #selector(back))
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.seasonView, with: #selector(showSeasonsList))
         ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.timeTakenView, with: #selector(showPartsOfDayList))

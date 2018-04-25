@@ -448,27 +448,17 @@ Have a good day.</string>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTp-TU-2cu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="340" height="5"/>
-                                                            <color key="backgroundColor" red="0.68235294117647061" green="0.83529411764705885" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="5" id="fx6-Dd-btZ"/>
-                                                            </constraints>
-                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="OGf-Yo-sYy" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="16" id="1TL-GE-oW8"/>
                                                         <constraint firstAttribute="bottom" secondItem="OGf-Yo-sYy" secondAttribute="bottom" constant="55" id="3eU-u0-GBI"/>
-                                                        <constraint firstItem="NTp-TU-2cu" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" id="H8v-MC-t9x"/>
                                                         <constraint firstItem="OGf-Yo-sYy" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" constant="16" id="KT0-B8-g5e"/>
                                                         <constraint firstItem="ESn-oI-FZa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="20" symbolic="YES" id="Pln-vT-3Td"/>
-                                                        <constraint firstItem="NTp-TU-2cu" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" id="QdI-EQ-dNn"/>
                                                         <constraint firstAttribute="trailing" secondItem="98V-3U-4p5" secondAttribute="trailing" constant="16" id="c0b-9d-rfX"/>
                                                         <constraint firstAttribute="trailing" secondItem="ESn-oI-FZa" secondAttribute="trailing" constant="16" id="dwF-9z-T55"/>
                                                         <constraint firstItem="ESn-oI-FZa" firstAttribute="top" secondItem="U1J-Q1-pjn" secondAttribute="top" constant="16" id="fS9-Vs-pN5"/>
                                                         <constraint firstItem="98V-3U-4p5" firstAttribute="top" secondItem="OGf-Yo-sYy" secondAttribute="bottom" constant="10" id="jH4-7e-39v"/>
-                                                        <constraint firstAttribute="trailing" secondItem="NTp-TU-2cu" secondAttribute="trailing" id="k7i-DK-qxB"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OGf-Yo-sYy" secondAttribute="trailing" id="m4b-H3-5DP"/>
                                                         <constraint firstItem="98V-3U-4p5" firstAttribute="leading" secondItem="U1J-Q1-pjn" secondAttribute="leading" constant="16" id="nLn-nd-BHf"/>
                                                     </constraints>

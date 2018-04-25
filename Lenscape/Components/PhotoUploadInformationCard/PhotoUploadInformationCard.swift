@@ -44,6 +44,9 @@ class PhotoUploadInformationCard: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
+        dateTakenPicker.calendar = Calendar(identifier: .gregorian)
+        dateTakenPicker.locale = Locale(identifier: "en_UK")
+        dateTakenPicker.maximumDate = Date()
     }
 
 }

@@ -81,10 +81,10 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         informationWrapper.dateLabel.text = image!.relativeDatetimeString
         
-        //TODO: change this to taken date time 
-        informationWrapper.takenDateLabel.text = image!.dateString
+        informationWrapper.takenDateLabel.text = image!.dateTakenString
+        informationWrapper.takenTimeLabel.text = image!.partOfDayString
         
-        informationWrapper.takenTimeLabel.text = image!.timeString
+        informationWrapper.seasonLabel.text = image!.seasonString
     }
     
     @objc private func dismissView() {

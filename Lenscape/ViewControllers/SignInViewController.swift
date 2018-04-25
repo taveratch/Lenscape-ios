@@ -44,6 +44,7 @@ class SignInViewController: UIViewController {
                     UserController.saveUser(user: user)
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch { error in
+                    print(error)
                     fatalError("Failed to authenticate facebook token with lenscape server")
             }
             }.catch { error in

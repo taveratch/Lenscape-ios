@@ -22,7 +22,7 @@ class PhotoPostViewController: UIViewController {
     let photoUploader = PhotoUploader()
     var place: Place?
     var season: Season?
-    var dateTaken: Date?
+    var dateTaken: Date = Date()
     var partOfDay: PartOfDay?
     var seasons: [Season] = []
     var partsOfDay: [PartOfDay] = []
@@ -86,6 +86,11 @@ class PhotoPostViewController: UIViewController {
         imageView.image = image
         informationCard.caption.delegate = self
         informationCard.dateTakenPicker.isHidden = true
+        
+        let time = Double(dateTaken.timeIntervalSince1970 * 1000)
+        let (dateString, _) = DateUtil.getDateTimeString(of: time)
+        informationCard.dateTakenLabel.text = dateString
+        informationCard.dateTakenLabel.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     }
     
     // Hide status bar
@@ -159,7 +164,7 @@ class PhotoPostViewController: UIViewController {
                 "place": encodedPlace,
                 "season": season!.id,
                 "time": partOfDay!.id,
-                "date_taken": Int(dateTaken!.timeIntervalSince1970 * 1000)
+                "date_taken": Int(dateTaken.timeIntervalSince1970 * 1000)
             ]
 
             // the data can be passed to ExploreViewController via UserDefaults

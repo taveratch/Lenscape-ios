@@ -373,4 +373,31 @@ class Api {
             }
         }
     }
+    
+    static func searchLocations(currentLocation: Location, searchQuery: String = "") -> Promise<[Place]>{
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let url = "\(HOST)/aroundme/places"
+        
+        let parameters = [
+            "latlong": currentLocation.getLatlongFormat(),
+            "search": searchQuery
+        ]
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
+                response in
+                let data = response!["data"] as! [Any]
+                let places = data.map{ Place(item: $0) }
+                seal.fulfill(places)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
 }

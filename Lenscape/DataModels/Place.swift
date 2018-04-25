@@ -19,10 +19,35 @@ struct Place: Codable, Hashable {
     var placeID: String = ""
     var hashValue: Int { get { return placeID.hashValue } }
     var type: String = PlaceType.LENSCAPE_TYPE
+    var address: String = ""
+    var distanceKM: Double?
     
     init(name: String, location: Location) {
         self.name = name
         self.location = location
+    }
+    
+    init(item: Any) {
+        guard let place = item as? [String: Any] else {
+            fatalError("place is not an instance of [String: Any]")
+        }
+        
+        if let id = place["id"] as? Int {
+            placeID = String(id)
+        }else if let id = place["id"] as? String {
+            placeID = id
+        }
+        
+        let lat = place["latitude"] as! Double
+        let long = place["longitude"] as! Double
+        location = Location(latitude: lat, longitude: long)
+        
+        name = place["name"] as! String
+        let isGooglePlace = place["is_google_place"] as! Bool
+        type = isGooglePlace ? PlaceType.GOOGLE_TYPE : PlaceType.LENSCAPE_TYPE
+        address = place["address"] as? String ?? ""
+        
+        distanceKM = place["distance"] as? Double
     }
 }
 

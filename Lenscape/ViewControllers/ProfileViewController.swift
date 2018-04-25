@@ -146,7 +146,7 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.descriptionLabel.text = user["email"] as? String
             }
             
-            ComponentUtil.addTapGesture(parentViewController: self, for: profileHeader.settingsButton, with: #selector(showSettingsVC))
+            addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))
 
             return headerView
             

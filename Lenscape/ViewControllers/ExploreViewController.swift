@@ -324,7 +324,7 @@ extension ExploreViewController: UITableViewDataSource {
         
         feedItem.numberOfLikeLabel.text = "\(image.likes!)"
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: feedItem.imageView, with: #selector(showFullPhoto(sender:)))
+        addTapGesture(for: feedItem.imageView, with: #selector(showFullPhoto(sender:)))
         
         // Tag like button with row number. use "tag" to get specific image in like()
         feedItem.likeButton.tag = indexPath.row

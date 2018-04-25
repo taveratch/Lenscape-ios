@@ -13,9 +13,6 @@ class TabHeader: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var profileImage: EnhancedUIImage!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

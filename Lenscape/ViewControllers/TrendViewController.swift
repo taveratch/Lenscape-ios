@@ -22,12 +22,6 @@ class TrendViewController: UIViewController {
     var page = 1
     var shouldFetchMore = false
     
-    var numberOfPhotos = 0 {
-        didSet {
-            self.descriptionLabel.text = "\(self.numberOfPhotos) Photos"
-        }
-    }
-    
     // MARK: - ViewController Lifecycle
     
     override func viewDidLoad() {
@@ -58,7 +52,6 @@ class TrendViewController: UIViewController {
             let images = fulfill["images"] as! [Image]
             let pagination = fulfill["pagination"] as! Pagination
             modifyImageFunction(images)
-            self.numberOfPhotos = pagination.totalNumberOfEntities
             self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
                 error in
@@ -136,16 +129,7 @@ extension TrendViewController: UICollectionViewDataSource {
             guard let tabHeader = headerView.subviews[0] as? TabHeader else {
                 fatalError("No header exists")
             }
-    
-            if let user = UserController.getCurrentUser() {
-                let profileImage = user["picture"] as! String
-                let url = URL(string: profileImage)
-                tabHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
-            }
-            
-            tabHeader.titleLabel.text = "Trend"
-            self.descriptionLabel = tabHeader.descriptionLabel
-  
+            tabHeader.titleLabel.text = "Trending"
             return headerView
             
         default:

@@ -175,11 +175,11 @@ class PhotoPostViewController: UIViewController {
     
     private func setupGestures() {
         informationCard.shareButton.addTarget(self, action: #selector(upload), for: .touchUpInside)
-        ComponentUtil.addTapGesture(parentViewController: self, for: backButton, with: #selector(back))
-        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
-        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.seasonView, with: #selector(showSeasonsList))
-        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.timeTakenView, with: #selector(showPartsOfDayList))
-        ComponentUtil.addTapGesture(parentViewController: self, for: informationCard.dateTakenView, with: #selector(toggleDateTakenPicker))
+        addTapGesture(for: backButton, with: #selector(back))
+        addTapGesture(for: informationCard.placeLabel, with: #selector(showSearchPlaceViewController))
+        addTapGesture(for: informationCard.seasonView, with: #selector(showSeasonsList))
+        addTapGesture(for: informationCard.timeTakenView, with: #selector(showPartsOfDayList))
+        addTapGesture(for: informationCard.dateTakenView, with: #selector(toggleDateTakenPicker))
         informationCard.dateTakenPicker.addTarget(self, action: #selector(handleDateTakenValueChanged), for: .valueChanged)
     }
     

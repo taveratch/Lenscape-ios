@@ -54,7 +54,7 @@ class PlaceViewController: UIViewController {
         }
         fetchInitImagesFromAPI()
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: placeNameStackView, with: #selector(dismissView))
+        addTapGesture(for: placeNameStackView, with: #selector(dismissView))
         
         placeNameLabel.text = place.name
     }
@@ -101,7 +101,7 @@ class PlaceViewController: UIViewController {
     
     private func setupHOFUI(image: Image) {
         hofImage.hero.id = "\(image.thumbnailLink!)_HOF"
-        ComponentUtil.addTapGesture(parentViewController: self, for: hofImage, with: #selector(showFullHOFImage))
+        addTapGesture(for: hofImage, with: #selector(showFullHOFImage))
         
         let imageUrl = URL(string: image.thumbnailLink!)
         
@@ -237,7 +237,7 @@ extension PlaceViewController: UITableViewDataSource {
         
         feedItem.numberOfLikeLabel.text = "\(image.likes!)"
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: feedItem.imageView, with: #selector(showFullImageGestureHandler(sender:)))
+        addTapGesture(for: feedItem.imageView, with: #selector(showFullImageGestureHandler(sender:)))
         
         // Tag like button with row number. use "tag" to get specific image in like()
         feedItem.likeButton.tag = indexPath.row

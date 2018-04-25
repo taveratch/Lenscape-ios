@@ -39,7 +39,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         // https://github.com/lkzhao/Hero/issues/187
         self.infoView.hero.modifiers = [.duration(0.4), .translate(y: infoView.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
-        ComponentUtil.addTapGesture(parentViewController: self, for: imageView, with: #selector(toggleBottomInfo))
+        addTapGesture(for: imageView, with: #selector(toggleBottomInfo))
     }
     
     // Before disappear, set back to portrait mode. (See more in AppDelegate)

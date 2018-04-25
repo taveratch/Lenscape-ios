@@ -335,7 +335,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-iW-7Va" customClass="ProfileInfoView" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
@@ -381,7 +381,7 @@
                                 <rect key="frame" x="0.0" y="80" width="414" height="607"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationViewCell" rowHeight="100" id="KKc-lg-SvK" customClass="NotificationTableViewCell" customModule="Lenscape" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationViewCell" rowHeight="100" id="KKc-lg-SvK" customClass="NotificationTableViewCell" customModule="Lenscape" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKc-lg-SvK" id="cFU-mH-Ico">
@@ -536,7 +536,7 @@ Have a good day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-XM-Bv3" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
@@ -779,7 +779,7 @@ Have a good day.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-56-hnB" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="16" width="288" height="283"/>
+                                                    <rect key="frame" x="20" y="16" width="374" height="283"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1272,66 +1272,29 @@ Have a good day.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-GS-LhL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-GS-LhL">
                                 <rect key="frame" x="0.0" y="102" width="414" height="610"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchAutoCompleteTableViewCell" rowHeight="50" id="6Iy-it-B18" customClass="SearchAutoCompleteTableViewCell" customModule="Lenscape" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchItemTableViewCell" rowHeight="60" id="6Iy-it-B18" customClass="SearchItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Red Pin" translatesAutoresizingMaskIntoConstraints="NO" id="pob-7E-dR0">
-                                                    <rect key="frame" x="24" y="15" width="14" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="14" id="aCj-0m-7vb"/>
-                                                        <constraint firstAttribute="width" secondItem="pob-7E-dR0" secondAttribute="height" multiplier="7:10" id="oTR-vk-oTp"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3ao-kr-Vtj">
-                                                    <rect key="frame" x="58" y="7.3333333333333321" width="332" height="36.666666666666671"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kasetsart University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8t-qb-6lV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="332" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKE-D8-L3P">
-                                                            <rect key="frame" x="0.0" y="22.333333333333336" width="332" height="14.333333333333336"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="3ao-kr-Vtj" firstAttribute="centerY" secondItem="Fsc-A9-cah" secondAttribute="centerY" id="7B9-A9-OHS"/>
-                                                <constraint firstItem="pob-7E-dR0" firstAttribute="leading" secondItem="Fsc-A9-cah" secondAttribute="leadingMargin" id="A12-u2-h1X"/>
-                                                <constraint firstItem="3ao-kr-Vtj" firstAttribute="leading" secondItem="pob-7E-dR0" secondAttribute="trailing" constant="20" id="PdB-7t-98N"/>
-                                                <constraint firstItem="pob-7E-dR0" firstAttribute="centerY" secondItem="Fsc-A9-cah" secondAttribute="centerY" id="Q2I-EI-P8I"/>
-                                                <constraint firstAttribute="trailing" secondItem="3ao-kr-Vtj" secondAttribute="trailing" constant="24" id="Xuh-yO-qsQ"/>
-                                            </constraints>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="24" bottom="8" right="24"/>
-                                        <connections>
-                                            <outlet property="placeAddressLabel" destination="dKE-D8-L3P" id="fPw-nP-pyo"/>
-                                            <outlet property="placeNameLabel" destination="y8t-qb-6lV" id="6wb-eV-ryc"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewPlaceTableViewCell" id="Myv-tD-R7u">
-                                        <rect key="frame" x="0.0" y="78" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewPlaceTableViewCell" rowHeight="60" id="Myv-tD-R7u">
+                                        <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">
-                                                    <rect key="frame" x="58.000000000000014" y="11.666666666666666" width="237.33333333333337" height="20.333333333333336"/>
+                                                    <rect key="frame" x="58.000000000000014" y="20" width="237.33333333333337" height="20.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No places found? Add new one" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WO-nF-DSg">
                                                             <rect key="frame" x="0.0" y="0.0" width="237.33333333333334" height="20.333333333333332"/>
@@ -1342,7 +1305,7 @@ Have a good day.</string>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Blue" translatesAutoresizingMaskIntoConstraints="NO" id="dSZ-em-jlT">
-                                                    <rect key="frame" x="24" y="14" width="14" height="14"/>
+                                                    <rect key="frame" x="24" y="22" width="14" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="dSZ-em-jlT" secondAttribute="height" multiplier="1:1" id="pPD-qQ-7Mf"/>
                                                         <constraint firstAttribute="width" constant="14" id="wPp-x4-gU3"/>
@@ -1482,7 +1445,7 @@ Have a good day.</string>
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchItemTableViewCell" id="JQh-NV-4Oy" customClass="SearchItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchItemTableViewCell" id="JQh-NV-4Oy" customClass="SearchItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JQh-NV-4Oy" id="gTZ-dd-rtM" customClass="SearchAutoCompleteTableViewCell" customModule="Lenscape" customModuleProvider="target">
@@ -1684,7 +1647,7 @@ Have a good day.</string>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceVCFeedItemTableViewCell" rowHeight="312" id="Afl-sp-CBD" customClass="PlaceVCFeedItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceVCFeedItemTableViewCell" rowHeight="312" id="Afl-sp-CBD" customClass="PlaceVCFeedItemTableViewCell" customModule="Lenscape" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Afl-sp-CBD" id="ZKT-YX-uzI">

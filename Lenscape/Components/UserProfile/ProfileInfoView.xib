@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,7 +76,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW0-Rg-Wfz">
-                            <rect key="frame" x="316" y="24" width="35" height="35"/>
+                            <rect key="frame" x="324" y="10" width="35" height="35"/>
                             <subviews>
                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="seB-Qo-Kyl">
                                     <rect key="frame" x="7" y="7" width="20" height="20"/>
@@ -99,11 +98,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="mW0-Rg-Wfz" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="24" id="2fo-wt-7FS"/>
+                        <constraint firstItem="mW0-Rg-Wfz" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="10" id="2fo-wt-7FS"/>
                         <constraint firstAttribute="trailing" secondItem="NqI-H8-XT5" secondAttribute="trailing" id="D5J-Rp-hte"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="50" id="Zsu-KR-ovO"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="bEh-Ru-Whg"/>
-                        <constraint firstAttribute="trailing" secondItem="mW0-Rg-Wfz" secondAttribute="trailing" constant="24" id="rhA-zo-88K"/>
+                        <constraint firstAttribute="trailing" secondItem="mW0-Rg-Wfz" secondAttribute="trailing" constant="16" id="rhA-zo-88K"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">

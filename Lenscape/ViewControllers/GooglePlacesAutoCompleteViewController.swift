@@ -16,12 +16,9 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     @IBOutlet weak var dismissButton: UIImageView!
     @IBOutlet weak var searchViewWrapper: UIView!
     
-    var fetcher: GMSAutocompleteFetcher?
     var place: Place?
-    var searchResults: [SearchResult] = []
-    var placesClient: GMSPlacesClient?
+    var searchResults: [Place] = []
     var delegate: GooglePlacesAutoCompleteViewControllerDelegate?
-    private let dataProvider = GoogleDataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,48 +27,17 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        placesClient = GMSPlacesClient()
-        
         searchViewWrapper.hero.id = "searchViewWrapper"
-        setupFetcher()
         setupDismissButton()
-        fetchNearbyPlaces()
         
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(textField:)), for: .editingChanged)
+        
+        fetchPlaces(searchQuery: "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchTextField.becomeFirstResponder()
-    }
-    
-    private func setupFetcher() {
-        var location = LocationManager.getInstance().getCurrentLocation()
-        if location == nil {
-            location = Location(latitude: 13.8458781, longitude: 100.5687592) //Kasetsart University
-        }
-        
-        //set boundary to current location
-        let neBoundsCorner = CLLocationCoordinate2D(latitude: location!.latitude,
-                                                    longitude: location!.longitude)
-        let swBoundsCorner = CLLocationCoordinate2D(latitude: location!.latitude,
-                                                    longitude: location!.longitude)
-        let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner,
-                                         coordinate: swBoundsCorner)
-        
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        fetcher = GMSAutocompleteFetcher(bounds: bounds, filter: filter)
-        fetcher?.delegate = self
-    }
-    
-    private func fetchNearbyPlaces() {
-        let location = LocationManager.getInstance().currentLocation
-        dataProvider.fetchPlacesNearCoordinate(CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!), radius: 1000, types: []) {
-            places in
-            self.searchResults = places.map { SearchResult(name: $0.name, address: $0.address, placeID: $0.placeID!) }
-            self.tableView.reloadData()
-        }
     }
     
     private func setupDismissButton() {
@@ -84,7 +50,22 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     }
     
     @objc func searchTextFieldDidChange(textField: UITextField) {
-        fetcher!.sourceTextHasChanged(textField.text!)
+        fetchPlaces(searchQuery: textField.text!)
+    }
+    
+    private func fetchPlaces(searchQuery: String) {
+        let location = LocationManager.getInstance().getCurrentLocation()
+        Api.searchLocations(currentLocation: location!, searchQuery: searchQuery).done {
+            places in
+            self.searchResults = places
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                AlertController.showAlert(viewController: self, message: message)
+            }.finally {
+                self.tableView.reloadData()
+        }
     }
     
     /*
@@ -95,18 +76,6 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
             delegate?.didSelectPlace(place: place!)
             dismiss(animated: true)
         }
-    }
-}
-
-extension GooglePlacesAutoCompleteViewController: GMSAutocompleteFetcherDelegate {
-    
-    func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
-        searchResults = predictions.map{ SearchResult(prediction: $0) }
-        tableView.reloadData()
-    }
-    
-    func didFailAutocompleteWithError(_ error: Error) {
-        return
     }
 }
 
@@ -153,17 +122,9 @@ extension GooglePlacesAutoCompleteViewController: UITextFieldDelegate {
 extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < searchResults.count {
-            let searchResult = searchResults[indexPath.row]
-            placesClient!.lookUpPlaceID(searchResult.placeID, callback: {
-                place, error in
-                if let gmsPlace = place {
-                    var place = Place(name: gmsPlace.name, location: Location(latitude: gmsPlace.coordinate.latitude, longitude: gmsPlace.coordinate.longitude))
-                    place.placeID = gmsPlace.placeID
-                    place.type = PlaceType.GOOGLE_TYPE
-                    self.delegate?.didSelectPlace(place: place)
-                    self.dismiss(animated: true)
-                }
-            })
+            let place = searchResults[indexPath.row]
+            self.delegate?.didSelectPlace(place: place)
+            self.dismiss(animated: true)
         }else {
             // open add new place view controller
             let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.AddNewPlaceViewController.rawValue)

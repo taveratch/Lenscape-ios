@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     
     var images: [Image] = []
-    let itemsPerRow = 3
+    let itemsPerRow = 4
     var numberOfUploadedPhotos = 0
     var page = 0
     var shouldFetchMore = true

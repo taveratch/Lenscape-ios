@@ -128,6 +128,7 @@
 		95E909A82091F69A0061FFE7 /* MyPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */; };
 		95E909AE209215EC0061FFE7 /* MyPlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909AD209215EC0061FFE7 /* MyPlaceTableViewCell.swift */; };
 		95E909B220921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909B120921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift */; };
+		95E909B4209224060061FFE7 /* UITapGestureRecognizerWithParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
 		95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */; };
@@ -312,6 +313,7 @@
 		95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlacesViewController.swift; sourceTree = "<group>"; };
 		95E909AD209215EC0061FFE7 /* MyPlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceTableViewCell.swift; sourceTree = "<group>"; };
 		95E909B120921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceSeeMoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithParam.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 				952EF14F206D2BEF0032983B /* UIViewController.swift */,
 				952EF151206D2D4A0032983B /* Notification.swift */,
 				D0AE8E2D20921C500046202D /* UITextField.swift */,
+				95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */,
 				959D25D6207BB31100650D08 /* GooglePlacesAutoCompleteViewController.swift in Sources */,
 				955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */,
+				95E909B4209224060061FFE7 /* UITapGestureRecognizerWithParam.swift in Sources */,
 				950358CF206F95BB00D424F4 /* GMUGroundOverlay.m in Sources */,
 				95F85EFB20634B950059ACFB /* UICollectionViewDelegateFlowLayout.swift in Sources */,
 				95B7C1FC204E9DD100410A48 /* Dictionary.swift in Sources */,

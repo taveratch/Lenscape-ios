@@ -17,8 +17,10 @@ class ProfileViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     
     var images: [Image] = []
+    var places: [Place] = []
     let itemsPerRow = 4
     var numberOfUploadedPhotos = 0
+    var numberOfVisitedPlaces = 0
     var page = 0
     var shouldFetchMore = true
     
@@ -29,6 +31,7 @@ class ProfileViewController: UIViewController {
         collectionView.delegate = self
         setupRefreshControl()
         fetchInitImagesFromAPI()
+        fetchMyPlacesFromAPI()
     }
 
     // MARK: - Private Methods
@@ -60,6 +63,21 @@ class ProfileViewController: UIViewController {
             }.finally {
                 self.collectionView.reloadData()
                 self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func fetchMyPlacesFromAPI() {
+        Api.fetchMyPlaces().done {
+            places in
+            self.places = places
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                AlertController.showAlert(viewController: self, message: message)
+            }.finally {
+                self.numberOfVisitedPlaces = self.places.count
+                self.collectionView.reloadData()
         }
     }
     
@@ -155,6 +173,7 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.descriptionLabel.text = user["email"] as? String
             }
             profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
+            profileHeader.numberOfVisitedPlaceLabel.text = String(self.numberOfVisitedPlaces)
             
             addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))
             addTapGesture(for: profileHeader.seeMorePlacesButton, with: #selector(showMyPlacesViewController))

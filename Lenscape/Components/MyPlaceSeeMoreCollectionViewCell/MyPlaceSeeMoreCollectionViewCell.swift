@@ -9,6 +9,7 @@
 import UIKit
 
 class MyPlaceSeeMoreCollectionViewCell: UICollectionViewCell {
-    
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
 }
 

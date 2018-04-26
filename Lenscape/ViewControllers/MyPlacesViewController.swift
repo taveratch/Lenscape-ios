@@ -14,11 +14,11 @@ class MyPlacesViewController: UIViewController {
     @IBOutlet weak var navigationBar: NavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
     let MAX_ITEM_PER_ROW = 4
     
     // row height has to be dynamic related to height of each photo. This number includes margin and constraint
     let tableCellHeightWithoutCollectionWith: CGFloat = 62
-    
     var places: [Place] = []
     
     override func viewDidLoad() {
@@ -50,6 +50,18 @@ class MyPlacesViewController: UIViewController {
                 self.tableView.reloadData()
         }
     }
+    
+    @objc private func showFullImageViewController(sender: UITapGestureRecognizerWithParam) {
+        let param = sender.param as! [String: Any]
+        let uiImage = param["uiImage"] as! UIImage
+        let image = param["image"] as! Image
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+        vc.image = image
+        vc.placeHolderImage = uiImage
+        vc.imageViewHeroId = "\(image.thumbnailLink!)_MyPlace"
+        Hero.shared.defaultAnimation = .fade
+        present(vc, animated: true)
+    }
 }
 
 extension MyPlacesViewController: UITableViewDataSource {
@@ -73,11 +85,33 @@ extension MyPlacesViewController: UITableViewDataSource {
 
 extension MyPlacesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = indexPath.row
+        let image = places[collectionView.tag].images[index]
+        let maxImageCount = places[collectionView.tag].images.count
+        
+        // If number of image more than MAX_ITEM_PER_ROW, it shows See More CollectionViewCell
+        if index == MAX_ITEM_PER_ROW - 1 && index < maxImageCount - 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.MyPlaceSeeMoreCollectionViewCell.rawValue, for: indexPath) as! MyPlaceSeeMoreCollectionViewCell
+            let url = URL(string: image.thumbnailLink!)
+            cell.imageView.kf.indicatorType = .activity
+            cell.imageView.kf.setImage(with: url)
+            cell.numberLabel.text = "+\(maxImageCount-MAX_ITEM_PER_ROW)"
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageCollectionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
-        let image = places[collectionView.tag].images[indexPath.row]
+        
         let url = URL(string: image.thumbnailLink!)
         cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: url)
+        cell.imageView.hero.id = "\(image.thumbnailLink!)_MyPlace"
+        cell.imageView.kf.setImage(with: url) {
+            uiImage, _, _, _ in
+            let param: [String: Any] = [
+                "uiImage": uiImage,
+                "image": image
+            ]
+            self.addTapGesture(for: cell.imageView, with: #selector(self.showFullImageViewController(sender:)), param: param)
+        }
         return cell
     }
     

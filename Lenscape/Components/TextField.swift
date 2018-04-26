@@ -31,10 +31,11 @@ class TextField: UITextField {
         
     }
     
-    @IBInspectable var hasError: Bool = false {
+    @IBInspectable var hasError = false {
         didSet {
-            if (hasError) {
-                bottomBorder.backgroundColor = UIColor.red
+            if hasError {
+                bottomBorder.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0, blue: 0.1529411765, alpha: 1)
+                setRightViewIcon(icon: UIImage(named: "Invalid")!)
             } else {
                 bottomBorder.backgroundColor = UIColor(cgColor: #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1))
             }
@@ -43,7 +44,12 @@ class TextField: UITextField {
     
     @IBInspectable var isValidated = false {
         didSet {
-            bottomBorder.backgroundColor = isValidated ? UIColor(cgColor: #colorLiteral(red: 0.1811149418, green: 0.8337538838, blue: 0.452131331, alpha: 1)): UIColor(cgColor: #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1))
+            if isValidated {
+                bottomBorder.backgroundColor = UIColor(cgColor: #colorLiteral(red: 0.4117647059, green: 0.9411764706, blue: 0.6823529412, alpha: 1))
+                setRightViewIcon(icon: UIImage(named: "Verified")!)
+            } else {
+                bottomBorder.backgroundColor = UIColor(cgColor: #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1))
+            }
         }
     }
 }

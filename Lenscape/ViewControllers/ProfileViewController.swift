@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class ProfileViewController: UIViewController {
 
@@ -16,7 +17,8 @@ class ProfileViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     
     var images: [Image] = []
-    let itemsPerRow = 3
+    let itemsPerRow = 4
+    var numberOfUploadedPhotos = 0
     var page = 0
     var shouldFetchMore = true
     
@@ -44,11 +46,12 @@ class ProfileViewController: UIViewController {
     }
     
     private func fetchImagesFromAPI(page: Int, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
-        Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
+        Api.fetchMeImages(page: page).done {
             fulfill in
             
             let images = fulfill["images"] as! [Image]
             let pagination = fulfill["pagination"] as! Pagination
+            self.numberOfUploadedPhotos = pagination.totalNumberOfEntities
             modifyImageFunction(images)
             self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
@@ -71,6 +74,12 @@ class ProfileViewController: UIViewController {
         vc.placeHolderImage = cell.imageView.image
         vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
+    }
+    
+    @objc private func showMyPlacesViewController() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MyPlacesViewController.rawValue)
+        Hero.shared.defaultAnimation = .push(direction: .left)
+        present(vc!, animated: true)
     }
     
     private func setupRefreshControl() {
@@ -145,8 +154,10 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.nameLabel.text = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
                 profileHeader.descriptionLabel.text = user["email"] as? String
             }
+            profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
             
             addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))
+            addTapGesture(for: profileHeader.seeMorePlacesButton, with: #selector(showMyPlacesViewController))
 
             return headerView
             

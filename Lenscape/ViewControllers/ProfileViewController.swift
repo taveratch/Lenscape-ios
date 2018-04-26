@@ -99,9 +99,10 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func showMyPlacesViewController() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MyPlacesViewController.rawValue)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MyPlacesViewController.rawValue) as! MyPlacesViewController
         Hero.shared.defaultAnimation = .push(direction: .left)
-        present(vc!, animated: true)
+        vc.places = places
+        present(vc, animated: true)
     }
     
     private func setupRefreshControl() {

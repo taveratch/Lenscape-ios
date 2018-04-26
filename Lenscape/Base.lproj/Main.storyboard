@@ -389,7 +389,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKc-lg-SvK" id="cFU-mH-Ico">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-Q1-pjn" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -1288,7 +1288,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
@@ -1298,7 +1298,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">
@@ -1659,7 +1659,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Afl-sp-CBD" id="ZKT-YX-uzI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="311.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw2-EX-C67" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">
@@ -2442,7 +2442,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NaA-p4-z62" id="ktb-QI-5CG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij3-1K-QzX" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -2535,6 +2535,7 @@ Have a good day.</string>
                                                                     </constraints>
                                                                     <size key="customSize" width="75" height="75"/>
                                                                     <connections>
+                                                                        <outlet property="backgroundUIView" destination="fou-yQ-RGX" id="wxd-fk-Kc9"/>
                                                                         <outlet property="imageView" destination="je9-dv-G2E" id="loh-4I-y5U"/>
                                                                         <outlet property="numberLabel" destination="k2J-o1-Nl4" id="Aeu-Sc-5wY"/>
                                                                     </connections>
@@ -2631,6 +2632,81 @@ Have a good day.</string>
             </objects>
             <point key="canvasLocation" x="5855.072463768116" y="2867.934782608696"/>
         </scene>
+        <!--Photo Grid View Controller-->
+        <scene sceneID="VpW-mH-4Nh">
+            <objects>
+                <viewController storyboardIdentifier="PhotoGridViewController" id="Od8-WR-ggy" customClass="PhotoGridViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MKS-58-oUp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k8f-3x-AsY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jTG-tA-mMC">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="naN-wb-MBK" customClass="ImageCollectionViewCell" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUY-Kg-zzM" customClass="NavigationBar" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3nI-1p-MBL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="0.25" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="My Places"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lUY-Kg-zzM" firstAttribute="top" secondItem="Jh2-WT-efe" secondAttribute="top" id="1D1-xm-T5G"/>
+                            <constraint firstItem="lUY-Kg-zzM" firstAttribute="trailing" secondItem="Jh2-WT-efe" secondAttribute="trailing" id="358-eE-wau"/>
+                            <constraint firstItem="Jh2-WT-efe" firstAttribute="trailing" secondItem="k8f-3x-AsY" secondAttribute="trailing" id="CWU-8n-PoD"/>
+                            <constraint firstItem="k8f-3x-AsY" firstAttribute="top" secondItem="lUY-Kg-zzM" secondAttribute="bottom" id="E1n-Lf-8hd"/>
+                            <constraint firstItem="k8f-3x-AsY" firstAttribute="leading" secondItem="Jh2-WT-efe" secondAttribute="leading" id="NmT-GW-u6a"/>
+                            <constraint firstItem="Jh2-WT-efe" firstAttribute="bottom" secondItem="k8f-3x-AsY" secondAttribute="bottom" id="OJD-KB-GZK"/>
+                            <constraint firstItem="lUY-Kg-zzM" firstAttribute="leading" secondItem="Jh2-WT-efe" secondAttribute="leading" id="ZZ0-vy-Mi1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jh2-WT-efe"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="collectionView" destination="k8f-3x-AsY" id="sKc-DF-7qG"/>
+                        <outlet property="navigationBar" destination="lUY-Kg-zzM" id="gYI-Ee-Tb1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AHF-fg-S1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6612" y="2867"/>
+        </scene>
     </scenes>
     <resources>
         <image name="3 Dots White" width="32" height="7"/>
@@ -2646,7 +2722,7 @@ Have a good day.</string>
         <image name="Logo" width="1959" height="390"/>
         <image name="Navigator" width="25" height="25"/>
         <image name="Photo White" width="32" height="28"/>
-        <image name="Profile Image Placeholder" width="201" height="201"/>
+        <image name="Profile Image Placeholder" width="300" height="300"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
         <image name="Red Pin" width="42" height="60"/>

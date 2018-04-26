@@ -129,6 +129,7 @@
 		95E909AE209215EC0061FFE7 /* MyPlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909AD209215EC0061FFE7 /* MyPlaceTableViewCell.swift */; };
 		95E909B220921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909B120921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift */; };
 		95E909B4209224060061FFE7 /* UITapGestureRecognizerWithParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */; };
+		95E909B6209242710061FFE7 /* PhotoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909B5209242710061FFE7 /* PhotoGridViewController.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
 		95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */; };
@@ -314,6 +315,7 @@
 		95E909AD209215EC0061FFE7 /* MyPlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceTableViewCell.swift; sourceTree = "<group>"; };
 		95E909B120921FB00061FFE7 /* MyPlaceSeeMoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceSeeMoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerWithParam.swift; sourceTree = "<group>"; };
+		95E909B5209242710061FFE7 /* PhotoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridViewController.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
 				95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */,
 				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
+				95E909B5209242710061FFE7 /* PhotoGridViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				9560EA18208D862D0013AB22 /* PlaceViewController.swift */,
 				95619D4D208F8EC2001A89A5 /* ListTableViewController.swift */,
@@ -1123,6 +1126,7 @@
 				D0AE8E2E20921C500046202D /* UITextField.swift in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
+				95E909B6209242710061FFE7 /* PhotoGridViewController.swift in Sources */,
 				950358CE206F95BB00D424F4 /* GMUFeature.m in Sources */,
 				950358CD206F95BB00D424F4 /* GMUPolygon.m in Sources */,
 				9541DB3A207BC72700F7BE65 /* SearchItemTableViewCell.swift in Sources */,

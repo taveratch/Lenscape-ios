@@ -37,6 +37,7 @@ enum Identifier: String {
     case MyPlacesViewController = "MyPlacesViewController"
     case MyPlaceTableViewCell = "MyPlaceTableViewCell"
     case MyPlaceSeeMoreCollectionViewCell = "MyPlaceSeeMoreCollectionViewCell"
+    case PhotoGridViewController = "PhotoGridViewController"
 }
 
 enum SegueIdentifier: String {

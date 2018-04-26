@@ -62,6 +62,17 @@ class MyPlacesViewController: UIViewController {
         Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
+    
+    @objc private func showPhotoGridViewController(sender: UITapGestureRecognizerWithParam) {
+        let param = sender.param as! [String: Any]
+        let place = param["place"] as! Place
+        let images = place.images
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoGridViewController.rawValue) as! PhotoGridViewController
+        vc.images = images
+        vc.title = place.name
+        Hero.shared.defaultAnimation = .push(direction: .left)
+        present(vc, animated: true)
+    }
 }
 
 extension MyPlacesViewController: UITableViewDataSource {
@@ -86,7 +97,8 @@ extension MyPlacesViewController: UITableViewDataSource {
 extension MyPlacesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.row
-        let image = places[collectionView.tag].images[index]
+        let place = places[collectionView.tag]
+        let image = place.images[index]
         let maxImageCount = places[collectionView.tag].images.count
         
         // If number of image more than MAX_ITEM_PER_ROW, it shows See More CollectionViewCell
@@ -96,6 +108,11 @@ extension MyPlacesViewController: UICollectionViewDataSource, UICollectionViewDe
             cell.imageView.kf.indicatorType = .activity
             cell.imageView.kf.setImage(with: url)
             cell.numberLabel.text = "+\(maxImageCount-MAX_ITEM_PER_ROW)"
+            
+            let params: [String: Any] = [
+                "place": place
+            ]
+            self.addTapGesture(for: cell.imageView, with: #selector(showPhotoGridViewController(sender:)), param: params)
             return cell
         }
         

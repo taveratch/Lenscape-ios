@@ -25,6 +25,8 @@ class ExploreViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var headerTitleSection: UIView!
+    @IBOutlet weak var statusbarSpace: UIView!
     var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -269,21 +271,19 @@ class ExploreViewController: UIViewController {
     
     private func showHeader(isShow: Bool) {
         let isUploading = !self.progressViewWrapper.isHidden
-        let marginHeight = 20
-        let headerSectionHeight = 60
-        let uploadSectionHeight = 70
-        let height = isShow ? isUploading ? (marginHeight + headerSectionHeight + uploadSectionHeight) : (marginHeight + headerSectionHeight) : 0
-        
-        if headerHeightConstraint == nil {
-            headerHeightConstraint = header.heightAnchor.constraint(equalToConstant: CGFloat(height))
-            headerHeightConstraint!.isActive = true
-        }else {
-            headerHeightConstraint?.constant = CGFloat(height)
+        if isShow {
+            self.header.isHidden = false
         }
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.headerTitleSection.isHidden = !isShow
+            self.statusbarSpace.isHidden = isUploading ? false : !isShow
             self.view.layoutIfNeeded()
-        })
-        animator.startAnimation()
+        }) {
+            finish in
+            if !isShow && !isUploading {
+                self.header.isHidden = true
+            }
+        }
     }
     
 }

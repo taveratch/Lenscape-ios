@@ -41,6 +41,21 @@ class PhotoGridViewController: UIViewController {
         Hero.shared.defaultAnimation = .push(direction: .right)
         dismiss(animated: true)
     }
+    
+    @objc private func showFullImageViewController(sender: UITapGestureRecognizerWithParam) {
+        let tapLocation = sender.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: tapLocation)
+        let cell = collectionView.cellForItem(at: indexPath!) as! ImageCollectionViewCell
+        let index = indexPath!.row
+        let image = images[index]
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+        vc.image = image
+        vc.placeHolderImage = cell.imageView.image
+        vc.imageViewHeroId = "\(image.thumbnailLink!)_PhotoGrid"
+        Hero.shared.defaultAnimation = .fade
+        present(vc, animated: true)
+    }
 }
 
 extension PhotoGridViewController: UICollectionViewDataSource {
@@ -57,7 +72,10 @@ extension PhotoGridViewController: UICollectionViewDataSource {
         let image = images[indexPath.row]
         
         let url = URL(string: image.thumbnailLink!)
+        cell.imageView.hero.id = "\(image.thumbnailLink!)_PhotoGrid"
         cell.imageView.kf.setImage(with: url)
+        
+        addTapGesture(for: cell.imageView, with: #selector(showFullImageViewController(sender:)) )
         
         return cell
     }

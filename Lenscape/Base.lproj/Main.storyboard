@@ -607,7 +607,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phd-6R-tgf" id="3Pi-p9-rZe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGx-56-hnB" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">
@@ -2535,6 +2535,7 @@ Have a good day.</string>
                                                                     </constraints>
                                                                     <size key="customSize" width="75" height="75"/>
                                                                     <connections>
+                                                                        <outlet property="backgroundUIView" destination="fou-yQ-RGX" id="wxd-fk-Kc9"/>
                                                                         <outlet property="imageView" destination="je9-dv-G2E" id="loh-4I-y5U"/>
                                                                         <outlet property="numberLabel" destination="k2J-o1-Nl4" id="Aeu-Sc-5wY"/>
                                                                     </connections>
@@ -2634,7 +2635,7 @@ Have a good day.</string>
         <!--Photo Grid View Controller-->
         <scene sceneID="VpW-mH-4Nh">
             <objects>
-                <viewController id="Od8-WR-ggy" customClass="PhotoGridViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoGridViewController" id="Od8-WR-ggy" customClass="PhotoGridViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKS-58-oUp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2694,6 +2695,9 @@ Have a good day.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jh2-WT-efe"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="k8f-3x-AsY" id="sKc-DF-7qG"/>
                         <outlet property="navigationBar" destination="lUY-Kg-zzM" id="gYI-Ee-Tb1"/>

@@ -112,7 +112,7 @@ extension MyPlacesViewController: UICollectionViewDataSource, UICollectionViewDe
             let params: [String: Any] = [
                 "place": place
             ]
-            self.addTapGesture(for: cell.imageView, with: #selector(showPhotoGridViewController(sender:)), param: params)
+            self.addTapGesture(for: cell.backgroundUIView, with: #selector(showPhotoGridViewController(sender:)), param: params)
             return cell
         }
         

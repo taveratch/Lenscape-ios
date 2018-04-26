@@ -30,11 +30,15 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         setupRefreshControl()
-        fetchInitImagesFromAPI()
-        fetchMyPlacesFromAPI()
+        fetchFromAPIs()
     }
 
     // MARK: - Private Methods
+    
+    @objc private func fetchFromAPIs() {
+        fetchInitImagesFromAPI()
+        fetchMyPlacesFromAPI()
+    }
     
     @objc private func fetchInitImagesFromAPI() {
         page = 1
@@ -107,7 +111,7 @@ class ProfileViewController: UIViewController {
         } else {
             collectionView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(fetchInitImagesFromAPI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchFromAPIs), for: .valueChanged)
     }
     
     @objc private func showSettingsVC() {

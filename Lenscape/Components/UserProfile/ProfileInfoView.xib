@@ -18,6 +18,7 @@
                 <outlet property="numberOfUploadedPhotoLabel" destination="euw-b4-Fov" id="0km-g4-QVT"/>
                 <outlet property="numberOfVisitedPlaceLabel" destination="ATM-Yp-sFr" id="Mn5-gF-Ife"/>
                 <outlet property="profileImage" destination="CYQ-HU-rwW" id="9QU-Vj-VRH"/>
+                <outlet property="seeMorePlacesButton" destination="TXc-SO-QDq" id="Nmk-FW-p2X"/>
                 <outlet property="settingsButton" destination="mW0-Rg-Wfz" id="jFk-OE-J9H"/>
             </connections>
         </placeholder>

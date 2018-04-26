@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class ProfileViewController: UIViewController {
 
@@ -73,6 +74,12 @@ class ProfileViewController: UIViewController {
         vc.placeHolderImage = cell.imageView.image
         vc.hero.modalAnimationType = .fade
         present(vc, animated: true)
+    }
+    
+    @objc private func showMyPlacesViewController() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.MyPlacesViewController.rawValue)
+        Hero.shared.defaultAnimation = .push(direction: .left)
+        present(vc!, animated: true)
     }
     
     private func setupRefreshControl() {
@@ -146,10 +153,11 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
                 profileHeader.nameLabel.text = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
                 profileHeader.descriptionLabel.text = user["email"] as? String
-                profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
             }
+            profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
             
             addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))
+            addTapGesture(for: profileHeader.seeMorePlacesButton, with: #selector(showMyPlacesViewController))
 
             return headerView
             

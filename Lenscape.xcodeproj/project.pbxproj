@@ -123,6 +123,9 @@
 		95DD8285206156F40073B097 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD8284206156F40073B097 /* CustomTabBar.swift */; };
 		95E45148206DF2B7000E5046 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E45147206DF2B7000E5046 /* Pagination.swift */; };
 		95E909A12090D2CE0061FFE7 /* DistanceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909A02090D2CE0061FFE7 /* DistanceUtil.swift */; };
+		95E909A42091F5160061FFE7 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E909A32091F5160061FFE7 /* NavigationBar.xib */; };
+		95E909A62091F58C0061FFE7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909A52091F58C0061FFE7 /* NavigationBar.swift */; };
+		95E909A82091F69A0061FFE7 /* MyPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */; };
 		95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */; };
 		95F85EF32063454E0059ACFB /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */; };
 		95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */; };
@@ -301,6 +304,9 @@
 		95DD8284206156F40073B097 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		95E45147206DF2B7000E5046 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		95E909A02090D2CE0061FFE7 /* DistanceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUtil.swift; sourceTree = "<group>"; };
+		95E909A32091F5160061FFE7 /* NavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBar.xib; sourceTree = "<group>"; };
+		95E909A52091F58C0061FFE7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlacesViewController.swift; sourceTree = "<group>"; };
 		95F85EEF2062BB590059ACFB /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95F85EF22063454E0059ACFB /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		95F85EF42063455F0059ACFB /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -529,6 +535,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95E909A22091F5040061FFE7 /* NavigationBar */,
 				95619D4A208ECED9001A89A5 /* PlaceVCFeedItemTableViewCell */,
 				9560EA24208EC34C0013AB22 /* FeedItemTableViewCell */,
 				D036D5B0208D049600DADDC8 /* NotificationTableViewCell */,
@@ -615,6 +622,7 @@
 			isa = PBXGroup;
 			children = (
 				95656935204C2BB3005F9F6B /* SignInViewController.swift */,
+				95E909A72091F69A0061FFE7 /* MyPlacesViewController.swift */,
 				95C35BC4207232D100030B12 /* PhotoPreviewViewController.swift */,
 				95B8AB7D20519544007480AA /* TrendViewController.swift */,
 				9560EA18208D862D0013AB22 /* PlaceViewController.swift */,
@@ -742,6 +750,15 @@
 			path = PhotoInformationCard;
 			sourceTree = "<group>";
 		};
+		95E909A22091F5040061FFE7 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				95E909A32091F5160061FFE7 /* NavigationBar.xib */,
+				95E909A52091F58C0061FFE7 /* NavigationBar.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
 		95F85EF12063453A0059ACFB /* ImageCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,6 +884,7 @@
 				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
 				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
+				95E909A42091F5160061FFE7 /* NavigationBar.xib in Resources */,
 				9560EA1F208DB8690013AB22 /* SearchItemTableViewCell.xib in Resources */,
 				9560EA1D208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib in Resources */,
 				958B9215207380DB0061F26A /* flat-pale-map-style.json in Resources */,
@@ -1053,6 +1071,7 @@
 				9560EA23208DBD4F0013AB22 /* PlaceListViewController.swift in Sources */,
 				953048A42062845600EB5F3F /* PortraitViewController.swift in Sources */,
 				9509A5322084DBCE00334B74 /* Place.swift in Sources */,
+				95E909A82091F69A0061FFE7 /* MyPlacesViewController.swift in Sources */,
 				95E45148206DF2B7000E5046 /* Pagination.swift in Sources */,
 				951FE8BA204C3C9400FE6C10 /* UserController.swift in Sources */,
 				957FA7DF20565E9C005F2E91 /* PhotoPostViewController.swift in Sources */,
@@ -1064,6 +1083,7 @@
 				95619D54208F948A001A89A5 /* Season.swift in Sources */,
 				950358C6206F95BB00D424F4 /* GMUDefaultClusterRenderer.m in Sources */,
 				9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */,
+				95E909A62091F58C0061FFE7 /* NavigationBar.swift in Sources */,
 				950358C0206F95BB00D424F4 /* GQTPointQuadTreeChild.m in Sources */,
 				950358CA206F95BB00D424F4 /* GMUGeometryRenderer.m in Sources */,
 				9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */,

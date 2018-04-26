@@ -435,4 +435,26 @@ class Api {
             }
         }
     }
+    
+    static func fetchMyPlaces() -> Promise<[Place]>{
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        let url = "\(HOST)/me/locations"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, method: "GET").done {
+                response in
+                let data = response!["data"] as! [Any]
+                let places = data.map { Place(item: $0) }
+                seal.fulfill(places)
+                }.catch {
+                    error in
+                    print(error.domain)
+                    seal.reject(error)
+                    print(error)
+            }
+        }
+    }
 }

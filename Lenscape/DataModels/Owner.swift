@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Owner {
+struct Owner: Codable {
     var name: String!
     var profilePictureLink: String!
     var email: String!

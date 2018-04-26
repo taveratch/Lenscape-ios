@@ -16,7 +16,7 @@ enum Identifier: String {
     case PhotoPostViewController = "PhotoPostViewController"
     case OpenCameraViewController = "OpenCameraViewController"
     case OpenCameraViewControllerModal = "OpenCameraViewControllerModal"
-    case ImageColelctionViewCell = "ImageColelctionViewCell"
+    case ImageCollectionViewCell = "ImageCollectionViewCell"
     case ExploreHeaderTableViewCell = "ExploreHeaderTableViewCell"
     case PhotoInfoViewController = "PhotoInfoViewController"
     case FullImageViewController = "FullImageViewController"
@@ -35,6 +35,7 @@ enum Identifier: String {
     case ListTableViewCell = "ListTableViewCell"
     case ListTableViewController = "ListTableViewController"
     case MyPlacesViewController = "MyPlacesViewController"
+    case MyPlaceTableViewCell = "MyPlaceTableViewCell"
 }
 
 enum SegueIdentifier: String {

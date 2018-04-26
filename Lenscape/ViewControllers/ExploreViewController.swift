@@ -137,7 +137,9 @@ class ExploreViewController: UIViewController {
             self.shouldFetchMore = pagination.hasMore
             }.catch {
                 error in
-                print("error: \(error)")
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                AlertController.showAlert(viewController: self, message: message)
             }.finally {
                 self.tableView.reloadData()
                 self.scrollToTop()

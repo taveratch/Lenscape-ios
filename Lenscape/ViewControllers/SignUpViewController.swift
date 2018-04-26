@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     var activeField: UITextField?
     private lazy var imagePickerController = UIImagePickerController()
+    var isCustomProfileImage: Bool = false
     
     
     // MARK: - Computed properties
@@ -46,7 +47,7 @@ class SignUpViewController: UIViewController {
         signUpButton.loadingIndicator(show: true)
 
         Api.signUp(
-            picture: profileImageView.image,
+            picture: isCustomProfileImage ? profileImageView.image : nil,
             firstName: firstNameTextField.text!,
             lastName: lastNameTextField.text!,
             email: emailTextField.text!,
@@ -283,6 +284,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
+        isCustomProfileImage = true
         profileImageView.image = selectedImage
         dismiss(animated: true)
     }

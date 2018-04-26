@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "profile_placeholder.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "profile_image_placeholder.png",
+      "filename" : "profile_placeholder-1.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "profile_placeholder-2.jpg",
       "scale" : "3x"
     }
   ],

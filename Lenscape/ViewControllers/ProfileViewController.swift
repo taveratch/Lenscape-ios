@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func fetchImagesFromAPI(page: Int, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
-        Api.fetchExploreImages(page: page, location: LocationManager.getInstance().getCurrentLocation()!).done {
+        Api.fetchMeImages(page: page).done {
             fulfill in
             
             let images = fulfill["images"] as! [Image]

@@ -400,4 +400,39 @@ class Api {
             }
         }
     }
+    
+    static func fetchMeImages(page: Int = 1, size: Int = 25) -> Promise<[String: Any]>{
+        
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        
+        let parameters: [String: String] = [
+            "page": String(page),
+            "size": String(size)
+        ]
+        
+        let url = "\(HOST)/me/photos"
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
+                response in
+                let data = response!["data"] as! [Any]
+                let images = data
+                    .map { Image(item: $0) }
+                
+                let fulfill: [String: Any] = [
+                    "images" : images,
+                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])
+                ]
+                
+                seal.fulfill(fulfill)
+                }.catch {
+                    error in
+                    print(error.domain)
+                    seal.reject(error)
+                    print(error)
+            }
+        }
+    }
 }

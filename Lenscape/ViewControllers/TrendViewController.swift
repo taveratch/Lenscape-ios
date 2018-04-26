@@ -13,7 +13,6 @@ class TrendViewController: UIViewController {
     // MARK: - Attributes
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var descriptionLabel: UILabel!
     
     private lazy var refreshControl = UIRefreshControl()
     
@@ -100,7 +99,7 @@ extension TrendViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageColelctionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageCollectionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
         let index = indexPath.row
         // If scroll before last 4 rows then fetch the next images
         if images.count > itemsPerRow*3, index >= images.count - (itemsPerRow*4), shouldFetchMore {

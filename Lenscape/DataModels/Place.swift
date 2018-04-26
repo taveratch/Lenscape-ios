@@ -21,6 +21,7 @@ struct Place: Codable, Hashable {
     var type: String = PlaceType.LENSCAPE_TYPE
     var address: String = ""
     var distanceKM: Double?
+    var images: [Image] = []
     
     init(name: String, location: Location) {
         self.name = name
@@ -48,6 +49,12 @@ struct Place: Codable, Hashable {
         address = place["address"] as? String ?? ""
         
         distanceKM = place["distance"] as? Double
+        
+        if let imagesObj = place["photos"] as? [Any] {
+            let images = imagesObj.map { Image(item: $0)}
+            self.images = images
+        }
+        
     }
 }
 

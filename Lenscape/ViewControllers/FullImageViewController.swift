@@ -49,10 +49,6 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
     @objc func canRotate() -> Void {}
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Image {
+class Image: Codable {
     var name: String?
     var type: String?
     var id: Int

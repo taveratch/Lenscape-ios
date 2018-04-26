@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     var activeField: UITextField?
     private lazy var imagePickerController = UIImagePickerController()
+    var isCustomProfileImage: Bool = false
     
     
     // MARK: - Computed properties
@@ -38,7 +39,7 @@ class SignUpViewController: UIViewController {
         
         guard isFormCompleted else {
             textFields.filter { !$0.hasText }.forEach { $0.hasError = true }
-            showAlertDialog(title: nil, message: "Please fill out the form")
+            showAlertDialog(message: "Please fill out the form")
             return
         }
         
@@ -46,7 +47,7 @@ class SignUpViewController: UIViewController {
         signUpButton.loadingIndicator(show: true)
 
         Api.signUp(
-            picture: profileImageView.image,
+            picture: isCustomProfileImage ? profileImageView.image : nil,
             firstName: firstNameTextField.text!,
             lastName: lastNameTextField.text!,
             email: emailTextField.text!,
@@ -63,11 +64,10 @@ class SignUpViewController: UIViewController {
                 let message = nsError.userInfo["message"] as! String
                 print(message)
                 self.showAlertDialog(title: "Message", message: message)
+            }.finally {
+                self.signUpButton.setTitle("Sign up", for: .normal)
+                self.signUpButton.loadingIndicator(show: false)
         }
-        
-        signUpButton.setTitle("Sign up", for: .normal)
-        signUpButton.loadingIndicator(show: false)
-        
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
@@ -225,16 +225,6 @@ class SignUpViewController: UIViewController {
         showAlertDialog(title: nil, message: errorMessage.joined(separator: "\n"))
     }
     
-    private func showAlertDialog(title: String?, message: String?) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
     // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     private func setupKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -294,6 +284,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
+        isCustomProfileImage = true
         profileImageView.image = selectedImage
         dismiss(animated: true)
     }

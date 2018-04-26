@@ -37,4 +37,8 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
     }
+    
+    func showAlertDialog(title: String? = nil, message: String) {
+        AlertController.showAlert(viewController: self, title: title, message: message)
+    }
 }

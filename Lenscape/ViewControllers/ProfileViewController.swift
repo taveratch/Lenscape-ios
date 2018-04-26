@@ -175,6 +175,8 @@ extension ProfileViewController: UICollectionViewDataSource {
             profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
             profileHeader.numberOfVisitedPlaceLabel.text = String(self.numberOfVisitedPlaces)
             
+            profileHeader.seeMorePlacesButton.isHidden = self.numberOfVisitedPlaces == 0
+            
             addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))
             addTapGesture(for: profileHeader.seeMorePlacesButton, with: #selector(showMyPlacesViewController))
 

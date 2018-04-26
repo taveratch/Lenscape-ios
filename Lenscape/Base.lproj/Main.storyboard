@@ -317,13 +317,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q2G-fv-9aE">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="340"/>
+                                    <size key="headerReferenceSize" width="50" height="400"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageColelctionViewCell" id="LQG-2t-mcf" customClass="ImageCollectionViewCell" customModule="Lenscape" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="340" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="400" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -332,11 +332,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ProfileCollectionReusableView" id="aYK-eu-h1C">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-iW-7Va" customClass="ProfileInfoView" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>

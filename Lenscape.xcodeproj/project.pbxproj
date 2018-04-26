@@ -140,6 +140,7 @@
 		D036D5B6208DA50400DADDC8 /* NotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D036D5B5208DA50400DADDC8 /* NotificationItem.swift */; };
 		D064913B206CF015002ADF2C /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */; };
 		D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064919C206E8B5F002ADF2C /* POIItem.swift */; };
+		D0AE8E2E20921C500046202D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE8E2D20921C500046202D /* UITextField.swift */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
 		D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED74C02064156200F197C1 /* ProfileInfoView.xib */; };
 		D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */; };
@@ -324,6 +325,7 @@
 		D0649139206CF014002ADF2C /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		D064913A206CF014002ADF2C /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		D064919C206E8B5F002ADF2C /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
+		D0AE8E2D20921C500046202D /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		D0C846F32084BFB7005950E0 /* Lenscape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lenscape.entitlements; sourceTree = "<group>"; };
 		D0C97A82206A4D590054276F /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D0ED74C02064156200F197C1 /* ProfileInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoView.xib; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 				95F881402055248D003F61D4 /* UIButton.swift */,
 				952EF14F206D2BEF0032983B /* UIViewController.swift */,
 				952EF151206D2D4A0032983B /* Notification.swift */,
+				D0AE8E2D20921C500046202D /* UITextField.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1090,6 +1093,7 @@
 				95656934204C2BB3005F9F6B /* AppDelegate.swift in Sources */,
 				950358C4206F95BB00D424F4 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				95619D56208F99E9001A89A5 /* ListTableViewControllerDelegate.swift in Sources */,
+				D0AE8E2E20921C500046202D /* UITextField.swift in Sources */,
 				953048A220627C5C00EB5F3F /* FullImageViewController.swift in Sources */,
 				955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */,
 				950358CE206F95BB00D424F4 /* GMUFeature.m in Sources */,

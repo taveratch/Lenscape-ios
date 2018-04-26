@@ -258,11 +258,20 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let textField = textField as? TextField {
+            if textField.bottomBorder.backgroundColor == #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1) {
+                 textField.bottomBorder.backgroundColor = #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1)
+            }
+        }
         textField.resignFirstResponder()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.rightView = nil
         activeField = textField
+        if let textField = textField as? TextField {
+            textField.bottomBorder.backgroundColor = #colorLiteral(red: 0.4588235294, green: 0.4588235294, blue: 0.4588235294, alpha: 1)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

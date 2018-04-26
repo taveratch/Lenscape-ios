@@ -27,10 +27,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-H8-XT5" userLabel="Profile Info">
-                            <rect key="frame" x="0.0" y="50" width="375" height="250"/>
+                            <rect key="frame" x="0.0" y="60" width="375" height="240"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-FI-b32">
-                                    <rect key="frame" x="137.5" y="38.5" width="100" height="173"/>
+                                    <rect key="frame" x="137.5" y="33.5" width="100" height="173"/>
                                     <subviews>
                                         <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CYQ-HU-rwW" customClass="EnhancedUIImage" customModule="Lenscape" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -58,7 +58,7 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlp-s8-Xum">
-                                    <rect key="frame" x="0.0" y="249" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="239" width="375" height="1"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="Reo-le-9iq"/>
@@ -69,17 +69,17 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="vlp-s8-Xum" secondAttribute="trailing" id="5pF-HM-Gel"/>
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerX" secondItem="NqI-H8-XT5" secondAttribute="centerX" id="HZy-HQ-Lb5"/>
-                                <constraint firstAttribute="height" constant="250" id="WyK-da-X1u"/>
+                                <constraint firstAttribute="height" constant="240" id="WyK-da-X1u"/>
                                 <constraint firstItem="vlp-s8-Xum" firstAttribute="leading" secondItem="NqI-H8-XT5" secondAttribute="leading" id="ZzT-S2-9WQ"/>
                                 <constraint firstAttribute="bottom" secondItem="vlp-s8-Xum" secondAttribute="bottom" id="apE-Uv-Xgh"/>
                                 <constraint firstItem="XDL-FI-b32" firstAttribute="centerY" secondItem="NqI-H8-XT5" secondAttribute="centerY" id="s4k-bs-dRz"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mW0-Rg-Wfz">
-                            <rect key="frame" x="324" y="10" width="35" height="35"/>
+                            <rect key="frame" x="315" y="0.0" width="60" height="60"/>
                             <subviews>
                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="seB-Qo-Kyl">
-                                    <rect key="frame" x="7" y="7" width="20" height="20"/>
+                                    <rect key="frame" x="19.5" y="19.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="ejg-fr-HBD"/>
                                         <constraint firstAttribute="width" constant="20" id="vLA-7O-ck2"/>
@@ -88,21 +88,21 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="KZE-mI-p28"/>
+                                <constraint firstAttribute="height" constant="60" id="KZE-mI-p28"/>
                                 <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerY" secondItem="mW0-Rg-Wfz" secondAttribute="centerY" id="kCR-2a-TEp"/>
                                 <constraint firstItem="seB-Qo-Kyl" firstAttribute="centerX" secondItem="mW0-Rg-Wfz" secondAttribute="centerX" id="lzy-Za-kR8"/>
-                                <constraint firstAttribute="width" constant="35" id="oFm-eS-mkD"/>
+                                <constraint firstAttribute="width" constant="60" id="oFm-eS-mkD"/>
                             </constraints>
                             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="mW0-Rg-Wfz" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="10" id="2fo-wt-7FS"/>
+                        <constraint firstItem="mW0-Rg-Wfz" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" id="2fo-wt-7FS"/>
                         <constraint firstAttribute="trailing" secondItem="NqI-H8-XT5" secondAttribute="trailing" id="D5J-Rp-hte"/>
-                        <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="50" id="Zsu-KR-ovO"/>
+                        <constraint firstItem="NqI-H8-XT5" firstAttribute="top" secondItem="nnW-vP-ltN" secondAttribute="top" constant="60" id="Zsu-KR-ovO"/>
                         <constraint firstItem="NqI-H8-XT5" firstAttribute="leading" secondItem="nnW-vP-ltN" secondAttribute="leading" id="bEh-Ru-Whg"/>
-                        <constraint firstAttribute="trailing" secondItem="mW0-Rg-Wfz" secondAttribute="trailing" constant="16" id="rhA-zo-88K"/>
+                        <constraint firstAttribute="trailing" secondItem="mW0-Rg-Wfz" secondAttribute="trailing" id="rhA-zo-88K"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
@@ -134,6 +134,6 @@
     </objects>
     <resources>
         <image name="Profile Image Placeholder" width="201" height="201"/>
-        <image name="Settings" width="37" height="37"/>
+        <image name="Settings" width="25" height="26"/>
     </resources>
 </document>

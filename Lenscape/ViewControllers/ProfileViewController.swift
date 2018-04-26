@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     
     var images: [Image] = []
     let itemsPerRow = 3
+    var numberOfUploadedPhotos = 0
     var page = 0
     var shouldFetchMore = true
     
@@ -49,6 +50,7 @@ class ProfileViewController: UIViewController {
             
             let images = fulfill["images"] as! [Image]
             let pagination = fulfill["pagination"] as! Pagination
+            self.numberOfUploadedPhotos = pagination.totalNumberOfEntities
             modifyImageFunction(images)
             self.shouldFetchMore = pagination.hasMore && !self.isDisplayAllInOnePage()
             }.catch {
@@ -144,6 +146,7 @@ extension ProfileViewController: UICollectionViewDataSource {
                 profileHeader.profileImage.kf.setImage(with: url, options: [.transition(.fade(0.5))])
                 profileHeader.nameLabel.text = "\(user["firstname"] ?? "") \(user["lastname"] ?? "")"
                 profileHeader.descriptionLabel.text = user["email"] as? String
+                profileHeader.numberOfUploadedPhotoLabel.text = String(self.numberOfUploadedPhotos)
             }
             
             addTapGesture(for: profileHeader.settingsButton, with: #selector(showSettingsVC))

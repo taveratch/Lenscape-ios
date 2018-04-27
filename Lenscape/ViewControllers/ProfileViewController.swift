@@ -154,10 +154,8 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.imageView.kf.indicatorType = .activity
         cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
-        cell.imageView.addGestureRecognizer(tap)
-        cell.imageView.isUserInteractionEnabled = true
-        
+        addTapGesture(for: cell.imageView, with: #selector(showFullPhoto(sender:)))
+
         return cell
     }
     

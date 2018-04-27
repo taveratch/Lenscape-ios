@@ -56,8 +56,8 @@ class ExploreViewController: UIViewController {
         tableView.delegate = self
         
         setupUI()
-        setupShowMapButton()
-        setupCancelUploadingButton()
+        addTapGesture(for: showMapButton, with: #selector(showMapsViewController))
+        addTapGesture(for: cancelUploadButton, with: #selector(cancelUploading))
         setupActivityIndicator()
         startActivityIndicator()
         
@@ -170,18 +170,6 @@ class ExploreViewController: UIViewController {
             tableView.addSubview(refreshControl)
         }
         refreshControl.addTarget(self, action: #selector(fetchInitImageFromAPI), for: .valueChanged)
-    }
-    
-    private func setupShowMapButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showMapsViewController))
-        showMapButton.addGestureRecognizer(tap)
-        showMapButton.isUserInteractionEnabled = true
-    }
-    
-    private func setupCancelUploadingButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(cancelUploading))
-        cancelUploadButton.addGestureRecognizer(tap)
-        cancelUploadButton.isUserInteractionEnabled = true
     }
     
     @objc private func cancelUploading() {

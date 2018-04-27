@@ -21,8 +21,8 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setupUI()
         initZoomComponent()
-        setupBackButton()
-        setupNextButton()
+        addTapGesture(for: backButton, with: #selector(back))
+        addTapGesture(for: nextButton, with: #selector(openPhotoPostViewController))
         nextButton.hero.id = "Next"
     }
     
@@ -84,18 +84,6 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
         vc.image = image
         present(vc, animated: true)
         
-    }
-    
-    private func setupBackButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(back))
-        backButton.addGestureRecognizer(tap)
-        backButton.isUserInteractionEnabled = true
-    }
-    
-    private func setupNextButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(openPhotoPostViewController))
-        nextButton.addGestureRecognizer(tap)
-        nextButton.isUserInteractionEnabled = true
     }
     
 }

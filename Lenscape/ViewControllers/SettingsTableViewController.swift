@@ -19,15 +19,9 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapSignOut))
-        signOutButton.addGestureRecognizer(tap)
+        addTapGesture(for: signOutButton, with: #selector(tapSignOut))
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     @IBAction func back(_ sender: UIBarButtonItem) {
        self.dismiss(animated: true, completion: nil)
     }

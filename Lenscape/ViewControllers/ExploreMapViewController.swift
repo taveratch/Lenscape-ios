@@ -65,9 +65,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
     }
     
     private func setupSearchButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showGMSAutoCompleteViewController))
-        searchButton.addGestureRecognizer(tap)
-        searchButton.isUserInteractionEnabled = true
+        addTapGesture(for: searchButton, with: #selector(showGMSAutoCompleteViewController))
         searchButton.hero.id = "searchViewWrapper"
     }
     

@@ -37,7 +37,7 @@ class Pagination {
         }
         if let p: Int? = pagination!.valueForKeyPath(keyPath: key) {
             return p!
-        }else {
+        } else {
             let pString:String = pagination!.valueForKeyPath(keyPath: key)!
             return Int(pString)!
         }

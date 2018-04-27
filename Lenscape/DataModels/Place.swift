@@ -36,7 +36,7 @@ struct Place: Codable, Hashable {
         
         if let id = place["id"] as? Int {
             placeID = String(id)
-        }else if let id = place["id"] as? String {
+        } else if let id = place["id"] as? String {
             placeID = id
         }
         

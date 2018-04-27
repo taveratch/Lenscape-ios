@@ -350,7 +350,7 @@ extension ExploreViewController: UIScrollViewDelegate {
             // going up
             showHeader(isShow: true)
             shouldUpdateHeaderVisibility = false
-        }else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
+        } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
             // going down
             showHeader(isShow: false)
             shouldUpdateHeaderVisibility = false
@@ -418,7 +418,7 @@ extension ExploreViewController: ExploreMapViewControllerDelegate {
     func didMapChangeLocation(location: Location, locationName: String?) {
         if locationName != nil {
             headerLabel.text = locationName
-        }else {
+        } else {
             headerLabel.text = ""
         }
         currentFeedLocation = location

@@ -71,7 +71,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
             }
             informationWrapper.distanceLabel.text = distance
             informationWrapper.distanceUnitLabel.text = unit
-        }else {
+        } else {
             informationWrapper.distanceStackView.isHidden = true
         }
         
@@ -87,7 +87,7 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         if image!.views > 1000 {
             informationWrapper.viewsLabel.text = String(format: "%.1f k", image!.views)
-        }else {
+        } else {
             informationWrapper.viewsLabel.text = String(image!.views)
         }
     }

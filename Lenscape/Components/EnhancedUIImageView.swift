@@ -33,7 +33,7 @@ class EnhancedUIImage: UIImageView {
             if newValue {
                 self.layer.masksToBounds = true
                 self.layer.cornerRadius = self.frame.height/2
-            }else {
+            } else {
                 self.layer.masksToBounds = false
                 self.layer.cornerRadius = 0
             }

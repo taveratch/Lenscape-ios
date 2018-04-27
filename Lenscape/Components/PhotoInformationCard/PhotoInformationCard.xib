@@ -27,6 +27,7 @@
                 <outlet property="seasonLabel" destination="YS1-1F-667" id="nl3-gK-anc"/>
                 <outlet property="takenDateLabel" destination="AWy-mN-ufj" id="TjZ-vz-DrX"/>
                 <outlet property="takenTimeLabel" destination="c6C-Q5-yiV" id="JsG-bI-lsE"/>
+                <outlet property="viewsLabel" destination="9g0-Mg-Eeb" id="y8i-vx-Uu9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

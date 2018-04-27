@@ -34,6 +34,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         
         initZoomComponent()
         initHeroComponents()
+        viewPhoto()
         setupUI()
         
         // https://github.com/lkzhao/Hero/issues/187
@@ -62,6 +63,10 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
 
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
         self.back()
+    }
+    
+    private func viewPhoto() {
+        let _ = Api.viewPhoto(photoId: image!.id)
     }
     
     @objc private func rotated() {

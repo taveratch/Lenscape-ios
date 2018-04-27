@@ -410,7 +410,27 @@ class Api {
             seal in
             ApiManager.fetch(url: url, headers: headers, method: "DELETE").done {
                 response in
-                let image = Image(item: response)
+                let image = Image(item: response as Any)
+                seal.fulfill(image)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
+    
+    static func viewPhoto(photoId: Int) -> Promise<Image> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        let url = "\(HOST)/photo/\(photoId)/view"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, method: "POST").done {
+                response in
+                let image = Image(item: response as Any)
                 seal.fulfill(image)
                 }.catch {
                     error in

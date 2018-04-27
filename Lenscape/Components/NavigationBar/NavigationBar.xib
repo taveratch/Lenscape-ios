@@ -20,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd3-dy-00K">
-                    <rect key="frame" x="169.5" y="12" width="36" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd3-dy-00K">
+                    <rect key="frame" x="58" y="12" width="259" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -51,8 +51,10 @@
                 <constraint firstItem="Kgu-Gv-iSW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FhQ-AF-hw7"/>
                 <constraint firstItem="Kgu-Gv-iSW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HTR-F4-kaR"/>
                 <constraint firstItem="Kgu-Gv-iSW" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Krh-5D-zs7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Xd3-dy-00K" secondAttribute="trailing" constant="58" id="c28-ea-Bza"/>
                 <constraint firstItem="Xd3-dy-00K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tEK-zE-W2i"/>
                 <constraint firstItem="Kgu-Gv-iSW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="u0s-2E-JH5"/>
+                <constraint firstItem="Xd3-dy-00K" firstAttribute="leading" secondItem="Kgu-Gv-iSW" secondAttribute="trailing" constant="8" id="wK5-AR-uk7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

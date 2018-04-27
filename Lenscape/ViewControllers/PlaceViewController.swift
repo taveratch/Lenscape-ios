@@ -16,13 +16,12 @@ class PlaceViewController: UIViewController {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var numberOfPhotoLabel: UILabel!
     @IBOutlet weak var placeNameStackView: UIStackView!
-    @IBOutlet weak var hofPhotoNameLabel: UILabel!
-    @IBOutlet weak var hofOwnerNameLabel: UILabel!
-    @IBOutlet weak var hofOwnerProfileImage: EnhancedUIImage!
     @IBOutlet weak var hofImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var hofWrapper: UIView!
     @IBOutlet weak var statusbarSpaceView: UIView!
+    @IBOutlet weak var navigationBar: NavigationBar!
+    @IBOutlet weak var hofAndHeaderWrapper: UIStackView!
+    @IBOutlet weak var navigationBarWrapper: UIStackView!
     
     var place: Place?
     var hof: Image?
@@ -44,8 +43,12 @@ class PlaceViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         setupUI()
+        setupGestures()
     }
     
+    private func setupGestures() {
+        addTapGesture(for: navigationBar.backButton, with: #selector(dismissView))
+    }
     private func setupUI() {
         statusbarSpaceView.isHidden = true
         
@@ -57,6 +60,8 @@ class PlaceViewController: UIViewController {
         addTapGesture(for: placeNameStackView, with: #selector(dismissView))
         
         placeNameLabel.text = place.name
+        navigationBar.titleLabel.text = place.name
+        navigationBarWrapper.isHidden = true
     }
     
     private func showFullImageViewController(image: Image, uiImage: UIImage) -> UIViewController{
@@ -113,19 +118,19 @@ class PlaceViewController: UIViewController {
             let imageUrl = URL(string: image.link!)
             self.hofImage.kf.setImage(with: imageUrl, placeholder: img)
         }
-        
-        let profileImageUrl = URL(string: image.owner.profilePictureLink)
-        hofOwnerProfileImage.kf.setImage(with: profileImageUrl)
-        
-        hofOwnerNameLabel.text = image.owner.name
-        hofPhotoNameLabel.text = image.name
     }
     
     private func showHOF(isShow: Bool) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.hofWrapper.isHidden = !isShow
+            self.hofAndHeaderWrapper.isHidden = !isShow
             self.statusbarSpaceView.isHidden = isShow
             self.numberOfPhotoLabel.isHidden = !isShow
+        })
+    }
+    
+    private func showNavigationBar(isShow: Bool) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationBarWrapper.isHidden = !isShow
         })
     }
     
@@ -284,12 +289,14 @@ extension PlaceViewController: UIScrollViewDelegate {
             return
         }
         let yOffset = scrollView.contentOffset.y
-        if yOffset == 0, shouldUpdateHeaderVisibility {
+        if yOffset <= 0, shouldUpdateHeaderVisibility {
             // going up
+            showNavigationBar(isShow: false)
             showHOF(isShow: true)
             shouldUpdateHeaderVisibility = false
         }else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
             // going down
+            showNavigationBar(isShow: true)
             showHOF(isShow: false)
             shouldUpdateHeaderVisibility = false
         }

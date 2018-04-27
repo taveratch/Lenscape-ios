@@ -12,12 +12,7 @@ import PromiseKit
 
 class Api {
     
-    static let HOST = "https://api.lenscape.me"
-    static let UPLOAD_HOST = "https://api.imgur.com/3/image"
-    
-    // Imgur
-    static private let ACCESS_TOKEN = "c792d71fe59ca43a8a4083ce0b0db1b1817ffdb7"
-    static private let USERNAME = "lenscapeme"
+    static let HOST = "https://dev.api.lenscape.me"
     
     // MARK: - Authentication
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {

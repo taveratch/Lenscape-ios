@@ -62,7 +62,6 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         
         informationWrapper.pictureNameLabel.text = image!.name!
         informationWrapper.locationNameLabel.text = image!.place.name
-        
         if image!.isNear != nil, image!.isNear! {
             var distance = String(format: "%.2f", image!.distance!)
             var unit = "km away"
@@ -85,6 +84,12 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         informationWrapper.takenTimeLabel.text = image!.partOfDayString
         
         informationWrapper.seasonLabel.text = image!.seasonString
+        
+        if image!.views > 1000 {
+            informationWrapper.viewsLabel.text = String(format: "%.1f k", image!.views)
+        }else {
+            informationWrapper.viewsLabel.text = String(image!.views)
+        }
     }
     
     @objc private func dismissView() {

@@ -15,6 +15,7 @@ class PhotoGridViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var images: [Image] = []
+    var place: Place?
     
     let itemsPerRow: Int = 3
     var page = 1
@@ -24,6 +25,7 @@ class PhotoGridViewController: UIViewController {
         super.viewDidLoad()
         setupGestures()
         setupUI()
+        fetchInitMyPhotoInThisPlaceFromAPI()
     }
     
     private func setupUI() {
@@ -35,6 +37,30 @@ class PhotoGridViewController: UIViewController {
     
     private func setupGestures() {
         addTapGesture(for: navigationBar.backButton, with: #selector(dismissView))
+    }
+    
+    private func fetchInitMyPhotoInThisPlaceFromAPI() {
+        fetchMyPhotosInThisPlaceFromAPI(page: 1) {
+            images in
+            self.images = images
+        }
+    }
+    
+    private func fetchMyPhotosInThisPlaceFromAPI(page: Int = 1, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
+        Api.getImages(placeId: self.place!.placeID, page: page, isOwner: true).done {
+            response in
+            let pagination = response["pagination"] as! Pagination
+            let images = response["images"] as! [Image]
+            self.shouldFetchMore = pagination.hasMore
+            modifyImageFunction(images)
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                self.showAlertDialog(message: message)
+            }.finally {
+                self.collectionView.reloadData()
+        }
     }
     
     @objc private func dismissView() {
@@ -69,8 +95,17 @@ extension PhotoGridViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.ImageCollectionViewCell.rawValue, for: indexPath) as! ImageCollectionViewCell
-        let image = images[indexPath.row]
+        let index = indexPath.row
         
+        if images.count > itemsPerRow*3, index >= images.count - (itemsPerRow*4), shouldFetchMore {
+            page += 1
+            fetchMyPhotosInThisPlaceFromAPI(page: page) {
+                images in
+                self.images += images
+            }
+        }
+        
+        let image = images[index]
         let url = URL(string: image.thumbnailLink!)
         cell.imageView.hero.id = "\(image.thumbnailLink!)_PhotoGrid"
         cell.imageView.kf.setImage(with: url)

@@ -293,7 +293,7 @@ class Api {
         }
     }
     
-    static func getImages(placeId: String, page: Int = 1) -> Promise<[String: Any]> {
+    static func getImages(placeId: String, page: Int = 1, isOwner: Bool = false) -> Promise<[String: Any]> {
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"
         ]
@@ -301,7 +301,8 @@ class Api {
         let url = "\(HOST)/location/\(placeId)/photos"
         
         let parameters : [String: String] = [
-            "page": String(page)
+            "page": String(page),
+            "is_owner": String(isOwner)
         ]
         
         return Promise {

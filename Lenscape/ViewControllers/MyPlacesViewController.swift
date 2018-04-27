@@ -70,6 +70,7 @@ class MyPlacesViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoGridViewController.rawValue) as! PhotoGridViewController
         vc.images = images
         vc.title = place.name
+        vc.place = place
         Hero.shared.defaultAnimation = .push(direction: .left)
         present(vc, animated: true)
     }
@@ -99,7 +100,7 @@ extension MyPlacesViewController: UICollectionViewDataSource, UICollectionViewDe
         let index = indexPath.row
         let place = places[collectionView.tag]
         let image = place.images[index]
-        let maxImageCount = places[collectionView.tag].images.count
+        let maxImageCount = place.numberOfPhotos
         
         // If number of image more than MAX_ITEM_PER_ROW, it shows See More CollectionViewCell
         if index == MAX_ITEM_PER_ROW - 1 && index < maxImageCount - 1 {

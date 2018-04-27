@@ -22,11 +22,14 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Attributes
-    var image: Image?
+    var image: Image!
     var placeHolderImage: UIImage?
-    var isShowBottomInfo: Bool = true
-    var alwaysHideBottomInfo: Bool = false
     var imageViewHeroId: String?
+    var isShowBottomInfo = true {
+        didSet {
+            showBottomInfo()
+        }
+    }
     
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
@@ -66,29 +69,19 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func viewPhoto() {
-        let _ = Api.viewPhoto(photoId: image!.id)
+        let _ = Api.viewPhoto(photoId: image.id)
     }
     
     @objc private func rotated() {
-        if UIDevice.current.orientation.isLandscape {
-            alwaysHideBottomInfo = true
-            showBottomInfo(isHidden: true, force: true)
-        }else {
-            alwaysHideBottomInfo = false
-            showBottomInfo(isHidden: false, force: true)
-        }
+        showBottomInfo()
     }
     
     @objc private func toggleBottomInfo() {
-        showBottomInfo(isHidden: isShowBottomInfo)
         isShowBottomInfo = !isShowBottomInfo
     }
     
-    @objc private func showBottomInfo(isHidden: Bool, force: Bool = false) {
-        if alwaysHideBottomInfo && !force {
-            return
-        }
-        ComponentUtil.fade(of: infoView, hidden: isHidden)
+    @objc private func showBottomInfo() {
+        ComponentUtil.fade(of: infoView, hidden: isShowBottomInfo || UIDevice.current.orientation.isLandscape)
     }
     
     func back() {
@@ -103,22 +96,22 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - Initialize Image Component
     private func setupUI() {
-        let url = URL(string: (image!.link!))
+        let url = URL(string: (image.link!))
         imageView.kf.setImage(with: url, placeholder: placeHolderImage)
         
-        imageNameLabel.text = image!.name
-        locationNameLabel.text = image!.place.name
+        imageNameLabel.text = image.name
+        locationNameLabel.text = image.place.name
         setupLikeComponentsUI()
     }
     
     private func setupLikeComponentsUI() {
-        likeButton.setImage(UIImage(named: image!.is_liked ? "Red heart": "White Heart"), for: .normal)
-        numberOfLikeLabel.text = String(image!.likes!)
+        likeButton.setImage(UIImage(named: image.is_liked ? "Red heart": "White Heart"), for: .normal)
+        numberOfLikeLabel.text = String(image.likes!)
     }
     
     // MARK: - Hero components
     private func initHeroComponents() {
-        self.imageView.hero.id = imageViewHeroId == nil ? self.image?.thumbnailLink! : imageViewHeroId!
+        self.imageView.hero.id = imageViewHeroId == nil ? self.image.thumbnailLink! : imageViewHeroId!
     }
     
     // MARK: - Initialize zooming feature
@@ -157,7 +150,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         let alert = UIAlertController(title: "Message", message: "Delete this photo?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
             action in
-            Api.deletePhoto(photoId: self.image!.id).done {
+            Api.deletePhoto(photoId: self.image.id).done {
                 _ in
                 self.showAlertDialog(message: "Photo has been deleted") {
                     self.back()
@@ -190,7 +183,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
             action in
             self.savePhotoToCameraRoll()
         }))
-        if image!.isOwner {
+        if image.isOwner {
             alert.addAction(UIAlertAction(title: "Delete Photo", style: .destructive, handler: {
                 action in
                 self.deletePhoto()
@@ -206,26 +199,23 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func likeImage(_ sender: UIButton) {
         let updateImage = {
-            self.image!.is_liked = !self.image!.is_liked
-            self.image!.likes! += self.image!.is_liked ? 1 : -1
+            self.image.is_liked = !self.image.is_liked
+            self.image.likes! += self.image.is_liked ? 1 : -1
         }
         
         updateImage()
         setupLikeComponentsUI()
-       
-        let _ = Api.likeImage(imageId: image!.id, liked: self.image!.is_liked).done {
-            image in
-            self.image!.is_liked = image.is_liked
-            self.image!.likes = image.likes
-            }.catch {
-                error in
-                //Update back to state before press
+        
+        Api.likeImage(imageId: image.id, liked: image.is_liked).done { image in
+            self.image.is_liked = image.is_liked
+            self.image.likes = image.likes
+            }.catch { error in
+                // Update back to state before press
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
                 AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
-            }
-            .finally {
+            }.finally {
                 self.setupLikeComponentsUI()
         }
     }

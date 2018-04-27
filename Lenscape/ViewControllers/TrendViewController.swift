@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class TrendViewController: UIViewController {
 
@@ -70,7 +71,7 @@ class TrendViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
         vc.placeHolderImage = cell.imageView.image
-        vc.hero.modalAnimationType = .fade
+        Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
     

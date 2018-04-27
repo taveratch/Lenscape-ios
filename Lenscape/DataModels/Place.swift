@@ -22,6 +22,7 @@ struct Place: Codable, Hashable {
     var address: String = ""
     var distanceKM: Double?
     var images: [Image] = []
+    var numberOfPhotos: Int = 0
     
     init(name: String, location: Location) {
         self.name = name
@@ -53,6 +54,10 @@ struct Place: Codable, Hashable {
         if let imagesObj = place["photos"] as? [Any] {
             let images = imagesObj.map { Image(item: $0)}
             self.images = images
+        }
+        
+        if let numberOfPhotos = place["number_of_photos"] as? Int {
+            self.numberOfPhotos = numberOfPhotos
         }
         
     }

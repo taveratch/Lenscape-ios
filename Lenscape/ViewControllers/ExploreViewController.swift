@@ -141,7 +141,7 @@ class ExploreViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? "Error"
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
             }.finally {
                 self.tableView.reloadData()
                 self.scrollToTop()
@@ -237,7 +237,7 @@ class ExploreViewController: UIViewController {
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
-                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+                self.showAlertDialog(title: "Error",  message: "Status code: \(nsError.code). \(message)")
             }.finally {
                 self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }

@@ -65,7 +65,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
 
     @IBAction func back(_ sender: UIPanGestureRecognizer) {
-        self.back()
+        back()
     }
     
     private func viewPhoto() {
@@ -143,7 +143,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     private func savePhotoToCameraRoll() {
         UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
-        AlertController.showAlert(viewController: self, title: nil, message: "Photo has been saved to Camera Roll")
+        showAlertDialog(message: "Photo has been saved to Camera Roll")
     }
     
     private func deletePhoto() {
@@ -171,8 +171,8 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         let content = PhotoShareContent(photos: [photo])
         do {
             try ShareDialog.show(from: self, content: content)
-        }catch {
-            AlertController.showAlert(viewController: self, message: "Something went wrong!. Could not find Facebook App")
+        } catch {
+            showAlertDialog(message: "Something went wrong! Could not find Facebook App")
             print(error)
         }
     }
@@ -214,7 +214,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
-                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+                self.showAlertDialog(title: "Error", message: "Status code: \(nsError.code). \(message)")
             }.finally {
                 self.setupLikeComponentsUI()
         }

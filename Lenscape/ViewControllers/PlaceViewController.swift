@@ -157,7 +157,7 @@ class PlaceViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? ""
-                AlertController.showAlert(viewController: self, message: "Error. \(message)")
+                self.showAlertDialog(message: message)
                 self.dismissView()
             }.finally {
                 self.tableView.reloadData()
@@ -191,7 +191,7 @@ class PlaceViewController: UIViewController {
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
-                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+                self.showAlertDialog(title: "Error", message: "Status code: \(nsError.code). \(message)")
             }.finally {
                 self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }

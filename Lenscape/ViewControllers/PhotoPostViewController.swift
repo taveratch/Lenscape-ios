@@ -106,7 +106,7 @@ class PhotoPostViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? ""
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
         }
     }
     
@@ -118,7 +118,7 @@ class PhotoPostViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? ""
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
         }
     }
     
@@ -152,7 +152,7 @@ class PhotoPostViewController: UIViewController {
     
     @objc func upload() {
         if !isValid() {
-            AlertController.showAlert(viewController: self, message: "Please fill in the information.")
+            showAlertDialog(message: "Please fill in the information.")
             return
         }
         if let data = UIImageJPEGRepresentation(image!,1) {

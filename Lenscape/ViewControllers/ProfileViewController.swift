@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? "Error"
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
             }.finally {
                 self.numberOfVisitedPlaces = self.places.count
                 self.collectionView.reloadData()
@@ -154,10 +154,8 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.imageView.kf.indicatorType = .activity
         cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
-        cell.imageView.addGestureRecognizer(tap)
-        cell.imageView.isUserInteractionEnabled = true
-        
+        addTapGesture(for: cell.imageView, with: #selector(showFullPhoto(sender:)))
+
         return cell
     }
     

@@ -56,7 +56,7 @@ class UserController {
             seal in
             if let _ = getCurrentUser() {
                 seal.fulfill(true)
-            }else {
+            } else {
                 seal.reject(NSError(domain: "User is not signed in", code: 0, userInfo: nil))
             }
         }

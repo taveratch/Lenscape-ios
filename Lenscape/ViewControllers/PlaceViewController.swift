@@ -64,7 +64,7 @@ class PlaceViewController: UIViewController {
         navigationBarWrapper.isHidden = true
     }
     
-    private func showFullImageViewController(image: Image, uiImage: UIImage) -> UIViewController{
+    private func showFullImageViewController(image: Image, uiImage: UIImage) -> UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
         vc.placeHolderImage = uiImage
@@ -157,7 +157,7 @@ class PlaceViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? ""
-                AlertController.showAlert(viewController: self, message: "Error. \(message)")
+                self.showAlertDialog(message: message)
                 self.dismissView()
             }.finally {
                 self.tableView.reloadData()
@@ -191,7 +191,7 @@ class PlaceViewController: UIViewController {
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
-                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+                self.showAlertDialog(title: "Error", message: "Status code: \(nsError.code). \(message)")
             }.finally {
                 self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
@@ -294,7 +294,7 @@ extension PlaceViewController: UIScrollViewDelegate {
             showNavigationBar(isShow: false)
             showHOF(isShow: true)
             shouldUpdateHeaderVisibility = false
-        }else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
+        } else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
             // going down
             showNavigationBar(isShow: true)
             showHOF(isShow: false)

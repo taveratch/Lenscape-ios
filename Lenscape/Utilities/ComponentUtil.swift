@@ -17,7 +17,7 @@ class ComponentUtil {
                 finished in
                 view.isHidden = true
             }
-        }else {
+        } else {
             view.isHidden = false
             UIView.animate(withDuration: 0.2, animations: {
                 view.alpha = 1

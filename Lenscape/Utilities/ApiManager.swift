@@ -40,7 +40,7 @@ class ApiManager {
                         print(value)
                         if statusCode == nil {
                             seal.reject(NSError(domain: "Error", code: 500, userInfo: ["message": "Gateway timeout"]))
-                        }else {
+                        } else {
                             seal.reject(NSError(domain: "Error", code: statusCode!, userInfo: value))
                         }
                     }

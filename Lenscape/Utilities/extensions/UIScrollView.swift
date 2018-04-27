@@ -14,7 +14,7 @@ extension UIScrollView {
         if active {
             self.minimumZoomScale = minScale!
             self.maximumZoomScale = maxScale!
-        }else {
+        } else {
             self.minimumZoomScale = 1
             self.maximumZoomScale = 1
         }

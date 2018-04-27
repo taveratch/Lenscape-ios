@@ -42,7 +42,7 @@ class FacebookLogin {
                         var user = UserController.convertFBtoNormal(facebookUserData: result as! [String: AnyObject])
                         user["token"] = FBSDKAccessToken.current().tokenString
                         seal.fulfill(user)
-                    }else {
+                    } else {
                         seal.reject(error!)
                     }
                 }

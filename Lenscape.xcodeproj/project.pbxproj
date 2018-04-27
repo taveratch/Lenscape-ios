@@ -58,8 +58,6 @@
 		9541DB3C207BC81100F7BE65 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541DB3B207BC81100F7BE65 /* SearchResult.swift */; };
 		95431EFA2060059800F8CD43 /* TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EF92060059800F8CD43 /* TabHeader.swift */; };
 		95431EFD206005AC00F8CD43 /* TabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431EFC206005AC00F8CD43 /* TabHeader.xib */; };
-		95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */; };
-		95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */; };
 		95431F0420600A0000F8CD43 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95431F0320600A0000F8CD43 /* CustomView.swift */; };
 		9544EEEF20832ED700A4E9AC /* AddNewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544EEEE20832ED700A4E9AC /* AddNewPlaceViewController.swift */; };
 		954672B9204EAFE400035B94 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954672B8204EAFE400035B94 /* FacebookLogin.swift */; };
@@ -242,8 +240,6 @@
 		9541DB3B207BC81100F7BE65 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		95431EF92060059800F8CD43 /* TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeader.swift; sourceTree = "<group>"; };
 		95431EFC206005AC00F8CD43 /* TabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabHeader.xib; sourceTree = "<group>"; };
-		95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSupplementaryView.swift; sourceTree = "<group>"; };
-		95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreSupplementaryView.xib; sourceTree = "<group>"; };
 		95431F0320600A0000F8CD43 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		9544EEEE20832ED700A4E9AC /* AddNewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlaceViewController.swift; sourceTree = "<group>"; };
 		954672B8204EAFE400035B94 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
@@ -533,15 +529,6 @@
 			path = TabHeader;
 			sourceTree = "<group>";
 		};
-		95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */ = {
-			isa = PBXGroup;
-			children = (
-				95431EFF206008A300F8CD43 /* ExploreSupplementaryView.swift */,
-				95431F01206008B300F8CD43 /* ExploreSupplementaryView.xib */,
-			);
-			path = ExploreViewControllerComponents;
-			sourceTree = "<group>";
-		};
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,7 +544,6 @@
 				95D43EA72064DA0A00CB3517 /* PhotoInformationCard */,
 				D0ED74BF2064151D00F197C1 /* UserProfile */,
 				95F85EF12063453A0059ACFB /* ImageCollectionViewCell */,
-				95431EFE2060088300F8CD43 /* ExploreViewControllerComponents */,
 				95431EFB2060059C00F8CD43 /* TabHeader */,
 				957FA7D720563621005F2E91 /* SeasoningScrollView */,
 				9595F0722056101E00A740E1 /* CircularInfiniteScroll */,
@@ -914,7 +900,6 @@
 			files = (
 				9595F06F2055712300A740E1 /* CircularScrollViewItem.xib in Resources */,
 				9565693E204C2BB3005F9F6B /* LaunchScreen.storyboard in Resources */,
-				95431F02206008B300F8CD43 /* ExploreSupplementaryView.xib in Resources */,
 				95E909A42091F5160061FFE7 /* NavigationBar.xib in Resources */,
 				9560EA1F208DB8690013AB22 /* SearchItemTableViewCell.xib in Resources */,
 				9560EA1D208DA8D60013AB22 /* ImageThumbnailTableViewCell.xib in Resources */,
@@ -1140,7 +1125,6 @@
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,
 				95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */,
 				950358C7206F95BB00D424F4 /* GMUDefaultClusterIconGenerator.m in Sources */,
-				95431F00206008A300F8CD43 /* ExploreSupplementaryView.swift in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
 				9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */,
 				D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */,

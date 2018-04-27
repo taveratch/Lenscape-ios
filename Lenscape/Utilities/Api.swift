@@ -55,7 +55,7 @@ class Api {
                     response in
                     let user = getUserFromAuthResponse(response: response!)
                     seal.fulfill(user)
-                }.catch{ error in
+                }.catch { error in
                     seal.reject(error)
             }
         }

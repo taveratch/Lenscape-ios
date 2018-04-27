@@ -61,7 +61,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? "Error"
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
             }.finally {
                 self.tableView.reloadData()
         }
@@ -124,7 +124,7 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDelegate {
             let place = searchResults[indexPath.row]
             self.delegate?.didSelectPlace(place: place)
             self.dismiss(animated: true)
-        }else {
+        } else {
             // open add new place view controller
             let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.AddNewPlaceViewController.rawValue)
             present(vc!, animated: true)

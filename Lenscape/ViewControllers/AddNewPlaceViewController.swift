@@ -80,7 +80,7 @@ class AddNewPlaceViewController: UIViewController {
             placeMarker = GMSMarker(position: location)
             placeMarker?.map = mapView
             placeMarker?.appearAnimation = .pop
-        }else {
+        } else {
             placeMarker?.position = location
         }
     }

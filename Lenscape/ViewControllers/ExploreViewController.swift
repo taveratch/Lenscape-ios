@@ -56,8 +56,8 @@ class ExploreViewController: UIViewController {
         tableView.delegate = self
         
         setupUI()
-        setupShowMapButton()
-        setupCancelUploadingButton()
+        addTapGesture(for: showMapButton, with: #selector(showMapsViewController))
+        addTapGesture(for: cancelUploadButton, with: #selector(cancelUploading))
         setupActivityIndicator()
         startActivityIndicator()
         
@@ -141,7 +141,7 @@ class ExploreViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? "Error"
-                AlertController.showAlert(viewController: self, message: message)
+                self.showAlertDialog(message: message)
             }.finally {
                 self.tableView.reloadData()
                 self.scrollToTop()
@@ -170,18 +170,6 @@ class ExploreViewController: UIViewController {
             tableView.addSubview(refreshControl)
         }
         refreshControl.addTarget(self, action: #selector(fetchInitImageFromAPI), for: .valueChanged)
-    }
-    
-    private func setupShowMapButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showMapsViewController))
-        showMapButton.addGestureRecognizer(tap)
-        showMapButton.isUserInteractionEnabled = true
-    }
-    
-    private func setupCancelUploadingButton() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(cancelUploading))
-        cancelUploadButton.addGestureRecognizer(tap)
-        cancelUploadButton.isUserInteractionEnabled = true
     }
     
     @objc private func cancelUploading() {
@@ -237,7 +225,7 @@ class ExploreViewController: UIViewController {
                 updateImage()
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as! String
-                AlertController.showAlert(viewController: self, title: "Error", message: "Status code: \(nsError.code). \(message)")
+                self.showAlertDialog(title: "Error",  message: "Status code: \(nsError.code). \(message)")
             }.finally {
                 self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
@@ -362,7 +350,7 @@ extension ExploreViewController: UIScrollViewDelegate {
             // going up
             showHeader(isShow: true)
             shouldUpdateHeaderVisibility = false
-        }else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
+        } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
             // going down
             showHeader(isShow: false)
             shouldUpdateHeaderVisibility = false
@@ -430,7 +418,7 @@ extension ExploreViewController: ExploreMapViewControllerDelegate {
     func didMapChangeLocation(location: Location, locationName: String?) {
         if locationName != nil {
             headerLabel.text = locationName
-        }else {
+        } else {
             headerLabel.text = ""
         }
         currentFeedLocation = location

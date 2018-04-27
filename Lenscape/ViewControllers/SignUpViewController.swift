@@ -225,7 +225,6 @@ class SignUpViewController: UIViewController {
         showAlertDialog(title: nil, message: errorMessage.joined(separator: "\n"))
     }
     
-    // https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
     private func setupKeyboard() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -290,3 +289,9 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
 }
+
+// MARK: - References
+/*
+ Setup Keyboard
+https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+*/

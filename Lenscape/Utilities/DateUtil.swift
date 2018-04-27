@@ -33,13 +33,13 @@ class DateUtil {
         if diff < hour {
             let n = ceil(diff/60.0)
             return "\(Int(n)) minute\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
-        }else if diff < hours_24 {
+        } else if diff < hours_24 {
             let n = ceil(diff/hour)
             return "\(Int(n)) hour\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
-        }else if diff < days_2 {
+        } else if diff < days_2 {
             let n = ceil(diff/hours_24)
             return "\(Int(n)) day\(isPlural(n: n) ? "s" : "") ago (\(dateString) \(timeString))"
-        }else {
+        } else {
             return "\(dateString) \(timeString)"
         }
     }

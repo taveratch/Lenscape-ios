@@ -18,7 +18,7 @@ class TrendViewController: UIViewController {
     private lazy var refreshControl = UIRefreshControl()
     
     var images: [Image] = []
-    let itemsPerRow: Int = 3
+    let itemsPerRow = 3
     var page = 1
     var shouldFetchMore = false
     
@@ -112,12 +112,13 @@ extension TrendViewController: UICollectionViewDataSource {
         }
         let image = images[index]
         let url = URL(string: image.thumbnailLink!)
+        
         cell.imageView.hero.id = image.thumbnailLink!
         cell.imageView.kf.indicatorType = .activity
         cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showFullPhoto(sender:)))
-        cell.imageView.addGestureRecognizer(tap)
-        cell.imageView.isUserInteractionEnabled = true
+        
+        addTapGesture(for: cell.imageView, with: #selector(showFullPhoto(sender:)))
+        
         return cell
     }
     

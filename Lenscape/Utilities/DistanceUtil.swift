@@ -9,13 +9,13 @@
 import Foundation
 
 class DistanceUtil {
-    static func getProperDistanceFormat(distanceKM: Double?) -> String{
+    static func getProperDistanceFormat(distanceKM: Double?) -> String {
         if distanceKM == nil {
             return ""
         }
         if distanceKM! < 1 {
             return "\(Int(ceil(distanceKM! * 1000))) m"
-        }else {
+        } else {
             return "\(String(format: "%.2f", distanceKM!)) km"
         }
     }

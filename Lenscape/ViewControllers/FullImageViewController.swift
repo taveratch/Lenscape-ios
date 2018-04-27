@@ -148,6 +148,26 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         AlertController.showAlert(viewController: self, title: nil, message: "Photo has been saved to Camera Roll")
     }
     
+    private func deletePhoto() {
+        let alert = UIAlertController(title: "Message", message: "Delete this photo?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            Api.deletePhoto(photoId: self.image!.id).done {
+                _ in
+                self.showAlertDialog(message: "Photo has been deleted") {
+                    self.back()
+                }
+                }.catch {
+                    error in
+                    let nsError = error as NSError
+                    let message = nsError.userInfo["message"] as? String ?? "Error"
+                    self.showAlertDialog(title: "Error", message: message)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive))
+        present(alert, animated: true)
+    }
+    
     private func shareToFacebook() {
         let photo = Photo(image: imageView.image!, userGenerated: true)
         let content = PhotoShareContent(photos: [photo])
@@ -165,6 +185,12 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
             action in
             self.savePhotoToCameraRoll()
         }))
+        if image!.isOwner {
+            alert.addAction(UIAlertAction(title: "Delete Photo", style: .default, handler: {
+                action in
+                self.deletePhoto()
+            }))
+        }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }

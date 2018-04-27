@@ -38,7 +38,7 @@ extension UIViewController {
         view.isUserInteractionEnabled = true
     }
     
-    func showAlertDialog(title: String? = nil, message: String) {
-        AlertController.showAlert(viewController: self, title: title, message: message)
+    func showAlertDialog(title: String? = nil, message: String, completionHandler: @escaping () -> Void = {}) {
+        AlertController.showAlert(viewController: self, title: title, message: message, completeHandler: completionHandler)
     }
 }

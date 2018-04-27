@@ -217,50 +217,6 @@ class Api {
         }
     }
     
-    static func fetchUserImages(page: Int = 1) -> Promise<[String: Any]> {
-        let headers : [String: String] = [
-            "Authorization": "Bearer \(UserController.getToken())"
-        ]
-        
-        //TODO: remove this after use trend api
-        let location = LocationManager.getInstance().getCurrentLocation()!
-        
-        //TODO: remove latlong and month
-        let parameters: [String: String] = [
-            "latlong": "\(location.latitude),\(location.longitude)",
-            "month": "0",
-            "page": String(page)
-        ]
-        
-        //TODO: Change to trend api
-        let url = "\(HOST)/aroundme/photos"
-        
-        return Promise {
-            seal in
-            ApiManager.fetch(url: url, headers: headers, body: parameters, method: "GET", encoding: URLEncoding(destination: .queryString)).done {
-                response in
-                let data = response!["data"] as! [Any]
-                var images = data
-                    .map { Image(item: $0) }
-                
-                //TODO: Remove this and sort by timestamp
-                images = images.reversed()
-                
-                let fulfill: [String: Any] = [
-                    "images" : images,
-                    "pagination": Pagination(pagination: response!["pagination"] as? [String: Any])
-                ]
-                
-                seal.fulfill(fulfill)
-                }.catch {
-                    error in
-                    print(error.domain)
-                    seal.reject(error)
-                    print(error)
-            }
-        }
-    }
-    
     static func likeImage(imageId: Int, liked: Bool) -> Promise<Image> {
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"

@@ -90,7 +90,7 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
                         .location.latitude, longitude: image.place.location.longitude), name: image.name!, image: image))
                 }
                 seal.fulfill(poiItems)
-                }.catch{
+                }.catch {
                     error in
                     print(error)
                     seal.reject(error)
@@ -121,10 +121,10 @@ class ExploreMapViewController: UIViewController, GMUClusterManagerDelegate {
         // If marker in still on the map, assume that marker's name should be header text for Feed
         if let place = currentMapViewPlace, isMarkerWithinScreen(markerLocation: place.location) {
             locationName = "Around \(place.name)"
-        }else if isMarkerWithinScreen(markerLocation: LocationManager.getInstance().getCurrentLocation()!) {
+        } else if isMarkerWithinScreen(markerLocation: LocationManager.getInstance().getCurrentLocation()!) {
             // If user's current location is still on the map, assume that photos are from around you
             locationName = "Around You"
-        }else if images.count > 0 { //If there are photos from fetching api, pick location's name from first photo
+        } else if images.count > 0 { //If there are photos from fetching api, pick location's name from first photo
             locationName = "Around \(images.first!.place.name)"
         }
         

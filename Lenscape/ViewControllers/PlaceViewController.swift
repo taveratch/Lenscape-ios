@@ -64,7 +64,7 @@ class PlaceViewController: UIViewController {
         navigationBarWrapper.isHidden = true
     }
     
-    private func showFullImageViewController(image: Image, uiImage: UIImage) -> UIViewController{
+    private func showFullImageViewController(image: Image, uiImage: UIImage) -> UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
         vc.placeHolderImage = uiImage
@@ -294,7 +294,7 @@ extension PlaceViewController: UIScrollViewDelegate {
             showNavigationBar(isShow: false)
             showHOF(isShow: true)
             shouldUpdateHeaderVisibility = false
-        }else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
+        } else if lastContentOffset - yOffset < -50, shouldUpdateHeaderVisibility {
             // going down
             showNavigationBar(isShow: true)
             showHOF(isShow: false)

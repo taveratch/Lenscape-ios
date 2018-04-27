@@ -31,6 +31,7 @@ class Image: Codable {
     var isNear: Bool?
     var place: Place
     var is_liked: Bool
+    var isOwner: Bool
     
     private func getImageUrlFromType(type: String = "t", link: String) -> String {
         let index = link.index(link.endIndex, offsetBy: -4)
@@ -73,6 +74,7 @@ class Image: Codable {
         seasonString = image["season"] as! String
         
         is_liked = image["is_liked"] as? Bool ?? false
+        isOwner = image["is_owner"] as? Bool ?? false
     }
     
     private func convertToDictionary(text: String) -> [String: Any]? {

@@ -453,4 +453,24 @@ class Api {
             }
         }
     }
+    
+    static func deletePhoto(photoId: Int) -> Promise<Image> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        let url = "\(HOST)/photo/\(photoId)"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, method: "DELETE").done {
+                response in
+                let image = Image(item: response)
+                seal.fulfill(image)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
 }

@@ -182,24 +182,17 @@ class Api {
         }
     }
     
-    static func fetchTrendImages(page: Int = 0) -> Promise<[String: Any]>{
+    static func fetchTrendImages(page: Int = 1) -> Promise<[String: Any]>{
         
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"
         ]
         
-        //TODO: remove this after use trend api
-        let location = LocationManager.getInstance().getCurrentLocation()!
-        
-        //TODO: remove latlong and month
         let parameters: [String: String] = [
-            "latlong": "\(location.latitude),\(location.longitude)",
-            "month": "0",
             "page": String(page)
         ]
         
-        //TODO: Change to trend api
-        let url = "\(HOST)/aroundme/photos"
+        let url = "\(HOST)/trend"
         
         return Promise {
             seal in
@@ -208,9 +201,6 @@ class Api {
                 let data = response!["data"] as! [Any]
                 var images = data
                     .map { Image(item: $0) }
-                
-                //TODO: Remove this and sort by timestamp
-                images = images.reversed()
                 
                 let fulfill: [String: Any] = [
                     "images" : images,

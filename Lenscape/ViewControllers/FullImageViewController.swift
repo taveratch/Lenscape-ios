@@ -186,7 +186,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
             self.savePhotoToCameraRoll()
         }))
         if image!.isOwner {
-            alert.addAction(UIAlertAction(title: "Delete Photo", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "Delete Photo", style: .destructive, handler: {
                 action in
                 self.deletePhoto()
             }))

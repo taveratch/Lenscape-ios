@@ -165,13 +165,16 @@ extension TrendViewController: UICollectionViewDelegateFlowLayout {
             let widthPerItem = availableWidth / CGFloat(3)
             let width = collectionView.frame.size.width
             let height = widthPerItem * 2
+            imageSizeAtIndex[index] = (width: width, height: height)
             return CGSize(width: width, height: height)
         case 1,2:
             let numberOfItemInRow = 2
             let availableWidth = collectionView.frame.size.width - CGFloat(numberOfItemInRow+1)
             let widthPerItem = availableWidth / CGFloat(numberOfItemInRow)
+            imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
             return CGSize(width: widthPerItem, height: widthPerItem)
         default:
+            imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
             return CGSize(width: widthPerItem, height: widthPerItem)
         }
     }

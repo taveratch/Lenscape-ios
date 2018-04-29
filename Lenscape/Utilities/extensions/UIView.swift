@@ -9,13 +9,17 @@
 import Foundation
 
 extension UIView {
-    func hideWithAnimation(isHidden: Bool, duration: Double = 0.3) {
+    func hideWithAnimation(isHidden: Bool, duration: Double = 0.3, completionHandler: @escaping () -> Void = {}) {
         if self.isHidden == isHidden {
             return
         }
         UIView.animate(withDuration: duration, animations: {
             self.isHidden = isHidden
+            self.alpha = isHidden ? 0 : 1
             self.superview?.layoutIfNeeded()
-        })
+        }) {
+            finish in
+            completionHandler()
+        }
     }
 }

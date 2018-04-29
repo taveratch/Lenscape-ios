@@ -162,6 +162,7 @@ class ExploreViewController: UIViewController {
         seasoningScrollView.carousel.defaultSelectedIndex = 6
         
         progressViewWrapper.isHidden = true
+        progressViewWrapper.alpha = 0
         
         // Initialize Refresh Control (Pull to refresh)
         if #available(iOS 10.0, *) {
@@ -259,19 +260,8 @@ class ExploreViewController: UIViewController {
     
     private func showHeader(isShow: Bool) {
         let isUploading = !self.progressViewWrapper.isHidden
-        if isShow {
-            self.header.isHidden = false
-        }
-        UIView.animate(withDuration: 0.1, animations: {
-            self.headerTitleSection.isHidden = !isShow
-            self.statusbarSpace.isHidden = isUploading ? false : !isShow
-            self.view.layoutIfNeeded()
-        }) {
-            finish in
-            if !isShow && !isUploading {
-                self.header.isHidden = true
-            }
-        }
+        self.headerTitleSection.hideWithAnimation(isHidden: !isShow)
+        self.statusbarSpace.hideWithAnimation(isHidden: isUploading ? false : !isShow)
     }
     
 }
@@ -369,14 +359,14 @@ extension ExploreViewController: UIScrollViewDelegate {
 extension ExploreViewController: PhotoUploadingDelegate {
     
     func didUpload() {
-        progressViewWrapper.isHidden = true
+        progressViewWrapper.hideWithAnimation(isHidden: true)
         UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         fetchInitImageFromAPI()
+        progressView.progress = 0
         print("didUpload")
     }
     
     func uploading(completedUnit: Double, totalUnit: Double) {
-        progressViewWrapper.isHidden = false
         UIView.animate(withDuration: 3, delay: 0.0, options: .curveLinear, animations: {
             self.progressView.setProgress(Float(completedUnit/totalUnit), animated: true)
         }, completion: nil)
@@ -384,15 +374,14 @@ extension ExploreViewController: PhotoUploadingDelegate {
     }
     
     func willUpload() {
-        progressViewWrapper.isHidden = false
         progressView.progress = 0
-        showHeader(isShow: true)
+        progressViewWrapper.hideWithAnimation(isHidden: false)
+        statusbarSpace.hideWithAnimation(isHidden: false)
         print("willUpload")
     }
     
     func cancelledUpload() {
-        progressViewWrapper.isHidden = true
-        showHeader(isShow: true)
+        progressViewWrapper.hideWithAnimation(isHidden: true)
         print("Upload has been cancelled")
     }
 }

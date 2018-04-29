@@ -16,11 +16,14 @@ class TrendViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private lazy var refreshControl = UIRefreshControl()
+    @IBOutlet weak var headerView: UIStackView!
     
     var images: [Image] = []
     let itemsPerRow = 3
     var page = 1
     var shouldFetchMore = false
+    var lastContentOffset: CGFloat = 0
+    var shouldUpdateHeaderVisibility = true
     
     // MARK: - ViewController Lifecycle
     
@@ -121,22 +124,6 @@ extension TrendViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    // CollectionView's supplementary (used as header)
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.TrendCollectionReusableView.rawValue, for: indexPath)
-            guard let tabHeader = headerView.subviews[0] as? TabHeader else {
-                fatalError("No header exists")
-            }
-            tabHeader.titleLabel.text = "Trending"
-            return headerView
-            
-        default:
-            assert(false, "Unexpected element kind")
-        }
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -164,4 +151,25 @@ extension TrendViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension TrendViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if lastContentOffset - yOffset > 100, shouldUpdateHeaderVisibility {
+            // going up
+            headerView.hideWithAnimation(isHidden: false)
+            shouldUpdateHeaderVisibility = false
+        } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
+            // going down
+            headerView.hideWithAnimation(isHidden: true)
+            shouldUpdateHeaderVisibility = false
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        shouldUpdateHeaderVisibility = true
+    }
+}
 

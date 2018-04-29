@@ -36,5 +36,14 @@ class TabHeader: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
     }
-
+    
+    @IBInspectable
+    var title: String {
+        get {
+            return titleLabel.text!
+        }
+        set(text) {
+            titleLabel.text = text
+        }
+    }
 }

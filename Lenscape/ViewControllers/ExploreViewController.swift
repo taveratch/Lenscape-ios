@@ -115,7 +115,9 @@ class ExploreViewController: UIViewController {
     }
     
     @objc private func setAndFetchInitImageFromAPI() {
-        currentFeedLocation = LocationManager.getInstance().getCurrentLocation()
+        if currentFeedLocation == nil {
+            currentFeedLocation = LocationManager.getInstance().getCurrentLocation()
+        }
         fetchInitImageFromAPI()
     }
     
@@ -126,6 +128,10 @@ class ExploreViewController: UIViewController {
             self.images = images
             self.stopActivityIndicator()
         }
+    }
+    
+    @objc private func pullDownToRefreshHandler() {
+        NotificationCenter.default.post(name: .UpdateLocation, object: nil)
     }
     
     private func fetchImagesFromAPI(page: Int = 1, at location: Location, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
@@ -170,7 +176,7 @@ class ExploreViewController: UIViewController {
         } else {
             tableView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(fetchInitImageFromAPI), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(pullDownToRefreshHandler), for: .valueChanged)
     }
     
     @objc private func cancelUploading() {

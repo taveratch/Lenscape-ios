@@ -18,6 +18,7 @@ class GooglePlacesAutoCompleteViewController: UIViewController {
     var place: Place?
     var searchResults: [Place] = []
     var delegate: GooglePlacesAutoCompleteViewControllerDelegate?
+    var showAddNewPlace: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +85,10 @@ extension GooglePlacesAutoCompleteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count + 1 // 1 is row for create new place
+        if showAddNewPlace {
+            return searchResults.count + 1 // 1 is row for create new place
+        }
+        return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

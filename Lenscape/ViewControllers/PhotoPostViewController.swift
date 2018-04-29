@@ -219,6 +219,7 @@ class PhotoPostViewController: UIViewController {
     
     @objc private func showSearchPlaceViewController() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.GooglePlacesAutoCompleteViewController.rawValue) as! GooglePlacesAutoCompleteViewController
+        vc.showAddNewPlace = true
         vc.delegate = self
         present(vc, animated: true)
     }

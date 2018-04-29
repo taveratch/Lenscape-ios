@@ -15,15 +15,31 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
     var image: Image?
     var uiImage: UIImage?
-    @IBOutlet weak var informationWrapper: PhotoInformationCard!
+    @IBOutlet weak var infoWrapper: UIView!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var profileImageView: EnhancedUIImage!
+    @IBOutlet weak var pictureNameLabel: UILabel!
+    @IBOutlet weak var locationNameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var distanceUnitLabel: UILabel!
+    @IBOutlet weak var distanceStackView: UIStackView!
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var ownerNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var takenDateLabel: UILabel!
+    @IBOutlet weak var takenTimeLabel: UILabel!
+    @IBOutlet weak var seasonLabel: UILabel!
+    @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var openGoogleMapsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // https://github.com/lkzhao/Hero/issues/187
-        self.informationWrapper.hero.modifiers = [.duration(0.4), .translate(y: informationWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
+        self.infoWrapper.hero.modifiers = [.duration(0.4), .translate(y: infoWrapper.bounds.height*2), .beginWith([.zPosition(10)]), .useGlobalCoordinateSpace]
         
-        addButtonTarget(for: informationWrapper.closeButton, with: #selector(dismissView))
+        addButtonTarget(for: closeButton, with: #selector(dismissView))
         self.setupUI()
         setupPhotoInfoCard()
     }
@@ -41,10 +57,14 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         button.addTarget(self, action: action!, for: .touchUpInside)
     }
     
+    private func isGoogleMapsAppAvailable() -> Bool {
+        return UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)
+    }
+    
     private func setupUI() {
-        informationWrapper.mapView.isMyLocationEnabled = true
+        mapView.isMyLocationEnabled = true
         let coordinate = CLLocationCoordinate2D(latitude: (image?.place.location.latitude)!, longitude: (image?.place.location.longitude)!)
-        informationWrapper.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
+        mapView.camera = GMSCameraPosition(target: coordinate, zoom: 17, bearing: 0, viewingAngle: 0)
         
         // Add marker to map
         let redMarker = UIImage(named: "Maps Marker")!.withRenderingMode(.alwaysOriginal)
@@ -53,15 +73,15 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
         markerView.bounds.size.height = 40
         let marker = GMSMarker(position: coordinate)
         marker.iconView = markerView
-        marker.map = informationWrapper.mapView
+        marker.map = mapView
     }
     
     private func setupPhotoInfoCard() {
         let profilePictureUrl = URL(string: image!.owner.profilePictureLink)
-        informationWrapper.profileImageView.kf.setImage(with: profilePictureUrl)
+        profileImageView.kf.setImage(with: profilePictureUrl)
         
-        informationWrapper.pictureNameLabel.text = image!.name!
-        informationWrapper.locationNameLabel.text = image!.place.name
+        pictureNameLabel.text = image!.name!
+        locationNameLabel.text = image!.place.name
         if image!.isNear != nil, image!.isNear! {
             var distance = String(format: "%.2f", image!.distance!)
             var unit = "km away"
@@ -69,31 +89,36 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
                 distance = "\(Int(image!.distance! * 1000))"
                 unit = "meters away"
             }
-            informationWrapper.distanceLabel.text = distance
-            informationWrapper.distanceUnitLabel.text = unit
+            distanceLabel.text = distance
+            distanceUnitLabel.text = unit
         } else {
-            informationWrapper.distanceStackView.isHidden = true
+            distanceStackView.isHidden = true
         }
         
-        informationWrapper.likeLabel.text = "\(image!.likes!)"
-        informationWrapper.ownerNameLabel.text = image!.owner.name
+        likeLabel.text = "\(image!.likes!)"
+        ownerNameLabel.text = image!.owner.name
         
-        informationWrapper.dateLabel.text = image!.relativeDatetimeString
+        dateLabel.text = image!.relativeDatetimeString
         
-        informationWrapper.takenDateLabel.text = image!.dateTakenString
-        informationWrapper.takenTimeLabel.text = image!.partOfDayString
+        takenDateLabel.text = image!.dateTakenString
+        takenTimeLabel.text = image!.partOfDayString
         
-        informationWrapper.seasonLabel.text = image!.seasonString
+        seasonLabel.text = image!.seasonString
         
         if image!.views > 1000 {
-            informationWrapper.viewsLabel.text = String(format: "%.1f k", image!.views)
+            viewsLabel.text = String(format: "%.1f k", image!.views)
         } else {
-            informationWrapper.viewsLabel.text = String(image!.views)
+            viewsLabel.text = String(image!.views)
         }
     }
     
     @objc private func dismissView() {
         Hero.shared.defaultAnimation = .fade
         hero.dismissViewController()
+    }
+    
+    @IBAction func openGoogleMaps(_ sender: UIButton) {
+        let place = image!.place
+        UIApplication.shared.open(URL(string: "comgooglemaps://?saddr=&daddr=\(place.location.latitude),\(place.location.longitude)&directionsmode=driving")!)
     }
 }

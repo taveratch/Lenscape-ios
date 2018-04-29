@@ -12,6 +12,7 @@ import os.log
 import GoogleMaps
 import GooglePlaces
 import Firebase
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -113,7 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let data = userInfo["image"] {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "pushNotificationReceived"), object: nil, userInfo: userInfo)
+        }
+        completionHandler(UIBackgroundFetchResult.noData)
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
@@ -123,6 +130,7 @@ extension AppDelegate: MessagingDelegate {
         // TODO: If necessary send token to application server.
         Messaging.messaging().subscribe(toTopic: "photoOfTheDay")
         Messaging.messaging().subscribe(toTopic: "weeklyInsights")
+        Messaging.messaging().subscribe(toTopic: "tests")
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }

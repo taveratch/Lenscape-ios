@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import UserNotifications
+import SwiftyJSON
 
 class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate {
     
@@ -39,8 +40,28 @@ class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentLocation), name: .UpdateLocation, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(showFullImage), name: NSNotification.Name(rawValue: "pushNotificationReceived"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @objc private func updateCurrentLocation() {
         clLocationManager.startUpdatingLocation()
+    }
+    
+    @objc private func showFullImage(_ notification: Notification) {
+        if let data = notification.userInfo {
+            let payload = data["image"] as! String
+            let data = JSON.init(parseJSON: payload)
+            let image = Image(item: data.dictionaryObject!)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+            vc.image = image
+            present(vc, animated: true)
+        }
     }
 }
 

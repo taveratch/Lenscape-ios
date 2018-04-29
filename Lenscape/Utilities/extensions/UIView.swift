@@ -12,6 +12,7 @@ extension UIView {
     func hideWithAnimation(isHidden: Bool, duration: Double = 0.3) {
         UIView.animate(withDuration: duration, animations: {
             self.isHidden = isHidden
+            self.superview?.layoutIfNeeded()
         })
     }
 }

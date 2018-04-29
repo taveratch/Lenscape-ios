@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import Kingfisher
 
 class TrendViewController: UIViewController {
 
@@ -19,11 +20,13 @@ class TrendViewController: UIViewController {
     @IBOutlet weak var headerView: UIStackView!
     
     var images: [Image] = []
-    let itemsPerRow = 3
+    let itemsPerRow = 2
     var page = 1
     var shouldFetchMore = false
     var lastContentOffset: CGFloat = 0
     var shouldUpdateHeaderVisibility = true
+    var countUntilShowLargeImage = 0
+    var imageSizeAtIndex: [Int: (width:CGFloat, height:CGFloat)] = [:]
     
     // MARK: - ViewController Lifecycle
     
@@ -118,7 +121,16 @@ extension TrendViewController: UICollectionViewDataSource {
         
         cell.imageView.hero.id = image.thumbnailLink!
         cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))]) {
+            uiImage, _, _, _ in
+            // Show the original image from cache only
+            ImageCache.default.retrieveImage(forKey: image.link!, options: nil) {
+                image, _ in
+                if let image = image {
+                    cell.imageView.image = image
+                }
+            }
+        }
         
         addTapGesture(for: cell.imageView, with: #selector(showFullPhoto(sender:)))
         
@@ -130,8 +142,23 @@ extension TrendViewController: UICollectionViewDataSource {
 
 extension TrendViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let index = indexPath.row
+        let sizeFromCache = imageSizeAtIndex[index]
+        if let sizeFromCache = sizeFromCache {
+            return CGSize(width: sizeFromCache.width, height: sizeFromCache.height)
+        }
+        
+        countUntilShowLargeImage += 1
         let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
         let widthPerItem = availableWidth / CGFloat(itemsPerRow)
+        if countUntilShowLargeImage % 5 == 0 {
+            let width = collectionView.frame.size.width
+            let height = widthPerItem * 2
+            countUntilShowLargeImage = 0
+            imageSizeAtIndex[index] = (width: width, height: height)
+            return CGSize(width: width, height: height)
+        }
+        imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     

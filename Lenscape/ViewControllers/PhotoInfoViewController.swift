@@ -119,6 +119,10 @@ class PhotoInfoViewController: UIViewController, HeroViewControllerDelegate {
     
     @IBAction func openGoogleMaps(_ sender: UIButton) {
         let place = image!.place
-        UIApplication.shared.open(URL(string: "comgooglemaps://?saddr=&daddr=\(place.location.latitude),\(place.location.longitude)&directionsmode=driving")!)
+        if isGoogleMapsAppAvailable() {
+            UIApplication.shared.open(URL(string: "comgooglemaps://?saddr=&daddr=\(place.location.latitude),\(place.location.longitude)&directionsmode=driving")!)
+        }else {
+            UIApplication.shared.open(URL(string: "https://www.google.com/maps/search/?api=1&query=\(place.location.getLatlongFormat())")!)
+        }
     }
 }

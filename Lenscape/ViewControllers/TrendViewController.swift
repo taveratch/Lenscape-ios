@@ -21,7 +21,7 @@ class TrendViewController: UIViewController {
     @IBOutlet weak var headerView: UIStackView!
     
     var images: [Image] = []
-    let itemsPerRow = 2
+    let itemsPerRow = 3
     var page = 1
     var shouldFetchMore = false
     var lastContentOffset: CGFloat = 0
@@ -153,23 +153,27 @@ extension TrendViewController: UICollectionViewDataSource {
 extension TrendViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let index = indexPath.row
+        let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
         let sizeFromCache = imageSizeAtIndex[index]
         if let sizeFromCache = sizeFromCache {
             return CGSize(width: sizeFromCache.width, height: sizeFromCache.height)
         }
         
-        countUntilShowLargeImage += 1
-        let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
-        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
-        if countUntilShowLargeImage % 5 == 0 {
+        switch index {
+        case 0:
+            let widthPerItem = availableWidth / CGFloat(3)
             let width = collectionView.frame.size.width
             let height = widthPerItem * 2
-            countUntilShowLargeImage = 0
-            imageSizeAtIndex[index] = (width: width, height: height)
             return CGSize(width: width, height: height)
+        case 1,2:
+            let numberOfItemInRow = 2
+            let availableWidth = collectionView.frame.size.width - CGFloat(numberOfItemInRow+1)
+            let widthPerItem = availableWidth / CGFloat(numberOfItemInRow)
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        default:
+            return CGSize(width: widthPerItem, height: widthPerItem)
         }
-        imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
-        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
     // Space between column

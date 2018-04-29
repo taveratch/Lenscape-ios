@@ -35,6 +35,12 @@ class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate
             withIdentifier: Identifier.OpenCameraViewControllerModal.rawValue
         )
         cameraModal?.loadViewIfNeeded()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentLocation), name: .UpdateLocation, object: nil)
+    }
+    
+    @objc private func updateCurrentLocation() {
+        clLocationManager.startUpdatingLocation()
     }
 }
 

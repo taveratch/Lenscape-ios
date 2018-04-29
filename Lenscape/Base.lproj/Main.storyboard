@@ -517,17 +517,17 @@ Have a good day.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-jI-bCA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="538"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nix-nO-g4J">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="jEf-u7-fxH" customClass="ImageCollectionViewCell" customModule="Lenscape" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -535,33 +535,78 @@ Have a good day.</string>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TrendCollectionReusableView" id="LgA-fM-ojC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-XM-Bv3" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="8w1-XM-Bv3" secondAttribute="bottom" id="JDY-SW-Gnb"/>
-                                        <constraint firstItem="8w1-XM-Bv3" firstAttribute="leading" secondItem="LgA-fM-ojC" secondAttribute="leading" id="hzb-lj-ktu"/>
-                                        <constraint firstAttribute="trailing" secondItem="8w1-XM-Bv3" secondAttribute="trailing" id="q0W-Eq-v9i"/>
-                                        <constraint firstItem="8w1-XM-Bv3" firstAttribute="top" secondItem="LgA-fM-ojC" secondAttribute="top" id="zHX-Ug-Nn4"/>
-                                    </constraints>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="8oo-Xi-4eU" id="dlR-ND-u84"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Oe-iP-JjM" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wq3-Ci-0Qo">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S5Q-s5-eZx">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hos-Ki-xSI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="bfB-IF-5AD"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w1-XM-Bv3" customClass="TabHeader" customModule="Lenscape" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="sJf-X2-acn"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trend"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVG-Ir-ncg">
+                                                <rect key="frame" x="0.0" y="80" width="375" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="eE0-aB-NqC"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wq3-Ci-0Qo" firstAttribute="top" secondItem="1Oe-iP-JjM" secondAttribute="top" id="0B9-dk-rHM"/>
+                                    <constraint firstAttribute="bottom" secondItem="wq3-Ci-0Qo" secondAttribute="bottom" id="1FU-Vn-IVm"/>
+                                    <constraint firstItem="wq3-Ci-0Qo" firstAttribute="leading" secondItem="1Oe-iP-JjM" secondAttribute="leading" id="BQJ-FM-iV1"/>
+                                    <constraint firstAttribute="trailing" secondItem="wq3-Ci-0Qo" secondAttribute="trailing" id="dlE-AA-afa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wZc-jI-bCA" firstAttribute="top" secondItem="1kR-Xd-AQC" secondAttribute="top" id="P7N-OM-SlM"/>
+                            <constraint firstItem="wZc-jI-bCA" firstAttribute="top" secondItem="1Oe-iP-JjM" secondAttribute="bottom" id="OcU-VO-TNC"/>
                             <constraint firstItem="TXz-nK-gic" firstAttribute="trailing" secondItem="wZc-jI-bCA" secondAttribute="trailing" id="azG-yL-BWe"/>
+                            <constraint firstAttribute="bottom" secondItem="wZc-jI-bCA" secondAttribute="bottom" id="cjX-lj-8yS"/>
+                            <constraint firstItem="1Oe-iP-JjM" firstAttribute="top" secondItem="1kR-Xd-AQC" secondAttribute="top" id="goW-2G-wbH"/>
                             <constraint firstItem="wZc-jI-bCA" firstAttribute="leading" secondItem="TXz-nK-gic" secondAttribute="leading" id="ixI-ad-gFF"/>
                             <constraint firstItem="TXz-nK-gic" firstAttribute="bottom" secondItem="wZc-jI-bCA" secondAttribute="bottom" id="ja9-il-M6K"/>
+                            <constraint firstItem="TXz-nK-gic" firstAttribute="trailing" secondItem="1Oe-iP-JjM" secondAttribute="trailing" id="kjY-3W-bkx"/>
+                            <constraint firstItem="1Oe-iP-JjM" firstAttribute="leading" secondItem="TXz-nK-gic" secondAttribute="leading" id="ko0-19-eAG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TXz-nK-gic"/>
                     </view>
@@ -571,11 +616,12 @@ Have a good day.</string>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="wZc-jI-bCA" id="AbK-yq-NO4"/>
+                        <outlet property="headerView" destination="S5Q-s5-eZx" id="sGC-7l-TaF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkA-Tb-GW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2645.625" y="1314.0845070422536"/>
+            <point key="canvasLocation" x="2645.5999999999999" y="1313.793103448276"/>
         </scene>
         <!--Explore Page View Controller-->
         <scene sceneID="jyh-ec-GbU">
@@ -599,7 +645,7 @@ Have a good day.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="327" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gUR-Qh-mbj">
-                                <rect key="frame" x="0.0" y="150.5" width="375" height="467.5"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -657,10 +703,10 @@ Have a good day.</string>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-Dd-qAK" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="07F-3g-n3l">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dk5-sv-UgN">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
@@ -734,14 +780,8 @@ Have a good day.</string>
                                                     <constraint firstItem="3AC-59-vvC" firstAttribute="centerY" secondItem="i78-F7-4NT" secondAttribute="centerY" id="yd4-ck-gay"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yl0-RD-WCN">
-                                                <rect key="frame" x="0.0" y="80" width="375" height="0.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="0.5" id="hBh-Ob-pcB"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZh-NP-pL6">
-                                                <rect key="frame" x="0.0" y="80.5" width="375" height="70"/>
+                                                <rect key="frame" x="0.0" y="80" width="375" height="70"/>
                                                 <subviews>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rv6-lw-Nzl">
                                                         <rect key="frame" x="102" y="34" width="216" height="2"/>
@@ -800,6 +840,13 @@ Have a good day.</string>
                                                     <constraint firstItem="EaF-UD-LCp" firstAttribute="centerY" secondItem="aZh-NP-pL6" secondAttribute="centerY" id="hXx-Uv-rnw"/>
                                                     <constraint firstAttribute="trailing" secondItem="EaF-UD-LCp" secondAttribute="trailing" constant="16" id="n5P-ee-d1G"/>
                                                     <constraint firstItem="EaF-UD-LCp" firstAttribute="leading" secondItem="Rv6-lw-Nzl" secondAttribute="trailing" constant="16" id="s8y-tx-gM5"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pv7-M2-2Ho">
+                                                <rect key="frame" x="0.0" y="150" width="375" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="qhM-aU-XRU"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1288,7 +1335,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Iy-it-B18" id="Fsc-A9-cah">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
@@ -1298,7 +1345,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Myv-tD-R7u" id="Y8r-2D-N0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-ZA-aAn">
@@ -2667,7 +2714,7 @@ Have a good day.</string>
         <image name="Home_tab_icon" width="25" height="25"/>
         <image name="Logo" width="1959" height="390"/>
         <image name="Navigator" width="25" height="25"/>
-        <image name="Profile Image Placeholder" width="300" height="300"/>
+        <image name="Profile Image Placeholder" width="68" height="68"/>
         <image name="Profile_selected_tab_icon" width="24" height="25"/>
         <image name="Profile_tab_icon" width="24" height="25"/>
         <image name="Red Pin" width="42" height="60"/>

@@ -8,6 +8,8 @@
 
 import UIKit
 import Hero
+import Kingfisher
+import ReactiveCocoa
 
 class TrendViewController: UIViewController {
 
@@ -16,11 +18,16 @@ class TrendViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private lazy var refreshControl = UIRefreshControl()
+    @IBOutlet weak var headerView: UIStackView!
     
     var images: [Image] = []
     let itemsPerRow = 3
     var page = 1
     var shouldFetchMore = false
+    var lastContentOffset: CGFloat = 0
+    var shouldUpdateHeaderVisibility = true
+    var countUntilShowLargeImage = 0
+    var imageSizeAtIndex: [Int: (width:CGFloat, height:CGFloat)] = [:]
     
     // MARK: - ViewController Lifecycle
     
@@ -71,6 +78,15 @@ class TrendViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
         vc.placeHolderImage = cell.imageView.image
+        
+        // Observe dismiss event from modal, then notify parent (this) to do something.
+        // https://github.com/ReactiveCocoa/ReactiveCocoa
+        vc.reactive
+            .trigger(for: #selector(vc.viewWillDisappear(_:)))
+            .observe { _ in
+                self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }
+        
         Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
@@ -115,27 +131,20 @@ extension TrendViewController: UICollectionViewDataSource {
         
         cell.imageView.hero.id = image.thumbnailLink!
         cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
+        cell.imageView.kf.setImage(with: url, options: [.transition(.fade(0.5))]) {
+            uiImage, _, _, _ in
+            // Show the original image from cache only
+            ImageCache.default.retrieveImage(forKey: image.link!, options: nil) {
+                image, _ in
+                if let image = image {
+                    cell.imageView.image = image
+                }
+            }
+        }
         
         addTapGesture(for: cell.imageView, with: #selector(showFullPhoto(sender:)))
         
         return cell
-    }
-    
-    // CollectionView's supplementary (used as header)
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identifier.TrendCollectionReusableView.rawValue, for: indexPath)
-            guard let tabHeader = headerView.subviews[0] as? TabHeader else {
-                fatalError("No header exists")
-            }
-            tabHeader.titleLabel.text = "Trending"
-            return headerView
-            
-        default:
-            assert(false, "Unexpected element kind")
-        }
     }
 }
 
@@ -143,9 +152,31 @@ extension TrendViewController: UICollectionViewDataSource {
 
 extension TrendViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let index = indexPath.row
         let availableWidth = collectionView.frame.size.width - CGFloat(itemsPerRow+1)
         let widthPerItem = availableWidth / CGFloat(itemsPerRow)
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        let sizeFromCache = imageSizeAtIndex[index]
+        if let sizeFromCache = sizeFromCache {
+            return CGSize(width: sizeFromCache.width, height: sizeFromCache.height)
+        }
+        
+        switch index {
+        case 0:
+            let widthPerItem = availableWidth / CGFloat(3)
+            let width = collectionView.frame.size.width
+            let height = widthPerItem * 2
+            imageSizeAtIndex[index] = (width: width, height: height)
+            return CGSize(width: width, height: height)
+        case 1,2:
+            let numberOfItemInRow = 2
+            let availableWidth = collectionView.frame.size.width - CGFloat(numberOfItemInRow+1)
+            let widthPerItem = availableWidth / CGFloat(numberOfItemInRow)
+            imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        default:
+            imageSizeAtIndex[index] = (width: widthPerItem, height: widthPerItem)
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
     }
     
     // Space between column
@@ -164,4 +195,25 @@ extension TrendViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension TrendViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if lastContentOffset - yOffset > 100, shouldUpdateHeaderVisibility {
+            // going up
+            headerView.hideWithAnimation(isHidden: false, duration: 0.1)
+            shouldUpdateHeaderVisibility = false
+        } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
+            // going down
+            headerView.hideWithAnimation(isHidden: true, duration: 0.1)
+            shouldUpdateHeaderVisibility = false
+        }
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        shouldUpdateHeaderVisibility = true
+    }
+}
 

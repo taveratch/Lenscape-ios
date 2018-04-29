@@ -87,6 +87,7 @@
 		956F1704204EA69000CADB75 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1703204EA69000CADB75 /* ExploreViewController.swift */; };
 		956F1706204EAB0000CADB75 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F1705204EAB0000CADB75 /* SignUpViewController.swift */; };
 		956F271A207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F2719207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift */; };
+		957573212095CE7500653F5E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957573202095CE7500653F5E /* UIView.swift */; };
 		95765449208EC79900C22185 /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95765448208EC79900C22185 /* FeedItemTableViewCell.swift */; };
 		957FA7D92056363C005F2E91 /* SeasoningScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */; };
 		957FA7DB20563644005F2E91 /* SeasoningScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */; };
@@ -271,6 +272,7 @@
 		956F1703204EA69000CADB75 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		956F1705204EAB0000CADB75 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		956F2719207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutoCompleteViewControllerDelegate.swift; sourceTree = "<group>"; };
+		957573202095CE7500653F5E /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		95765448208EC79900C22185 /* FeedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTableViewCell.swift; sourceTree = "<group>"; };
 		957FA7D82056363C005F2E91 /* SeasoningScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasoningScrollView.xib; sourceTree = "<group>"; };
 		957FA7DA20563644005F2E91 /* SeasoningScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasoningScrollView.swift; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 				952EF151206D2D4A0032983B /* Notification.swift */,
 				D0AE8E2D20921C500046202D /* UITextField.swift */,
 				95E909B3209224060061FFE7 /* UITapGestureRecognizerWithParam.swift */,
+				957573202095CE7500653F5E /* UIView.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 			files = (
 				95E909A12090D2CE0061FFE7 /* DistanceUtil.swift in Sources */,
 				9518DBBC2052E3F500F0BE1B /* EnhancedUIImageView.swift in Sources */,
+				957573212095CE7500653F5E /* UIView.swift in Sources */,
 				95F8814520555309003F61D4 /* GradientView.swift in Sources */,
 				D0C97A83206A4D590054276F /* ValidationError.swift in Sources */,
 				9518DBBA2052E1E000F0BE1B /* ShadowView.swift in Sources */,

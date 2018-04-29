@@ -10,6 +10,9 @@ import Foundation
 
 extension UIView {
     func hideWithAnimation(isHidden: Bool, duration: Double = 0.3) {
+        if self.isHidden == isHidden {
+            return
+        }
         UIView.animate(withDuration: duration, animations: {
             self.isHidden = isHidden
             self.superview?.layoutIfNeeded()

@@ -262,7 +262,7 @@ class ExploreViewController: UIViewController {
         if isShow {
             self.header.isHidden = false
         }
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.headerTitleSection.isHidden = !isShow
             self.statusbarSpace.isHidden = isUploading ? false : !isShow
             self.view.layoutIfNeeded()

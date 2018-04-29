@@ -9,6 +9,7 @@
 import UIKit
 import Hero
 import Kingfisher
+import ReactiveCocoa
 
 class TrendViewController: UIViewController {
 
@@ -77,6 +78,15 @@ class TrendViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
         vc.image = image
         vc.placeHolderImage = cell.imageView.image
+        
+        // Observe dismiss event from modal, then notify parent (this) to do something.
+        // https://github.com/ReactiveCocoa/ReactiveCocoa
+        vc.reactive
+            .trigger(for: #selector(vc.viewWillDisappear(_:)))
+            .observe { _ in
+                self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }
+        
         Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
@@ -183,15 +193,15 @@ extension TrendViewController: UIScrollViewDelegate {
         let yOffset = scrollView.contentOffset.y
         if lastContentOffset - yOffset > 100, shouldUpdateHeaderVisibility {
             // going up
-            headerView.hideWithAnimation(isHidden: false)
+            headerView.hideWithAnimation(isHidden: false, duration: 0.1)
             shouldUpdateHeaderVisibility = false
         } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
             // going down
-            headerView.hideWithAnimation(isHidden: true)
+            headerView.hideWithAnimation(isHidden: true, duration: 0.1)
             shouldUpdateHeaderVisibility = false
         }
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.y
     }

@@ -141,7 +141,7 @@ class ExploreViewController: UIViewController {
                 error in
                 let nsError = error as NSError
                 let message = nsError.userInfo["message"] as? String ?? "Error"
-                self.showAlertDialog(message: message)
+                self.showAlertDialog(title: "Error", message: message)
             }.finally {
                 self.tableView.reloadData()
                 self.scrollToTop()

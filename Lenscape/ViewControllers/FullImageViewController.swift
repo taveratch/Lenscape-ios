@@ -81,7 +81,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func showBottomInfo() {
-        ComponentUtil.fade(of: infoView, hidden: isShowBottomInfo || UIDevice.current.orientation.isLandscape)
+        ComponentUtil.fade(of: infoView, hidden: !isShowBottomInfo || UIDevice.current.orientation.isLandscape)
     }
     
     func back() {

@@ -562,7 +562,7 @@ Have a good day.</string>
                                                             <constraint firstAttribute="height" constant="60" id="sJf-X2-acn"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trending"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trend"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>

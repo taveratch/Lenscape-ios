@@ -27,6 +27,15 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerTitleSection: UIView!
     @IBOutlet weak var statusbarSpace: UIView!
+    @IBOutlet weak var filterWrapper: UIView!
+    @IBOutlet weak var seasonFilterLabel: UILabel!
+    @IBOutlet weak var removeSeasonFilterButton: UIView!
+    @IBOutlet weak var partOfDayFilterWrapper: UIStackView!
+    @IBOutlet weak var seasonFilterWrapper: UIStackView!
+    @IBOutlet weak var partOfDayFilterLabel: UILabel!
+    @IBOutlet weak var removePartOfDayFilterButton: UIView!
+    @IBOutlet weak var showFilterDialogButton: GradientView!
+    @IBOutlet weak var removeFilterButton: UIView!
     var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -42,6 +51,24 @@ class ExploreViewController: UIViewController {
     var shouldUpdateHeaderVisibility = true
     var headerHeightConstraint: NSLayoutConstraint?
     var currentFeedLocation: Location?
+    var filterSeason: Season? {
+        didSet {
+            let isHidden = self.filterSeason == nil
+            self.seasonFilterWrapper.isHidden = isHidden
+            if !isHidden {
+                self.seasonFilterLabel.text = self.filterSeason!.name
+            }
+        }
+    }
+    var filterPartOfDay: PartOfDay? {
+        didSet {
+            let isHidden = self.filterPartOfDay == nil
+            self.partOfDayFilterWrapper.isHidden = isHidden
+            if !isHidden {
+                self.partOfDayFilterLabel.text = self.filterPartOfDay!.name
+            }
+        }
+    }
     
     // Fix tableview row's offset change after call reloadRowsAt... in likeImage()
     // https://stackoverflow.com/questions/27102887/maintain-offset-when-reloadrowsatindexpaths
@@ -58,6 +85,9 @@ class ExploreViewController: UIViewController {
         setupUI()
         addTapGesture(for: showMapButton, with: #selector(showMapsViewController))
         addTapGesture(for: cancelUploadButton, with: #selector(cancelUploading))
+        addTapGesture(for: showFilterDialogButton, with: #selector(showFilterViewController))
+        addTapGesture(for: removeFilterButton, with: #selector(removeFilter))
+        
         setupActivityIndicator()
         startActivityIndicator()
         
@@ -71,6 +101,19 @@ class ExploreViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
+    @objc private func showFilterViewController() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FilterViewController.rawValue) as! FilterViewController
+        vc.delegate = self
+        let navigationController = UINavigationController(rootViewController: vc)
+        self.present(navigationController, animated: true)
+    }
+    
+    @objc private func removeFilter() {
+        showFilter(isHidden: true)
+        self.filterSeason = nil
+        self.filterPartOfDay = nil
+    }
     
     private func startUploadPhoto() {
         if let picture = UserDefaults.standard.dictionary(forKey: "uploadPhotoInfo") {
@@ -167,6 +210,7 @@ class ExploreViewController: UIViewController {
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
         
+        filterWrapper.isHidden = true
         progressViewWrapper.isHidden = true
         progressViewWrapper.alpha = 0
         
@@ -270,6 +314,12 @@ class ExploreViewController: UIViewController {
         self.statusbarSpace.hideWithAnimation(isHidden: isUploading ? false : !isShow)
     }
     
+    private func showFilter(isHidden: Bool) {
+        if filterSeason != nil || filterPartOfDay != nil {
+            self.filterWrapper.hideWithAnimation(isHidden: isHidden)
+        }
+    }
+    
 }
 
 // Mark: - UITableViewDataSource
@@ -345,10 +395,12 @@ extension ExploreViewController: UIScrollViewDelegate {
         if lastContentOffset - yOffset > 100, shouldUpdateHeaderVisibility {
             // going up
             showHeader(isShow: true)
+            showFilter(isHidden: false)
             shouldUpdateHeaderVisibility = false
         } else if lastContentOffset - yOffset < -100, shouldUpdateHeaderVisibility {
             // going down
             showHeader(isShow: false)
+            showFilter(isHidden: true)
             shouldUpdateHeaderVisibility = false
         }
     }
@@ -423,5 +475,16 @@ extension ExploreViewController: ExploreMapViewControllerDelegate {
         fetchInitImageFromAPI()
     }
     
+}
+
+extension ExploreViewController: FilterViewControllerDelegate {
+    func didFilterCreate(season: Season?, partOfDay: PartOfDay?) {
+        self.filterSeason = season
+        self.filterPartOfDay = partOfDay
+        
+        if season != nil || partOfDay != nil {
+            self.filterWrapper.hideWithAnimation(isHidden: false)
+        }
+    }
 }
 

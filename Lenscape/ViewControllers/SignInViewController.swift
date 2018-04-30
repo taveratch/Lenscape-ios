@@ -45,7 +45,9 @@ class SignInViewController: UIViewController {
                     self.changeViewController(identifier: Identifier.MainTabBarController.rawValue)
                 }.catch { error in
                     print(error)
-                    fatalError("Failed to authenticate facebook token with lenscape server")
+                    self.showAlertDialog(title: "Error", message: "Failed to authenticate with Facebook. Please sign up manually")
+                    self.facebookButton.setTitle("", for: .normal)
+                    self.facebookButton.loadingIndicator(show: true)
             }
             }.catch { error in
                 self.facebookButton.setTitle("Facebook", for: .normal)

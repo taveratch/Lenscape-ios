@@ -15,6 +15,7 @@ class FacebookLogin {
     func login(vc: UIViewController) -> Promise<String>{
         return Promise { seal in
             let loginManager = LoginManager()
+            loginManager.logOut()
             loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: vc) { loginResult in
                 switch loginResult {
                 case .failed(let error):

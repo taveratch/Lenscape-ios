@@ -50,6 +50,7 @@ class SignInViewController: UIViewController {
                     self.facebookButton.loadingIndicator(show: true)
             }
             }.catch { error in
+                print(error)
                 self.facebookButton.setTitle("Facebook", for: .normal)
                 self.facebookButton.loadingIndicator(show: false)
         }

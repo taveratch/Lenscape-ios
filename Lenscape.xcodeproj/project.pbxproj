@@ -66,6 +66,10 @@
 		955606AA205CEBEC007B3B17 /* CameraShotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955606A9205CEBEC007B3B17 /* CameraShotButton.swift */; };
 		955C3AF5204D95C40023FAF0 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF4204D95C40023FAF0 /* TextField.swift */; };
 		955C3AF7204D96C00023FAF0 /* RoundedBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */; };
+		955F4E7320977A0500E525B1 /* ChipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 955F4E7220977A0500E525B1 /* ChipView.xib */; };
+		955F4E7520977A9000E525B1 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F4E7420977A9000E525B1 /* ChipView.swift */; };
+		955F4E772097816300E525B1 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F4E762097816300E525B1 /* FilterViewController.swift */; };
+		955F4E792097860D00E525B1 /* FilterViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F4E782097860D00E525B1 /* FilterViewControllerDelegate.swift */; };
 		9560EA17208D85640013AB22 /* PlaceRecentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */; };
 		9560EA19208D862D0013AB22 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA18208D862D0013AB22 /* PlaceViewController.swift */; };
 		9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */; };
@@ -249,6 +253,10 @@
 		955606A9205CEBEC007B3B17 /* CameraShotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraShotButton.swift; sourceTree = "<group>"; };
 		955C3AF4204D95C40023FAF0 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		955C3AF6204D96C00023FAF0 /* RoundedBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBorderButton.swift; sourceTree = "<group>"; };
+		955F4E7220977A0500E525B1 /* ChipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChipView.xib; sourceTree = "<group>"; };
+		955F4E7420977A9000E525B1 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		955F4E762097816300E525B1 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		955F4E782097860D00E525B1 /* FilterViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9560EA16208D85640013AB22 /* PlaceRecentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecentPhotoViewController.swift; sourceTree = "<group>"; };
 		9560EA18208D862D0013AB22 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		9560EA1A208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageThumbnailTableViewCell.swift; sourceTree = "<group>"; };
@@ -534,6 +542,7 @@
 		955C3AF1204D95890023FAF0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				955F4E71209779D400E525B1 /* ChipView */,
 				95E909AF20921F840061FFE7 /* MyPlaceSeeMoreCollectionViewCell */,
 				95E909AC209215CB0061FFE7 /* MyPlaceTableViewCell */,
 				95E909A22091F5040061FFE7 /* NavigationBar */,
@@ -563,6 +572,15 @@
 				95619D4F208F9038001A89A5 /* ListTableViewCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		955F4E71209779D400E525B1 /* ChipView */ = {
+			isa = PBXGroup;
+			children = (
+				955F4E7220977A0500E525B1 /* ChipView.xib */,
+				955F4E7420977A9000E525B1 /* ChipView.swift */,
+			);
+			path = ChipView;
 			sourceTree = "<group>";
 		};
 		9560EA24208EC34C0013AB22 /* FeedItemTableViewCell */ = {
@@ -647,6 +665,7 @@
 				956F1705204EAB0000CADB75 /* SignUpViewController.swift */,
 				954672BA2050DF7800035B94 /* AuthViewController.swift */,
 				D036D5AE208D00FD00DADDC8 /* NotificationViewController.swift */,
+				955F4E762097816300E525B1 /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -666,6 +685,7 @@
 			children = (
 				956F2719207C77C5004C4183 /* GooglePlacesAutoCompleteViewControllerDelegate.swift */,
 				9582DC2F205CC76800779E38 /* PhotoUploadingDelegate.swift */,
+				955F4E782097860D00E525B1 /* FilterViewControllerDelegate.swift */,
 				95619D55208F99E9001A89A5 /* ListTableViewControllerDelegate.swift */,
 				95F85EF8206349690059ACFB /* UIGridCollectionViewDelegate.swift */,
 				952EF14D206D2A960032983B /* LocationDelegate.swift */,
@@ -909,6 +929,7 @@
 				958B9215207380DB0061F26A /* flat-pale-map-style.json in Resources */,
 				9565693B204C2BB3005F9F6B /* Assets.xcassets in Resources */,
 				95656939204C2BB3005F9F6B /* Main.storyboard in Resources */,
+				955F4E7320977A0500E525B1 /* ChipView.xib in Resources */,
 				95A43BA62075CD5700401BFA /* FeedItem.xib in Resources */,
 				95C35BBD2071E1A500030B12 /* PhotoUploadInformationCard.xib in Resources */,
 				95D43EA92064DA2400CB3517 /* PhotoInformationCard.xib in Resources */,
@@ -1084,8 +1105,10 @@
 				95D43EAB2064DAD500CB3517 /* PhotoInformationCard.swift in Sources */,
 				950358D1206F95BB00D424F4 /* GMUPoint.m in Sources */,
 				95134E36204C2F1500121514 /* ApiManager.swift in Sources */,
+				955F4E7520977A9000E525B1 /* ChipView.swift in Sources */,
 				958A4D932088A39C00C9BA6B /* ExploreMapViewControllerDelegate.swift in Sources */,
 				950358C8206F95BB00D424F4 /* GMUStaticCluster.m in Sources */,
+				955F4E792097860D00E525B1 /* FilterViewControllerDelegate.swift in Sources */,
 				9560EA26208EC62F0013AB22 /* FeedItem.swift in Sources */,
 				95B8AB8220523B9E007480AA /* MainTabBarController.swift in Sources */,
 				950358D5206F95BB00D424F4 /* GMUGradient.m in Sources */,
@@ -1124,6 +1147,7 @@
 				9509A5342084EB1C00334B74 /* Constants.swift in Sources */,
 				95F85EF52063455F0059ACFB /* ImageCollectionViewCell.swift in Sources */,
 				95F85EF02062BB590059ACFB /* SettingsTableViewController.swift in Sources */,
+				955F4E772097816300E525B1 /* FilterViewController.swift in Sources */,
 				950358D3206F95BB00D424F4 /* GMUGeoJSONParser.m in Sources */,
 				95619D4E208F8EC2001A89A5 /* ListTableViewController.swift in Sources */,
 				9582DC30205CC76800779E38 /* PhotoUploadingDelegate.swift in Sources */,

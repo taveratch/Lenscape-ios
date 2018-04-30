@@ -139,7 +139,7 @@ class Api {
     
     
     
-    static func fetchExploreImages(page: Int = 1, location: Location, month: Int = 0, size: Int = 25) -> Promise<[String: Any]>{
+    static func fetchExploreImages(page: Int = 1, location: Location, season: Season?, partOfDay: PartOfDay?, size: Int = 25) -> Promise<[String: Any]>{
         
         let headers : [String: String] = [
             "Authorization": "Bearer \(UserController.getToken())"
@@ -150,13 +150,20 @@ class Api {
             userLocation = location
         }
         
-        let parameters: [String: String] = [
+        var parameters: [String: String] = [
             "target_latlong": "\(location.latitude),\(location.longitude)",
             "user_latlong": "\(userLocation!.latitude),\(userLocation!.longitude)",
-            "month": String(month),
             "page": String(page),
             "size": String(size)
         ]
+        
+        if let season = season {
+            parameters["season"] = String(season.id)
+        }
+        
+        if let partOfDay = partOfDay {
+            parameters["time_taken"] = String(partOfDay.id)
+        }
         
         let url = "\(HOST)/photos"
         return Promise {

@@ -113,6 +113,7 @@ class ExploreViewController: UIViewController {
         showFilter(isHidden: true)
         self.filterSeason = nil
         self.filterPartOfDay = nil
+        self.fetchInitImageFromAPI()
     }
     
     private func startUploadPhoto() {
@@ -178,7 +179,7 @@ class ExploreViewController: UIViewController {
     }
     
     private func fetchImagesFromAPI(page: Int = 1, at location: Location, modifyImageFunction: @escaping ([Image]) -> Void = { _ in }) {
-        Api.fetchExploreImages(page: page, location: location).done {
+        Api.fetchExploreImages(page: page, location: location, season: self.filterSeason, partOfDay: self.filterPartOfDay).done {
             fulfill in
             
             let images = fulfill["images"] as! [Image]
@@ -484,6 +485,7 @@ extension ExploreViewController: FilterViewControllerDelegate {
         
         if season != nil || partOfDay != nil {
             self.filterWrapper.hideWithAnimation(isHidden: false)
+            self.fetchInitImageFromAPI()
         }
     }
 }

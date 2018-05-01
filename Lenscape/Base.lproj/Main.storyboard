@@ -389,11 +389,11 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKc-lg-SvK" id="cFU-mH-Ico">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-Q1-pjn" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
-                                                    <rect key="frame" x="-10.5" y="6" width="340" height="90"/>
+                                                    <rect key="frame" x="8" y="6" width="304" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo of the day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-Yo-sYy">
                                                             <rect key="frame" x="16" y="16" width="109" height="19"/>
@@ -402,15 +402,15 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98V-3U-4p5">
-                                                            <rect key="frame" x="16" y="45" width="308" height="33.5"/>
+                                                            <rect key="frame" x="16" y="45" width="272" height="50.5"/>
                                                             <string key="text">Hi there, here's our pick for today's best photo. 
 Have a good day.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESn-oI-FZa">
-                                                            <rect key="frame" x="303" y="16" width="21" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESn-oI-FZa">
+                                                            <rect key="frame" x="241" y="16" width="47" height="14"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -443,7 +443,9 @@ Have a good day.</string>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="U1J-Q1-pjn" secondAttribute="trailing" constant="8" id="3sE-yq-Kca"/>
                                                 <constraint firstItem="U1J-Q1-pjn" firstAttribute="centerX" secondItem="cFU-mH-Ico" secondAttribute="centerX" id="53H-FI-Kg2"/>
+                                                <constraint firstItem="U1J-Q1-pjn" firstAttribute="leading" secondItem="cFU-mH-Ico" secondAttribute="leading" constant="8" id="B47-hd-0os"/>
                                                 <constraint firstAttribute="bottom" secondItem="U1J-Q1-pjn" secondAttribute="bottom" constant="4" id="Epa-bz-JXY"/>
                                                 <constraint firstItem="U1J-Q1-pjn" firstAttribute="top" secondItem="cFU-mH-Ico" secondAttribute="top" constant="6" id="gN9-8H-5px"/>
                                             </constraints>
@@ -466,13 +468,40 @@ Have a good day.</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WO-24-4h5" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="251" y="16.5" width="45" height="27"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.54721581375838924" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="qEV-fw-TYM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="clearNotifications:" destination="PjG-zI-O8P" eventType="touchUpInside" id="nbt-4Q-xMO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="2WO-24-4h5" firstAttribute="centerY" secondItem="YqH-d1-s5A" secondAttribute="centerY" id="HWc-1M-gOE"/>
                                     <constraint firstItem="Ylo-z7-cTc" firstAttribute="centerY" secondItem="YqH-d1-s5A" secondAttribute="centerY" id="IGX-YX-Qdu"/>
                                     <constraint firstAttribute="height" constant="60" id="XRK-Aw-uId"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ylo-z7-cTc" secondAttribute="trailing" id="ZDl-sW-UM9"/>
                                     <constraint firstItem="Ylo-z7-cTc" firstAttribute="leading" secondItem="YqH-d1-s5A" secondAttribute="leading" constant="24" id="bXt-RH-TRD"/>
+                                    <constraint firstAttribute="trailing" secondItem="2WO-24-4h5" secondAttribute="trailing" constant="24" id="oUO-0N-Kjp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -506,7 +535,7 @@ Have a good day.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKN-RO-ZCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2839.1999999999998" y="3717.3913043478265"/>
+            <point key="canvasLocation" x="2838.75" y="3717.2535211267605"/>
         </scene>
         <!--Trend View Controller-->
         <scene sceneID="Mws-gX-NdR">
@@ -2331,7 +2360,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Afl-sp-CBD" id="ZKT-YX-uzI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="311.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw2-EX-C67" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">
@@ -3113,7 +3142,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NaA-p4-z62" id="ktb-QI-5CG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij3-1K-QzX" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">

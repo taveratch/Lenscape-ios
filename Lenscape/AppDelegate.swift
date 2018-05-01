@@ -12,6 +12,7 @@ import os.log
 import GoogleMaps
 import GooglePlaces
 import Firebase
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -113,7 +114,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        switch UIApplication.shared.applicationState {
+        case .active:
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ForegroundNotificationReceived"),
+                object: nil,
+                userInfo: userInfo
+            )
+        case .inactive:
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "BackgroundNotificationReceived"),
+                object: nil,
+                userInfo: userInfo
+            )
+        case .background:
+            break
 
+        }
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
 }
 
 extension AppDelegate: MessagingDelegate {

@@ -25,6 +25,10 @@ class MyPlacesViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         setupGestures()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchMyPlacesFromAPI()
     }
     

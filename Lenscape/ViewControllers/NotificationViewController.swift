@@ -12,6 +12,8 @@ import SwiftyJSON
 class NotificationViewController: UIViewController {
 
 
+    @IBOutlet weak var clearButton: RoundedBorderButton!
+    
     @IBOutlet weak var tableView: UITableView!
     private var notifications: [NotificationItem] = [] {
         didSet {
@@ -25,6 +27,8 @@ class NotificationViewController: UIViewController {
         if let notifications = ArchiveUtil.loadNotifications() {
             self.notifications = notifications
         }
+        
+        clearButton.cornerRadius = clearButton.frame.height/2
     }
     
     override func viewWillAppear(_ animated: Bool) {

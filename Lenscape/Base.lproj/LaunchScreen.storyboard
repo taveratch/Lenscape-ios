@@ -17,26 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0kH-e3-i3W">
-                                <rect key="frame" x="117" y="319.5" width="140" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="rCE-dD-gRU"/>
-                                    <constraint firstAttribute="height" constant="28" id="wqz-Lh-liJ"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snow Mountain" translatesAutoresizingMaskIntoConstraints="NO" id="jdM-Y3-cgh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blur Mountain" translatesAutoresizingMaskIntoConstraints="NO" id="jdM-Y3-cgh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="OTI-Ab-vme"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lenscape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYa-Wm-g2R">
+                                <rect key="frame" x="126" y="70" width="124.5" height="37"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="31"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0kH-e3-i3W" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EJl-v3-FVI"/>
-                            <constraint firstItem="0kH-e3-i3W" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gns-Vm-iFN"/>
+                            <constraint firstItem="fYa-Wm-g2R" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1bf-wy-hEz"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9IW-kM-9sD"/>
+                            <constraint firstItem="fYa-Wm-g2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="BdB-C1-rmc"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="JS6-Na-jGW"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QK3-TT-wTk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdM-Y3-cgh" secondAttribute="trailing" id="QSz-4x-iAJ"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WZD-go-Kw9"/>
                             <constraint firstItem="jdM-Y3-cgh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="cjX-Xj-Jo6"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="huu-ds-SxR"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kt4-xP-Fir"/>
                             <constraint firstItem="jdM-Y3-cgh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vtJ-Yg-Kvg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -48,7 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Blur Mountain" width="379" height="210"/>
-        <image name="Logo" width="1959" height="390"/>
+        <image name="Snow Mountain" width="282" height="613"/>
     </resources>
 </document>

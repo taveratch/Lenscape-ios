@@ -529,8 +529,8 @@ extension ExploreViewController: PhotoUploadingDelegate {
     }
     
     func onError(error: NSError) {
-        let message = error.userInfo["message"] as? String ?? "Upload error"
-        self.showAlertDialog(title: "Error", message: message)
+//        let message = error.userInfo["message"] as? String ?? "Upload error"
+//        self.showAlertDialog(title: "Error", message: message)
     }
 }
 

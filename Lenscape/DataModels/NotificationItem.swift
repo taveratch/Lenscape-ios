@@ -8,8 +8,15 @@
 
 import Foundation
 
-struct NotificationItem {
+class NotificationItem {
     var title: String?
     var body: String?
-    var deliveredTime: Double?
+    var deliveredTime: TimeInterval?
+    var isRead: Bool = false
+    
+    init(title: String, body: String) {
+        self.title = title
+        self.body = body
+        deliveredTime = Date().timeIntervalSince1970*1000
+    }
 }

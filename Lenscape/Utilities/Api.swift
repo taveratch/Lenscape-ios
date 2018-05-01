@@ -446,4 +446,23 @@ class Api {
             }
         }
     }
+    
+    static func reportPhoto(photoId: Int) -> Promise<Bool> {
+        let headers : [String: String] = [
+            "Authorization": "Bearer \(UserController.getToken())"
+        ]
+        let url = "\(HOST)/photo/\(photoId)/report"
+        
+        return Promise {
+            seal in
+            ApiManager.fetch(url: url, headers: headers, method: "POST").done {
+                response in
+                seal.fulfill(true)
+                }.catch {
+                    error in
+                    print(error)
+                    seal.reject(error)
+            }
+        }
+    }
 }

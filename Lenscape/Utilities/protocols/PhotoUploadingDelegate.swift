@@ -9,8 +9,9 @@
 import Foundation
 
 protocol PhotoUploadingDelegate {
-    func didUpload()
+    func didUpload(image: Image)
     func uploading(completedUnit: Double, totalUnit: Double)
     func willUpload()
     func cancelledUpload()
+    func onError(error: NSError)
 }

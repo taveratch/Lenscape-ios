@@ -13,12 +13,20 @@ class PhotoUploader {
     var isUploading: Bool = false
     
     func upload(picture: [String: Any], place: Place) {
+        
+        if delegate == nil {
+            return
+        }
+        
         isUploading = true
+
         self.delegate?.willUpload()
+        
         let progressHandler = {
             (completedUnit: Int64, totalUnit: Int64) -> Void in
             self.delegate?.uploading(completedUnit: Double(completedUnit), totalUnit: Double(totalUnit))
         }
+        
         guard let data = picture["picture"] as? Data else {
             fatalError("picture attribute expected for uploading photo")
         }
@@ -47,9 +55,13 @@ class PhotoUploader {
             fatalError("date_taken is missing")
         }
         
-        let _ = Api.uploadImage(data: data, imageName: imageName, place: place, seasonId: seasonId, timeId: timeId, dateTaken: dateTaken, progressHandler: progressHandler).done {
-            response in
-            self.delegate?.didUpload()
+        Api.uploadImage(data: data, imageName: imageName, place: place, seasonId: seasonId, timeId: timeId, dateTaken: dateTaken, progressHandler: progressHandler).done {
+            image in
+            self.delegate?.didUpload(image: image)
+            }.catch {
+                error in
+                let nsError = error as NSError
+                self.delegate?.onError(error: nsError)
         }
     }
     

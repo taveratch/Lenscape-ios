@@ -94,7 +94,7 @@ class Api {
     
     // MARK: - Images
     static func uploadImage(data: Data, imageName: String, place: Place, seasonId: Int, timeId: Int, dateTaken: Int64,
-                            progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<[String: Any]> {
+                            progressHandler: ((Int64, Int64) -> Void)? = nil) -> Promise<Image> {
         
         let headers : HTTPHeaders = [
             "Authorization": "Bearer \(UserController.getToken())",
@@ -129,8 +129,8 @@ class Api {
             }, progressHandler: progressHandler
                 ).done {
                     response in
-                    print(response)
-                    seal.fulfill(response)
+                    let image = Image(item: response)
+                    seal.fulfill(image)
                 }.catch { error in
                     seal.reject(error)
             }

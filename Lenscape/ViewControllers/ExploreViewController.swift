@@ -29,13 +29,13 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var statusbarSpace: UIView!
     @IBOutlet weak var filterWrapper: UIView!
     @IBOutlet weak var seasonFilterLabel: UILabel!
-    @IBOutlet weak var removeSeasonFilterButton: UIView!
     @IBOutlet weak var partOfDayFilterWrapper: UIStackView!
     @IBOutlet weak var seasonFilterWrapper: UIStackView!
     @IBOutlet weak var partOfDayFilterLabel: UILabel!
-    @IBOutlet weak var removePartOfDayFilterButton: UIView!
     @IBOutlet weak var showFilterDialogButton: GradientView!
     @IBOutlet weak var removeFilterButton: UIView!
+    @IBOutlet weak var uploadedWrapper: UIView!
+    @IBOutlet weak var uploadedUIImageView: UIImageView!
     var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -51,6 +51,7 @@ class ExploreViewController: UIViewController {
     var shouldUpdateHeaderVisibility = true
     var headerHeightConstraint: NSLayoutConstraint?
     var currentFeedLocation: Location?
+    var uploadedImage: Image?
     var filterSeason: Season? {
         didSet {
             let isHidden = self.filterSeason == nil
@@ -140,6 +141,14 @@ class ExploreViewController: UIViewController {
         vc.partOfDay = self.filterPartOfDay
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
+    }
+    
+    @IBAction func goToYourLatestPlace(_ sender: UIButton) {
+        if let image = uploadedImage {
+            let location = Location(latitude: image.place.location.latitude, longitude: image.place.location.longitude)
+            self.currentFeedLocation = location
+            self.fetchInitImageFromAPI()
+        }
     }
     
     @objc private func removeFilter() {
@@ -269,6 +278,7 @@ class ExploreViewController: UIViewController {
         seasoningScrollView.carousel.defaultSelectedIndex = 6
         
         filterWrapper.isHidden = true
+        uploadedWrapper.isHidden = true
         progressViewWrapper.isHidden = true
         progressViewWrapper.alpha = 0
         
@@ -378,6 +388,16 @@ class ExploreViewController: UIViewController {
         }
     }
     
+    private func showUploadedNotification(image: Image) {
+        let url = URL(string: image.thumbnailLink!)
+        self.uploadedUIImageView.kf.indicatorType = .activity
+        self.uploadedUIImageView.kf.setImage(with: url, options: [.forceTransition])
+        self.uploadedWrapper.hideWithAnimation(isHidden: false)
+        ComponentUtil.runThisAfter(second: 5, execute: {
+            self.uploadedWrapper.hideWithAnimation(isHidden: true)
+        })
+    }
+    
 }
 
 // Mark: - UITableViewDataSource
@@ -474,11 +494,13 @@ extension ExploreViewController: UIScrollViewDelegate {
 
 extension ExploreViewController: PhotoUploadingDelegate {
     
-    func didUpload() {
+    func didUpload(image: Image) {
         progressViewWrapper.hideWithAnimation(isHidden: true)
         UserDefaults.standard.removeObject(forKey: "uploadPhotoInfo")
         fetchInitImageFromAPI()
         progressView.progress = 0
+        self.showUploadedNotification(image: image)
+        self.uploadedImage = image
         print("didUpload")
     }
     
@@ -499,6 +521,11 @@ extension ExploreViewController: PhotoUploadingDelegate {
     func cancelledUpload() {
         progressViewWrapper.hideWithAnimation(isHidden: true)
         print("Upload has been cancelled")
+    }
+    
+    func onError(error: NSError) {
+        let message = error.userInfo["message"] as? String ?? "Upload error"
+        self.showAlertDialog(title: "Error", message: message)
     }
 }
 

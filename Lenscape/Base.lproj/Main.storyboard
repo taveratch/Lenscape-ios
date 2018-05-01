@@ -389,7 +389,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKc-lg-SvK" id="cFU-mH-Ico">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-Q1-pjn" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">
@@ -636,10 +636,140 @@ Have a good day.</string>
             </objects>
             <point key="canvasLocation" x="2605" y="-401"/>
         </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="NM2-yc-IsW">
+            <objects>
+                <viewController storyboardIdentifier="FilterViewController" id="Bbe-6s-nbi" customClass="FilterViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GI2-a9-cF5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQo-er-U0z">
+                                <rect key="frame" x="270" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="LbR-cg-RbR"/>
+                                    <constraint firstAttribute="height" constant="30" id="dy2-VU-nC2"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="Cross White Shadow"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="yKk-Co-UHk" eventType="touchUpInside" id="0P7-0X-hJf"/>
+                                    <action selector="dismissView:" destination="Bbe-6s-nbi" eventType="touchUpInside" id="Raa-jd-Ela"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Travel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-cW-nkm">
+                                <rect key="frame" x="114" y="44" width="92" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nen-uq-1ua" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="-8" y="161.5" width="336" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="0yq-NW-yEk"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="utl-lC-dNs">
+                                <rect key="frame" x="16" y="114.5" width="115.5" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MD4-RH-JyS">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.42745098039215684" green="0.80392156862745101" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBC-Cj-EiD">
+                                        <rect key="frame" x="65" y="0.0" width="50.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4e-lh-XdV" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="312.5" width="320" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ASa-AV-f5R"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iuQ-9B-dGG">
+                                <rect key="frame" x="16" y="265.5" width="141.5" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-pr-v72">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.42745098040000001" green="0.80392156859999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Part of Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILW-77-77R">
+                                        <rect key="frame" x="65" y="0.0" width="76.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXd-g1-pkb" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
+                                <rect key="frame" x="115" y="400.5" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="eE4-mL-Aqe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createFilter:" destination="Bbe-6s-nbi" eventType="touchUpInside" id="7b3-qB-xVk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cXd-g1-pkb" firstAttribute="centerX" secondItem="GI2-a9-cF5" secondAttribute="centerX" id="1v9-cN-Nvk"/>
+                            <constraint firstItem="w4e-lh-XdV" firstAttribute="top" secondItem="iuQ-9B-dGG" secondAttribute="bottom" constant="16" id="2B5-aH-h19"/>
+                            <constraint firstItem="Nen-uq-1ua" firstAttribute="top" secondItem="utl-lC-dNs" secondAttribute="bottom" constant="16" id="6c5-yh-UtB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nen-uq-1ua" secondAttribute="trailingMargin" constant="-16" id="8qq-47-YVZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w4e-lh-XdV" secondAttribute="trailingMargin" constant="-8" id="B0E-sz-ye6"/>
+                            <constraint firstItem="cXd-g1-pkb" firstAttribute="top" secondItem="w4e-lh-XdV" secondAttribute="bottom" constant="32" id="Blk-V9-QRs"/>
+                            <constraint firstItem="utl-lC-dNs" firstAttribute="top" secondItem="pzy-cW-nkm" secondAttribute="bottom" constant="50" id="MkW-Wl-kOW"/>
+                            <constraint firstItem="w4e-lh-XdV" firstAttribute="leadingMargin" secondItem="GI2-a9-cF5" secondAttribute="leadingMargin" constant="-8" id="Qtk-Vn-nKS"/>
+                            <constraint firstItem="utl-lC-dNs" firstAttribute="leading" secondItem="O58-eX-eal" secondAttribute="leading" constant="16" id="Rce-hr-Apn"/>
+                            <constraint firstItem="Nen-uq-1ua" firstAttribute="centerX" secondItem="GI2-a9-cF5" secondAttribute="centerX" id="TzL-v2-a19"/>
+                            <constraint firstItem="iuQ-9B-dGG" firstAttribute="leading" secondItem="O58-eX-eal" secondAttribute="leading" constant="16" id="WDn-Fe-KJ1"/>
+                            <constraint firstItem="Nen-uq-1ua" firstAttribute="leadingMargin" secondItem="GI2-a9-cF5" secondAttribute="leadingMargin" constant="-16" id="iBJ-Lo-CUF"/>
+                            <constraint firstItem="O58-eX-eal" firstAttribute="trailing" secondItem="TQo-er-U0z" secondAttribute="trailing" constant="20" id="kXn-Up-IdU"/>
+                            <constraint firstItem="TQo-er-U0z" firstAttribute="top" secondItem="O58-eX-eal" secondAttribute="top" constant="20" id="o0e-zE-V2G"/>
+                            <constraint firstItem="pzy-cW-nkm" firstAttribute="top" secondItem="O58-eX-eal" secondAttribute="top" constant="24" id="phF-gC-NjE"/>
+                            <constraint firstItem="iuQ-9B-dGG" firstAttribute="leading" secondItem="O58-eX-eal" secondAttribute="leading" constant="16" id="q4U-Ih-O6w"/>
+                            <constraint firstItem="iuQ-9B-dGG" firstAttribute="top" secondItem="Nen-uq-1ua" secondAttribute="bottom" constant="48" id="qZn-Zj-ywz"/>
+                            <constraint firstItem="pzy-cW-nkm" firstAttribute="centerX" secondItem="GI2-a9-cF5" secondAttribute="centerX" id="zdq-Jg-q6d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O58-eX-eal"/>
+                    </view>
+                    <connections>
+                        <outlet property="partOfDayScrollView" destination="w4e-lh-XdV" id="Sty-57-KfR"/>
+                        <outlet property="partOfDaySwitch" destination="Y1H-pr-v72" id="35G-Za-8d5"/>
+                        <outlet property="seasonScrollView" destination="Nen-uq-1ua" id="wYH-Gj-IMY"/>
+                        <outlet property="seasonSwitch" destination="MD4-RH-JyS" id="ntV-j8-7Mc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4nQ-dC-WFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3545.625" y="-877.81690140845069"/>
+        </scene>
         <!--Create Filter-->
         <scene sceneID="RE5-sg-t7r">
             <objects>
-                <tableViewController storyboardIdentifier="FilterViewController" id="A2W-kV-smK" customClass="FilterViewController" customModule="Lenscape" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="A2W-kV-smK" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sZR-f9-YOk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,7 +846,7 @@ Have a good day.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvb-FE-NRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4331.25" y="-145.77464788732394"/>
+            <point key="canvasLocation" x="4041" y="-147"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="IOg-Hy-3BS">
@@ -2053,7 +2183,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JQh-NV-4Oy" id="gTZ-dd-rtM" customClass="SearchAutoCompleteTableViewCell" customModule="Lenscape" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2983,7 +3113,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NaA-p4-z62" id="ktb-QI-5CG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij3-1K-QzX" customClass="ShadowView" customModule="Lenscape" customModuleProvider="target">

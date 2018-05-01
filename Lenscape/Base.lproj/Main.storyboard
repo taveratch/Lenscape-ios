@@ -468,13 +468,40 @@ Have a good day.</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WO-24-4h5" customClass="RoundedBorderButton" customModule="Lenscape" customModuleProvider="target">
+                                        <rect key="frame" x="251" y="16.5" width="45" height="27"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.54721581375838924" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="qEV-fw-TYM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="clearNotifications:" destination="PjG-zI-O8P" eventType="touchUpInside" id="nbt-4Q-xMO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="2WO-24-4h5" firstAttribute="centerY" secondItem="YqH-d1-s5A" secondAttribute="centerY" id="HWc-1M-gOE"/>
                                     <constraint firstItem="Ylo-z7-cTc" firstAttribute="centerY" secondItem="YqH-d1-s5A" secondAttribute="centerY" id="IGX-YX-Qdu"/>
                                     <constraint firstAttribute="height" constant="60" id="XRK-Aw-uId"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ylo-z7-cTc" secondAttribute="trailing" id="ZDl-sW-UM9"/>
                                     <constraint firstItem="Ylo-z7-cTc" firstAttribute="leading" secondItem="YqH-d1-s5A" secondAttribute="leading" constant="24" id="bXt-RH-TRD"/>
+                                    <constraint firstAttribute="trailing" secondItem="2WO-24-4h5" secondAttribute="trailing" constant="24" id="oUO-0N-Kjp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2333,7 +2360,7 @@ Have a good day.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Afl-sp-CBD" id="ZKT-YX-uzI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="311.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw2-EX-C67" customClass="FeedItem" customModule="Lenscape" customModuleProvider="target">

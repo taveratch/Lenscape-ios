@@ -149,6 +149,7 @@
 		D064919D206E8B5F002ADF2C /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064919C206E8B5F002ADF2C /* POIItem.swift */; };
 		D0AE8E2E20921C500046202D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE8E2D20921C500046202D /* UITextField.swift */; };
 		D0C97A83206A4D590054276F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C97A82206A4D590054276F /* ValidationError.swift */; };
+		D0DA2580209870A80007A832 /* ArchiveUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA257F209870A80007A832 /* ArchiveUtil.swift */; };
 		D0ED74C12064156200F197C1 /* ProfileInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0ED74C02064156200F197C1 /* ProfileInfoView.xib */; };
 		D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */; };
 /* End PBXBuildFile section */
@@ -342,6 +343,7 @@
 		D0AE8E2D20921C500046202D /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		D0C846F32084BFB7005950E0 /* Lenscape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lenscape.entitlements; sourceTree = "<group>"; };
 		D0C97A82206A4D590054276F /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		D0DA257F209870A80007A832 /* ArchiveUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUtil.swift; sourceTree = "<group>"; };
 		D0ED74C02064156200F197C1 /* ProfileInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoView.xib; sourceTree = "<group>"; };
 		D0ED74C2206415C100F197C1 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		E14BB7371D2565B6C06EB7EA /* Pods-Lenscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lenscape.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lenscape/Pods-Lenscape.debug.xcconfig"; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				95E909A02090D2CE0061FFE7 /* DistanceUtil.swift */,
 				95814930208B026800623AC2 /* AlertController.swift */,
 				9509A5332084EB1C00334B74 /* Constants.swift */,
+				D0DA257F209870A80007A832 /* ArchiveUtil.swift */,
 				950358D92070A2C200D424F4 /* CustomClusterRenderer.swift */,
 				95108EF120541B760072AC48 /* Identifiers.swift */,
 				D0C97A82206A4D590054276F /* ValidationError.swift */,
@@ -1154,6 +1157,7 @@
 				95F85EF9206349690059ACFB /* UIGridCollectionViewDelegate.swift in Sources */,
 				950358C7206F95BB00D424F4 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				95108EF220541B760072AC48 /* Identifiers.swift in Sources */,
+				D0DA2580209870A80007A832 /* ArchiveUtil.swift in Sources */,
 				9560EA1C208DA8D60013AB22 /* ImageThumbnailTableViewCell.swift in Sources */,
 				D0ED74C3206415C100F197C1 /* ProfileInfoView.swift in Sources */,
 				950358C3206F95BB00D424F4 /* GMUWrappingDictionaryKey.m in Sources */,

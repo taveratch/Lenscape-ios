@@ -37,15 +37,48 @@ class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate
         )
         cameraModal?.loadViewIfNeeded()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentLocation), name: .UpdateLocation, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateCurrentLocation),
+            name: .UpdateLocation,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(showFullImage), name: NSNotification.Name(rawValue: "pushNotificationReceived"), object: nil)
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showFullImage),
+            name: NSNotification.Name(rawValue: "BackgroundNotificationReceived"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notificationReceived),
+            name: NSNotification.Name(rawValue: "ForegroundNotificationReceived"),
+            object: nil
+        )
+        
+        if let notifications = ArchiveUtil.loadNotifications() {
+            let unread = notifications.count
+            customTabBar.items?[3].badgeValue = unread > 0 ? "\(unread)" : nil
+            UIApplication.shared.applicationIconBadgeNumber = unread
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name(rawValue: "BackgroundNotificationReceived"),
+            object: nil
+        )
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name(rawValue: "ForegroundNotificationReceived"),
+            object: nil
+        )
     }
     
     @objc private func updateCurrentLocation() {
@@ -54,14 +87,35 @@ class MainTabBarController: UITabBarController, UNUserNotificationCenterDelegate
     
     @objc private func showFullImage(_ notification: Notification) {
         if let data = notification.userInfo {
-            let payload = data["image"] as! String
-            let data = JSON.init(parseJSON: payload)
-            let image = Image(item: data.dictionaryObject!)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
-            vc.image = image
-            present(vc, animated: true)
+            if let photoId = data["photo_id"] as? String {
+                Api.retrievePhoto(photoId: Int(photoId)!).done { image in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: Identifier.FullImageViewController.rawValue) as! FullImageViewController
+                    vc.image = image
+                    self.present(vc, animated: true)
+                    }.catch { error in
+                        let error = error as NSError
+                        let message = error.userInfo["message"] as? String ?? "Error"
+                        self.showAlertDialog(message: message)
+                }
+            }
         }
+    }
+    
+    @objc private func notificationReceived(_ notification: Notification) {
+        let notification = JSON(notification.userInfo!)
+        let body = notification["aps"]["alert"]["body"].string
+        let title = notification["aps"]["alert"]["subtitle"].string
+        let photoId = notification["photo_id"].string
+        let notificationItem = NotificationItem(title: title!, body: body!, photoId: photoId!)
+        if var notifications = ArchiveUtil.loadNotifications() {
+            notifications.append(notificationItem)
+            ArchiveUtil.saveNotifications(notifications: notifications)
+            let unread = notifications.count
+            self.customTabBar.items?[3].badgeValue = "\(unread)"
+            UIApplication.shared.applicationIconBadgeNumber = unread
+        }
+    
     }
 }
 

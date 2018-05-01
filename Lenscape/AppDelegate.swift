@@ -49,12 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        let prefs: UserDefaults = UserDefaults.standard
-        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
-            prefs.set(remoteNotification as! [AnyHashable: Any], forKey: "startUpNotification")
-            prefs.synchronize()
-        }
-        
         return true
     }
     
@@ -123,6 +117,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
+        print(JSON(userInfo))
+        
         switch UIApplication.shared.applicationState {
         case .active:
             print("Send foreground notification")
@@ -132,16 +128,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 userInfo: userInfo
             )
         case .inactive:
-            break
-        case .background:
-            print("Send background notification")
+            print("App inactive")
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: "BackgroundNotificationReceived"),
                 object: nil,
                 userInfo: userInfo
             )
+        case .background:
+            print("Send background notification")
+
         }
-        completionHandler(UIBackgroundFetchResult.noData)
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
 
@@ -152,7 +149,6 @@ extension AppDelegate: MessagingDelegate {
         // TODO: If necessary send token to application server.
         Messaging.messaging().subscribe(toTopic: "photoOfTheDay")
         Messaging.messaging().subscribe(toTopic: "weeklyInsights")
-        Messaging.messaging().subscribe(toTopic: "tests")
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }

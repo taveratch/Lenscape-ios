@@ -86,7 +86,6 @@ extension NotificationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Notifications", notifications.count)
         return notifications.count
     }
     

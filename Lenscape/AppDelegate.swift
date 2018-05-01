@@ -116,26 +116,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-        print(JSON(userInfo))
-        
         switch UIApplication.shared.applicationState {
         case .active:
-            print("Send foreground notification")
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: "ForegroundNotificationReceived"),
                 object: nil,
                 userInfo: userInfo
             )
         case .inactive:
-            print("App inactive")
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: "BackgroundNotificationReceived"),
                 object: nil,
                 userInfo: userInfo
             )
         case .background:
-            print("Send background notification")
+            break
 
         }
         completionHandler(UIBackgroundFetchResult.newData)

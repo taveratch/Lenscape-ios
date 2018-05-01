@@ -183,6 +183,10 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
             action in
             self.savePhotoToCameraRoll()
         }))
+        alert.addAction(UIAlertAction(title: "Report this photo", style: .default, handler: {
+            action in
+            self.reportPhoto()
+        }))
         if image.isOwner {
             alert.addAction(UIAlertAction(title: "Delete Photo", style: .destructive, handler: {
                 action in
@@ -195,6 +199,16 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func share(_ sender: UIButton) {
         shareToFacebook()
+    }
+    
+    @objc private func reportPhoto() {
+        Api.reportPhoto(photoId: self.image.id).done {
+            success in
+            self.showAlertDialog(message: "Photo has been reported")
+            }.catch {
+                error in
+                self.showAlertDialog(message: "Error")
+        }
     }
     
     @IBAction func likeImage(_ sender: UIButton) {

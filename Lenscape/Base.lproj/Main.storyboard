@@ -664,7 +664,7 @@ Have a good day.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nen-uq-1ua" customClass="CircularInfiniteScroll" customModule="Lenscape" customModuleProvider="target">
-                                <rect key="frame" x="-8" y="161.5" width="336" height="56"/>
+                                <rect key="frame" x="-10" y="161.5" width="340" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="0yq-NW-yEk"/>
@@ -737,7 +737,7 @@ Have a good day.</string>
                             <constraint firstItem="cXd-g1-pkb" firstAttribute="centerX" secondItem="GI2-a9-cF5" secondAttribute="centerX" id="1v9-cN-Nvk"/>
                             <constraint firstItem="w4e-lh-XdV" firstAttribute="top" secondItem="iuQ-9B-dGG" secondAttribute="bottom" constant="16" id="2B5-aH-h19"/>
                             <constraint firstItem="Nen-uq-1ua" firstAttribute="top" secondItem="utl-lC-dNs" secondAttribute="bottom" constant="16" id="6c5-yh-UtB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nen-uq-1ua" secondAttribute="trailingMargin" constant="-16" id="8qq-47-YVZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nen-uq-1ua" secondAttribute="trailingMargin" constant="-18" id="8qq-47-YVZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w4e-lh-XdV" secondAttribute="trailingMargin" constant="-8" id="B0E-sz-ye6"/>
                             <constraint firstItem="cXd-g1-pkb" firstAttribute="top" secondItem="w4e-lh-XdV" secondAttribute="bottom" constant="32" id="Blk-V9-QRs"/>
                             <constraint firstItem="utl-lC-dNs" firstAttribute="top" secondItem="pzy-cW-nkm" secondAttribute="bottom" constant="50" id="MkW-Wl-kOW"/>
@@ -745,7 +745,7 @@ Have a good day.</string>
                             <constraint firstItem="utl-lC-dNs" firstAttribute="leading" secondItem="O58-eX-eal" secondAttribute="leading" constant="16" id="Rce-hr-Apn"/>
                             <constraint firstItem="Nen-uq-1ua" firstAttribute="centerX" secondItem="GI2-a9-cF5" secondAttribute="centerX" id="TzL-v2-a19"/>
                             <constraint firstItem="iuQ-9B-dGG" firstAttribute="leading" secondItem="O58-eX-eal" secondAttribute="leading" constant="16" id="WDn-Fe-KJ1"/>
-                            <constraint firstItem="Nen-uq-1ua" firstAttribute="leadingMargin" secondItem="GI2-a9-cF5" secondAttribute="leadingMargin" constant="-16" id="iBJ-Lo-CUF"/>
+                            <constraint firstItem="Nen-uq-1ua" firstAttribute="leadingMargin" secondItem="GI2-a9-cF5" secondAttribute="leadingMargin" constant="-18" id="iBJ-Lo-CUF"/>
                             <constraint firstItem="O58-eX-eal" firstAttribute="trailing" secondItem="TQo-er-U0z" secondAttribute="trailing" constant="20" id="kXn-Up-IdU"/>
                             <constraint firstItem="TQo-er-U0z" firstAttribute="top" secondItem="O58-eX-eal" secondAttribute="top" constant="20" id="o0e-zE-V2G"/>
                             <constraint firstItem="pzy-cW-nkm" firstAttribute="top" secondItem="O58-eX-eal" secondAttribute="top" constant="24" id="phF-gC-NjE"/>

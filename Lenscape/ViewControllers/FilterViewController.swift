@@ -50,7 +50,7 @@ class FilterViewController: UIViewController {
         blurredBackgroundView.alpha = 0
         view.addSubview(blurredBackgroundView)
         view.sendSubview(toBack: blurredBackgroundView)
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 2, animations: {
             blurredBackgroundView.alpha = 1
         })
     }
@@ -96,7 +96,7 @@ class FilterViewController: UIViewController {
             })
         }
         seasonScrollView.carousel.delegate = self
-        seasonScrollView.carousel.resizeType = .visibleItemsPerPage(self.seasons.count)
+        seasonScrollView.carousel.resizeType = .visibleItemsPerPage(3)
         seasonScrollView.carousel.defaultSelectedIndex = currentIndex == nil ? self.seasons.count / 2 : currentIndex!
     }
     
@@ -113,7 +113,7 @@ class FilterViewController: UIViewController {
             })
         }
         partOfDayScrollView.carousel.delegate = self
-        partOfDayScrollView.carousel.resizeType = .visibleItemsPerPage(self.partsOfDay.count/2)
+        partOfDayScrollView.carousel.resizeType = .visibleItemsPerPage(3)
         partOfDayScrollView.carousel.defaultSelectedIndex = currentIndex == nil ? self.partsOfDay.count / 2 : currentIndex!
     }
     

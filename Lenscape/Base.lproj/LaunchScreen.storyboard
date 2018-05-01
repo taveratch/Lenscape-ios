@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,11 +24,20 @@
                                     <constraint firstAttribute="height" constant="28" id="wqz-Lh-liJ"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blur Mountain" translatesAutoresizingMaskIntoConstraints="NO" id="jdM-Y3-cgh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="OTI-Ab-vme"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0kH-e3-i3W" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EJl-v3-FVI"/>
                             <constraint firstItem="0kH-e3-i3W" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gns-Vm-iFN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdM-Y3-cgh" secondAttribute="trailing" id="QSz-4x-iAJ"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="cjX-Xj-Jo6"/>
+                            <constraint firstItem="jdM-Y3-cgh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vtJ-Yg-Kvg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,6 +48,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Blur Mountain" width="379" height="210"/>
         <image name="Logo" width="1959" height="390"/>
     </resources>
 </document>

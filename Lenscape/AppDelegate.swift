@@ -49,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        let prefs: UserDefaults = UserDefaults.standard
+        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+            prefs.set(remoteNotification as! [AnyHashable: Any], forKey: "startUpNotification")
+            prefs.synchronize()
+        }
+        
         return true
     }
     
@@ -116,8 +122,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let data = userInfo["image"] {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "pushNotificationReceived"), object: nil, userInfo: userInfo)
+        
+        switch UIApplication.shared.applicationState {
+        case .active:
+            print("Send foreground notification")
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ForegroundNotificationReceived"),
+                object: nil,
+                userInfo: userInfo
+            )
+        case .inactive:
+            break
+        case .background:
+            print("Send background notification")
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "BackgroundNotificationReceived"),
+                object: nil,
+                userInfo: userInfo
+            )
         }
         completionHandler(UIBackgroundFetchResult.noData)
     }

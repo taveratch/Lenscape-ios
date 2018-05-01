@@ -69,6 +69,8 @@ class ExploreViewController: UIViewController {
             }
         }
     }
+    var seasons: [Season] = []
+    var partsOfDay: [PartOfDay] = []
     
     // Fix tableview row's offset change after call reloadRowsAt... in likeImage()
     // https://stackoverflow.com/questions/27102887/maintain-offset-when-reloadrowsatindexpaths
@@ -78,6 +80,8 @@ class ExploreViewController: UIViewController {
     // MARK: - ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchSeasons()
+        fetchPartsOfDay()
         photoUploader.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
@@ -102,11 +106,40 @@ class ExploreViewController: UIViewController {
     
     // MARK: - Private Methods
     
+    func overlayBlurredBackgroundView() {
+        
+        let blurredBackgroundView = UIVisualEffectView()
+        
+        blurredBackgroundView.frame = view.frame
+        blurredBackgroundView.effect = UIBlurEffect(style: .dark)
+        blurredBackgroundView.alpha = 0
+        view.addSubview(blurredBackgroundView)
+        UIView.animate(withDuration: 0.4, animations: {
+            blurredBackgroundView.alpha = 1
+        })
+    }
+    
+    func removeBlurredBackgroundView() {
+        
+        for subview in view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
     @objc private func showFilterViewController() {
+        self.definesPresentationContext = true
+        self.providesPresentationContextTransitionStyle = true
+//        self.overlayBlurredBackgroundView()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.FilterViewController.rawValue) as! FilterViewController
+        vc.seasons = self.seasons
+        vc.partsOfDay = self.partsOfDay
         vc.delegate = self
-        let navigationController = UINavigationController(rootViewController: vc)
-        self.present(navigationController, animated: true)
+        vc.season = self.filterSeason
+        vc.partOfDay = self.filterPartOfDay
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
     }
     
     @objc private func removeFilter() {
@@ -197,6 +230,30 @@ class ExploreViewController: UIViewController {
                 self.scrollToTop()
                 self.showHeader(isShow: true)
                 self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func fetchSeasons() {
+        Api.getSeasons().done {
+            seasons in
+            self.seasons = seasons
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                self.showAlertDialog(title: "Error", message: message)
+        }
+    }
+    
+    private func fetchPartsOfDay() {
+        Api.getPartsOfDay().done {
+            partsOfDay in
+            self.partsOfDay = partsOfDay
+            }.catch {
+                error in
+                let nsError = error as NSError
+                let message = nsError.userInfo["message"] as? String ?? "Error"
+                self.showAlertDialog(title: "Error", message: message)
         }
     }
     

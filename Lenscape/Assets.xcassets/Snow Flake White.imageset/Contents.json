@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "filter_white-1.png",
+      "filename" : "snowflake_white-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "filter_white-2.png",
+      "filename" : "snowflake_white-2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "filter_white.png",
+      "filename" : "snowflake_white.png",
       "scale" : "3x"
     }
   ],

@@ -12,7 +12,7 @@ import PromiseKit
 
 class Api {
     
-    static let HOST = "https://dev.api.lenscape.me"
+    static let HOST = "https://api.lenscape.me"
     
     // MARK: - Authentication
     static private func getUserFromAuthResponse(response: [String: Any]) -> [String: Any] {

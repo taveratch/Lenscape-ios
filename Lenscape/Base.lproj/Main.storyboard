@@ -1339,6 +1339,7 @@ Have a good day.</string>
                     <connections>
                         <outlet property="cancelUploadButton" destination="EaF-UD-LCp" id="UuN-U3-zE8"/>
                         <outlet property="filterWrapper" destination="UIf-em-aZ0" id="Dkh-Hl-4jD"/>
+                        <outlet property="goToLatestPlaceButton" destination="Q72-yG-Jk5" id="JJv-w3-rSY"/>
                         <outlet property="header" destination="iIj-Dd-qAK" id="xa4-Si-bhO"/>
                         <outlet property="headerLabel" destination="sDV-A4-9ds" id="gbu-hG-eKw"/>
                         <outlet property="headerTitleSection" destination="i78-F7-4NT" id="VsY-dq-VG0"/>

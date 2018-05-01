@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Hero
 
 class OpenCameraViewControllerModal: UIViewController {
 
@@ -222,7 +223,7 @@ extension OpenCameraViewControllerModal {
             fatalError("identifier: \(Identifier.PhotoPreviewViewController.rawValue) is not type of PhotoPreviewViewController")
         }
         vc.image = image
-        vc.hero.modalAnimationType = .fade
+        Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
     

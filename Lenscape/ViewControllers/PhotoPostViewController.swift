@@ -13,7 +13,6 @@ import GooglePlaces
 class PhotoPostViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var shareButton: ShadowView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backButton: UIImageView!
     @IBOutlet weak var informationCard: PhotoUploadInformationCard!
@@ -84,6 +83,7 @@ class PhotoPostViewController: UIViewController {
     
     private func setupUI() {
         imageView.image = image
+        imageView.hero.id = "PreviewImageView"
         informationCard.caption.delegate = self
         informationCard.dateTakenPicker.isHidden = true
         

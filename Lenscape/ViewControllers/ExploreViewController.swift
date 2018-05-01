@@ -36,6 +36,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var removeFilterButton: UIView!
     @IBOutlet weak var uploadedWrapper: UIView!
     @IBOutlet weak var uploadedUIImageView: UIImageView!
+    @IBOutlet weak var goToLatestPlaceButton: RoundedBorderButton!
     var indicator = UIActivityIndicatorView()
     
     var items = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -147,8 +148,10 @@ class ExploreViewController: UIViewController {
         if let image = uploadedImage {
             let location = Location(latitude: image.place.location.latitude, longitude: image.place.location.longitude)
             self.currentFeedLocation = location
+            self.headerLabel.text = "Around \(image.place.name)"
             self.fetchInitImageFromAPI()
         }
+        uploadedWrapper.hideWithAnimation(isHidden: true)
     }
     
     @objc private func removeFilter() {
@@ -276,6 +279,8 @@ class ExploreViewController: UIViewController {
         seasoningScrollView.carousel.delegate = self
         seasoningScrollView.carousel.resizeType = .visibleItemsPerPage(9)
         seasoningScrollView.carousel.defaultSelectedIndex = 6
+        
+        goToLatestPlaceButton.cornerRadius = goToLatestPlaceButton.frame.height / 2
         
         filterWrapper.isHidden = true
         uploadedWrapper.isHidden = true

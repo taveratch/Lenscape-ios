@@ -137,7 +137,7 @@ class FullImageViewController: UIViewController, UIScrollViewDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Identifier.PhotoInfoViewController.rawValue) as! PhotoInfoViewController
         vc.image = image
         vc.uiImage = placeHolderImage
-        vc.hero.modalAnimationType = .fade
+        Hero.shared.defaultAnimation = .fade
         present(vc, animated: true)
     }
     

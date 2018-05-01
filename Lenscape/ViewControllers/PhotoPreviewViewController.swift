@@ -32,6 +32,7 @@ class PhotoPreviewViewController: UIViewController, UIScrollViewDelegate {
             imageView.contentMode = .scaleAspectFit
         }
         imageView.image = image
+        imageView.hero.id = "PreviewImageView"
     }
     
     /*

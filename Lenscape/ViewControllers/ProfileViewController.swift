@@ -30,6 +30,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         setupRefreshControl()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         fetchFromAPIs()
     }
 

@@ -10,6 +10,14 @@ import UIKit
 import AVFoundation
 import Hero
 
+struct Platform {
+    
+    static var isSimulator: Bool {
+        return TARGET_OS_SIMULATOR != 0
+    }
+    
+}
+
 class OpenCameraViewControllerModal: UIViewController {
 
     // MARK: - UI Components
@@ -89,6 +97,12 @@ class OpenCameraViewControllerModal: UIViewController {
     // MARK: - UI Initialization
     
     private func initCamera() {
+        
+        // Do not initialize camera when running in Simulator
+        if Platform.isSimulator {
+            return
+        }
+        
         session = AVCaptureSession()
         session.sessionPreset = .photo
         imageOutput = AVCapturePhotoOutput()

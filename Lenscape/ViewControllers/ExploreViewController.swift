@@ -26,7 +26,6 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerTitleSection: UIView!
-    @IBOutlet weak var statusbarSpace: UIView!
     @IBOutlet weak var filterWrapper: UIView!
     @IBOutlet weak var seasonFilterLabel: UILabel!
     @IBOutlet weak var partOfDayFilterWrapper: UIStackView!
@@ -382,9 +381,7 @@ class ExploreViewController: UIViewController {
     }
     
     private func showHeader(isShow: Bool) {
-        let isUploading = !self.progressViewWrapper.isHidden
         self.headerTitleSection.hideWithAnimation(isHidden: !isShow)
-        self.statusbarSpace.hideWithAnimation(isHidden: isUploading ? false : !isShow)
     }
     
     private func showFilter(isHidden: Bool) {
@@ -398,9 +395,13 @@ class ExploreViewController: UIViewController {
         self.uploadedUIImageView.kf.indicatorType = .activity
         self.uploadedUIImageView.kf.setImage(with: url, options: [.forceTransition])
         self.uploadedWrapper.hideWithAnimation(isHidden: false)
-        ComponentUtil.runThisAfter(second: 5, execute: {
-            self.uploadedWrapper.hideWithAnimation(isHidden: true)
-        })
+        
+        // Do not hide if there is no image in feed.
+        if images.count != 0 {
+            ComponentUtil.runThisAfter(second: 5, execute: {
+                self.uploadedWrapper.hideWithAnimation(isHidden: true)
+            })
+        }
     }
     
 }
@@ -519,7 +520,6 @@ extension ExploreViewController: PhotoUploadingDelegate {
     func willUpload() {
         progressView.progress = 0
         progressViewWrapper.hideWithAnimation(isHidden: false)
-        statusbarSpace.hideWithAnimation(isHidden: false)
         print("willUpload")
     }
     
